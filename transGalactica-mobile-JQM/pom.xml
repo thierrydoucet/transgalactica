@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>org.transgalactica.core</groupId>
+		<artifactId>transGalactica-build</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+	</parent>
+
+	<groupId>org.transgalactica.front</groupId>
+	<artifactId>transGalactica-mobile-JQM</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<name>Trans'Galactica - Mobile (JQM)</name>
+	<description>Module web/mobile (technologies JQuery &amp; JQuery Mobile) de l'application Trans'Galactica</description>
+
+	<properties>
+		<!-- multi language sur un module non encore dispo http://jira.codehaus.org/browse/SONAR-926 
+			<sonar.language>web,javascript</sonar.language> -->
+	</properties>
+
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<configuration>
+					<runOnlyAtExecutionRoot>false</runOnlyAtExecutionRoot>
+					<descriptorRefs>
+						<descriptorRef>static-web-distrib</descriptorRef>
+					</descriptorRefs>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

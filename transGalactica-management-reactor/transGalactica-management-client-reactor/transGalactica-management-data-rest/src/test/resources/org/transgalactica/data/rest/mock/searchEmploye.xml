@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<employes>
+	<employes>
+		<dateEmbauche>1977-06-09T00:00:00+02:00</dateEmbauche>
+		<matricule>2</matricule>
+		<nom>Chewbacca</nom>
+		<typeEmploye>MECANICIEN</typeEmploye>
+	</employes>
+	<employes>
+		<dateEmbauche>1977-06-09T00:00:00+02:00</dateEmbauche>
+		<matricule>7</matricule>
+		<nom>D2-R2</nom>
+		<typeEmploye>MECANICIEN</typeEmploye>
+	</employes>
+	<employes>
+		<dateEmbauche>1977-06-09T00:00:00+02:00</dateEmbauche>
+		<matricule>6</matricule>
+		<nom>Dark Vador</nom>
+		<typeEmploye>PILOTE</typeEmploye>
+	</employes>
+	<employes>
+		<dateEmbauche>1977-06-09T00:00:00+02:00</dateEmbauche>
+		<matricule>1</matricule>
+		<nom>Han Solo</nom>
+		<typeEmploye>PILOTE</typeEmploye>
+	</employes>
+	<employes>
+		<dateEmbauche>2002-09-20T00:00:00+02:00</dateEmbauche>
+		<matricule>4</matricule>
+		<nom>Hoban Washburne (Wash)</nom>
+		<typeEmploye>PILOTE</typeEmploye>
+	</employes>
+	<employes>
+		<dateEmbauche>2002-09-20T00:00:00+02:00</dateEmbauche>
+		<matricule>5</matricule>
+		<nom>Kaywinnet Lee Frye (Kaylee)</nom>
+		<typeEmploye>MECANICIEN</typeEmploye>
+	</employes>
+	<employes>
+		<dateEmbauche>1980-08-20T00:00:00+02:00</dateEmbauche>
+		<matricule>3</matricule>
+		<nom>Lando Calrissian</nom>
+		<typeEmploye>PILOTE</typeEmploye>
+	</employes>
+</employes>

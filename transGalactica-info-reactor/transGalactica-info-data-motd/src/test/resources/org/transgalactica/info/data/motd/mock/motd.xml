@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<motd
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+	<message>
+	    <id>1</id>
+		<titre>Message TU</titre>
+		<contenu>Contenu test unitaires</contenu>
+		<datePublication></datePublication>
+		<image
+			url="http://localhost:8080/transGalactica-web/src/main/webapp/themes/default/images/transGalactica-logo.png"
+			texteAlternatif="Logo Trans'Galactica" />
+	</message>
+
+	<message>
+	    <id>2</id>
+		<titre>Message 2 TU</titre>
+		<contenu>Contenu test unitaires</contenu>
+		<datePublication>2012-03-29T11:09:34</datePublication>
+		<image
+			url="http://localhost:8080/transGalactica-web/src/main/webapp/themes/default/images/transGalactica-logo.png"
+			texteAlternatif="Logo Trans'Galactica" />
+	</message>
+
+</motd>

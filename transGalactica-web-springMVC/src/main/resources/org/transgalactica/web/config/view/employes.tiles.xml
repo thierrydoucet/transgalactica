@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+
+	<definition name="employe/liste" extends="abstractLayout">
+		<put-attribute name="title" value="transgalactica.employe.liste.titre" />
+		<put-attribute name="path" value="transgalactica.employe.liste.breadcrumbs" />
+		<put-attribute name="body" value="/WEB-INF/pages/employe/liste.jsp" />
+	</definition>
+	
+	<definition name="employe/detail" extends="abstractLayout">
+		<put-attribute name="title" value="transgalactica.employe.detail.titre" />
+		<put-attribute name="path" value="transgalactica.employe.detail.breadcrumbs" />
+		<put-attribute name="body" value="/WEB-INF/pages/employe/detail.jsp" />
+	</definition>
+	
+</tiles-definitions>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<body>
+	<div data-role="page" id="pages.accueil.ConfigurationPage">
+		<div data-role="header">
+			<h1>Configuration</h1>
+		</div>
+
+		<div data-role="content">
+			<form>
+				<div data-role="collapsible">
+					<h1>Identification</h1>
+					<label for="pages.accueil.ConfigurationPage.username" class="ui-hidden-accessible">Utilisateur :</label><input
+						type="text" name="username" id="pages.accueil.ConfigurationPage.username" placeholder="Utilisateur" /> <label
+						for="pages.accueil.ConfigurationPage.password" class="ui-hidden-accessible">Mot de passe :</label><input
+						type="password" name="password" id="pages.accueil.ConfigurationPage.password" placeholder="Mot de passe" />
+				</div>
+				<div data-role="collapsible">
+					<h1>Serveur</h1>
+					<label for="pages.accueil.ConfigurationPage.server" class="ui-hidden-accessible">Serveur :</label><input
+						type="text" name="server" id="pages.accueil.ConfigurationPage.server" placeholder="Serveur" />
+				</div>
+			</form>
+			<button id="pages.accueil.ConfigurationPage.testButton">Tester la connexion</button>
+		</div>
+
+		<div data-role="footer" class="ui-btn" data-position="fixed">
+			<a href="#" data-role="button" data-inline="true" data-icon="delete" data-rel="back" data-direction="reverse">Annuler</a>
+			<button id="pages.accueil.ConfigurationPage.saveButton" data-inline="true" data-icon="check">Enregistrer</button>
+		</div>
+	</div>
+</body>
+</html>

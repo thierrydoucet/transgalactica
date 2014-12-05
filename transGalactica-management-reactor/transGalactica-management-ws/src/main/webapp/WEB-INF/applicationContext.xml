@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/util 
+		http://www.springframework.org/schema/util/spring-util.xsd">
+
+	<description>Trans'Galactica WS</description>
+
+	<context:annotation-config />
+
+	<!-- TODO : utiliser context:property-placeholder , dès résolution de l'anomalie https://jira.springsource.org/browse/SPR-7765 -->
+	<bean
+		id="wsPropertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
+		p:fileEncoding="UTF-8"
+		p:location="#{systemProperties['transGalactica.configuration']?:'classpath:transGalactica.properties'}"
+		p:systemPropertiesModeName="SYSTEM_PROPERTIES_MODE_OVERRIDE" />
+		
+	<bean
+		id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource"
+		p:basenames="org/springframework/security/messages" />
+
+	<context:component-scan base-package="org.transgalactica.management.ws" />
+
+	<import resource="classpath*:META-INF/beanRefFactory.xml" />
+	<import resource="classpath:org/transgalactica/management/ws/config/context/mapper.spring.xml" />
+	<import resource="classpath:org/transgalactica/management/ws/config/context/endpoint.spring.xml" />
+	<import resource="classpath:org/transgalactica/management/ws/config/context/security.spring.xml" />
+
+</beans>

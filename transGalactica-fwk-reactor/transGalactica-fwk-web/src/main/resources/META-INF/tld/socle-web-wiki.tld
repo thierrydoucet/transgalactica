@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taglib
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	version="2.1"
+	xsi:schemaLocation="
+		http://java.sun.com/xml/ns/javaee 
+		http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd">
+
+	<tlib-version>1.0</tlib-version>
+	<short-name>socle-web-wiki</short-name>
+	<uri>http://org.transgalactica.socle/web/wiki</uri>
+
+
+	<tag>
+		<description>Tag use to convert a wiki text as html. The wiki text to
+		convert is in the tag body.</description>
+		<name>wikiText</name>
+		<tag-class>org.transgalactica.fwk.web.wiki.WikiTextTag</tag-class>
+		<body-content>JSP</body-content>
+		<attribute>
+			<description>The string to use when binding the result to the page,
+			request, session or application scope. If not specified, the result
+			gets outputted to the writer (i.e. typically directly to the JSP).</description>
+			<name>var</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<description>The string to use what plugin directives may be used by 
+			Creole page authors. Could be FULL, NONE or any JCreolePrivilege 
+			separated by comma.</description>
+			<name>privileges</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<description>The scope to use when exporting the result to a variable.
+			This attribute is only used when var is also set. Possible values are
+			page, request, session and application.</description>
+			<name>scope</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+
+</taglib>

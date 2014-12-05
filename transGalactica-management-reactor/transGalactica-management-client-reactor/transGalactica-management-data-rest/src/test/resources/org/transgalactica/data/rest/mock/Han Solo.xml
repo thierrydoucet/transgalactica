@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<employeDetail>
+	<dateEmbauche>1977-06-09T00:00:00+02:00</dateEmbauche>
+	<matricule>1</matricule>
+	<nom>Han Solo</nom>
+	<typeEmploye>PILOTE</typeEmploye>
+	<nombreHeuresVol>542</nombreHeuresVol>
+	<vaisseaux>
+		<capaciteDeFret>100000</capaciteDeFret>
+		<immatriculation>Faucon Millenium</immatriculation>
+		<modele>cargo YT-1300</modele>
+		<nombreDePassagers>6</nombreDePassagers>
+		<autonomie>100000</autonomie>
+		<vitesse>105</vitesse>
+	</vaisseaux>
+</employeDetail>

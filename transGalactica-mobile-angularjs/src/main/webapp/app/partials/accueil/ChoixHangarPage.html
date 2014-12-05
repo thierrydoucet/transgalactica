@@ -1,0 +1,15 @@
+<div id="header">
+	<h1>Choix du hangar</h1>
+</div>
+
+<div id="content">
+	<label for="pages.accueil.ChoixHangarPage.hangar">Hangar :</label> <select id="pages.accueil.ChoixHangarPage.hangar" ng-model="hangar" ng-options="h.localisation for h in hangars.hangars track by h.numero"></select>
+</div>
+
+<div id="footer">
+	<ul>
+		<li>
+			<button ng-click="saveDefaultHangar(hangar)">Ok</button>
+		</li>
+	</ul>
+</div>

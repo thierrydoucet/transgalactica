@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>org.transgalactica.core</groupId>
+		<artifactId>transGalactica-build</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+	</parent>
+
+	<artifactId>transGalactica-test</artifactId>
+	<packaging>jar</packaging>
+
+	<name>Trans'Galactica - Configuration Tests Unitaires</name>
+	<description>
+		Module de configuration des test Unitaires de l'applciation Trans'Galactica
+	</description>
+
+
+
+	<dependencyManagement>
+		<dependencies>
+			<!-- import -->
+			<dependency>
+				<groupId>org.transgalactica.core</groupId>
+				<artifactId>transGalactica-dependencies</artifactId>
+				<version>1.0.0-SNAPSHOT</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+					<dependency>
+			<groupId>org.transgalactica.fwk</groupId>
+			<artifactId>transGalactica-fwk-test</artifactId>
+			<version>1.0.0-SNAPSHOT</version>
+		</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.transgalactica.fwk</groupId>
+			<artifactId>transGalactica-fwk-test</artifactId>
+		</dependency>
+
+		<!-- Journalisation -->
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>jcl-over-slf4j</artifactId>
+			<scope>compile</scope>
+		</dependency>
+
+		<!-- Transaction -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-tx</artifactId>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate.javax.persistence</groupId>
+			<artifactId>hibernate-jpa-2.0-api</artifactId>
+			<optional>true</optional>
+		</dependency>
+
+		<!-- JEE Implementation -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish.web</groupId>
+			<artifactId>javax.el</artifactId>
+		</dependency>
+
+	</dependencies>
+</project>

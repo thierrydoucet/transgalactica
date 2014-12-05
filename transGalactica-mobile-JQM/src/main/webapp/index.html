@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1 , user-scalable=no" />
+<meta charset="utf-8">
+<link rel="stylesheet" href="style/main.css" />
+<link rel="stylesheet" href="lib/jquery.mobile-1.4.0.min.css" />
+</head>
+
+<body>
+	<div data-role="page" id="loadingPage">
+		<div data-role="content">
+			<p>
+				<img alt="Trans'Galactica Logo" height="50px" width="50px" style="vertical-align: middle;" src="/transGalactica-web-JQM/images/transGalactica-logo.png" /> <span
+					style="line-height: 50px; vertical-align: middle;">Chargement...</span>
+			</p>
+		</div>
+	</div>
+</body>
+
+<script src="lib/jquery-1.10.2.min.js"></script>
+<script src="lib/jquery.mobile-1.4.0.min.js"></script>
+<script src="lib/using.jquery-1.0.0.min.js"></script>
+<script src="data/RestRepository.js"></script>
+<script src="data/PreferencesRepository.js"></script>
+<script src="data/HangarRepository.js"></script>
+<script src="data/VaisseauRepository.js"></script>
+<script src="data/EmployeRepository.js"></script>
+<script src="pages/fonctions.js"></script>
+<script src="pages/accueil/WelcomeController.js"></script>
+<script src="pages/accueil/ChoixHangarController.js"></script>
+<script src="pages/accueil/ConfigurationController.js"></script>
+<script src="pages/hangars/DetailHangarController.js"></script>
+<script src="pages/vaisseaux/DetailVaisseauController.js"></script>
+<script src="pages/vaisseaux/DetailVaisseauEditionController.js"></script>
+<script>
+	$(document).on('pageshow', '#loadingPage', function(event) {
+		$.mobile.navigate('/transGalactica-web-JQM/pages/accueil/WelcomePage.html');
+	});
+</script>
+
+</html>

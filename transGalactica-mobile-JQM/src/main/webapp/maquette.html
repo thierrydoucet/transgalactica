@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1 , user-scalable=no" />
+<meta charset="utf-8">
+
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" />
+<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
+
+</head>
+<body>
+
+	<div data-role="page" id="welcome">
+		<div data-role="header">
+			<h1>Trans'Galactica</h1>
+		</div>
+
+		<div data-role="content">
+			<img alt="Trans'Galactica Logo" src="images/transGalactica-logo-titre.png" />
+			<p>Welcome {USER}!</p>
+			<p>
+				<a href="#vaisseauxList?numero=1" data-transition="slide" data-role="button" data-icon="search">Alderaan</a> 
+				<a href="#configuration" data-role="button" data-icon="gear">Configuration</a>
+			</p>
+		</div>
+	</div>
+
+	<div data-role="page" id="configuration">
+		<div data-role="header">
+			<h1>Configuration</h1>
+		</div>
+
+		<div data-role="content">
+			<form id="configuration-form" method="post" action="#">
+				<div data-role="collapsible">
+					<h1>Identification</h1>
+					<label for="username" class="ui-hidden-accessible">Utilisateur :</label><input type="text" name="username" id="username" placeholder="Utilisateur" /> <label for="password"
+						class="ui-hidden-accessible">Mot de passe :</label><input type="password" name="password" id="password" placeholder="Mot de passe" />
+				</div>
+				<div data-role="collapsible">
+					<h1>Serveur</h1>
+					<label for="server" class="ui-hidden-accessible">Serveur :</label><input type="text" name="server" id="server" placeholder="Serveur" />
+				</div>
+				<div data-role="collapsible">
+					<h1>Hangar</h1>
+					<label for="hangar" class="ui-hidden-accessible">Hangar :</label><select id="hangarId" name="hangar">
+						<option value="1">Alderaan</option>
+						<option value="2">Arrakis</option>
+						<option value="3">Corellia</option>
+						<option value="4">Coruscant</option>
+						<option value="5">Endor</option>
+						<option value="6">Etoile noire</option>
+						<option value="7">Hoth</option>
+						<option value="8">Mustafar</option>
+						<option value="9">Naboo</option>
+						<option value="10">Tatooine</option>
+					</select>
+				</div>
+				<div>
+					<a href="#" data-role="button" data-inline="true" data-icon="delete" data-rel="back" data-direction="reverse">Annuler</a> <input type="submit" data-inline="true"
+						data-icon="check" value="Enregistrer" />
+				</div>
+			</form>
+		</div>
+	</div>
+
+
+	<div data-role="page" id="vaisseauxList">
+		<div data-role="header">
+			<a href="index.html" data-role="button" data-icon="home" data-iconpos="notext">Accueil</a>
+			<h1>Alderaan</h1>
+		</div>
+
+		<div data-role="content">
+			<ul data-role="listview" data-autodividers="true" data-filter="true" data-filter-placeholder="Recherche par nom">
+				<li><a href="#vaisseauDetailCarac?immatriculation=Faucon%20Millenium"><h2>Faucon Millenium</h2><p>Cargo YT-1300</p></a></li>
+				<li><a href="#vaisseauDetailCarac?immatriculation=Red%20Leader"><h2>Red Leader</h2><p>T-65 X-Wings</p></a></li>
+				<li><a href="#vaisseauDetailCarac?immatriculation=Red%20Two"><h2>Red Two</h2><p>T-65 X-Wings</p></a></li>
+				<li><a href="#vaisseauDetailCarac?immatriculation=Red%20Three"><h2>Red Three</h2><p>T-65 X-Wings</p></a></li>
+				<li><a href="#vaisseauDetailCarac?immatriculation=Red%20Four"><h2>Red Four</h2><p>T-65 X-Wings</p></a></li>
+				<li><a href="#vaisseauDetailCarac?immatriculation=Yellow%20Leader"><h2>Yellow Leader</h2><p>BTL-S3 Y-Wing</p></a></li>
+				<li><a href="#vaisseauDetailCarac?immatriculation=Yellow%20Two"><h2>Yellow Two</h2><p>BTL-S3 Y-Wing</p></a></li>
+			</ul>
+		</div>
+	</div>
+
+	<div data-role="page" id="vaisseauDetailCarac">
+		<div data-role="header">
+			<a href="index.html" data-role="button" data-icon="home" data-iconpos="notext">Accueil</a>
+			<h1>Faucon Millenium</h1>
+			<a href="#vaisseauxList" data-role="button" data-icon="back" data-iconpos="notext">Liste des vaisseaux</a>
+		</div>
+
+		<div data-role="content">
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#vaisseauDetailCarac?immatriculation=Faucon%20Millenium" data-role="tab" class="ui-btn-active">Détail</a></li>
+					<li><a href="#vaisseauDetailEmploye?immatriculation=Faucon%20Millenium" data-role="tab">Employés</a></li>
+				</ul>
+			</div>
+			<ul data-role="listview" data-inset="true">
+      			<li data-role="list-divider">Identification</li>
+      			<li>Immatriculation : Faucon Millenium</li>
+      			<li>Modèle : Cargo YT-1300</li>
+      			<li data-role="list-divider">Caractéristiques</li>
+				<li>Vitesse atmosphérique (en km/h) : 1200</li>
+				<li>Autonomie (en jours) : 60</li>
+				<li>Nombre de passagers : 6</li>
+				<li>Capacité de Fret (en tonnes) : 100</li>
+				<li>Multiplicateur d'hyperdrive : 0</li>
+			</ul>
+		</div>
+		
+		<div data-role="footer" class="ui-btn">
+			<a href="#vaisseauDetailEdit" data-role="button" data-icon="grid">Editer</a>
+		</div>
+	</div>
+
+	<div data-role="page" id="vaisseauDetailEmploye">
+		<div data-role="header">
+			<a href="index.html" data-role="button" data-icon="home" data-iconpos="notext">Accueil</a>
+			<h1>Faucon Millenium</h1>
+			<a href="#vaisseauxList" data-role="button" data-icon="back" data-iconpos="notext">Liste des vaisseaux</a>
+		</div>
+
+		<div data-role="content">
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#vaisseauDetailCarac?immatriculation=Faucon%20Millenium" data-role="tab">Détail</a></li>
+					<li><a href="#vaisseauDetailEmploye?immatriculation=Faucon%20Millenium" data-role="tab" class="ui-btn-active">Employés</a></li>
+				</ul>
+			</div>
+			<ul data-role="listview" data-inset="true">
+				<li><h2>Han Solo</h2><span class="ui-li-count">542</span><p>Pilote</p></li>
+				<li><h2>Chewbacca</h2><p>Mécanicien</p></li>
+				<li><h2>Lando Calrissian</h2><span class="ui-li-count">228</span><p>Pilote</p></li>
+				<li><h2>D2-R2</h2><p>Mécanicien</p></li>
+			</ul>
+		</div>
+	</div>
+
+	<div data-role="page" id="vaisseauDetailEdit">
+		<div data-role="header">
+			<h1>Faucon Millenium</h1>
+		</div>
+
+		<div data-role="content">
+			<form action="#vaisseauDetailCarac">
+				<div data-role="collapsible-set">
+					<div data-role="collapsible" data-collapsed="false">
+						<h1>Identification</h1>
+						<label for="immatriculation">Immatriculation :</label><input type="text" name="immatriculation" id="immatriculation" placeholder="Immatriculation" value="Faucon Millenium"/>
+						<label for="modele">Modèle :</label><input type="text" name="modele" id="modele" placeholder="Modèle" value="Cargo YT-1300" />
+					</div>
+					<div data-role="collapsible">
+						<h3>Caractéristiques</h3>
+						<label for="vitesse">Vitesse atmosphérique (en km/h) :</label><input type="number" name="vitesse" id="vitesse" placeholder="Vitesse atmosphérique (en km/h)" value="1200" />
+						<label for="autonomie">Autonomie (en jours) :</label><input type="number" name="autonomie" id="autonomie" placeholder="Autonomie (en jours)" value="60" />
+						<label for="nombreDePassagers">Nombre de passagers :</label><input type="number" name="nombreDePassagers" id="nombreDePassagers" placeholder="Nombre de passagers" value="6" />
+						<label for="capaciteDeFret">Capacité de Fret (en tonnes) :</label><input type="number" name="capaciteDeFret" id="capaciteDeFret" placeholder="Capacité de Fret (en tonnes)" value="100" />
+						<label for="multiplicateurHyperdrive">Multiplicateur d'hyperdrive :</label><input type="number" name="multiplicateurHyperdrive" id="multiplicateurHyperdrive" placeholder="Multiplicateur d'hyperdrive" value="0" />
+					</div>
+				</div>
+				<div>
+					<a href="#" data-role="button" data-inline="true" data-icon="delete" data-rel="back" data-direction="reverse">Annuler</a> <input type="submit" data-inline="true"
+						data-icon="check" value="Enregistrer" />
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+
+<script>
+// pour affichage des "tab" sans transition
+$("a[data-role=tab]").each(function () {
+    var anchor = $(this);
+    anchor.bind("click", function () {
+        $.mobile.changePage(anchor.attr("href"), {
+            transition: "none",
+            changeHash: false
+        });
+        return false;
+    });
+});
+
+$("div[data-role=page]").bind("pagebeforeshow", function (e, data) {
+    $.mobile.silentScroll(0);
+    $.mobile.changePage.defaults.transition = 'slide';
+});
+</script>
+
+</html>

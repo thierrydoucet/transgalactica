@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="
+       http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<description>Context du test unitaire TestResourceBoundHttpClient</description>
+
+	<bean
+		id="resourceBoundClientHttpRequestFactory-1"
+		class="org.transgalactica.fwk.test.clienthttp.ResourceBoundClientHttpRequestFactory">
+		<property name="resources">
+			<set>
+				<bean
+					class="org.transgalactica.fwk.test.clienthttp.ResourceBoundHolder"
+					p:uri="http://montest/unitaire"
+					p:contentType="application/xml"
+					p:resource="classpath:org/transgalactica/fwk/test/clienthttp/TestResource.xml" />
+			</set>
+		</property>
+	</bean>
+
+	<bean
+		id="RestTemplate-1"
+		class="org.springframework.web.client.RestTemplate" />
+	<bean
+		id="RestTemplate-2"
+		class="org.springframework.web.client.RestTemplate" />
+	<bean
+		id="RestTemplate-3"
+		class="org.springframework.web.client.RestTemplate" />
+
+	<bean
+		id="clientHttpRequestFactoryMockLoader"
+		class="org.transgalactica.fwk.test.clienthttp.ClientHttpRequestFactoryMockLoader">
+		<property
+			name="mock"
+			ref="resourceBoundClientHttpRequestFactory-1" />
+		<property name="accessorsNamesToMock">
+			<list>
+				<value>RestTemplate-1</value>
+				<idref bean="RestTemplate-3" />
+				<value>RestTemplate-Undefined</value>
+			</list>
+		</property>
+	</bean>
+</beans>

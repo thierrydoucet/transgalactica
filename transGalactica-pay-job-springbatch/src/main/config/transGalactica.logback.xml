@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration>
+
+	<appender
+		name="FILE"
+		class="ch.qos.logback.core.FileAppender">
+		<file>${USER_HOME}/.transGalactica/logs/application.log</file>
+		<encoder>
+			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n%ex{3}</pattern>
+		</encoder>
+	</appender>
+
+	<appender
+		name="STDOUT"
+		class="ch.qos.logback.core.ConsoleAppender">
+		<!-- encoders are assigned the type ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
+		<encoder>
+			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n%ex{3}</pattern>
+		</encoder>
+	</appender>
+
+	<logger
+		name="org.springframework"
+		level="WARN" />
+	<logger
+		name="org.springframework.batch"
+		level="INFO" />
+
+	<root level="ERROR">
+		<appender-ref ref="STDOUT" />
+	</root>
+
+</configuration>

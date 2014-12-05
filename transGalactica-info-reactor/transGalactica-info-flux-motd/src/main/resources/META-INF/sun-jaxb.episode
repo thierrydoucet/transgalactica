@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<jaxb:bindings version="2.1" xmlns:jaxb="http://java.sun.com/xml/ns/jaxb">
+  <!--
+
+Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.5-2 
+Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
+Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
+Généré le : 2014.11.03 à 09:53:59 PM CET 
+
+  -->
+  <jaxb:bindings scd="x-schema::">
+    <jaxb:schemaBindings map="false">
+      <jaxb:package name="org.transgalactica.info.flux.motd"/>
+    </jaxb:schemaBindings>
+    <jaxb:bindings scd="message">
+      <jaxb:class ref="org.transgalactica.info.flux.motd.Message"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~image">
+      <jaxb:class ref="org.transgalactica.info.flux.motd.Image"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="motd">
+      <jaxb:class ref="org.transgalactica.info.flux.motd.Motd"/>
+    </jaxb:bindings>
+  </jaxb:bindings>
+</jaxb:bindings>
+

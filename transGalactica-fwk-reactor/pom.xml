@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>org.transgalactica.core</groupId>
+		<artifactId>transGalactica-build</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+	</parent>
+
+	<groupId>org.transgalactica.fwk</groupId>
+	<artifactId>transGalactica-fwk-reactor</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<name>Socle Trans'Galactica</name>
+	<description>Module racine du socle des applications de Trans'Galactica</description>
+
+	<modules>
+		<module>transGalactica-fwk-validation</module>
+		<module>transGalactica-fwk-domain</module>
+
+		<module>transGalactica-fwk-remote</module>
+		<module>transGalactica-fwk-web</module>
+
+		<module>transGalactica-fwk-test</module>
+	</modules>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.transgalactica.core</groupId>
+				<artifactId>transGalactica-dependencies</artifactId>
+				<version>1.0.0-SNAPSHOT</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>org.transgalactica.fwk</groupId>
+				<artifactId>transGalactica-fwk-validation</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.transgalactica.fwk</groupId>
+				<artifactId>transGalactica-fwk-domain</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.transgalactica.fwk</groupId>
+				<artifactId>transGalactica-fwk-remote</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.transgalactica.fwk</groupId>
+				<artifactId>transGalactica-fwk-web</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.transgalactica.fwk</groupId>
+				<artifactId>transGalactica-fwk-test</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+</project>

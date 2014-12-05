@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>org.transgalactica.management</groupId>
+		<artifactId>transGalactica-management-reactor</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+	</parent>
+
+	<artifactId>transGalactica-management-business-hr</artifactId>
+	<packaging>jar</packaging>
+
+	<name>Trans'Galactica Management - Business - Human Resources</name>
+	<description>
+		Module metier "ressources humaines" de l'application Trans'Galactica
+	</description>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.transgalactica.management</groupId>
+			<artifactId>transGalactica-management-business-core</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.transgalactica.management</groupId>
+			<artifactId>transGalactica-management-data-people</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.transgalactica.management</groupId>
+			<artifactId>transGalactica-management-data-materiel</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.transgalactica.fwk</groupId>
+			<artifactId>transGalactica-fwk-validation</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.transgalactica.fwk</groupId>
+			<artifactId>transGalactica-fwk-domain</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.inject</groupId>
+			<artifactId>javax.inject</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+		</dependency>
+
+		<!-- Tests dependencies -->
+		<dependency>
+			<groupId>org.transgalactica.core</groupId>
+			<artifactId>transGalactica-test</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.transgalactica.management</groupId>
+			<artifactId>transGalactica-management-data-orm</artifactId>
+			<type>test-jar</type>
+		</dependency>
+	</dependencies>
+
+</project>

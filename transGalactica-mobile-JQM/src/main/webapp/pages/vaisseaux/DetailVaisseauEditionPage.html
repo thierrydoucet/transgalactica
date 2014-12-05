@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<body>
+	<div data-role="page" id="pages.vaisseaux.DetailVaisseauEditionPage">
+		<div data-role="header">
+			<h1 id="pages.vaisseaux.DetailVaisseauEditionPage.title"></h1>
+		</div>
+
+		<div data-role="content">
+			<form>
+				<div data-role="collapsible-set">
+					<div data-role="collapsible" data-collapsed="false">
+						<h1>Identification</h1>
+						<label for="immatriculation">Immatriculation :</label><input type="text" name="immatriculation" id="pages.vaisseaux.DetailVaisseauEditionPage.immatriculation" placeholder="Immatriculation" />
+						<label for="modele">Modèle :</label><input type="text" name="modele" id="pages.vaisseaux.DetailVaisseauEditionPage.modele" placeholder="Modèle" />
+					</div>
+					<div data-role="collapsible">
+						<h3>Caractéristiques</h3>
+						<label for="vitesse">Vitesse atmosphérique (en km/h) :</label><input type="number" name="vitesse" id="pages.vaisseaux.DetailVaisseauEditionPage.vitesse" placeholder="Vitesse atmosphérique (en km/h)" />
+						<label for="autonomie">Autonomie (en jours) :</label><input type="number" name="autonomie" id="pages.vaisseaux.DetailVaisseauEditionPage.autonomie" placeholder="Autonomie (en jours)" />
+						<label for="nombreDePassagers">Nombre de passagers :</label><input type="number" name="nombreDePassagers" id="pages.vaisseaux.DetailVaisseauEditionPage.nombreDePassagers" placeholder="Nombre de passagers" />
+						<label for="capaciteDeFret">Capacité de Fret (en tonnes) :</label><input type="number" name="capaciteDeFret" id="pages.vaisseaux.DetailVaisseauEditionPage.capaciteDeFret" placeholder="Capacité de Fret (en tonnes)" />
+						<label for="multiplicateurHyperdrive">Multiplicateur d'hyperdrive :</label><input type="number" name="multiplicateurHyperdrive" id="pages.vaisseaux.DetailVaisseauEditionPage.multiplicateurHyperdrive" placeholder="Multiplicateur d'hyperdrive" />
+					</div>
+				</div>
+			</form>
+		</div>
+
+		<div data-role="footer" class="ui-btn" data-position="fixed">
+			<a href="#" data-role="button" data-inline="true" data-icon="delete" data-rel="back" data-direction="reverse">Annuler</a>
+			<button id="pages.vaisseaux.DetailVaisseauEditionPage.saveButton" data-inline="true" data-icon="check">Enregistrer</button>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,13 @@
+.errorBox {
+	border: thin solid red;
+	color: red;
+	padding: 5px;
+	background: #FFCCCC;
+}
+
+.infoBox {
+	border: thin solid green;
+	color: green;
+	padding: 5px;
+	background: #CCFFCC;
+}

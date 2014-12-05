@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<body>
+	<div data-role="page" id="pages.vaisseaux.DetailVaisseauPage">
+		<div data-role="header">
+			<a href="/transGalactica-web-JQM/pages/accueil/WelcomePage.html" data-role="button" data-icon="home" data-iconpos="notext">Accueil</a>
+			<h1 id="pages.vaisseaux.DetailVaisseauPage.title"></h1>
+			<a id="pages.vaisseaux.DetailVaisseauPage.backButton" data-role="button" data-icon="back" data-iconpos="notext">Liste des vaisseaux</a>
+		</div>
+
+		<div data-role="content">
+			<div id="pages.vaisseaux.DetailVaisseauPage.tabs" data-role="tabs">
+ 				<div data-role="navbar">
+   					<ul>
+						<li><a href="#pages.vaisseaux.DetailVaisseauPage.detail" data-ajax="false" class="ui-btn-active">Détail</a></li>
+						<li><a href="#pages.vaisseaux.DetailVaisseauPage.employes" data-ajax="false">Employés</a></li>
+					</ul>
+				</div>
+				
+				<div id="pages.vaisseaux.DetailVaisseauPage.detail">
+					<ul data-role="listview" data-inset="true">
+		      			<li data-role="list-divider">Identification</li>
+		      			<li><h2 id="pages.vaisseaux.DetailVaisseauPage.immatriculation"></h2><p id="pages.vaisseaux.DetailVaisseauPage.modele"></p></li>
+		      			<li data-role="list-divider">Caractéristiques</li>
+						<li><h2><span id="pages.vaisseaux.DetailVaisseauPage.vitesse"></span> km/h</h2><p>Vitesse atmosphérique</p></li>
+						<li><h2><span id="pages.vaisseaux.DetailVaisseauPage.autonomie"></span> jours</h2><p>Autonomie</p></li>
+						<li><h2><span id="pages.vaisseaux.DetailVaisseauPage.nombreDePassagers"></span> passagers</h2></li>
+						<li><h2><span id="pages.vaisseaux.DetailVaisseauPage.capaciteDeFret"></span> tonnes</h2><p>Fret</p></li>
+						<li><h2>x <span id="pages.vaisseaux.DetailVaisseauPage.multiplicateurHyperdrive"></span></h2><p>Multiplicateur d'hyperdrive</p></li>
+					</ul>
+				</div>
+
+				<div id="pages.vaisseaux.DetailVaisseauPage.employes">
+					<ul id="pages.vaisseaux.DetailVaisseauEmployePage.employes" data-role="listview" data-inset="true">
+					</ul>
+				</div>
+				
+			</div>
+		</div>
+	
+		<div data-role="footer" class="ui-btn" data-position="fixed">
+			<a id="pages.vaisseaux.DetailVaisseauPage.deleteButton" data-role="button" data-icon="delete">Supprimer</a>
+			<a id="pages.vaisseaux.DetailVaisseauPage.editButton" data-role="button" data-icon="grid">Editer</a>
+		</div>
+	</div>
+</body>
+</html>

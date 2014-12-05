@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+ <!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+
+	<definition name="abstractLayout" template="/WEB-INF/pages/layout/layout.jsp">
+		<put-attribute name="title" value="title.layout" />
+		<put-attribute name="path" value="breadcrumbs.path" />
+		<put-attribute name="header" value="/WEB-INF/pages/layout/header.jsp" /> 
+		<put-attribute name="usersInfo" value="/WEB-INF/pages/layout/usersInfo.jsp" /> 
+		<put-attribute name="breadcrumbs" value="/WEB-INF/pages/layout/breadcrumbs.jsp" />
+		<put-attribute name="menu" value="/WEB-INF/pages/layout/menu.jsp" />
+		<put-attribute name="messages" value="/WEB-INF/pages/layout/messages.jsp" />
+		<put-attribute name="body" value="/WEB-INF/pages/layout/blank.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/pages/layout/footer.jsp" />
+	</definition>
+
+	<definition name="erreur" extends="abstractLayout">
+		<put-attribute name="title" value="transgalactica.erreur.titre" />
+		<put-attribute name="path" value="transgalactica.erreur.breadcrumbs" />
+		<put-attribute name="messages" value="/WEB-INF/pages/layout/blank.jsp" />
+		<put-attribute name="body" value="/WEB-INF/pages/erreur/exceptions.jsp" />
+	</definition>
+
+	<definition name="login" extends="abstractLayout">
+		<put-attribute name="title" value="transgalactica.connexion.titre" />
+		<put-attribute name="path" value="transgalactica.connexion.breadcrumbs" />
+		<put-attribute name="usersInfo" value="/WEB-INF/pages/layout/blank.jsp" /> 
+		<put-attribute name="body" value="/WEB-INF/pages/security/login.jsp" />
+	</definition>
+	
+	<definition name="accueil/welcome" extends="abstractLayout">
+		<put-attribute name="title" value="transgalactica.accueil.welcome.titre" />
+		<put-attribute name="path" value="transgalactica.accueil.welcome.breadcrumbs" />
+		<put-attribute name="body" value="/WEB-INF/pages/accueil/welcome.jsp" />
+	</definition>
+		
+</tiles-definitions>

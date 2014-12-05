@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>org.transgalactica.core</groupId>
+		<artifactId>transGalactica-build</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+	</parent>
+
+	<groupId>org.transgalactica.front</groupId>
+	<artifactId>transGalactica-web-springMVC</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<packaging>war</packaging>
+
+	<name>Trans'Galactica - Web (Spring MVC)</name>
+	<description>Module Web (technologies Spring MVC &amp; Tiles/JSTL) de l'application Trans'Galactica</description>
+
+	<properties>
+		<!-- multi language sur un module non encore dispo http://jira.codehaus.org/browse/SONAR-926 
+			<sonar.language>java,web,javascript</sonar.language> -->
+		<!-- version -->
+		<jetty.version>8.1.3.v20120416</jetty.version>
+
+		<dependencies.version>1.0.0-SNAPSHOT</dependencies.version>
+		<management.version>1.0.0-SNAPSHOT</management.version>
+		<test.version>1.0.0-SNAPSHOT</test.version>
+		<socle.version>1.0.0-SNAPSHOT</socle.version>
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<!-- import -->
+			<dependency>
+				<groupId>org.transgalactica.core</groupId>
+				<artifactId>transGalactica-dependencies</artifactId>
+				<version>${dependencies.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+
+	<dependencies>
+		<dependency>
+			<groupId>org.transgalactica.management</groupId>
+			<artifactId>transGalactica-management-business-logistics</artifactId>
+			<version>${management.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.transgalactica.management</groupId>
+			<artifactId>transGalactica-management-business-hr</artifactId>
+			<version>${management.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.transgalactica.fwk</groupId>
+			<artifactId>transGalactica-fwk-web</artifactId>
+			<version>${socle.version}</version>
+		</dependency>
+
+		<!-- Journalisation -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>jcl-over-slf4j</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+		</dependency>
+
+		<!-- Spring -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+		</dependency>
+
+		<!-- Tiles -->
+		<dependency>
+			<groupId>org.apache.tiles</groupId>
+			<artifactId>tiles-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.tiles</groupId>
+			<artifactId>tiles-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.tiles</groupId>
+			<artifactId>tiles-servlet</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.tiles</groupId>
+			<artifactId>tiles-jsp</artifactId>
+		</dependency>
+
+		<!-- Wiki -->
+		<dependency>
+			<groupId>com.admc</groupId>
+			<artifactId>jcreole</artifactId>
+		</dependency>
+
+		<!-- JEE -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>javax.servlet.jsp-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>javax.inject</groupId>
+			<artifactId>javax.inject</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>javax.validation</groupId>
+			<artifactId>validation-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+		</dependency>
+
+
+		<!-- Security -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-taglibs</artifactId>
+		</dependency>
+		<!-- Security : to force spring version <dependency> <groupId>org.springframework</groupId> 
+			<artifactId>spring-core</artifactId> </dependency> <dependency> <groupId>org.springframework</groupId> 
+			<artifactId>spring-beans</artifactId> </dependency> <dependency> <groupId>org.springframework</groupId> 
+			<artifactId>spring-expression</artifactId> </dependency> -->
+
+		<dependency>
+			<groupId>net.sf.dozer</groupId>
+			<artifactId>dozer</artifactId>
+		</dependency>
+
+		<!-- Tests -->
+		<dependency>
+			<groupId>org.transgalactica.core</groupId>
+			<artifactId>transGalactica-test</artifactId>
+			<version>${test.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.transgalactica.management</groupId>
+			<artifactId>transGalactica-management-data-orm</artifactId>
+			<version>${management.version}</version>
+			<type>test-jar</type>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>copy-boot-jar</id>
+						<phase>package</phase>
+						<goals>
+							<goal>copy</goal>
+						</goals>
+						<configuration>
+							<artifactItems>
+								<artifactItem>
+									<groupId>org.mortbay.jetty</groupId>
+									<artifactId>jetty-runner</artifactId>
+									<version>${jetty.version}</version>
+								</artifactItem>
+								<artifactItem>
+									<!-- JSTL not packaged with Jetty-runner -->
+									<groupId>javax.servlet</groupId>
+									<artifactId>jstl</artifactId>
+									<version>1.2</version>
+									<outputDirectory>${project.build.directory}/dependency/extra</outputDirectory>
+								</artifactItem>
+							</artifactItems>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<configuration>
+					<runOnlyAtExecutionRoot>false</runOnlyAtExecutionRoot>
+					<descriptorRefs>
+						<descriptorRef>web-distrib</descriptorRef>
+						<descriptorRef>jetty-web-distrib</descriptorRef>
+					</descriptorRefs>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

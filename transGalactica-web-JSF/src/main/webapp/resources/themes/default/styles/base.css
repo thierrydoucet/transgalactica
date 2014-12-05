@@ -1,0 +1,122 @@
+body {
+  margin: 0px;
+  padding: 0px;
+}
+
+img {
+  border:none;
+}
+
+table {
+  padding:0px;
+  width: 100%;
+}
+
+p {
+	 white-space: normal;
+}
+form {
+	display: inline;
+	margin-bottom: 0px;
+	white-space: nowrap;
+	min-width: 500px;
+}
+
+form label {
+	display: block;
+	text-align: left;
+	font-weight: bold;
+	padding-right: 5px;
+}
+
+label {
+	display: inline;
+	text-align: left;
+	font-weight: bold;
+	padding-right: 5px;
+}
+
+input {
+	width: 300px;
+	margin: 0.5em;
+}
+
+div.clear {
+  clear:both;
+  visibility: hidden;
+}
+
+div.clear hr {
+  display: none;
+}
+
+.boutons {
+	padding: 0.5em;
+	margin: 0.5em;
+	text-align: center;
+}
+
+.boutons li {
+	display: inline;
+}
+
+.boutons input {
+	width: auto;
+	display: inline; 
+}
+
+.xleft {
+  float:left;
+}
+
+.xright {
+  float:right;
+}
+
+#header {
+	display: inline;
+}
+
+#usersInfo {
+	float:right;
+}
+
+#breadcrumbs {
+  padding: 3px 10px 3px 10px;
+  font-size: x-small;
+  margin: 0pt;
+}
+
+#menu {
+ width: 170px;
+ float:left;
+ overflow: auto;
+ padding: 8px 4px 0 8px;
+}
+
+#menu ul {
+  margin: 0;
+  padding: 2px 0px 2px 0px;
+  font-size: 1em;
+}
+
+#menu li {
+  list-style-type: none;
+  background-image: none;
+  background-repeat: no-repeat;
+  background-position: 0 0.4em;
+  padding-left: 10px;
+  list-style-position: outside;
+  font-size: 1em;
+}
+
+#content {
+  margin-right: 1.5em;
+  margin-left: 197px;
+  min-height: 100%;
+}
+
+#footer {
+  padding: 3px 10px 3px 10px;
+  font-size: x-small;
+}

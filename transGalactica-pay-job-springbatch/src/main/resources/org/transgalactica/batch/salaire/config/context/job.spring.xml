@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans:beans
+	xmlns="http://www.springframework.org/schema/batch"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+           http://www.springframework.org/schema/beans 
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/batch 
+           http://www.springframework.org/schema/batch/spring-batch.xsd">
+
+	<beans:description>Trans'Galactica Batch - Jobs Definitions</beans:description>
+
+	<beans:bean
+		id="jobLauncher"
+		class="org.springframework.batch.core.launch.support.SimpleJobLauncher"
+		p:jobRepository-ref="jobRepository" />
+
+	<job-repository
+		id="jobRepository"
+		isolation-level-for-create="DEFAULT" />
+
+	<job id="org.transgalactica.batch.salaire.FicheSalaireBatch">
+
+		<step
+			id="org.transgalactica.batch.salaire.step.ComputeSalaire"
+			next="org.transgalactica.batch.salaire.step.EditFicheSalaire">
+			<tasklet>
+				<chunk
+					reader="org.transgalactica.batch.salaire.item.EmployeEntityItemReader"
+					processor="org.transgalactica.batch.salaire.item.SalaireMapperItemProcessor"
+					writer="org.transgalactica.batch.salaire.item.SalaireToItemWriter"
+					commit-interval="3" />
+			</tasklet>
+		</step>
+
+		<step id="org.transgalactica.batch.salaire.step.EditFicheSalaire">
+			<tasklet>
+				<chunk
+					reader="org.transgalactica.batch.salaire.item.SalaireToItemReader"
+					writer="org.transgalactica.batch.salaire.item.SalairePdfItemWriter"
+					commit-interval="3" />
+			</tasklet>
+		</step>
+	</job>
+
+</beans:beans>

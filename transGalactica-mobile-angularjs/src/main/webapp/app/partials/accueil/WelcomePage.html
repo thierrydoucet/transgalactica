@@ -1,0 +1,18 @@
+<div id="header">
+	<h1>Trans'Galactica</h1>
+</div>
+
+<div id="content">
+	<img alt="Trans'Galactica Logo" src="img/transGalactica-logo-titre.png" />
+	<p>Welcome {{ credential.username != null ? credential.username : 'to Trans\'Galactica Mobile' }}!</p>
+	<p>
+		<button ng-model="button" ng-disabled="hangar.numero == null">{{ hangar.numero != null ? hangar.localisation : '---' }}</button>
+	</p>
+</div>
+
+<div id="footer">
+	<ul>
+		<li><a href="#/preferences/hangar">Hangar</a></li>
+		<li><a href="#/preferences/configuration">Paramètres</a></li>
+	</ul>
+</div>

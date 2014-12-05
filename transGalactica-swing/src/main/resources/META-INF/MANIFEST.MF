@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+Main-Class: org.transgalactica.swing.Application
+SplashScreen-Image: org/transgalactica/swing/style/transGalactica-logo-titre.png
+Class-Path: 
+

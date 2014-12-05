@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>org.transgalactica.core</groupId>
+		<artifactId>transGalactica-build</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+	</parent>
+
+	<groupId>org.transgalactica.info</groupId>
+	<artifactId>transGalactica-info-reactor</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<name>Trans'Galactica Info - Reactor</name>
+	<description>
+		Module reactor du service d'information de trans'Galactica.
+		Implémentation Spring-boot/REST/JAXB.
+	</description>
+
+	<modules>
+		<module>transGalactica-info-rest</module>
+		<module>transGalactica-info-data-motd</module>
+		<module>transGalactica-info-flux-motd</module>
+	</modules>
+
+	<properties>
+		<!-- versions -->
+		<socle.version>1.0.0-SNAPSHOT</socle.version>
+		<dependencies.version>1.0.0-SNAPSHOT</dependencies.version>
+		<test.version>1.0.0-SNAPSHOT</test.version>
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<!-- trans'Galactica -->
+			<dependency>
+				<groupId>org.transgalactica.info</groupId>
+				<artifactId>transGalactica-info-data-motd</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.transgalactica.info</groupId>
+				<artifactId>transGalactica-info-flux-motd</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<!-- import -->
+			<dependency>
+				<groupId>org.transgalactica.core</groupId>
+				<artifactId>transGalactica-dependencies</artifactId>
+				<version>${dependencies.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>org.transgalactica.fwk</groupId>
+				<artifactId>transGalactica-fwk-domain</artifactId>
+				<version>${socle.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.transgalactica.core</groupId>
+				<artifactId>transGalactica-test</artifactId>
+				<version>${test.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+</project>

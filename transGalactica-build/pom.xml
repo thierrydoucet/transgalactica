@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>org.transgalactica.core</groupId>
+	<artifactId>transGalactica-build</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<name>Trans'Galactica Build</name>
+	<description>Module racine, contenant la configuration des builds et de l'équipe de l'application Trans'Galactica</description>
+
+	<organization>
+		<name>Trans'Galactica</name>
+	</organization>
+
+	<scm>
+		<url>https://github.com/thierrydoucet/transGalactica</url>
+		<connection>scm:git:git://github.com/thierrydoucet/transGalactica.git</connection>
+		<developerConnection>scm:git:git@github.com:thierrydoucet/transGalactica.git</developerConnection>
+	</scm>
+
+	<issueManagement>
+		<url>https://github.com/thierrydoucet/transGalactica/issues</url>
+		<system>GitHub Issues</system>
+	</issueManagement>
+
+	<!-- A utiliser lorsqu'un nexus sera present <distributionManagement> <repository> 
+		<id>deployer-releases</id> <name>Nexus Releases Repository</name> <url>http://x.y.z:8081/nexus/content/repositories/releases/</url> 
+		</repository> <snapshotRepository> <id>deployer-snapshots</id> <name>Nexus 
+		Snapshots Repository</name> <url>http://x.y.z:8081/nexus/content/repositories/snapshots/</url> 
+		</snapshotRepository> </distributionManagement> -->
+
+	<developers>
+		<developer>
+			<id>tgd</id>
+			<name>Thierry</name>
+			<organization>Trans'Galactica</organization>
+			<roles>
+				<role>Geek Java</role>
+			</roles>
+		</developer>
+	</developers>
+
+	<contributors>
+		<contributor>
+			<name>Irys</name>
+			<roles>
+				<role>Mangeur de croquettes mortes</role>
+				<role>Dévoreur de paté mou</role>
+			</roles>
+		</contributor>
+		<contributor>
+			<name>Fabien</name>
+			<roles>
+				<role>Geek Java</role>
+			</roles>
+		</contributor>
+		<contributor>
+			<name>Riad</name>
+			<roles>
+				<role>Geek Java</role>
+			</roles>
+		</contributor>
+		<contributor>
+			<name>Franck</name>
+			<roles>
+				<role>Geek Java</role>
+				<role>翻訳家 (traducteur)</role>
+			</roles>
+		</contributor>
+		<contributor>
+			<name>Adil</name>
+			<roles>
+				<role>Geek Java</role>
+				<role>ترجمة للعربية (traduction arabe)</role>
+			</roles>
+		</contributor>
+	</contributors>
+
+	<properties>
+		<!-- files encoding -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+	</properties>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.transgalactica.maven.plugin</groupId>
+					<artifactId>defaite-maven-plugin</artifactId>
+					<version>2.0.1</version>
+				</plugin>
+
+				<plugin>
+					<artifactId>maven-antrun-plugin</artifactId>
+					<version>1.7</version>
+				</plugin>
+
+				<plugin>
+					<artifactId>maven-assembly-plugin</artifactId>
+					<version>2.3</version>
+					<dependencies>
+						<dependency>
+							<groupId>org.transgalactica.core</groupId>
+							<artifactId>transGalactica-assemblies</artifactId>
+							<version>1.0.0-SNAPSHOT</version>
+						</dependency>
+					</dependencies>
+					<executions>
+						<execution>
+							<id>make-assemblies</id>
+							<phase>package</phase>
+							<goals>
+								<goal>single</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+
+				<plugin>
+					<artifactId>maven-clean-plugin</artifactId>
+					<version>2.4.1</version>
+				</plugin>
+
+				<plugin>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>2.3.2</version>
+					<configuration>
+						<source>1.7</source>
+						<target>1.7</target>
+					</configuration>
+				</plugin>
+
+				<plugin>
+					<artifactId>maven-dependency-plugin</artifactId>
+					<version>2.4</version>
+				</plugin>
+
+				<plugin>
+					<artifactId>maven-deploy-plugin</artifactId>
+					<version>2.7</version>
+				</plugin>
+
+				<plugin>
+					<artifactId>maven-ear-plugin</artifactId>
+					<version>2.7</version>
+				</plugin>
+
+				<plugin>
+					<artifactId>maven-install-plugin</artifactId>
+					<version>2.3.1</version>
+				</plugin>
+
+				<plugin>
+					<artifactId>maven-jar-plugin</artifactId>
+					<version>2.4</version>
+					<executions>
+						<execution>
+							<id>attach-binaries</id>
+							<inherited>true</inherited>
+							<goals>
+								<goal>jar</goal>
+								<goal>test-jar</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+
+				<plugin>
+					<artifactId>maven-javadoc-plugin</artifactId>
+					<version>2.8.1</version>
+				</plugin>
+
+				<plugin>
+					<artifactId>maven-plugin-plugin</artifactId>
+					<version>2.9</version>
+				</plugin>
+
+				<plugin>
+					<artifactId>maven-release-plugin</artifactId>
+					<version>2.3.2</version>
+				</plugin>
+
+				<plugin>
+					<artifactId>maven-resources-plugin</artifactId>
+					<version>2.5</version>
+				</plugin>
+
+				<plugin>
+					<artifactId>maven-source-plugin</artifactId>
+					<version>2.1.2</version>
+					<executions>
+						<execution>
+							<id>attach-sources</id>
+							<inherited>true</inherited>
+							<goals>
+								<goal>jar</goal>
+								<goal>test-jar</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+
+				<plugin>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<version>2.12</version>
+					<!-- TODO: migrer a Jacoco -->
+					<configuration>
+						<argLine>-XX:-UseSplitVerifier</argLine>
+					</configuration>
+				</plugin>
+
+				<plugin>
+					<artifactId>maven-war-plugin</artifactId>
+					<version>2.2</version>
+					<configuration>
+						<failOnMissingWebXml>false</failOnMissingWebXml>
+					</configuration>
+				</plugin>
+
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>jaxws-maven-plugin</artifactId>
+					<version>1.12</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.jvnet.jaxb2.maven2</groupId>
+					<artifactId>maven-jaxb2-plugin</artifactId>
+					<version>0.8.2</version>
+				</plugin>
+
+				<plugin>
+					<groupId>com.sun.tools.jxc.maven2</groupId>
+					<artifactId>maven-jaxb-schemagen-plugin</artifactId>
+					<version>1.2</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+			</plugin>
+
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<inherited>false</inherited>
+				<configuration>
+					<finalName>transGalactica</finalName>
+					<runOnlyAtExecutionRoot>false</runOnlyAtExecutionRoot>
+					<descriptorRefs>
+						<descriptorRef>workspace</descriptorRef>
+					</descriptorRefs>
+				</configuration>
+			</plugin>
+
+		</plugins>
+	</build>
+
+	<profiles>
+		<!-- - - - - - - - - - - - - - -->
+		<!-- Profiles de construction -->
+		<!-- - - - - - - - - - - - - - -->
+		<!-- i.e. build all modules -->
+		<profile>
+			<id>build-all</id>
+			<activation>
+				<property>
+					<name>build</name>
+					<value>all</value>
+				</property>
+			</activation>
+			<modules>
+				<module>../transGalactica-assemblies</module>
+				<module>../transGalactica-dependencies</module>
+				<module>../transGalactica-test</module>
+
+				<module>../transGalactica-fwk-reactor</module>
+
+				<module>../transGalactica-management-reactor</module>
+				<module>../transGalactica-info-reactor</module>
+
+				<module>../transGalactica-pay-job-springbatch</module>
+				<module>../transGalactica-web-springMVC</module>
+				<module>../transGalactica-web-JSF</module>
+				<module>../transGalactica-mobile-JQM</module>
+				<module>../transGalactica-mobile-angularjs</module>
+				<!--module>../transGalactica-swing</module -->
+			</modules>
+		</profile>
+
+		<!-- - - - - - - - - - - - - - - - - - -->
+		<!-- Profiles d'activation de la Loose -->
+		<!-- - - - - - - - - - - - - - - - - - -->
+		<profile>
+			<id>loose-enabled</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.transgalactica.maven.plugin</groupId>
+						<artifactId>defaite-maven-plugin</artifactId>
+						<executions>
+							<execution>
+								<inherited>true</inherited>
+								<id>loose-dice</id>
+								<goals>
+									<goal>lancerLeDe</goal>
+								</goals>
+							</execution>
+						</executions>
+						<configuration>
+							<looseFailureIgnore>true</looseFailureIgnore>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
+	</profiles>
+</project>

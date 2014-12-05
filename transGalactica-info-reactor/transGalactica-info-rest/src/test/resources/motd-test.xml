@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<motd xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+	<message>
+	    <id>test</id>
+		<titre>Titre test</titre>
+		<contenu>Contenu test</contenu>
+		<datePublication>2014-11-22T23:15:00</datePublication>
+		<image
+			url="http://xx/test.png"
+			texteAlternatif="Image test" />
+	</message>
+
+	<message>
+	    <id>test2</id>
+		<titre>Titre test 2</titre>
+		<contenu>Contenu test 2</contenu>
+		<datePublication>2014-11-22T23:15:00</datePublication>
+		<image
+			url="http://xx/test2.png"
+			texteAlternatif="Image test 2" />
+	</message>
+</motd>

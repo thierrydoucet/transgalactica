@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<description>Trans'Galactica Web Spring MVC - Mappers Definitions</description>
+
+	<!-- surcharge du mapper de data-core -->
+	<bean
+		id="org.dozer.Mapper"
+		class="org.dozer.spring.DozerBeanMapperFactoryBean"
+		p:mappingFiles="classpath*:org/transgalactica/**/mapper/*.dozer.xml">
+		<property
+			name="factories">
+			<map>
+				<entry
+					key="contextFactory">
+					<bean
+						class="org.transgalactica.fwk.domain.bean.factory.SpringContextDozerFactory" />
+				</entry>
+			</map>
+		</property>
+	</bean>
+		
+</beans>

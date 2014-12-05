@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<motd xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+	<message>
+	    <id>Iris</id>
+		<titre>Iris</titre>
+		<contenu>Iris a gobé son paté mou!</contenu>
+		<datePublication>2012-03-29T11:09:34</datePublication>
+		<image
+			url="http://cyberchevaliers.free.fr/galeries/Pokemons/Irys/mini_100_5349.JPG"
+			texteAlternatif="Iris" />
+	</message>
+
+	<message>
+		<id>Hubble</id>
+		<titre>Télescope spatial Hubble</titre>
+		<contenu><![CDATA[
+Le télescope spatial Hubble (en anglais, Hubble Space Telescope : HST) est un télescope spatial en orbite à environ 600 kilomètres d'altitude qui effectue un tour complet de la Terre toutes les 100 minutes. Il est nommé ainsi en l'honneur de l'astronome Edwin Hubble. Son lancement, effectué le 24 avril 1990 par une navette spatiale, est le fruit d'un long travail de recherche de la NASA et de l'Agence Spatiale Européenne.
+
+Ce télescope a une résolution optique supérieure à 0,1 seconde d'arc. Il est prévu de le remplacer en 20181 par le James Webb Space Telescope (précédemment nommé « Télescope spatial nouvelle génération » ou en anglais Next Generation Space Telescope : NGST).
+
+Travailler en dehors de l'atmosphère a de nombreux avantages. En effet, l'atmosphère obscurcit les images et absorbe le rayonnement électromagnétique à certaines longueurs d'onde, principalement dans l'infrarouge. De plus, les turbulences atmosphériques sont aussi évitées, même si actuellement les télescopes au sol peuvent les corriger à l'aide d'optiques adaptatives.
+
+[[File:http://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Hubble_01.jpg/290px-Hubble_01.jpg Hubble]]
+
+Source [http://fr.wikipedia.org/wiki/T%C3%A9lescope_spatial_Hubble Wikipedia]
+		]]></contenu>
+		<image url="./themes/default/images/transGalactica-logo.png" />
+	</message>
+</motd>

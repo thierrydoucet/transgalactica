@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+	xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>org.transgalactica.info</groupId>
+		<artifactId>transGalactica-info-reactor</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+	</parent>
+
+	<artifactId>transGalactica-info-flux-motd</artifactId>
+	<packaging>jar</packaging>
+
+	<name>Trans'Galactica Info - Flux - MOTD</name>
+	<description>
+		Ce projet contient l'ensemble des classes générées nécessaire à la communication avec le flux MOTD.
+		Ces classes sont générées à l'aide de xjc.exe du jdk .
+		Ce projet ne contient que des classes générées et les fichiers xsd du flux MOTD.
+	</description>
+
+	<build>
+		<sourceDirectory>src/generated/java</sourceDirectory>
+	</build>
+
+	<profiles>
+		<profile>
+			<id>generate</id>
+			<activation>
+				<property>
+					<name>generate</name>
+					<value>true</value>
+				</property>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.jvnet.jaxb2.maven2</groupId>
+						<artifactId>maven-jaxb2-plugin</artifactId>
+						<executions>
+							<execution>
+								<goals>
+									<goal>generate</goal>
+								</goals>
+							</execution>
+						</executions>
+						<dependencies>
+							<dependency>
+								<groupId>net.java.dev.vcc.thirdparty</groupId>
+								<artifactId>collection-setter-injector</artifactId>
+								<version>0.5.0-1</version>
+							</dependency>
+						</dependencies>
+						<configuration>
+							<schemaDirectory>src/main/resources/META-INF/xsd</schemaDirectory>
+							<generateDirectory>src/generated/java</generateDirectory>
+							<generatePackage>org.transgalactica.info.flux.motd</generatePackage>
+							<episodeFile>src/main/resources/META-INF/sun-jaxb.episode</episodeFile>
+							<args>
+								<arg>-Xcollection-setter-injector</arg>
+							</args>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+
+</project>

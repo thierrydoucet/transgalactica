@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="
+       http://www.springframework.org/schema/beans 
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/mvc
+       http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+	<description>Trans'Galactica Web Spring MVC - Controllers Definitions</description>
+
+	<!-- interceptors -->
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/hangars/*" />
+			<mvc:exclude-mapping path="/hangars/search" />
+			<bean class="org.transgalactica.web.recent.impl.RecentHangarHandlerInterceptor" />
+		</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="/vaisseaux/*" />
+			<mvc:exclude-mapping path="/vaisseaux/search" />
+			<bean class="org.transgalactica.web.recent.impl.RecentVaisseauHandlerInterceptor" />
+		</mvc:interceptor>
+				<mvc:interceptor>
+			<mvc:mapping path="/employes/*" />
+			<mvc:exclude-mapping path="/employes/search" />
+			<bean class="org.transgalactica.web.recent.impl.RecentEmployeHandlerInterceptor" />
+		</mvc:interceptor>
+	</mvc:interceptors>
+
+	<!-- login -->
+	<mvc:view-controller
+		path="/login"
+		view-name="login" />
+
+</beans>

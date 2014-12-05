@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en" ng-app="transGalacticaApp">
+<head>
+<meta charset="utf-8">
+<title>Trans'Galactica AngularJS</title>
+<link rel="stylesheet" href="css/app.css" />
+</head>
+<body>
+
+	<div ng-view >
+		<p>
+			<img alt="Trans'Galactica Logo" height="50px" width="50px" style="vertical-align: middle;" src="img/transGalactica-logo.png" /> <span style="line-height: 50px; vertical-align: middle;">Chargement...</span>
+		</p>
+	</div>
+
+	<!-- In production use:
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
+  -->
+	<script src="lib/angular/angular.js"></script>
+	<script src="lib/angular/angular-route.js"></script>
+	<script src="lib/angular/angular-resource.js"></script>
+	<script src="js/app.js"></script>
+	<script src="js/services/PreferencesServices.js"></script>
+	<script src="js/services/RestServices.js"></script>
+	<script src="js/controllers/AccueilControllers.js"></script>
+
+</body>
+</html>

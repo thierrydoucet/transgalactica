@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="
+       http://www.springframework.org/schema/beans 
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context 
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/mvc
+       http://www.springframework.org/schema/mvc/spring-mvc.xsd
+       http://www.springframework.org/schema/util 
+       http://www.springframework.org/schema/util/spring-util.xsd">
+
+	<description>Trans'Galactica Web Spring MVC - MVC Definitions</description>
+
+	<context:annotation-config />
+
+	<!-- handler mapping -->
+	<mvc:default-servlet-handler
+		default-servlet-name="default" />
+	<mvc:annotation-driven
+		validator="javax.validation.ValidatorFactory" />
+
+	<!-- View Resolver -->
+	<bean
+		id="tilesViewResolver"
+		class="org.springframework.web.servlet.view.UrlBasedViewResolver"
+		p:viewClass="org.springframework.web.servlet.view.tiles2.TilesView"
+		p:order="1" />
+
+	<!-- Tiles -->
+	<bean
+		id="tilesConfigurer"
+		class="org.springframework.web.servlet.view.tiles2.TilesConfigurer"
+		p:definitions="classpath:org/transgalactica/web/config/view/*.tiles.xml" />
+
+	<!-- Exceptions -->
+	<bean
+		class="org.transgalactica.fwk.web.handlerexceptionresolver.SimpleMessageExceptionResolver"
+		p:defaultErrorView="erreur"
+		p:warnLogCategory="org.transgalactica.web.handlerexceptionresolver" />
+
+	<!-- Locale -->
+	<bean
+		id="localeResolver"
+		class="org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver" />
+
+	<!-- Theme -->
+	<bean
+		id="themeSource"
+		class="org.springframework.ui.context.support.ResourceBundleThemeSource"
+		p:basenamePrefix="org.transgalactica.web.theme." />
+
+	<bean
+		id="themeResolver"
+		class="org.springframework.web.servlet.theme.FixedThemeResolver"
+		p:defaultThemeName="default" />
+
+	<!-- Components configuration -->
+	<context:component-scan base-package="org.transgalactica.web" />
+	<import
+		resource="classpath:org/transgalactica/web/config/context/mvc/viewbean.spring.xml" />
+	<import
+		resource="classpath:org/transgalactica/web/config/context/mvc/controller.spring.xml" />
+	<import
+		resource="classpath:org/transgalactica/web/config/context/mvc/mapper.spring.xml" />
+
+</beans>

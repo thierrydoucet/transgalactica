@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mappings
+	xmlns="http://dozer.sourceforge.net"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://dozer.sourceforge.net
+          http://dozer.sourceforge.net/schema/beanmapping.xsd">
+
+	<mapping type="one-way">
+		<class-a bean-factory="contextFactory">org.transgalactica.management.rest.hr.data.PiloteCommand</class-a>
+		<class-b bean-factory="contextFactory">org.transgalactica.management.data.people.bo.PiloteEntity</class-b>
+	</mapping>
+
+	<mapping type="one-way">
+		<class-a bean-factory="contextFactory">org.transgalactica.management.rest.hr.data.EmployeCommand</class-a>
+		<class-b bean-factory="contextFactory">org.transgalactica.management.data.people.bo.MecanicienEntity</class-b>
+	</mapping>
+
+	<mapping type="one-way">
+		<class-a>java.util.List</class-a>
+		<class-b bean-factory="contextFactory">org.transgalactica.management.rest.hr.data.EmployeDtos</class-b>
+		<field>
+			<a>this</a>
+			<b
+				set-method="add(org.transgalactica.management.rest.hr.data.EmployeDto)"
+				type="iterate">employes</b>
+			<b-hint>org.transgalactica.management.rest.hr.data.EmployeDto</b-hint>
+		</field>
+	</mapping>
+
+	<mapping type="one-way">
+		<class-a>org.transgalactica.management.data.people.bo.EmployeSummary</class-a>
+		<class-b bean-factory="contextFactory">org.transgalactica.management.rest.hr.data.EmployeDto</class-b>
+		<field>
+			<a>matriculeEmploye</a>
+			<b>matricule</b>
+		</field>
+		<field>
+			<a>nomEmploye</a>
+			<b>nom</b>
+		</field>
+		<field>
+			<a>dateEmbaucheEmploye</a>
+			<b>dateEmbauche</b>
+		</field>
+		<field>
+			<a>typeEmploye</a>
+			<b>typeEmploye</b>
+		</field>
+	</mapping>
+
+	<mapping type="one-way">
+		<class-a>org.transgalactica.management.data.people.bo.PiloteEntity</class-a>
+		<class-b bean-factory="contextFactory">org.transgalactica.management.rest.hr.data.PiloteDetailDto</class-b>
+		<!-- Déclaration des champs de meme nom obligatoire, car le setter n'est pas dans l'interface -->
+		<field>
+			<a>matricule</a>
+			<b>matricule</b>
+		</field>
+		<field>
+			<a>nom</a>
+			<b>nom</b>
+		</field>
+		<field>
+			<a>dateEmbauche</a>
+			<b>dateEmbauche</b>
+		</field>
+		<field>
+			<a>type</a>
+			<b>typeEmploye</b>
+		</field>
+		<field>
+			<a>nombreHeuresVol</a>
+			<b>nombreHeuresVol</b>
+		</field>
+		<field>
+			<a>vaisseaux</a>
+			<b>vaisseaux</b>
+		</field>
+	</mapping>
+	<mapping type="one-way">
+		<class-a>org.transgalactica.management.data.people.bo.MecanicienEntity</class-a>
+		<class-b bean-factory="contextFactory">org.transgalactica.management.rest.hr.data.MecanicienDetailDto</class-b>
+		<!-- Déclaration des champs de meme nom obligatoire, car le setter n'est pas dans l'interface -->
+		<field>
+			<a>matricule</a>
+			<b>matricule</b>
+		</field>
+		<field>
+			<a>nom</a>
+			<b>nom</b>
+		</field>
+		<field>
+			<a>dateEmbauche</a>
+			<b>dateEmbauche</b>
+		</field>
+		<field>
+			<a>type</a>
+			<b>typeEmploye</b>
+		</field>
+
+		<field>
+			<a>vaisseaux</a>
+			<b>vaisseaux</b>
+		</field>
+		<field-exclude>
+			<a>specialites</a>
+			<b>specialites</b>
+		</field-exclude>
+	</mapping>
+	<mapping type="one-way">
+		<class-a>org.transgalactica.management.data.materiel.bo.VaisseauEntity</class-a>
+		<class-b bean-factory="contextFactory">org.transgalactica.management.rest.hr.data.VaisseauDto</class-b>
+		<field>
+			<a>immatriculation</a>
+			<b>immatriculation</b>
+		</field>
+		<field>
+			<a>modele</a>
+			<b>modele</b>
+		</field>
+		<field>
+			<a>nombreDePassagers</a>
+			<b>nombreDePassagers</b>
+		</field>
+		<field>
+			<a>capaciteDeFret</a>
+			<b>capaciteDeFret</b>
+		</field>
+		<field>
+			<a>vitesse</a>
+			<b>vitesse</b>
+		</field>
+		<field>
+			<a>autonomie</a>
+			<b>autonomie</b>
+		</field>
+	</mapping>
+
+</mappings>

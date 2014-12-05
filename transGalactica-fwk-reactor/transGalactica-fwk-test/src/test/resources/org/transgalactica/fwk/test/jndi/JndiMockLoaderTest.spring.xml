@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+       http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<description>Context du test unitaire TestJndiMockLoader</description>
+
+	<bean
+		id="JndiMockLoader-1"
+		class="org.transgalactica.fwk.test.jndi.JndiMockLoader">
+		<property name="jndiObjects">
+			<map>
+				<entry
+					key="string/1"
+					value="ma/string/1" />
+				<entry key="Integer/1">
+					<value type="java.lang.Integer">1</value>
+				</entry>
+			</map>
+		</property>
+	</bean>
+
+	<bean
+		id="JndiMockLoader-2"
+		class="org.transgalactica.fwk.test.jndi.JndiMockLoader">
+		<property name="jndiObjects">
+			<map>
+				<entry
+					key="string/2"
+					value="ma/string/2" />
+			</map>
+		</property>
+	</bean>
+
+</beans>

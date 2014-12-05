@@ -1,0 +1,49 @@
+<assembly
+	xmlns="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.0 http://maven.apache.org/xsd/assembly-1.1.0.xsd">
+
+	<id>workspace</id>
+
+	<formats>
+		<format>zip</format>
+	</formats>
+
+	<!-- parent -->
+	<fileSets>
+		<fileSet>
+			<directory>${project.basedir}</directory>
+			<outputDirectory>${artifactId}</outputDirectory>
+			<useDefaultExcludes>true</useDefaultExcludes>
+			<includes>
+				<include>pom.xml</include>
+				<include>src/**</include>
+			</includes>
+			<excludes>
+				<exclude>src/build/**</exclude>
+				<exclude>**/.jazzignore</exclude>
+			</excludes>
+		</fileSet>
+	</fileSets>
+
+	<!-- modules -->
+	<moduleSets>
+		<moduleSet>
+			<sources>
+				<useDefaultExcludes>true</useDefaultExcludes>
+				<fileSets>
+					<fileSet>
+						<includes>
+							<include>pom.xml</include>
+							<include>src/**</include>
+						</includes>
+						<excludes>
+							<exclude>src/build/**</exclude>
+							<exclude>**/.jazzignore</exclude>
+						</excludes>
+					</fileSet>
+				</fileSets>
+			</sources>
+		</moduleSet>
+	</moduleSets>
+</assembly>

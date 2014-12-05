@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+	xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>org.transgalactica.management</groupId>
+		<artifactId>transGalactica-management-reactor</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+	</parent>
+
+	<artifactId>transGalactica-management-data-core</artifactId>
+	<packaging>jar</packaging>
+
+	<name>Trans'Galactica Management - Data - Core</name>
+	<description>
+		Module contenant la configuration de la couche de donnée de l'application Trans'Galactica
+	</description>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.transgalactica.fwk</groupId>
+			<artifactId>transGalactica-fwk-validation</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.transgalactica.fwk</groupId>
+			<artifactId>transGalactica-fwk-domain</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.validation</groupId>
+			<artifactId>validation-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>net.sf.dozer</groupId>
+			<artifactId>dozer</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>net.sf.dozer</groupId>
+			<artifactId>dozer-spring</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>net.sf.ehcache</groupId>
+			<artifactId>ehcache-core</artifactId>
+		</dependency>
+
+		<!-- Tests dependencies -->
+		<dependency>
+			<groupId>org.transgalactica.core</groupId>
+			<artifactId>transGalactica-test</artifactId>
+		</dependency>
+
+	</dependencies>
+
+</project>

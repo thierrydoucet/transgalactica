@@ -1,0 +1,29 @@
+<div id="header">
+	<h1>Configuration</h1>
+</div>
+
+<div id="content">
+	<form>
+		<div>
+			<h1>Identification</h1>
+			<label for="pages.accueil.ConfigurationPage.username">Utilisateur :</label>
+			<input id="pages.accueil.ConfigurationPage.username" placeholder="Utilisateur" ng-model="credential.username"/>
+			<label for="pages.accueil.ConfigurationPage.password">Mot de passe :</label>
+			<input type="password" id="pages.accueil.ConfigurationPage.password"
+				placeholder="Mot de passe" ng-model="credential.password" />
+		</div>
+		<div>
+			<h1>Serveur</h1>
+			<label for="pages.accueil.ConfigurationPage.server">Serveur :</label>
+			<input id="pages.accueil.ConfigurationPage.server" placeholder="Serveur" ng-model="server.url" />
+		</div>
+	</form>
+	<button ng-click="testConnection()">Tester la connexion</button>
+</div>
+
+<div id="footer">
+	<ul>
+		<li><a href="#/accueil">Annuler</a></li>
+		<li><button ng-click="savePreferences()">Enregistrer</button></li>
+	</ul>
+</div>

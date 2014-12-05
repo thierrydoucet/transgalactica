@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+	xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>org.transgalactica.management</groupId>
+		<artifactId>transGalactica-management-reactor</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+	</parent>
+
+	<artifactId>transGalactica-management-rest</artifactId>
+	<packaging>war</packaging>
+
+	<name>Trans'Galactica Management - REST (Spring MVC)</name>
+	<description>Module REST (Spring MVC) de l'application Trans'Galactica</description>
+
+	<properties>
+		<sonar.language>java,web</sonar.language>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.transgalactica.management</groupId>
+			<artifactId>transGalactica-management-business-logistics</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.transgalactica.management</groupId>
+			<artifactId>transGalactica-management-business-hr</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.transgalactica.fwk</groupId>
+			<artifactId>transGalactica-fwk-web</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>jcl-over-slf4j</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+		</dependency>
+
+		<!-- Web : REST -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-oxm</artifactId>
+		</dependency>
+
+		<!-- JEE -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>javax.servlet.jsp-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>javax.inject</groupId>
+			<artifactId>javax.inject</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>javax.validation</groupId>
+			<artifactId>validation-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+		</dependency>
+
+		<!-- Security -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+		</dependency>
+
+		<!-- Tests -->
+		<dependency>
+			<groupId>org.transgalactica.core</groupId>
+			<artifactId>transGalactica-test</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.transgalactica.management</groupId>
+			<artifactId>transGalactica-management-data-orm</artifactId>
+			<type>test-jar</type>
+		</dependency>
+
+		<dependency>
+			<groupId>com.jayway.jsonpath</groupId>
+			<artifactId>json-path</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.jayway.jsonpath</groupId>
+			<artifactId>json-path-assert</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>xmlunit</groupId>
+			<artifactId>xmlunit</artifactId>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<configuration>
+					<runOnlyAtExecutionRoot>false</runOnlyAtExecutionRoot>
+					<descriptorRefs>
+						<descriptorRef>web-distrib</descriptorRef>
+					</descriptorRefs>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<profiles>
+		<profile>
+			<id>generate</id>
+			<activation>
+				<property>
+					<name>generate</name>
+					<value>true</value>
+				</property>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>jaxb2-maven-plugin</artifactId>
+						<version>1.3.1</version>
+						<executions>
+							<execution>
+								<id>jaxb2-schemagen-logistics</id>
+								<goals>
+									<goal>schemagen</goal>
+								</goals>
+								<configuration>
+									<outputDirectory>src/main/resources/META-INF/xsd/logistics</outputDirectory>
+									<includes>
+										<include>org/transgalactica/rest/logistics/data/impl/*</include>
+									</includes>
+								</configuration>
+							</execution>
+							<execution>
+								<id>jaxb2-schemagen-hr</id>
+								<goals>
+									<goal>schemagen</goal>
+								</goals>
+								<configuration>
+									<outputDirectory>src/main/resources/META-INF/xsd/hr</outputDirectory>
+									<includes>
+										<include>org/transgalactica/rest/hr/data/impl/*</include>
+									</includes>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
+
+
+
+		<!-- <profile> <id>generate</id> <activation> <property> <name>generate</name> <value>true</value> </property> </activation> 
+			<build> <plugins> <plugin> <groupId>com.sun.tools.jxc.maven2</groupId> <artifactId>maven-jaxb-schemagen-plugin</artifactId> 
+			<executions> <execution> <goals> <goal>generate</goal> </goals> </execution> </executions> <configuration> <project> ${project} 
+			</project> <destdir>src/main/resources/META-INF/xsd</destdir> <includes> <include>org/transgalactica/rest/logistics/data/impl/*</include> 
+			</includes> <verbose>true</verbose> </configuration> <dependencies> <dependency> <groupId>javax.xml.bind</groupId> <artifactId>jaxb-api</artifactId> 
+			<version>2.2</version> </dependency> <dependency> <groupId>com.sun.xml.bind</groupId> <artifactId>jaxb-xjc</artifactId> <version>2.2</version> 
+			</dependency> <dependency> <groupId>com.sun.xml.bind</groupId> <artifactId>jaxb-impl</artifactId> <version>2.2</version> 
+			</dependency> <dependency> <groupId>com.sun.xml.bind</groupId> <artifactId>jaxb-xjc</artifactId> <version>2.2</version> </dependency> 
+			</dependencies> </plugin> </plugins> </build> </profile> -->
+	</profiles>
+
+</project>

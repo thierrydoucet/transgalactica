@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<hangarDetail>
+	<localisation>Alderaan</localisation>
+	<nombreEmplacements>10</nombreEmplacements>
+	<numero>1</numero>
+	<vaisseaux>
+		<capaciteDeFret>150000</capaciteDeFret>
+		<immatriculation>Serenity</immatriculation>
+		<modele>Firefly</modele>
+		<nombreDePassagers>8</nombreDePassagers>
+		<autonomie>150000</autonomie>
+		<vitesse>95</vitesse>
+	</vaisseaux>
+	<vaisseaux>
+		<capaciteDeFret>100000</capaciteDeFret>
+		<immatriculation>Faucon Millenium</immatriculation>
+		<modele>cargo YT-1300</modele>
+		<nombreDePassagers>6</nombreDePassagers>
+		<autonomie>100000</autonomie>
+		<vitesse>105</vitesse>
+	</vaisseaux>
+	<vaisseaux>
+		<capaciteDeFret>100000</capaciteDeFret>
+		<immatriculation>Flying Bird</immatriculation>
+		<modele>cargo YT-1300</modele>
+		<nombreDePassagers>6</nombreDePassagers>
+		<autonomie>100000</autonomie>
+		<vitesse>95</vitesse>
+	</vaisseaux>
+</hangarDetail>

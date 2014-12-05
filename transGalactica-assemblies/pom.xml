@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>org.transgalactica.core</groupId>
+	<artifactId>transGalactica-assemblies</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<packaging>jar</packaging>
+
+	<name>Trans'Galactica - Descripteurs d'assemblage</name>
+	<description>Descripteurs d'assemblage réutilisable des applications de Trans'Galactica</description>
+
+	<scm>
+		<url>https://github.com/thierrydoucet/transGalactica</url>
+		<connection>scm:git:git://github.com/thierrydoucet/transGalactica.git/transGalactica/</connection>
+		<developerConnection>scm:git:git@github.com:thierrydoucet/transGalactica.git</developerConnection>
+	  <tag>transGalactica-assemblies-1.0.0</tag>
+  </scm>
+	
+</project>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<jaxb:bindings version="2.1" xmlns:jaxb="http://java.sun.com/xml/ns/jaxb">
+  <!--
+
+Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.5-2 
+Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
+Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
+Généré le : 2013.01.16 à 02:38:27 PM CET 
+
+  -->
+  <jaxb:bindings scd="x-schema::">
+    <jaxb:schemaBindings map="false">
+      <jaxb:package name="org.transgalactica.flux.rest"/>
+    </jaxb:schemaBindings>
+    <jaxb:bindings scd="~EmployeTypeDtos">
+      <jaxb:class ref="org.transgalactica.flux.rest.EmployeTypeDtos"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~VaisseauDetailDto">
+      <jaxb:class ref="org.transgalactica.flux.rest.VaisseauDetailDto"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~HangarDto">
+      <jaxb:class ref="org.transgalactica.flux.rest.HangarDto"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~EmployeDto">
+      <jaxb:class ref="org.transgalactica.flux.rest.EmployeDto"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~EmployeDtos">
+      <jaxb:class ref="org.transgalactica.flux.rest.EmployeDtos"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~HangarDetailDto">
+      <jaxb:class ref="org.transgalactica.flux.rest.HangarDetailDto"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~VaisseauDto">
+      <jaxb:class ref="org.transgalactica.flux.rest.VaisseauDto"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~HangarDtos">
+      <jaxb:class ref="org.transgalactica.flux.rest.HangarDtos"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~VaisseauDtos">
+      <jaxb:class ref="org.transgalactica.flux.rest.VaisseauDtos"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~HangarCommand">
+      <jaxb:class ref="org.transgalactica.flux.rest.HangarCommand"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~MecanicienSpecialiteDtos">
+      <jaxb:class ref="org.transgalactica.flux.rest.MecanicienSpecialiteDtos"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~VaisseauCommand">
+      <jaxb:class ref="org.transgalactica.flux.rest.VaisseauCommand"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~PiloteCommand">
+      <jaxb:class ref="org.transgalactica.flux.rest.PiloteCommand"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~EmployeVaisseau">
+      <jaxb:class ref="org.transgalactica.flux.rest.EmployeVaisseau"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~MecanicienDetailDto">
+      <jaxb:class ref="org.transgalactica.flux.rest.MecanicienDetailDto"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~HangarVaisseau">
+      <jaxb:class ref="org.transgalactica.flux.rest.HangarVaisseau"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~EmployeCommand">
+      <jaxb:class ref="org.transgalactica.flux.rest.EmployeCommand"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~PiloteDetailDto">
+      <jaxb:class ref="org.transgalactica.flux.rest.PiloteDetailDto"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~employeType">
+      <jaxb:typesafeEnumClass ref="org.transgalactica.flux.rest.EmployeType"/>
+    </jaxb:bindings>
+  </jaxb:bindings>
+</jaxb:bindings>
+

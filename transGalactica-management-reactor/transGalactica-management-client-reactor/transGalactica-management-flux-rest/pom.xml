@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+	xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>org.transgalactica.management.client</groupId>
+		<artifactId>transGalactica-management-client-reactor</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+	</parent>
+
+	<artifactId>transGalactica-management-flux-rest</artifactId>
+	<packaging>jar</packaging>
+
+	<name>Trans'Galactica Management Client - Flux - RESTfull</name>
+	<description>
+		Ce projet contient l'ensemble des classes générées nécessaire à la communication avec le flux trans'Galactica RESTFull (flux fourni par le projet transGalactica-rest).
+		Ces classes sont générées à l'aide de xjc.exe du jdk .
+		Ce projet ne contient que des classes générées et les fichiers xsd du flux.
+	</description>
+
+	<build>
+		<sourceDirectory>src/generated/java</sourceDirectory>
+	</build>
+
+	<dependencies>
+		<!-- Tests dependencies -->
+		<dependency>
+			<groupId>org.transgalactica.core</groupId>
+			<artifactId>transGalactica-test</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-oxm</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<profiles>
+		<profile>
+			<id>generate</id>
+			<activation>
+				<property>
+					<name>generate</name>
+					<value>true</value>
+				</property>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.jvnet.jaxb2.maven2</groupId>
+						<artifactId>maven-jaxb2-plugin</artifactId>
+						<executions>
+							<execution>
+								<goals>
+									<goal>generate</goal>
+								</goals>
+							</execution>
+						</executions>
+						<dependencies>
+							<dependency>
+								<groupId>net.java.dev.vcc.thirdparty</groupId>
+								<artifactId>collection-setter-injector</artifactId>
+								<version>0.5.0-1</version>
+							</dependency>
+						</dependencies>
+						<configuration>
+							<schemas>
+								<schema>
+									<fileset>
+										<directory>src/main/resources/META-INF/xsd</directory>
+										<includes>
+											<include>**/*.xsd</include>
+										</includes>
+									</fileset>
+								</schema>
+							</schemas>
+							<generateDirectory>src/generated/java</generateDirectory>
+							<generatePackage>org.transgalactica.flux.rest</generatePackage>
+							<episodeFile>src/main/resources/META-INF/sun-jaxb.episode</episodeFile>
+							<args>
+								<arg>-Xcollection-setter-injector</arg>
+							</args>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+
+</project>
