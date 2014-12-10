@@ -70,13 +70,6 @@
 								</goals>
 							</execution>
 						</executions>
-						<dependencies>
-							<dependency>
-								<groupId>net.java.dev.vcc.thirdparty</groupId>
-								<artifactId>collection-setter-injector</artifactId>
-								<version>0.5.0-1</version>
-							</dependency>
-						</dependencies>
 						<configuration>
 							<schemas>
 								<schema>
@@ -92,7 +85,7 @@
 							<generatePackage>org.transgalactica.flux.rest</generatePackage>
 							<episodeFile>src/main/resources/META-INF/sun-jaxb.episode</episodeFile>
 							<args>
-								<arg>-Xcollection-setter-injector</arg>
+								<arg>-Xsetter</arg>
 							</args>
 						</configuration>
 					</plugin>
