@@ -15,7 +15,6 @@
 		<url>https://github.com/thierrydoucet/transGalactica</url>
 		<connection>scm:git:git://github.com/thierrydoucet/transGalactica.git/transGalactica/</connection>
 		<developerConnection>scm:git:git@github.com:thierrydoucet/transGalactica.git</developerConnection>
-	  <tag>transGalactica-assemblies-1.0.0</tag>
   </scm>
 	
 </project>
