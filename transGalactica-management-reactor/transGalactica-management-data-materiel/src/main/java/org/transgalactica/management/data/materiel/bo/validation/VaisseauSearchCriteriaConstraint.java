@@ -15,7 +15,7 @@ import javax.validation.Payload;
 @Documented
 public @interface VaisseauSearchCriteriaConstraint {
 
-	String message() default "{org.transgalactica.management.data.materiel.bo.validation.VaisseauSearchCriteriaConstraint}";
+	String message() default "org.transgalactica.management.data.materiel.bo.validation.VaisseauSearchCriteriaConstraint";
 
 	Class<?>[] groups() default {};
 
