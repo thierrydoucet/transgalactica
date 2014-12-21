@@ -140,7 +140,7 @@ public class SpringMVCHangarRestService implements HangarRestService {
 	 * @see org.transgalactica.management.rest.SpringMVCHangarRestService.restservice.IHangarRestService#search(org.transgalactica.management.rest.materiel.data.impl.RechercheHangarCommand)
 	 */
 	@Override
-	@RequestMapping(value = "/search", method = RequestMethod.GET)
+	@RequestMapping(params = "localisation", method = RequestMethod.GET)
 	@ResponseStatus(HttpStatus.OK)
 	@ResponseBody
 	public HangarDtos search(@RequestParam(required = true) String localisation) {

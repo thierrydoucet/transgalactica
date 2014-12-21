@@ -1,9 +1,12 @@
 package org.transgalactica.management.rest.logistics.restservice.impl;
 
+import java.io.IOException;
 import java.util.List;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.ConstraintViolation;
+import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.BeanFactory;
@@ -34,6 +37,10 @@ import org.transgalactica.management.rest.logistics.restservice.VaisseauRestServ
  * 
  * @author Thierry
  */
+/**
+ * @author thierry
+ *
+ */
 @Controller
 @RequestMapping("/vaisseaux")
 public class SpringMVCVaisseauRestService implements VaisseauRestService {
@@ -55,7 +62,44 @@ public class SpringMVCVaisseauRestService implements VaisseauRestService {
 	 */
 	@ExceptionHandler(VaisseauInexistantException.class)
 	@ResponseStatus(value = HttpStatus.NOT_FOUND, reason = "org.transgalactica.management.business.logistics.exception.VaisseauInexistantException")
-	public void vaisseauNotFound(HttpServletResponse request) {
+	public void vaisseauNotFound() {
+	}
+
+	@ExceptionHandler(ConstraintViolationException.class)
+	public void validationException(HttpServletResponse response, ConstraintViolationException exception)
+			throws IOException {
+		StringBuilder sb = new StringBuilder();
+		for (ConstraintViolation<?> violation : exception.getConstraintViolations()) {
+			sb.append(violation.getMessage()).append('\n');
+		}
+		response.sendError(HttpStatus.BAD_REQUEST.value(), sb.toString());
+	}
+
+	/**
+	 * @see org.transgalactica.management.rest.logistics.restservice.VaisseauRestService#getAll()
+	 */
+	@Override
+	@RequestMapping(method = RequestMethod.GET, params = { "transit" })
+	@ResponseStatus(HttpStatus.OK)
+	@ResponseBody
+	public VaisseauDtos getEnTransit() {
+		List<VaisseauSummary> projections = vaisseauService.rechercherVaisseauxEnTransit();
+		return vaisseauMapper.mapToVaisseauDtos(projections);
+	}
+
+	/**
+	 * @see org.transgalactica.management.rest.SpringMVCVaisseauRestService.restservice.impl.IVaisseauRestService#search(org.transgalactica.management.rest.materiel.data.impl.RechercheVaisseauCommand)
+	 */
+	@Override
+	@RequestMapping(method = RequestMethod.GET, params = { "!transit" })
+	@ResponseStatus(HttpStatus.OK)
+	@ResponseBody
+	public VaisseauDtos search(@RequestParam(required = false) String immatriculation,
+			@RequestParam(required = false) String modele, @RequestParam(required = false) boolean intergalactique) {
+		VaisseauSearchCriteria criteres = vaisseauMapper.mapToRechercheVaisseauCriteres(immatriculation, modele,
+				intergalactique);
+		List<VaisseauSummary> projections = vaisseauService.rechercherVaisseaux(criteres);
+		return vaisseauMapper.mapToVaisseauDtos(projections);
 	}
 
 	/**
@@ -110,20 +154,5 @@ public class SpringMVCVaisseauRestService implements VaisseauRestService {
 	public void delete(@PathVariable String immatriculation) {
 		VaisseauEntity entity = vaisseauService.chargerVaisseau(immatriculation);
 		vaisseauService.supprimerVaisseau(entity);
-	}
-
-	/**
-	 * @see org.transgalactica.management.rest.SpringMVCVaisseauRestService.restservice.impl.IVaisseauRestService#search(org.transgalactica.management.rest.materiel.data.impl.RechercheVaisseauCommand)
-	 */
-	// @Override
-	@RequestMapping(value = "/search", method = RequestMethod.GET)
-	@ResponseStatus(HttpStatus.OK)
-	@ResponseBody
-	public VaisseauDtos search(@RequestParam(required = false) String immatriculation,
-			@RequestParam(required = false) String modele, @RequestParam(required = false) boolean intergalactique) {
-		VaisseauSearchCriteria criteres = vaisseauMapper.mapToRechercheVaisseauCriteres(immatriculation, modele,
-				intergalactique);
-		List<VaisseauSummary> projections = vaisseauService.rechercherVaisseaux(criteres);
-		return vaisseauMapper.mapToVaisseauDtos(projections);
 	}
 }

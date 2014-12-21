@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project
-	xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
@@ -35,6 +33,11 @@
 		<dependency>
 			<groupId>org.transgalactica.fwk</groupId>
 			<artifactId>transGalactica-fwk-web</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
 		</dependency>
 
 		<dependency>
@@ -164,27 +167,30 @@
 						<artifactId>jaxb2-maven-plugin</artifactId>
 						<executions>
 							<execution>
-								<id>jaxb2-schemagen-logistics</id>
+								<!--TODO : https://jira.codehaus.org/browse/MJAXB-90 -->
+								<id>jaxb2-schemagen</id>
+								<phase>compile</phase>
 								<goals>
 									<goal>schemagen</goal>
 								</goals>
 								<configuration>
-									<outputDirectory>src/main/resources/META-INF/xsd/logistics</outputDirectory>
+									<outputDirectory>src/main/resources/META-INF/xsd</outputDirectory>
 									<includes>
-										<include>org/transgalactica/rest/logistics/data/impl/*</include>
+										<include>org/transgalactica/management/rest/logistics/data/impl/*</include>
+										<include>org/transgalactica/management/rest/hr/data/impl/*</include>
 									</includes>
-								</configuration>
-							</execution>
-							<execution>
-								<id>jaxb2-schemagen-hr</id>
-								<goals>
-									<goal>schemagen</goal>
-								</goals>
-								<configuration>
-									<outputDirectory>src/main/resources/META-INF/xsd/hr</outputDirectory>
-									<includes>
-										<include>org/transgalactica/rest/hr/data/impl/*</include>
-									</includes>
+									<transformSchemas>
+										<transformSchema>
+											<uri>http://management.transgalactica.org/logistics</uri>
+											<toPrefix>logistics</toPrefix>
+											<toFile>logistics.xsd</toFile>
+										</transformSchema>
+										<transformSchema>
+											<uri>http://management.transgalactica.org/hr</uri>
+											<toPrefix>hr</toPrefix>
+											<toFile>hr.xsd</toFile>
+										</transformSchema>
+									</transformSchemas>
 								</configuration>
 							</execution>
 						</executions>
@@ -192,19 +198,6 @@
 				</plugins>
 			</build>
 		</profile>
-
-
-
-
-		<!-- <profile> <id>generate</id> <activation> <property> <name>generate</name> <value>true</value> </property> </activation> 
-			<build> <plugins> <plugin> <groupId>com.sun.tools.jxc.maven2</groupId> <artifactId>maven-jaxb-schemagen-plugin</artifactId> 
-			<executions> <execution> <goals> <goal>generate</goal> </goals> </execution> </executions> <configuration> <project> ${project} 
-			</project> <destdir>src/main/resources/META-INF/xsd</destdir> <includes> <include>org/transgalactica/rest/logistics/data/impl/*</include> 
-			</includes> <verbose>true</verbose> </configuration> <dependencies> <dependency> <groupId>javax.xml.bind</groupId> <artifactId>jaxb-api</artifactId> 
-			<version>2.2</version> </dependency> <dependency> <groupId>com.sun.xml.bind</groupId> <artifactId>jaxb-xjc</artifactId> <version>2.2</version> 
-			</dependency> <dependency> <groupId>com.sun.xml.bind</groupId> <artifactId>jaxb-impl</artifactId> <version>2.2</version> 
-			</dependency> <dependency> <groupId>com.sun.xml.bind</groupId> <artifactId>jaxb-xjc</artifactId> <version>2.2</version> </dependency> 
-			</dependencies> </plugin> </plugins> </build> </profile> -->
 	</profiles>
 
 </project>

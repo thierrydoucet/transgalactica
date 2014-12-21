@@ -6,6 +6,8 @@ import org.transgalactica.management.rest.logistics.data.VaisseauDtos;
 
 public interface VaisseauRestService {
 
+	VaisseauDtos getEnTransit();
+
 	VaisseauDetailDto getByImmatriculation(String immatriculation);
 
 	void create(VaisseauCommand command);

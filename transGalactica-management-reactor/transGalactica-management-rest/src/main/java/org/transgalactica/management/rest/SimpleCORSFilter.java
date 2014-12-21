@@ -19,6 +19,8 @@ import org.springframework.stereotype.Component;
  * 
  * TODO : surveiller https://jira.springsource.org/browse/SPR-9278
  * 
+ * TODO : a remplacer par le CORS filter de Spring security
+ * 
  * @author Thierry
  */
 @Component

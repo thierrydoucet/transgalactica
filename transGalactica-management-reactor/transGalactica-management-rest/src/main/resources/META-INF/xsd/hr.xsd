@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:hr="http://management.transgalactica.org/hr" targetNamespace="http://management.transgalactica.org/hr" version="1.0">
+
+  <xs:import schemaLocation="schema3.xsd"/>
+
+  <xs:complexType name="EmployeCommand">
+    <xs:sequence>
+      <xs:element name="nom" type="xs:string"/>
+      <xs:element name="dateEmbauche" type="xs:dateTime"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="EmployeDto">
+    <xs:sequence>
+      <xs:element name="matricule" type="xs:long"/>
+      <xs:element name="nom" type="xs:string"/>
+      <xs:element name="dateEmbauche" type="xs:dateTime"/>
+      <xs:element name="typeEmploye" type="employeType"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="MecanicienSpecialiteDtos">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="mecanicienSpecialite" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="PiloteCommand">
+    <xs:complexContent>
+      <xs:extension base="hr:EmployeCommand">
+        <xs:sequence>
+          <xs:element name="nombreHeuresVol" type="xs:int"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="PiloteDetailDto">
+    <xs:complexContent>
+      <xs:extension base="hr:EmployeDto">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="vaisseaux" type="hr:EmployeVaisseau"/>
+          <xs:element name="nombreHeuresVol" type="xs:int"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="EmployeVaisseau">
+    <xs:sequence>
+      <xs:element name="immatriculation" type="xs:string"/>
+      <xs:element name="modele" type="xs:string"/>
+      <xs:element name="nombreDePassagers" type="xs:short"/>
+      <xs:element name="capaciteDeFret" type="xs:long"/>
+      <xs:element name="vitesse" type="xs:int"/>
+      <xs:element name="autonomie" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="EmployeTypeDtos">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="employeType" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="MecanicienDetailDto">
+    <xs:complexContent>
+      <xs:extension base="hr:EmployeDto">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="vaisseaux" type="hr:EmployeVaisseau"/>
+          <xs:element maxOccurs="unbounded" name="specialites" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="EmployeDtos">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" ref="employe"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

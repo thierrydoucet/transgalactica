@@ -103,7 +103,7 @@ public class SpringMVCEmployeRestService implements EmployeRestService {
 	}
 
 	@Override
-	@RequestMapping(value = "/search", method = RequestMethod.GET)
+	@RequestMapping(method = RequestMethod.GET)
 	@ResponseStatus(HttpStatus.OK)
 	@ResponseBody
 	public EmployeDtos search(@RequestParam(required = false) String nomEmploye,
@@ -154,9 +154,7 @@ public class SpringMVCEmployeRestService implements EmployeRestService {
 	@Override
 	@RequestMapping(value = "/{matricule}/specialites/{specialite}", method = RequestMethod.DELETE)
 	@ResponseStatus(HttpStatus.OK)
-	public void removeMecanicienSpecialite(@PathVariable
-	long matricule, @PathVariable
-	String specialite) {
+	public void removeMecanicienSpecialite(@PathVariable long matricule, @PathVariable String specialite) {
 		MecanicienSpecialiteEntity specialiteEntity = employeService.chargerMecanicienSpecialite(specialite);
 		EmployeEntity employe = employeService.chargerEmploye(matricule);
 		if (employe.getType() != EmployeType.MECANICIEN) {

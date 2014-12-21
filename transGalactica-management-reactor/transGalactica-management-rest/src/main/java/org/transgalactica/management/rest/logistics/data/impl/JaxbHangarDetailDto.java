@@ -1,117 +1,66 @@
 package org.transgalactica.management.rest.logistics.data.impl;
 
+import static javax.xml.bind.annotation.XmlAccessType.FIELD;
+import static lombok.AccessLevel.PROTECTED;
+import static org.transgalactica.management.rest.Namespaces.LOGISTICS_NAMESPACE;
+
 import java.util.Set;
 
+import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
+
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import org.transgalactica.fwk.domain.stereotype.DataBean;
 import org.transgalactica.management.rest.logistics.data.HangarDetailDto;
 
 @DataBean("org.transgalactica.management.rest.logistics.data.HangarDetailDto")
+@Getter
+@Setter
+@NoArgsConstructor(access = PROTECTED)
 @XmlRootElement(name = "hangarDetail")
-@XmlType(name = "HangarDetailDto")
+@XmlType(name = "HangarDetailDto", namespace = LOGISTICS_NAMESPACE)
+@XmlAccessorType(FIELD)
 public class JaxbHangarDetailDto extends JaxbHangarDto implements HangarDetailDto {
 
 	private static final long serialVersionUID = 1L;
 
+	@XmlElementWrapper(name = "vaisseaux")
+	@XmlElement(name = "vaisseau", type = JaxbHangarDetailDto.JaxbVaisseauDto.class)
 	private Set<HangarDetailDto.VaisseauDto> vaisseaux;
 
 	@DataBean
-	@XmlType(name = "HangarVaisseau")
-	public static class BasicVaisseauDto implements HangarDetailDto.VaisseauDto {
+	@Getter
+	@Setter
+	@NoArgsConstructor(access = AccessLevel.PROTECTED)
+	@XmlType(name = "HangarVaisseau", namespace = LOGISTICS_NAMESPACE)
+	@XmlAccessorType(FIELD)
+	public static class JaxbVaisseauDto implements HangarDetailDto.VaisseauDto {
 
 		private static final long serialVersionUID = 1L;
 
+		@XmlElement(required = true)
 		private String immatriculation;
 
+		@XmlElement(required = true)
 		private String modele;
 
+		@XmlElement(required = true)
 		private short nombreDePassagers;
 
+		@XmlElement(required = true)
 		private long capaciteDeFret;
 
+		@XmlElement(required = true)
 		private int vitesse;
 
+		@XmlElement(required = true)
 		private int autonomie;
-
-		protected BasicVaisseauDto() {
-		}
-
-		/*
-		 * Accesseurs
-		 */
-
-		@Override
-		public String getImmatriculation() {
-			return immatriculation;
-		}
-
-		public void setImmatriculation(String immatriculation) {
-			this.immatriculation = immatriculation;
-		}
-
-		@Override
-		public String getModele() {
-			return modele;
-		}
-
-		public void setModele(String modele) {
-			this.modele = modele;
-		}
-
-		@Override
-		public short getNombreDePassagers() {
-			return nombreDePassagers;
-		}
-
-		public void setNombreDePassagers(short nombreDePassagers) {
-			this.nombreDePassagers = nombreDePassagers;
-		}
-
-		@Override
-		public long getCapaciteDeFret() {
-			return capaciteDeFret;
-		}
-
-		public void setCapaciteDeFret(long capaciteDeFret) {
-			this.capaciteDeFret = capaciteDeFret;
-		}
-
-		@Override
-		public int getVitesse() {
-			return vitesse;
-		}
-
-		public void setVitesse(int vitesse) {
-			this.vitesse = vitesse;
-		}
-
-		@Override
-		public int getAutonomie() {
-			return autonomie;
-		}
-
-		public void setAutonomie(int autonomie) {
-			this.autonomie = autonomie;
-		}
-	}
-
-	protected JaxbHangarDetailDto() {
-	}
-
-	/*
-	 * Accesseurs
-	 */
-
-	@Override
-	@XmlElement(type = JaxbHangarDetailDto.BasicVaisseauDto.class)
-	public Set<HangarDetailDto.VaisseauDto> getVaisseaux() {
-		return vaisseaux;
-	}
-
-	public void setVaisseaux(Set<HangarDetailDto.VaisseauDto> vaisseaux) {
-		this.vaisseaux = vaisseaux;
 	}
 }

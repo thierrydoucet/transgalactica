@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:hr="http://management.transgalactica.org/hr" xmlns:logistics="http://management.transgalactica.org/logistics" version="1.0">
+
+  <xs:import namespace="http://management.transgalactica.org/hr" schemaLocation="hr.xsd"/>
+
+  <xs:import namespace="http://management.transgalactica.org/logistics" schemaLocation="logistics.xsd"/>
+
+  <xs:element name="employe" type="hr:EmployeDto"/>
+
+  <xs:element name="employeCommand" type="hr:EmployeCommand"/>
+
+  <xs:element name="employeDetail" nillable="true" type="xs:anyType"/>
+
+  <xs:element name="employeTypes" type="hr:EmployeTypeDtos"/>
+
+  <xs:element name="employes" type="hr:EmployeDtos"/>
+
+  <xs:element name="hangar" type="logistics:HangarDto"/>
+
+  <xs:element name="hangarCommand" type="logistics:HangarCommand"/>
+
+  <xs:element name="hangarDetail" type="logistics:HangarDetailDto"/>
+
+  <xs:element name="hangars" type="logistics:HangarDtos"/>
+
+  <xs:element name="mecanicienSpecialites" type="hr:MecanicienSpecialiteDtos"/>
+
+  <xs:element name="vaisseau" type="logistics:VaisseauDto"/>
+
+  <xs:element name="vaisseauCommand" type="logistics:VaisseauCommand"/>
+
+  <xs:element name="vaisseauDetail" type="logistics:VaisseauDetailDto"/>
+
+  <xs:element name="vaisseaux" type="logistics:VaisseauDtos"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <xs:simpleType name="employeType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="MECANICIEN"/>
+      <xs:enumeration value="PILOTE"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

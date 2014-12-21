@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:logistics="http://management.transgalactica.org/logistics" targetNamespace="http://management.transgalactica.org/logistics" version="1.0">
+
+  <xs:import schemaLocation="schema3.xsd"/>
+
+  <xs:complexType name="HangarDetailDto">
+    <xs:complexContent>
+      <xs:extension base="logistics:HangarDto">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="vaisseau" type="logistics:HangarVaisseau"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="HangarDto">
+    <xs:sequence>
+      <xs:element name="numero" type="xs:long"/>
+      <xs:element name="localisation" type="xs:string"/>
+      <xs:element name="nombreEmplacements" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="HangarVaisseau">
+    <xs:sequence>
+      <xs:element name="immatriculation" type="xs:string"/>
+      <xs:element name="modele" type="xs:string"/>
+      <xs:element name="nombreDePassagers" type="xs:short"/>
+      <xs:element name="capaciteDeFret" type="xs:long"/>
+      <xs:element name="vitesse" type="xs:int"/>
+      <xs:element name="autonomie" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="VaisseauCommand">
+    <xs:sequence>
+      <xs:element name="immatriculation" type="xs:string"/>
+      <xs:element name="modele" type="xs:string"/>
+      <xs:element name="nombreDePassagers" type="xs:short"/>
+      <xs:element name="capaciteDeFret" type="xs:long"/>
+      <xs:element name="vitesse" type="xs:int"/>
+      <xs:element name="autonomie" type="xs:int"/>
+      <xs:element name="multiplicateurHyperdrive" type="xs:short"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="VaisseauDto">
+    <xs:sequence>
+      <xs:element name="immatriculation" type="xs:string"/>
+      <xs:element name="modele" type="xs:string"/>
+      <xs:element name="localisationHangar" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="HangarCommand">
+    <xs:sequence>
+      <xs:element name="localisation" type="xs:string"/>
+      <xs:element name="nombreEmplacements" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="HangarDtos">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" ref="hangar"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="VaisseauDtos">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" ref="vaisseau"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="VaisseauDetailDto">
+    <xs:complexContent>
+      <xs:extension base="logistics:VaisseauDto">
+        <xs:sequence>
+          <xs:element name="numeroHangar" type="xs:long"/>
+          <xs:element name="nombreDePassagers" type="xs:short"/>
+          <xs:element name="capaciteDeFret" type="xs:long"/>
+          <xs:element name="vitesse" type="xs:int"/>
+          <xs:element name="autonomie" type="xs:int"/>
+          <xs:element name="multiplicateurHyperdrive" type="xs:short"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+</xs:schema>

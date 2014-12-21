@@ -78,7 +78,7 @@ public class HangarRestServiceMvcTest extends AbstractMvcTest {
 
 	@Test
 	public void search() throws Exception {
-		mockMvc.perform(get("/hangars/search?localisation=Arakis").accept(APPLICATION_XML)) //
+		mockMvc.perform(get("/hangars?localisation=Arakis").accept(APPLICATION_XML)) //
 				.andExpect(status().isOk()) //
 				.andExpect(content().contentType("application/xml")) //
 				.andExpect(content().xml(SEARCH_ARAKIS));
@@ -102,7 +102,7 @@ public class HangarRestServiceMvcTest extends AbstractMvcTest {
 				.andExpect(jsonPath("$.vaisseaux[?(@.immatriculation == 'Serenity')]").doesNotExist());
 	}
 
-	private static final String DARK_STAR = "<hangarDetail><localisation>Etoile noire</localisation><nombreEmplacements>1000</nombreEmplacements><numero>3</numero><vaisseaux><capaciteDeFret>0</capaciteDeFret><immatriculation>Dark Vador's Tie Advanced</immatriculation><modele>Tie Advanced</modele><nombreDePassagers>0</nombreDePassagers><autonomie>1000</autonomie><vitesse>103</vitesse></vaisseaux></hangarDetail>";
+	private static final String DARK_STAR = "<hangarDetail><localisation>Etoile noire</localisation><nombreEmplacements>1000</nombreEmplacements><numero>3</numero><vaisseaux><vaisseau><capaciteDeFret>0</capaciteDeFret><immatriculation>Dark Vador's Tie Advanced</immatriculation><modele>Tie Advanced</modele><nombreDePassagers>0</nombreDePassagers><autonomie>1000</autonomie><vitesse>103</vitesse></vaisseau></vaisseaux></hangarDetail>";
 
-	private static final String SEARCH_ARAKIS = "<hangars><hangars><localisation>Arakis</localisation><nombreEmplacements>100</nombreEmplacements><numero>2</numero></hangars></hangars>";
+	private static final String SEARCH_ARAKIS = "<hangars><hangar><localisation>Arakis</localisation><nombreEmplacements>100</nombreEmplacements><numero>2</numero></hangar></hangars>";
 }

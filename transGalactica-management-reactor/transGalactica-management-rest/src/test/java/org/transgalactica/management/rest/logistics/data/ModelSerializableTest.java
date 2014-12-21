@@ -32,7 +32,7 @@ public class ModelSerializableTest extends AbstractSerializableGenericTest {
 		beansClazz.add(new Class[] { JaxbHangarDtos.class });
 		beansClazz.add(new Class[] { JaxbHangarDto.class });
 		beansClazz.add(new Class[] { JaxbHangarDetailDto.class });
-		beansClazz.add(new Class[] { JaxbHangarDetailDto.BasicVaisseauDto.class });
+		beansClazz.add(new Class[] { JaxbHangarDetailDto.JaxbVaisseauDto.class });
 
 		beansClazz.add(new Class[] { JaxbVaisseauCommand.class });
 		beansClazz.add(new Class[] { JaxbVaisseauDtos.class });

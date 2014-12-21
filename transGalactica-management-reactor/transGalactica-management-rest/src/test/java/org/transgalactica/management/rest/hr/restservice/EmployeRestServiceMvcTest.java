@@ -149,7 +149,7 @@ public class EmployeRestServiceMvcTest extends AbstractMvcTest {
 
 	@Test
 	public void search() throws Exception {
-		mockMvc.perform(get("/employes/search?nomEmploye=Chew%").accept(APPLICATION_JSON))
+		mockMvc.perform(get("/employes?nomEmploye=Chew%").accept(APPLICATION_JSON))
 				.andExpect(status().isOk())
 				.andExpect(jsonPath("$.employes").value(hasSize(1)))
 				.andExpect(jsonPath("$.employes[0].nom").value("Chewbacca"))
@@ -207,12 +207,14 @@ public class EmployeRestServiceMvcTest extends AbstractMvcTest {
 			+ "<typeEmploye>PILOTE</typeEmploye>" //
 			+ "<nombreHeuresVol>542</nombreHeuresVol>" //
 			+ "<vaisseaux>" //
+			+ "<vaisseau>" //
 			+ "	<capaciteDeFret>100000</capaciteDeFret>" //
 			+ "	<immatriculation>Faucon Millenium</immatriculation>" //
 			+ "	<modele>cargo YT-1300</modele>" //
 			+ "	<nombreDePassagers>6</nombreDePassagers>" //
 			+ "	<autonomie>100000</autonomie>" //
 			+ "	<vitesse>105</vitesse>" //
+			+ "</vaisseau>" //
 			+ "</vaisseaux>" //
 			+ "</employeDetail>";
 
@@ -221,14 +223,18 @@ public class EmployeRestServiceMvcTest extends AbstractMvcTest {
 			+ "<matricule>2</matricule>" //
 			+ "<nom>Chewbacca</nom>" //
 			+ "<typeEmploye>MECANICIEN</typeEmploye>" //
-			+ "<specialites>Armement</specialites>" //
+			+ "<specialites>" //
+			+ " <specialite>Armement</specialite>" //
+			+ "</specialites>" //
 			+ "<vaisseaux>" //
+			+ "<vaisseau>" //
 			+ "	<capaciteDeFret>100000</capaciteDeFret>" //
 			+ "	<immatriculation>Faucon Millenium</immatriculation>" //
 			+ "	<modele>cargo YT-1300</modele>" //
 			+ "	<nombreDePassagers>6</nombreDePassagers>" //
 			+ "	<autonomie>100000</autonomie>" //
 			+ "	<vitesse>105</vitesse>" //
+			+ "</vaisseau>" //
 			+ "</vaisseaux>" //
 			+ "</employeDetail>";
 }
