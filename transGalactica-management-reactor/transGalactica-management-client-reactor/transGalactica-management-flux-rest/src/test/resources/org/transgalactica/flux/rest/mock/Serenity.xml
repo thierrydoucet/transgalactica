@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <vaisseauDetail>
 	<immatriculation>Serenity</immatriculation>
-	<localisationHangar>Alderaan</localisationHangar>
 	<modele>Firefly</modele>
-	<capaciteDeFret>150000</capaciteDeFret>
-	<multiplicateurHyperdrive>0</multiplicateurHyperdrive>
+	<localisationHangar>Tatooine</localisationHangar>
+	<numeroHangar>10</numeroHangar>
 	<nombreDePassagers>8</nombreDePassagers>
-	<numeroHangar>1</numeroHangar>
-	<autonomie>150000</autonomie>
-	<vitesse>95</vitesse>
+	<capaciteDeFret>20000</capaciteDeFret>
+	<vitesse>950</vitesse>
+	<autonomie>365</autonomie>
+	<multiplicateurHyperdrive>2</multiplicateurHyperdrive>
 </vaisseauDetail>

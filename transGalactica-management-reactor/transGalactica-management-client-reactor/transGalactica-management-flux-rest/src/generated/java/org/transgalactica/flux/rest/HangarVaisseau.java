@@ -1,8 +1,8 @@
 //
-// Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.5-2 
+// Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.11 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2013.01.16 à 02:38:27 PM CET 
+// Généré le : 2014.12.22 à 09:37:21 PM CET 
 //
 
 
@@ -10,6 +10,7 @@ package org.transgalactica.flux.rest;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 
@@ -19,57 +20,43 @@ import javax.xml.bind.annotation.XmlType;
  * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
  * 
  * <pre>
- * &lt;complexType name="HangarVaisseau">
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element name="capaciteDeFret" type="{http://www.w3.org/2001/XMLSchema}long"/>
- *         &lt;element name="immatriculation" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="modele" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="nombreDePassagers" type="{http://www.w3.org/2001/XMLSchema}short"/>
- *         &lt;element name="autonomie" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *         &lt;element name="vitesse" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *       &lt;/sequence>
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType name="HangarVaisseau"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;element name="immatriculation" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="modele" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="nombreDePassagers" type="{http://www.w3.org/2001/XMLSchema}short"/&gt;
+ *         &lt;element name="capaciteDeFret" type="{http://www.w3.org/2001/XMLSchema}long"/&gt;
+ *         &lt;element name="vitesse" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
+ *         &lt;element name="autonomie" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
+ *       &lt;/sequence&gt;
+ *     &lt;/restriction&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "HangarVaisseau", propOrder = {
-    "capaciteDeFret",
+@XmlType(name = "HangarVaisseau", namespace = "http://management.transgalactica.org/logistics", propOrder = {
     "immatriculation",
     "modele",
     "nombreDePassagers",
-    "autonomie",
-    "vitesse"
+    "capaciteDeFret",
+    "vitesse",
+    "autonomie"
 })
 public class HangarVaisseau {
 
-    protected long capaciteDeFret;
+    @XmlElement(required = true)
     protected String immatriculation;
+    @XmlElement(required = true)
     protected String modele;
     protected short nombreDePassagers;
-    protected int autonomie;
+    protected long capaciteDeFret;
     protected int vitesse;
-
-    /**
-     * Obtient la valeur de la propriété capaciteDeFret.
-     * 
-     */
-    public long getCapaciteDeFret() {
-        return capaciteDeFret;
-    }
-
-    /**
-     * Définit la valeur de la propriété capaciteDeFret.
-     * 
-     */
-    public void setCapaciteDeFret(long value) {
-        this.capaciteDeFret = value;
-    }
+    protected int autonomie;
 
     /**
      * Obtient la valeur de la propriété immatriculation.
@@ -136,19 +123,19 @@ public class HangarVaisseau {
     }
 
     /**
-     * Obtient la valeur de la propriété autonomie.
+     * Obtient la valeur de la propriété capaciteDeFret.
      * 
      */
-    public int getAutonomie() {
-        return autonomie;
+    public long getCapaciteDeFret() {
+        return capaciteDeFret;
     }
 
     /**
-     * Définit la valeur de la propriété autonomie.
+     * Définit la valeur de la propriété capaciteDeFret.
      * 
      */
-    public void setAutonomie(int value) {
-        this.autonomie = value;
+    public void setCapaciteDeFret(long value) {
+        this.capaciteDeFret = value;
     }
 
     /**
@@ -165,6 +152,22 @@ public class HangarVaisseau {
      */
     public void setVitesse(int value) {
         this.vitesse = value;
+    }
+
+    /**
+     * Obtient la valeur de la propriété autonomie.
+     * 
+     */
+    public int getAutonomie() {
+        return autonomie;
+    }
+
+    /**
+     * Définit la valeur de la propriété autonomie.
+     * 
+     */
+    public void setAutonomie(int value) {
+        this.autonomie = value;
     }
 
 }

@@ -5,23 +5,14 @@
 	xsi:schemaLocation="http://dozer.sourceforge.net
           http://dozer.sourceforge.net/schema/beanmapping.xsd">
 
-
 	<mapping type="one-way">
 		<class-a>org.transgalactica.data.rest.bo.PiloteTo</class-a>
 		<class-b bean-factory="org.dozer.factory.JAXBBeanFactory">org.transgalactica.flux.rest.PiloteCommand</class-b>
-		<field custom-converter="org.transgalactica.data.rest.mapper.impl.EmployeTypeToStringConverter">
-			<a>typeEmploye</a>
-			<b>employeType</b>
-		</field>
 	</mapping>
 
 	<mapping type="one-way">
 		<class-a>org.transgalactica.data.rest.bo.MecanicienTo</class-a>
 		<class-b bean-factory="org.dozer.factory.JAXBBeanFactory">org.transgalactica.flux.rest.EmployeCommand</class-b>
-		<field custom-converter="org.transgalactica.data.rest.mapper.impl.EmployeTypeToStringConverter">
-			<a>typeEmploye</a>
-			<b>employeType</b>
-		</field>
 	</mapping>
  
 	<mapping type="one-way">
@@ -49,7 +40,7 @@
 		<class-a>org.transgalactica.flux.rest.PiloteDetailDto</class-a>
 		<class-b bean-factory="contextFactory">org.transgalactica.data.rest.bo.PiloteTo</class-b>
 		<field>
-			<a>vaisseaux</a>
+			<a>vaisseaux.vaisseau</a>
 			<b>vaisseaux</b>
 		</field>
 		<field>
@@ -62,11 +53,11 @@
 		<class-a>org.transgalactica.flux.rest.MecanicienDetailDto</class-a>
 		<class-b bean-factory="contextFactory">org.transgalactica.data.rest.bo.MecanicienTo</class-b>
 		<field>
-			<a>vaisseaux</a>
+			<a>vaisseaux.vaisseau</a>
 			<b>vaisseaux</b>
 		</field>
 		<field>
-			<a>specialites</a>
+			<a>specialites.specialite</a>
 			<b>specialites</b>
 		</field>
 	</mapping>

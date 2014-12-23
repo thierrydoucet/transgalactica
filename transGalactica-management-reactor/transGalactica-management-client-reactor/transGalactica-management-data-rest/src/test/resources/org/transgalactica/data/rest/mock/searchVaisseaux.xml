@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<vaisseaux>
+	<vaisseau>
+		<immatriculation>N7242C</immatriculation>
+		<modele>Vipers Mark II</modele>
+		<localisationHangar>Alderaan</localisationHangar>
+	</vaisseau>
+	<vaisseau>
+		<immatriculation>1104NC</immatriculation>
+		<modele>Vipers Mark II</modele>
+	</vaisseau>
+	<vaisseau>
+		<immatriculation>8757NC</immatriculation>
+		<modele>Vipers Mark VII</modele>
+	</vaisseau>
+	<vaisseau>
+		<immatriculation>Raptor 312</immatriculation>
+		<modele>Raptor</modele>
+	</vaisseau>
+	<vaisseau>
+		<immatriculation>Blackbird</immatriculation>
+		<modele>Furtive Viper</modele>
+	</vaisseau>
+	<vaisseau>
+		<immatriculation>Galactica</immatriculation>
+		<modele>Battlestar (BS-75)</modele>
+	</vaisseau>
+</vaisseaux>

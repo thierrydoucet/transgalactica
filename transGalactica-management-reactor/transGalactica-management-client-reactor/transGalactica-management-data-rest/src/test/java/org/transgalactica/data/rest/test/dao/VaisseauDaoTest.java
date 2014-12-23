@@ -48,9 +48,9 @@ public class VaisseauDaoTest extends AbstractContextTest {
 		criteres.setIntergalactique(true);
 		List<VaisseauSummaryTo> vaisseaus = vaisseauDao.searchByCriteria(criteres);
 
-		assertEquals(3, vaisseaus.size());
-		assertEquals("Faucon Millenium", vaisseaus.get(0).getImmatriculation());
-		assertEquals("cargo YT-1300", vaisseaus.get(0).getModele());
+		assertEquals(6, vaisseaus.size());
+		assertEquals("N7242C", vaisseaus.get(0).getImmatriculation());
+		assertEquals("Vipers Mark II", vaisseaus.get(0).getModele());
 		assertEquals("Alderaan", vaisseaus.get(0).getLocalisationHangar());
 
 	}

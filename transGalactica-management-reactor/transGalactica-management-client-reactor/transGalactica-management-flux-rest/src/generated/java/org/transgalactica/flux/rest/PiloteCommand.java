@@ -1,8 +1,8 @@
 //
-// Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.5-2 
+// Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.11 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2013.01.16 à 02:38:27 PM CET 
+// Généré le : 2014.12.22 à 09:37:21 PM CET 
 //
 
 
@@ -19,15 +19,15 @@ import javax.xml.bind.annotation.XmlType;
  * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
  * 
  * <pre>
- * &lt;complexType name="PiloteCommand">
- *   &lt;complexContent>
- *     &lt;extension base="{}EmployeCommand">
- *       &lt;sequence>
- *         &lt;element name="nombreHeuresVol" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *       &lt;/sequence>
- *     &lt;/extension>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType name="PiloteCommand"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;extension base="{http://management.transgalactica.org/hr}EmployeCommand"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;element name="nombreHeuresVol" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
+ *       &lt;/sequence&gt;
+ *     &lt;/extension&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 

@@ -59,18 +59,18 @@ public class HangarDaoTest extends AbstractContextTest {
 
 		assertNotNull(hangar);
 		assertEquals(new Long(1), hangar.getNumero());
-		assertEquals(10, hangar.getNombreEmplacements());
+		assertEquals(12500, hangar.getNombreEmplacements());
 		assertEquals("Alderaan", hangar.getLocalisation());
 
 		assertNotNull(hangar.getVaisseaux());
-		assertEquals(3, hangar.getVaisseaux().size());
+		assertEquals(5, hangar.getVaisseaux().size());
 
-		assertEquals("Serenity", hangar.getVaisseaux().get(0).getImmatriculation());
-		assertEquals(150000, hangar.getVaisseaux().get(0).getCapaciteDeFret());
-		assertEquals("Firefly", hangar.getVaisseaux().get(0).getModele());
-		assertEquals(8, hangar.getVaisseaux().get(0).getNombreDePassagers());
-		assertEquals(150000, hangar.getVaisseaux().get(0).getAutonomie());
-		assertEquals(95, hangar.getVaisseaux().get(0).getVitesse());
+		assertEquals("Red Three", hangar.getVaisseaux().get(0).getImmatriculation());
+		assertEquals(0, hangar.getVaisseaux().get(0).getCapaciteDeFret());
+		assertEquals("T-65 X-Wings", hangar.getVaisseaux().get(0).getModele());
+		assertEquals(0, hangar.getVaisseaux().get(0).getNombreDePassagers());
+		assertEquals(7, hangar.getVaisseaux().get(0).getAutonomie());
+		assertEquals(1050, hangar.getVaisseaux().get(0).getVitesse());
 	}
 
 	@Test

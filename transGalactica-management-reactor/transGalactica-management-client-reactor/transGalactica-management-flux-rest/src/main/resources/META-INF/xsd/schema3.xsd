@@ -50,8 +50,8 @@
 
   <xs:simpleType name="employeType">
     <xs:restriction base="xs:string">
-      <xs:enumeration value="PILOTE"/>
       <xs:enumeration value="MECANICIEN"/>
+      <xs:enumeration value="PILOTE"/>
     </xs:restriction>
   </xs:simpleType>
 </xs:schema>

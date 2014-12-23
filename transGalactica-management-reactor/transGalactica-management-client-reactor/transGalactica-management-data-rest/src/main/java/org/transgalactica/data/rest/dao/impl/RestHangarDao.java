@@ -20,8 +20,11 @@ import org.transgalactica.flux.rest.HangarDtos;
 public class RestHangarDao implements HangarDao {
 
 	private static final String HANGARS_URI = "/hangars";
+
 	private static final String SEARCH_URI = HANGARS_URI + "/search?localisation={localisation}";
+
 	private static final String BY_NUMERO_URI = HANGARS_URI + "/{numero}";
+
 	private static final String VAISSEAUX_URI = BY_NUMERO_URI + "/vaisseaux/{immatriculation}";
 
 	@Value("${rest.url}")
@@ -40,7 +43,7 @@ public class RestHangarDao implements HangarDao {
 	public List<HangarSummaryTo> searchByCriteria(HangarSearchCriteria criteres) {
 		HangarDtos hangars = restTemplate.getForObject(restServiceUrl + SEARCH_URI, HangarDtos.class,
 				criteres.getLocalisationHangar());
-		return mapper.mapToHangarSummaryTo(hangars.getHangars());
+		return mapper.mapToHangarSummaryTo(hangars.getHangar());
 	}
 
 	@Override

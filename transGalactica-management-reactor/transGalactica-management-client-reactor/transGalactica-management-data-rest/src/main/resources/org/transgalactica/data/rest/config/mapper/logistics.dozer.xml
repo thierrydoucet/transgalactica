@@ -32,7 +32,7 @@
 		<class-a>org.transgalactica.flux.rest.HangarDetailDto</class-a>
 		<class-b bean-factory="contextFactory">org.transgalactica.data.rest.bo.HangarTo</class-b>
 		<field>
-			<a>vaisseaux</a>
+			<a>vaisseaux.vaisseau</a>
 			<b>vaisseaux</b>
 		</field>
 	</mapping>

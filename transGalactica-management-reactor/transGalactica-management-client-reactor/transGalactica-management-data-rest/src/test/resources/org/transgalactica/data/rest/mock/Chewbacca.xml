@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <employeDetail>
+	<matricule>2</matricule>
+	<nom>Chewbacca</nom>
 	<dateEmbauche>1977-06-09T00:00:00+02:00</dateEmbauche>
-	<matricule>1</matricule>
-	<nom>Han Solo</nom>
-	<typeEmploye>PILOTE</typeEmploye>
-	<nombreHeuresVol>542</nombreHeuresVol>
+	<typeEmploye>MECANICIEN</typeEmploye>
 	<vaisseaux>
 		<vaisseau>
-			<capaciteDeFret>100000</capaciteDeFret>
 			<immatriculation>Faucon Millenium</immatriculation>
-			<modele>cargo YT-1300</modele>
+			<modele>Cargo YT-1300</modele>
 			<nombreDePassagers>6</nombreDePassagers>
-			<autonomie>100000</autonomie>
-			<vitesse>105</vitesse>
+			<capaciteDeFret>100</capaciteDeFret>
+			<vitesse>1200</vitesse>
+			<autonomie>60</autonomie>
 		</vaisseau>
 	</vaisseaux>
+	<specialites>
+		<specialite>Armement</specialite>
+	</specialites>
 </employeDetail>

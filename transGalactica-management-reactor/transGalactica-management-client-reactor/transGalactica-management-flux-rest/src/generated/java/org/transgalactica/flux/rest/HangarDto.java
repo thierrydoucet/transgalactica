@@ -1,8 +1,8 @@
 //
-// Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.5-2 
+// Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.11 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2013.01.16 à 02:38:27 PM CET 
+// Généré le : 2014.12.22 à 09:37:21 PM CET 
 //
 
 
@@ -10,6 +10,7 @@ package org.transgalactica.flux.rest;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
 
@@ -20,35 +21,52 @@ import javax.xml.bind.annotation.XmlType;
  * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
  * 
  * <pre>
- * &lt;complexType name="HangarDto">
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element name="localisation" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="nombreEmplacements" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *         &lt;element name="numero" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
- *       &lt;/sequence>
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType name="HangarDto"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;element name="numero" type="{http://www.w3.org/2001/XMLSchema}long"/&gt;
+ *         &lt;element name="localisation" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="nombreEmplacements" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
+ *       &lt;/sequence&gt;
+ *     &lt;/restriction&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "HangarDto", propOrder = {
+@XmlType(name = "HangarDto", namespace = "http://management.transgalactica.org/logistics", propOrder = {
+    "numero",
     "localisation",
-    "nombreEmplacements",
-    "numero"
+    "nombreEmplacements"
 })
 @XmlSeeAlso({
     HangarDetailDto.class
 })
 public class HangarDto {
 
+    protected long numero;
+    @XmlElement(required = true)
     protected String localisation;
     protected int nombreEmplacements;
-    protected Long numero;
+
+    /**
+     * Obtient la valeur de la propriété numero.
+     * 
+     */
+    public long getNumero() {
+        return numero;
+    }
+
+    /**
+     * Définit la valeur de la propriété numero.
+     * 
+     */
+    public void setNumero(long value) {
+        this.numero = value;
+    }
 
     /**
      * Obtient la valeur de la propriété localisation.
@@ -88,30 +106,6 @@ public class HangarDto {
      */
     public void setNombreEmplacements(int value) {
         this.nombreEmplacements = value;
-    }
-
-    /**
-     * Obtient la valeur de la propriété numero.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Long }
-     *     
-     */
-    public Long getNumero() {
-        return numero;
-    }
-
-    /**
-     * Définit la valeur de la propriété numero.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Long }
-     *     
-     */
-    public void setNumero(Long value) {
-        this.numero = value;
     }
 
 }

@@ -1,8 +1,8 @@
 //
-// Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.5-2 
+// Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.11 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2013.01.16 à 02:38:27 PM CET 
+// Généré le : 2014.12.22 à 09:37:21 PM CET 
 //
 
 
@@ -21,40 +21,40 @@ import javax.xml.bind.annotation.XmlType;
  * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
  * 
  * <pre>
- * &lt;complexType name="MecanicienSpecialiteDtos">
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element name="mecanicienSpecialites" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/>
- *       &lt;/sequence>
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType name="MecanicienSpecialiteDtos"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;element name="mecanicienSpecialite" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/&gt;
+ *       &lt;/sequence&gt;
+ *     &lt;/restriction&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "MecanicienSpecialiteDtos", propOrder = {
-    "mecanicienSpecialites"
+    "mecanicienSpecialite"
 })
 public class MecanicienSpecialiteDtos {
 
-    protected List<String> mecanicienSpecialites;
+    protected List<String> mecanicienSpecialite;
 
     /**
-     * Gets the value of the mecanicienSpecialites property.
+     * Gets the value of the mecanicienSpecialite property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the mecanicienSpecialites property.
+     * This is why there is not a <CODE>set</CODE> method for the mecanicienSpecialite property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getMecanicienSpecialites().add(newItem);
+     *    getMecanicienSpecialite().add(newItem);
      * </pre>
      * 
      * 
@@ -64,23 +64,17 @@ public class MecanicienSpecialiteDtos {
      * 
      * 
      */
-    public List<String> getMecanicienSpecialites() {
-        if (mecanicienSpecialites == null) {
-            mecanicienSpecialites = new ArrayList<String>();
+    public List<String> getMecanicienSpecialite() {
+        if (mecanicienSpecialite == null) {
+            mecanicienSpecialite = new ArrayList<String>();
         }
-        return this.mecanicienSpecialites;
+        return this.mecanicienSpecialite;
     }
 
-    /**
-     * Sets the value of the mecanicienSpecialites property.
-     * 
-     * @param mecanicienSpecialites
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setMecanicienSpecialites(List<String> mecanicienSpecialites) {
-        this.mecanicienSpecialites = mecanicienSpecialites;
+    public void setMecanicienSpecialite(List<String> value) {
+        this.mecanicienSpecialite = null;
+        List<String> draftl = this.getMecanicienSpecialite();
+        draftl.addAll(value);
     }
 
 }

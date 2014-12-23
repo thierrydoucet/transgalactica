@@ -13,7 +13,11 @@ public class BasicMecanicienTo extends AbstractEmployeTo implements MecanicienTo
 	private List<String> specialites;
 
 	protected BasicMecanicienTo() {
-		setTypeEmploye("MECANICIEN");
+	}
+
+	@Override
+	public String getTypeEmploye() {
+		return "MECANICIEN";
 	}
 
 	@Override

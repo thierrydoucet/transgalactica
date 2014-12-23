@@ -22,27 +22,10 @@
 							p:resource="classpath:org/transgalactica/flux/rest/mock/searchHangar.xml" />
 						<bean
 							class="org.transgalactica.fwk.test.clienthttp.ResourceBoundHolder"
-							p:uri="http://localhost:8080/transGalactica-rest/hangars/search.json?localisation=%25"
-							p:contentType="application/json"
-							p:resource="classpath:org/transgalactica/flux/rest/mock/searchHangar.json" />
-					
-						<bean
-							class="org.transgalactica.fwk.test.clienthttp.ResourceBoundHolder"
 							p:uri="http://localhost:8080/transGalactica-rest/hangars/Alderaan.xml"
 							p:contentType="application/xml"
 							p:resource="classpath:org/transgalactica/flux/rest/mock/Alderaan.xml" />
-						<bean
-							class="org.transgalactica.fwk.test.clienthttp.ResourceBoundHolder"
-							p:uri="http://localhost:8080/transGalactica-rest/hangars/Alderaan.json"
-							p:contentType="application/json"
-							p:resource="classpath:org/transgalactica/flux/rest/mock/Alderaan.json" />
 
-						<bean
-							class="org.transgalactica.fwk.test.clienthttp.ResourceBoundHolder"
-							p:uri="http://localhost:8080/transGalactica-rest/vaisseaux/search.json?immatriculation=%25&amp;modele=%25&amp;intergalactique=false"
-							p:contentType="application/json"
-							p:resource="classpath:org/transgalactica/flux/rest/mock/searchVaisseaux.json" />
-							
 						<bean
 							class="org.transgalactica.fwk.test.clienthttp.ResourceBoundHolder"
 							p:uri="http://localhost:8080/transGalactica-rest/vaisseaux/Serenity.xml"

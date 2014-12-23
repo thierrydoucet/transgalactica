@@ -43,7 +43,7 @@ public class LogisticsMapperTest extends AbstractContextTest {
 
 		assertNotNull(command);
 		assertEquals("test", command.getLocalisation());
-		assertEquals(new Integer(10), command.getNombreEmplacements());
+		assertEquals(10, command.getNombreEmplacements());
 	}
 
 	@Test
@@ -77,7 +77,8 @@ public class LogisticsMapperTest extends AbstractContextTest {
 		vaisseau.setNombreDePassagers((short) 2);
 		vaisseau.setAutonomie(3);
 		vaisseau.setVitesse(4);
-		hangar.getVaisseaux().add(vaisseau);
+		hangar.setVaisseaux(objectFactory.createHangarDetailDtoVaisseaux());
+		hangar.getVaisseaux().getVaisseau().add(vaisseau);
 
 		HangarTo hangarTo = mapper.mapToHangarTo(hangar);
 		assertNotNull(hangarTo);
@@ -114,7 +115,7 @@ public class LogisticsMapperTest extends AbstractContextTest {
 		assertEquals(4, command.getVitesse());
 		assertEquals(3, command.getAutonomie());
 		assertEquals(2, command.getNombreDePassagers());
-		assertEquals(new Short((short) 1), command.getMultiplicateurHyperdrive());
+		assertEquals((short) 1, command.getMultiplicateurHyperdrive());
 	}
 
 	@Test

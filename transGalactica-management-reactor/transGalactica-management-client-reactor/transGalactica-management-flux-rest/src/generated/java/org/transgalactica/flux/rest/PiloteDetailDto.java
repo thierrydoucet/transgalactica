@@ -1,8 +1,8 @@
 //
-// Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.5-2 
+// Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.11 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2013.01.16 à 02:38:27 PM CET 
+// Généré le : 2014.12.22 à 09:37:21 PM CET 
 //
 
 
@@ -21,31 +21,65 @@ import javax.xml.bind.annotation.XmlType;
  * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
  * 
  * <pre>
- * &lt;complexType name="PiloteDetailDto">
- *   &lt;complexContent>
- *     &lt;extension base="{}EmployeDto">
- *       &lt;sequence>
- *         &lt;element name="nombreHeuresVol" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *         &lt;element name="vaisseaux" type="{}EmployeVaisseau" maxOccurs="unbounded" minOccurs="0"/>
- *       &lt;/sequence>
- *     &lt;/extension>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType name="PiloteDetailDto"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;extension base="{http://management.transgalactica.org/hr}EmployeDto"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;element name="vaisseaux" minOccurs="0"&gt;
+ *           &lt;complexType&gt;
+ *             &lt;complexContent&gt;
+ *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *                 &lt;sequence&gt;
+ *                   &lt;element name="vaisseau" type="{http://management.transgalactica.org/hr}EmployeVaisseau" maxOccurs="unbounded" minOccurs="0"/&gt;
+ *                 &lt;/sequence&gt;
+ *               &lt;/restriction&gt;
+ *             &lt;/complexContent&gt;
+ *           &lt;/complexType&gt;
+ *         &lt;/element&gt;
+ *         &lt;element name="nombreHeuresVol" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
+ *       &lt;/sequence&gt;
+ *     &lt;/extension&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "PiloteDetailDto", propOrder = {
-    "nombreHeuresVol",
-    "vaisseaux"
+    "vaisseaux",
+    "nombreHeuresVol"
 })
 public class PiloteDetailDto
     extends EmployeDto
 {
 
+    protected PiloteDetailDto.Vaisseaux vaisseaux;
     protected int nombreHeuresVol;
-    protected List<EmployeVaisseau> vaisseaux;
+
+    /**
+     * Obtient la valeur de la propriété vaisseaux.
+     * 
+     * @return
+     *     possible object is
+     *     {@link PiloteDetailDto.Vaisseaux }
+     *     
+     */
+    public PiloteDetailDto.Vaisseaux getVaisseaux() {
+        return vaisseaux;
+    }
+
+    /**
+     * Définit la valeur de la propriété vaisseaux.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link PiloteDetailDto.Vaisseaux }
+     *     
+     */
+    public void setVaisseaux(PiloteDetailDto.Vaisseaux value) {
+        this.vaisseaux = value;
+    }
 
     /**
      * Obtient la valeur de la propriété nombreHeuresVol.
@@ -63,45 +97,69 @@ public class PiloteDetailDto
         this.nombreHeuresVol = value;
     }
 
+
     /**
-     * Gets the value of the vaisseaux property.
+     * <p>Classe Java pour anonymous complex type.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the vaisseaux property.
+     * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
      * 
-     * <p>
-     * For example, to add a new item, do as follows:
      * <pre>
-     *    getVaisseaux().add(newItem);
+     * &lt;complexType&gt;
+     *   &lt;complexContent&gt;
+     *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+     *       &lt;sequence&gt;
+     *         &lt;element name="vaisseau" type="{http://management.transgalactica.org/hr}EmployeVaisseau" maxOccurs="unbounded" minOccurs="0"/&gt;
+     *       &lt;/sequence&gt;
+     *     &lt;/restriction&gt;
+     *   &lt;/complexContent&gt;
+     * &lt;/complexType&gt;
      * </pre>
      * 
      * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link EmployeVaisseau }
-     * 
-     * 
      */
-    public List<EmployeVaisseau> getVaisseaux() {
-        if (vaisseaux == null) {
-            vaisseaux = new ArrayList<EmployeVaisseau>();
-        }
-        return this.vaisseaux;
-    }
+    @XmlAccessorType(XmlAccessType.FIELD)
+    @XmlType(name = "", propOrder = {
+        "vaisseau"
+    })
+    public static class Vaisseaux {
 
-    /**
-     * Sets the value of the vaisseaux property.
-     * 
-     * @param vaisseaux
-     *     allowed object is
-     *     {@link EmployeVaisseau }
-     *     
-     */
-    public void setVaisseaux(List<EmployeVaisseau> vaisseaux) {
-        this.vaisseaux = vaisseaux;
+        protected List<EmployeVaisseau> vaisseau;
+
+        /**
+         * Gets the value of the vaisseau property.
+         * 
+         * <p>
+         * This accessor method returns a reference to the live list,
+         * not a snapshot. Therefore any modification you make to the
+         * returned list will be present inside the JAXB object.
+         * This is why there is not a <CODE>set</CODE> method for the vaisseau property.
+         * 
+         * <p>
+         * For example, to add a new item, do as follows:
+         * <pre>
+         *    getVaisseau().add(newItem);
+         * </pre>
+         * 
+         * 
+         * <p>
+         * Objects of the following type(s) are allowed in the list
+         * {@link EmployeVaisseau }
+         * 
+         * 
+         */
+        public List<EmployeVaisseau> getVaisseau() {
+            if (vaisseau == null) {
+                vaisseau = new ArrayList<EmployeVaisseau>();
+            }
+            return this.vaisseau;
+        }
+
+        public void setVaisseau(List<EmployeVaisseau> value) {
+            this.vaisseau = null;
+            List<EmployeVaisseau> draftl = this.getVaisseau();
+            draftl.addAll(value);
+        }
+
     }
 
 }

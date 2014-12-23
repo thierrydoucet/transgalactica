@@ -24,7 +24,9 @@ import org.transgalactica.flux.rest.VaisseauDtos;
 public class RestVaisseauDao implements VaisseauDao {
 
 	private static final String VAISSEAUX = "/vaisseaux";
+
 	private static final String SEARCH = VAISSEAUX + "/search?";
+
 	private static final String BY_IMMATRICULATION = VAISSEAUX + "/{immatriculation}";
 
 	@Value("${rest.url}")
@@ -57,7 +59,7 @@ public class RestVaisseauDao implements VaisseauDao {
 			params.add(criteres.isIntergalactique());
 		}
 		VaisseauDtos vaisseaux = restTemplate.getForObject(url.toString(), VaisseauDtos.class, params.toArray());
-		return mapper.mapToVaisseauSummaryTo(vaisseaux.getVaisseaux());
+		return mapper.mapToVaisseauSummaryTo(vaisseaux.getVaisseau());
 	}
 
 	@Override

@@ -1,8 +1,8 @@
 //
-// Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.5-2 
+// Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.11 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2013.01.16 à 02:38:27 PM CET 
+// Généré le : 2014.12.22 à 09:37:21 PM CET 
 //
 
 
@@ -10,6 +10,7 @@ package org.transgalactica.flux.rest;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 
@@ -19,60 +20,46 @@ import javax.xml.bind.annotation.XmlType;
  * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
  * 
  * <pre>
- * &lt;complexType name="VaisseauCommand">
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element name="capaciteDeFret" type="{http://www.w3.org/2001/XMLSchema}long"/>
- *         &lt;element name="immatriculation" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="modele" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="multiplicateurHyperdrive" type="{http://www.w3.org/2001/XMLSchema}short" minOccurs="0"/>
- *         &lt;element name="nombreDePassagers" type="{http://www.w3.org/2001/XMLSchema}short"/>
- *         &lt;element name="autonomie" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *         &lt;element name="vitesse" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *       &lt;/sequence>
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType name="VaisseauCommand"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;element name="immatriculation" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="modele" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="nombreDePassagers" type="{http://www.w3.org/2001/XMLSchema}short"/&gt;
+ *         &lt;element name="capaciteDeFret" type="{http://www.w3.org/2001/XMLSchema}long"/&gt;
+ *         &lt;element name="vitesse" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
+ *         &lt;element name="autonomie" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
+ *         &lt;element name="multiplicateurHyperdrive" type="{http://www.w3.org/2001/XMLSchema}short"/&gt;
+ *       &lt;/sequence&gt;
+ *     &lt;/restriction&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "VaisseauCommand", propOrder = {
-    "capaciteDeFret",
+@XmlType(name = "VaisseauCommand", namespace = "http://management.transgalactica.org/logistics", propOrder = {
     "immatriculation",
     "modele",
-    "multiplicateurHyperdrive",
     "nombreDePassagers",
+    "capaciteDeFret",
+    "vitesse",
     "autonomie",
-    "vitesse"
+    "multiplicateurHyperdrive"
 })
 public class VaisseauCommand {
 
-    protected long capaciteDeFret;
+    @XmlElement(required = true)
     protected String immatriculation;
+    @XmlElement(required = true)
     protected String modele;
-    protected Short multiplicateurHyperdrive;
     protected short nombreDePassagers;
-    protected int autonomie;
+    protected long capaciteDeFret;
     protected int vitesse;
-
-    /**
-     * Obtient la valeur de la propriété capaciteDeFret.
-     * 
-     */
-    public long getCapaciteDeFret() {
-        return capaciteDeFret;
-    }
-
-    /**
-     * Définit la valeur de la propriété capaciteDeFret.
-     * 
-     */
-    public void setCapaciteDeFret(long value) {
-        this.capaciteDeFret = value;
-    }
+    protected int autonomie;
+    protected short multiplicateurHyperdrive;
 
     /**
      * Obtient la valeur de la propriété immatriculation.
@@ -123,30 +110,6 @@ public class VaisseauCommand {
     }
 
     /**
-     * Obtient la valeur de la propriété multiplicateurHyperdrive.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Short }
-     *     
-     */
-    public Short getMultiplicateurHyperdrive() {
-        return multiplicateurHyperdrive;
-    }
-
-    /**
-     * Définit la valeur de la propriété multiplicateurHyperdrive.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Short }
-     *     
-     */
-    public void setMultiplicateurHyperdrive(Short value) {
-        this.multiplicateurHyperdrive = value;
-    }
-
-    /**
      * Obtient la valeur de la propriété nombreDePassagers.
      * 
      */
@@ -160,6 +123,38 @@ public class VaisseauCommand {
      */
     public void setNombreDePassagers(short value) {
         this.nombreDePassagers = value;
+    }
+
+    /**
+     * Obtient la valeur de la propriété capaciteDeFret.
+     * 
+     */
+    public long getCapaciteDeFret() {
+        return capaciteDeFret;
+    }
+
+    /**
+     * Définit la valeur de la propriété capaciteDeFret.
+     * 
+     */
+    public void setCapaciteDeFret(long value) {
+        this.capaciteDeFret = value;
+    }
+
+    /**
+     * Obtient la valeur de la propriété vitesse.
+     * 
+     */
+    public int getVitesse() {
+        return vitesse;
+    }
+
+    /**
+     * Définit la valeur de la propriété vitesse.
+     * 
+     */
+    public void setVitesse(int value) {
+        this.vitesse = value;
     }
 
     /**
@@ -179,19 +174,19 @@ public class VaisseauCommand {
     }
 
     /**
-     * Obtient la valeur de la propriété vitesse.
+     * Obtient la valeur de la propriété multiplicateurHyperdrive.
      * 
      */
-    public int getVitesse() {
-        return vitesse;
+    public short getMultiplicateurHyperdrive() {
+        return multiplicateurHyperdrive;
     }
 
     /**
-     * Définit la valeur de la propriété vitesse.
+     * Définit la valeur de la propriété multiplicateurHyperdrive.
      * 
      */
-    public void setVitesse(int value) {
-        this.vitesse = value;
+    public void setMultiplicateurHyperdrive(short value) {
+        this.multiplicateurHyperdrive = value;
     }
 
 }

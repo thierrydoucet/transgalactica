@@ -34,8 +34,8 @@
 					class="org.transgalactica.fwk.test.clienthttp.ResourceBoundHolder"
 					p:uri="http://localhost:8080/transGalactica-rest/hangars/1"
 					p:method="GET"
-					p:contentType="application/json"
-					p:resource="classpath:org/transgalactica/data/rest/mock/Alderaan.json" />
+					p:contentType="application/xml"
+					p:resource="classpath:org/transgalactica/data/rest/mock/Alderaan.xml" />
 				<bean
 					class="org.transgalactica.fwk.test.clienthttp.ResourceBoundHolder"
 					p:uri="http://localhost:8080/transGalactica-rest/hangars/1/vaisseaux/Serenity"
@@ -45,9 +45,9 @@
 				<bean
 					class="org.transgalactica.fwk.test.clienthttp.ResourceBoundHolder"
 					p:uri="http://localhost:8080/transGalactica-rest/vaisseaux/search?immatriculation=%25&amp;modele=%25&amp;intergalactique=true"
-					p:contentType="application/json"
+					p:contentType="application/xml"
 					p:method="GET"
-					p:resource="classpath:org/transgalactica/data/rest/mock/searchVaisseaux.json" />
+					p:resource="classpath:org/transgalactica/data/rest/mock/searchVaisseaux.xml" />
 				<bean
 					class="org.transgalactica.fwk.test.clienthttp.ResourceBoundHolder"
 					p:uri="http://localhost:8080/transGalactica-rest/vaisseaux/Serenity"
@@ -97,8 +97,8 @@
 					class="org.transgalactica.fwk.test.clienthttp.ResourceBoundHolder"
 					p:uri="http://localhost:8080/transGalactica-rest/employes/2"
 					p:method="GET"
-					p:contentType="application/json"
-					p:resource="classpath:org/transgalactica/data/rest/mock/Chewbacca.json">
+					p:contentType="application/xml"
+					p:resource="classpath:org/transgalactica/data/rest/mock/Chewbacca.xml">
 					<property name="headers">
 						<map>
 							<entry
@@ -135,9 +135,9 @@
 				<bean
 					class="org.transgalactica.fwk.test.clienthttp.ResourceBoundHolder"
 					p:uri="http://localhost:8080/transGalactica-rest/hrreferentiel/mecanicienspecialites"
-					p:contentType="application/json"
+					p:contentType="application/xml"
 					p:method="GET"
-					p:resource="classpath:org/transgalactica/data/rest/mock/mecanicienSpecialites.json" />
+					p:resource="classpath:org/transgalactica/data/rest/mock/mecanicienSpecialites.xml" />
 
 			</set>
 		</property>

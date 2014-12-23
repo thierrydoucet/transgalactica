@@ -1,8 +1,8 @@
 //
-// Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.5-2 
+// Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.11 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2013.01.16 à 02:38:27 PM CET 
+// Généré le : 2014.12.22 à 09:37:21 PM CET 
 //
 
 
@@ -21,40 +21,40 @@ import javax.xml.bind.annotation.XmlType;
  * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
  * 
  * <pre>
- * &lt;complexType name="VaisseauDtos">
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element name="vaisseaux" type="{}VaisseauDto" maxOccurs="unbounded" minOccurs="0"/>
- *       &lt;/sequence>
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType name="VaisseauDtos"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;element ref="{}vaisseau" maxOccurs="unbounded" minOccurs="0"/&gt;
+ *       &lt;/sequence&gt;
+ *     &lt;/restriction&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "VaisseauDtos", propOrder = {
-    "vaisseaux"
+@XmlType(name = "VaisseauDtos", namespace = "http://management.transgalactica.org/logistics", propOrder = {
+    "vaisseau"
 })
 public class VaisseauDtos {
 
-    protected List<VaisseauDto> vaisseaux;
+    protected List<VaisseauDto> vaisseau;
 
     /**
-     * Gets the value of the vaisseaux property.
+     * Gets the value of the vaisseau property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the vaisseaux property.
+     * This is why there is not a <CODE>set</CODE> method for the vaisseau property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getVaisseaux().add(newItem);
+     *    getVaisseau().add(newItem);
      * </pre>
      * 
      * 
@@ -64,23 +64,17 @@ public class VaisseauDtos {
      * 
      * 
      */
-    public List<VaisseauDto> getVaisseaux() {
-        if (vaisseaux == null) {
-            vaisseaux = new ArrayList<VaisseauDto>();
+    public List<VaisseauDto> getVaisseau() {
+        if (vaisseau == null) {
+            vaisseau = new ArrayList<VaisseauDto>();
         }
-        return this.vaisseaux;
+        return this.vaisseau;
     }
 
-    /**
-     * Sets the value of the vaisseaux property.
-     * 
-     * @param vaisseaux
-     *     allowed object is
-     *     {@link VaisseauDto }
-     *     
-     */
-    public void setVaisseaux(List<VaisseauDto> vaisseaux) {
-        this.vaisseaux = vaisseaux;
+    public void setVaisseau(List<VaisseauDto> value) {
+        this.vaisseau = null;
+        List<VaisseauDto> draftl = this.getVaisseau();
+        draftl.addAll(value);
     }
 
 }

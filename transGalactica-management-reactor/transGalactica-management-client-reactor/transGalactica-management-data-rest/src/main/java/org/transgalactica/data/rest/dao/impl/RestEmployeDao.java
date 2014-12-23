@@ -39,8 +39,11 @@ public class RestEmployeDao implements EmployeDao {
 	private static final Logger LOGGER = LoggerFactory.getLogger(RestEmployeDao.class);
 
 	private static final String EMPLOYES_URI = "/employes";
+
 	private static final String BY_MATRICULE_URI = EMPLOYES_URI + "/{matricule}";
+
 	private static final String SPECIALITE_URI = BY_MATRICULE_URI + "/specialites/{specialite}";
+
 	private static final String VAISSEAU_URI = BY_MATRICULE_URI + "/vaisseaux/{immatriculation}";
 
 	private static final String TRANSGALACTICA_CONTENT_TYPE = "TransGalactica-Content-Type";
@@ -65,7 +68,7 @@ public class RestEmployeDao implements EmployeDao {
 								+ "/employes/search?nomEmploye={nomEmploye}&dateEmbaucheEmployeDebut={dateEmbaucheEmployeDebut}&dateEmbaucheEmployeFin={dateEmbaucheEmployeFin}",
 						EmployeDtos.class, criteres.getNomEmploye(), criteres.getDateEmbaucheEmployeDebut(),
 						criteres.getDateEmbaucheEmployeFin());
-		return mapper.mapToEmployeSummaryTo(employes.getEmployes());
+		return mapper.mapToEmployeSummaryTo(employes.getEmploye());
 	}
 
 	@Override
@@ -159,6 +162,7 @@ public class RestEmployeDao implements EmployeDao {
 	private final class EmployeDtoResponseExtractor implements ResponseExtractor<EmployeDto> {
 
 		private final HttpMessageConverterExtractor<PiloteDetailDto> piloteResponseExtractor;
+
 		private final HttpMessageConverterExtractor<MecanicienDetailDto> mecanicienResponseExtractor;
 
 		private EmployeDtoResponseExtractor() {

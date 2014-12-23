@@ -5,7 +5,7 @@ import java.util.List;
 import org.transgalactica.data.rest.bo.EmployeTo;
 import org.transgalactica.fwk.domain.stereotype.DataBean;
 
-public class AbstractEmployeTo extends BasicEmployeSummaryTo implements EmployeTo {
+public abstract class AbstractEmployeTo extends BasicEmployeSummaryTo implements EmployeTo {
 
 	private static final long serialVersionUID = 1L;
 

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <hangars>
-	<hangars>
+	<hangar>
 		<localisation>Alderaan</localisation>
 		<nombreEmplacements>10</nombreEmplacements>
 		<numero>1</numero>
-	</hangars>
-	<hangars>
+	</hangar>
+	<hangar>
 		<localisation>Arakis</localisation>
 		<nombreEmplacements>100</nombreEmplacements>
 		<numero>2</numero>
-	</hangars>
+	</hangar>
 </hangars>

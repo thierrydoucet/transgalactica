@@ -75,11 +75,11 @@ public class EmployeDaoTest extends AbstractContextTest {
 		assertEquals(1, employe.getVaisseaux().size());
 
 		assertEquals("Faucon Millenium", employe.getVaisseaux().get(0).getImmatriculation());
-		assertEquals(100000, employe.getVaisseaux().get(0).getCapaciteDeFret());
-		assertEquals("cargo YT-1300", employe.getVaisseaux().get(0).getModele());
+		assertEquals(100, employe.getVaisseaux().get(0).getCapaciteDeFret());
+		assertEquals("Cargo YT-1300", employe.getVaisseaux().get(0).getModele());
 		assertEquals(6, employe.getVaisseaux().get(0).getNombreDePassagers());
-		assertEquals(100000, employe.getVaisseaux().get(0).getAutonomie());
-		assertEquals(105, employe.getVaisseaux().get(0).getVitesse());
+		assertEquals(60, employe.getVaisseaux().get(0).getAutonomie());
+		assertEquals(1200, employe.getVaisseaux().get(0).getVitesse());
 
 		assertNotNull(((MecanicienTo) employe).getSpecialites());
 		assertEquals(1, ((MecanicienTo) employe).getSpecialites().size());

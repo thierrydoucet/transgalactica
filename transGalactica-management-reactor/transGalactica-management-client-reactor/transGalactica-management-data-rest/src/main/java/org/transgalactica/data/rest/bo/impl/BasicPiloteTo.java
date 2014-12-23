@@ -11,7 +11,11 @@ public class BasicPiloteTo extends AbstractEmployeTo implements PiloteTo {
 	private int nombreHeuresVol;
 
 	protected BasicPiloteTo() {
-		setTypeEmploye("PILOTE");
+	}
+
+	@Override
+	public String getTypeEmploye() {
+		return "PILOTE";
 	}
 
 	@Override

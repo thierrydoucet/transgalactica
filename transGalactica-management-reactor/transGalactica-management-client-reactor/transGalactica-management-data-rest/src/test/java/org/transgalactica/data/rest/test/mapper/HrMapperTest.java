@@ -52,7 +52,6 @@ public class HrMapperTest extends AbstractContextTest {
 		assertThat(command, instanceOf(PiloteCommand.class));
 		assertEquals("Nom", command.getNom());
 		assertEquals(DatatypeFactory.newInstance().newXMLGregorianCalendar(dateEmbauche), command.getDateEmbauche());
-		assertEquals(EmployeType.PILOTE, command.getEmployeType());
 		assertEquals(23, ((PiloteCommand) command).getNombreHeuresVol());
 	}
 
@@ -69,7 +68,6 @@ public class HrMapperTest extends AbstractContextTest {
 		assertThat(command, not(instanceOf(PiloteCommand.class)));
 		assertEquals("Nom", command.getNom());
 		assertEquals(DatatypeFactory.newInstance().newXMLGregorianCalendar(dateEmbauche), command.getDateEmbauche());
-		assertEquals(EmployeType.MECANICIEN, command.getEmployeType());
 	}
 
 	@Test
@@ -102,7 +100,8 @@ public class HrMapperTest extends AbstractContextTest {
 		GregorianCalendar dateEmbauche = new GregorianCalendar(2012, 3, 4);
 		employe.setDateEmbauche(DatatypeFactory.newInstance().newXMLGregorianCalendar(dateEmbauche));
 
-		employe.getSpecialites().add("Specialite");
+		employe.setSpecialites(objectFactory.createMecanicienDetailDtoSpecialites());
+		employe.getSpecialites().getSpecialite().add("Specialite");
 
 		EmployeVaisseau vaisseau = objectFactory.createEmployeVaisseau();
 		vaisseau.setCapaciteDeFret(1L);
@@ -111,7 +110,8 @@ public class HrMapperTest extends AbstractContextTest {
 		vaisseau.setNombreDePassagers((short) 2);
 		vaisseau.setAutonomie(3);
 		vaisseau.setVitesse(4);
-		employe.getVaisseaux().add(vaisseau);
+		employe.setVaisseaux(objectFactory.createMecanicienDetailDtoVaisseaux());
+		employe.getVaisseaux().getVaisseau().add(vaisseau);
 
 		EmployeTo employeTo = mapper.mapToEmployeTo(employe);
 
@@ -154,7 +154,8 @@ public class HrMapperTest extends AbstractContextTest {
 		vaisseau.setNombreDePassagers((short) 2);
 		vaisseau.setAutonomie(3);
 		vaisseau.setVitesse(4);
-		employe.getVaisseaux().add(vaisseau);
+		employe.setVaisseaux(objectFactory.createPiloteDetailDtoVaisseaux());
+		employe.getVaisseaux().getVaisseau().add(vaisseau);
 
 		EmployeTo employeTo = mapper.mapToEmployeTo(employe);
 

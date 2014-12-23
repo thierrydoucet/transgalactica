@@ -1,8 +1,8 @@
 //
-// Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.5-2 
+// Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.11 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2013.01.16 à 02:38:27 PM CET 
+// Généré le : 2014.12.22 à 09:37:21 PM CET 
 //
 
 
@@ -21,40 +21,40 @@ import javax.xml.bind.annotation.XmlType;
  * <p>Le fragment de schéma suivant indique le contenu attendu figurant dans cette classe.
  * 
  * <pre>
- * &lt;complexType name="EmployeDtos">
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element name="employes" type="{}EmployeDto" maxOccurs="unbounded" minOccurs="0"/>
- *       &lt;/sequence>
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType name="EmployeDtos"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;element ref="{}employe" maxOccurs="unbounded" minOccurs="0"/&gt;
+ *       &lt;/sequence&gt;
+ *     &lt;/restriction&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "EmployeDtos", propOrder = {
-    "employes"
+    "employe"
 })
 public class EmployeDtos {
 
-    protected List<EmployeDto> employes;
+    protected List<EmployeDto> employe;
 
     /**
-     * Gets the value of the employes property.
+     * Gets the value of the employe property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the employes property.
+     * This is why there is not a <CODE>set</CODE> method for the employe property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getEmployes().add(newItem);
+     *    getEmploye().add(newItem);
      * </pre>
      * 
      * 
@@ -64,23 +64,17 @@ public class EmployeDtos {
      * 
      * 
      */
-    public List<EmployeDto> getEmployes() {
-        if (employes == null) {
-            employes = new ArrayList<EmployeDto>();
+    public List<EmployeDto> getEmploye() {
+        if (employe == null) {
+            employe = new ArrayList<EmployeDto>();
         }
-        return this.employes;
+        return this.employe;
     }
 
-    /**
-     * Sets the value of the employes property.
-     * 
-     * @param employes
-     *     allowed object is
-     *     {@link EmployeDto }
-     *     
-     */
-    public void setEmployes(List<EmployeDto> employes) {
-        this.employes = employes;
+    public void setEmploye(List<EmployeDto> value) {
+        this.employe = null;
+        List<EmployeDto> draftl = this.getEmploye();
+        draftl.addAll(value);
     }
 
 }
