@@ -74,12 +74,15 @@ public class RestVaisseauDao implements VaisseauDao {
 		String immatriculation = vaisseau.getImmatriculation();
 		VaisseauCommand command = mapper.mapToVaisseauCommand(vaisseau);
 		try {
-			restTemplate.getForObject(restServiceUrl + BY_IMMATRICULATION, VaisseauDetailDto.class, immatriculation);
+			restTemplate.headForHeaders(restServiceUrl + BY_IMMATRICULATION, immatriculation);
 			restTemplate.put(restServiceUrl + BY_IMMATRICULATION, command, immatriculation);
 		}
 		catch (HttpStatusCodeException e) {
 			if (e.getStatusCode() == HttpStatus.NOT_FOUND) {
 				restTemplate.postForLocation(restServiceUrl + VAISSEAUX, command);
+			}
+			else {
+				throw e;
 			}
 		}
 	}

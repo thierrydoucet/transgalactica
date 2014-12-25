@@ -59,13 +59,13 @@
 				<bean
 					class="org.transgalactica.fwk.test.clienthttp.ResourceBoundHolder"
 					p:uri="http://localhost:8080/transGalactica-rest/vaisseaux/Serenity"
-					p:method="GET"
+					p:methods="HEAD, GET"
 					p:contentType="application/xml"
 					p:resource="classpath:org/transgalactica/data/rest/mock/Serenity.xml" />
 				<bean
 					class="org.transgalactica.fwk.test.clienthttp.ResourceBoundHolder"
 					p:uri="http://localhost:8080/transGalactica-rest/vaisseaux/immatriculation%20test"
-					p:method="GET"
+					p:method="HEAD"
 					p:status="NOT_FOUND" />
 
 				<!-- employes -->

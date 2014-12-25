@@ -106,6 +106,19 @@ public class SpringMVCVaisseauRestService implements VaisseauRestService {
 	 * @see org.transgalactica.management.rest.SpringMVCVaisseauRestService.restservice.impl.IVaisseauRestService#getByImmatriculation(java.lang.String)
 	 */
 	@Override
+	@RequestMapping(value = "/{immatriculation}", method = RequestMethod.HEAD)
+	@ResponseStatus(HttpStatus.OK)
+	@ResponseBody
+	public void exists(@PathVariable String immatriculation) {
+		// TODO : lors de la migration a spring data : utiliser la méthode
+		// exists, et gerer le header.
+		vaisseauService.chargerVaisseau(immatriculation);
+	}
+
+	/**
+	 * @see org.transgalactica.management.rest.SpringMVCVaisseauRestService.restservice.impl.IVaisseauRestService#getByImmatriculation(java.lang.String)
+	 */
+	@Override
 	@RequestMapping(value = "/{immatriculation}", method = RequestMethod.GET)
 	@ResponseStatus(HttpStatus.OK)
 	@ResponseBody

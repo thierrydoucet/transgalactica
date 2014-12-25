@@ -33,19 +33,19 @@ public class VaisseauRestServiceMvcTest extends AbstractMvcTest {
 	}
 
 	@Test
-	public void getEnTransit() throws Exception {
-		// querystring : transit=, transit devrait etre suffisant, mais
-		// l'implementation de request MockMvc ne detecte pas le paramètre
-		mockMvc.perform(get("/vaisseaux?transit=").accept(APPLICATION_XML)) //
-				.andExpect(status().isOk()) //
-				.andExpect(content().contentType("application/xml")) //
-				.andExpect(xpath("count(/vaisseaux/*)").number(2D)) //
-				// Contenu complet testé dans "search"
-				.andExpect(xpath("/vaisseaux/*[1]/immatriculation").string("Leader rouge"));
+	public void getByImmatriculation_absent() throws Exception {
+		mockMvc.perform(get("/vaisseaux/sqdkfjqs").accept(APPLICATION_XML)) //
+				.andExpect(status().isNotFound());
 	}
 
 	@Test
-	public void getByImmatriculation_absent() throws Exception {
+	public void exists() throws Exception {
+		mockMvc.perform(get("/vaisseaux/Flying Bird").accept(APPLICATION_XML)) //
+				.andExpect(status().isOk());
+	}
+
+	@Test
+	public void exists_absent() throws Exception {
 		mockMvc.perform(get("/vaisseaux/sqdkfjqs").accept(APPLICATION_XML)) //
 				.andExpect(status().isNotFound());
 	}
@@ -85,6 +85,18 @@ public class VaisseauRestServiceMvcTest extends AbstractMvcTest {
 		mockMvc.perform(MockMvcRequestBuilders.delete("/vaisseaux/Flying Bird")).andExpect(status().isOk());
 
 		mockMvc.perform(get("/vaisseaux/Flying Bird")).andExpect(status().isNotFound());
+	}
+
+	@Test
+	public void getEnTransit() throws Exception {
+		// querystring : transit=, transit devrait etre suffisant, mais
+		// l'implementation de request MockMvc ne detecte pas le paramètre
+		mockMvc.perform(get("/vaisseaux?transit=").accept(APPLICATION_XML)) //
+				.andExpect(status().isOk()) //
+				.andExpect(content().contentType("application/xml")) //
+				.andExpect(xpath("count(/vaisseaux/*)").number(2D)) //
+				// Contenu complet testé dans "search"
+				.andExpect(xpath("/vaisseaux/*[1]/immatriculation").string("Leader rouge"));
 	}
 
 	@Test
