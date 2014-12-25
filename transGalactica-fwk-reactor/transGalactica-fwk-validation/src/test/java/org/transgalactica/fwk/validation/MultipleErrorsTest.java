@@ -212,12 +212,7 @@ public class MultipleErrorsTest extends AbstractJUnit4SpringContextTests {
 	@Test
 	public void testCheckErrorsWithoutError() {
 		MultipleErrors errors = new MultipleErrors();
-		try {
-			errors.checkErrors();
-		}
-		catch (MultipleErrorsException mex) {
-			fail();
-		}
+		errors.checkErrors();
 	}
 
 	@Test

@@ -11,7 +11,6 @@ import javax.xml.bind.Unmarshaller;
 import javax.xml.transform.stream.StreamSource;
 
 import org.apache.commons.collections4.CollectionUtils;
-import org.apache.commons.collections4.Predicate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,13 +55,7 @@ public class ResourceMotdRepository implements MotdRepository {
 
 	@Override
 	public MessageTo findOne(final String id) {
-		// TODO lambda expression
-		Message message = CollectionUtils.find(unmarshal().getMessage(), new Predicate<Message>() {
-			@Override
-			public boolean evaluate(Message message) {
-				return message.getId().equals(id);
-			}
-		});
+		Message message = CollectionUtils.find(unmarshal().getMessage(), (candidat) -> candidat.getId().equals(id));
 		return mapperMotd.map(message);
 	}
 
@@ -76,10 +69,7 @@ public class ResourceMotdRepository implements MotdRepository {
 			Unmarshaller unmarshaller = jaxbcontext.createUnmarshaller();
 			messages = unmarshaller.unmarshal(new StreamSource(is), Motd.class).getValue();
 		}
-		catch (JAXBException e) {
-			throw new MotdReadException("Erreur lors de l'interpretation du flux Motd", e);
-		}
-		catch (IOException e) {
+		catch (JAXBException | IOException e) {
 			throw new MotdReadException("Erreur lors de la lecture du flux Motd", e);
 		}
 		return messages;
