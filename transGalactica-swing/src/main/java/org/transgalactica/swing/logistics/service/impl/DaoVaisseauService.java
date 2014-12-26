@@ -6,10 +6,10 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
-import org.transgalactica.data.rest.bo.VaisseauSearchCriteria;
-import org.transgalactica.data.rest.bo.VaisseauSummaryTo;
-import org.transgalactica.data.rest.bo.VaisseauTo;
-import org.transgalactica.data.rest.dao.VaisseauDao;
+import org.transgalactica.management.data.rest.bo.VaisseauSearchCriteria;
+import org.transgalactica.management.data.rest.bo.VaisseauSummaryTo;
+import org.transgalactica.management.data.rest.bo.VaisseauTo;
+import org.transgalactica.management.data.rest.dao.VaisseauDao;
 import org.transgalactica.swing.logistics.service.VaisseauService;
 
 @Service
@@ -31,7 +31,7 @@ public class DaoVaisseauService implements VaisseauService {
 	}
 
 	/**
-	 * @see org.transgalactica.swing.logistics.service.impl.DaoVaisseauService#enregistrerVaisseau(org.transgalactica.data.rest.bo.VaisseauTo)
+	 * @see org.transgalactica.swing.logistics.service.impl.DaoVaisseauService#enregistrerVaisseau(org.transgalactica.management.data.rest.bo.VaisseauTo)
 	 */
 	@Override
 	public void enregistrerVaisseau(VaisseauTo vaisseau) {
@@ -40,7 +40,7 @@ public class DaoVaisseauService implements VaisseauService {
 	}
 
 	/**
-	 * @see org.transgalactica.swing.logistics.service.impl.DaoVaisseauService#rechercherVaisseaux(org.transgalactica.data.rest.bo.VaisseauSearchCriteria)
+	 * @see org.transgalactica.swing.logistics.service.impl.DaoVaisseauService#rechercherVaisseaux(org.transgalactica.management.data.rest.bo.VaisseauSearchCriteria)
 	 */
 	@Override
 	public List<VaisseauSummaryTo> rechercherVaisseaux(VaisseauSearchCriteria criteres) {
@@ -49,7 +49,7 @@ public class DaoVaisseauService implements VaisseauService {
 	}
 
 	/**
-	 * @see org.transgalactica.swing.logistics.service.impl.DaoVaisseauService#supprimerVaisseau(org.transgalactica.data.rest.bo.VaisseauTo)
+	 * @see org.transgalactica.swing.logistics.service.impl.DaoVaisseauService#supprimerVaisseau(org.transgalactica.management.data.rest.bo.VaisseauTo)
 	 */
 	@Override
 	public void supprimerVaisseau(VaisseauTo vaisseau) {

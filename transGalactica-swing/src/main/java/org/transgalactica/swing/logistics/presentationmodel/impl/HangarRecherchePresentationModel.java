@@ -14,8 +14,8 @@ import javax.swing.SwingWorker;
 
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.stereotype.Component;
-import org.transgalactica.data.rest.bo.HangarSummaryTo;
-import org.transgalactica.data.rest.bo.HangarSearchCriteria;
+import org.transgalactica.management.data.rest.bo.HangarSearchCriteria;
+import org.transgalactica.management.data.rest.bo.HangarSummaryTo;
 import org.transgalactica.swing.logistics.service.HangarService;
 
 import com.jgoodies.binding.beans.BeanAdapter;

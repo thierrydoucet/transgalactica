@@ -12,7 +12,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import org.springframework.stereotype.Component;
-import org.transgalactica.data.rest.bo.HangarSummaryTo;
+import org.transgalactica.management.data.rest.bo.HangarSummaryTo;
 import org.transgalactica.swing.logistics.presentationmodel.impl.HangarRecherchePresentationModel;
 
 import com.jgoodies.binding.adapter.AbstractTableAdapter;

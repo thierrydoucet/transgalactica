@@ -9,6 +9,6 @@
 	<description>Flux Logistics - Test Unitaires</description>
 
 	<import
-		resource="classpath:org/transgalactica/flux/rest/config/context/flux.spring.xml" />
+		resource="classpath:org/transgalactica/management/flux/rest/config/context/flux.spring.xml" />
 
 </beans>

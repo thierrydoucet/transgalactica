@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<description>Flux REST - flux bouchon définitions</description>
+
+	<bean class="org.springframework.web.client.RestTemplate">
+		<property name="requestFactory">
+			<bean class="org.transgalactica.fwk.test.clienthttp.ResourceBoundClientHttpRequestFactory">
+				<property name="resources">
+					<set>
+						<bean
+							class="org.transgalactica.fwk.test.clienthttp.ResourceBoundHolder"
+							p:uri="http://localhost:8080/transGalactica-rest/hangars/search.xml?localisation=%25"
+							p:contentType="application/xml"
+							p:resource="classpath:org/transgalactica/management/flux/rest/mock/searchHangar.xml" />
+						<bean
+							class="org.transgalactica.fwk.test.clienthttp.ResourceBoundHolder"
+							p:uri="http://localhost:8080/transGalactica-rest/hangars/Alderaan.xml"
+							p:contentType="application/xml"
+							p:resource="classpath:org/transgalactica/management/flux/rest/mock/Alderaan.xml" />
+
+						<bean
+							class="org.transgalactica.fwk.test.clienthttp.ResourceBoundHolder"
+							p:uri="http://localhost:8080/transGalactica-rest/vaisseaux/Serenity.xml"
+							p:contentType="application/xml"
+							p:resource="classpath:org/transgalactica/management/flux/rest/mock/Serenity.xml" />
+					</set>
+				</property>
+			</bean>
+		</property>
+	</bean>
+</beans>

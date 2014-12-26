@@ -61,6 +61,11 @@
 			<artifactId>transGalactica-fwk-web</artifactId>
 			<version>${socle.version}</version>
 		</dependency>
+		
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+		</dependency>
 
 		<!-- Journalisation -->
 		<dependency>

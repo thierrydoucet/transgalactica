@@ -8,9 +8,9 @@ import javax.inject.Inject;
 
 import org.junit.Test;
 import org.springframework.web.client.HttpStatusCodeException;
-import org.transgalactica.data.rest.bo.HangarSearchCriteria;
-import org.transgalactica.data.rest.bo.HangarSummaryTo;
-import org.transgalactica.data.rest.bo.HangarTo;
+import org.transgalactica.management.data.rest.bo.HangarSearchCriteria;
+import org.transgalactica.management.data.rest.bo.HangarSummaryTo;
+import org.transgalactica.management.data.rest.bo.HangarTo;
 import org.transgalactica.swing.logistics.service.HangarService;
 import org.transgalactica.swing.test.AbstractMockedSpringContextTest;
 

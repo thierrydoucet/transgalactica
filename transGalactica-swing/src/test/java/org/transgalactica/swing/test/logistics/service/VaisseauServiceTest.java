@@ -7,10 +7,10 @@ import java.util.List;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.client.HttpStatusCodeException;
-import org.transgalactica.data.rest.bo.VaisseauSearchCriteria;
-import org.transgalactica.data.rest.bo.VaisseauSummaryTo;
-import org.transgalactica.data.rest.bo.VaisseauTo;
-import org.transgalactica.data.rest.bo.impl.BasicVaisseauSearchCriteria;
+import org.transgalactica.management.data.rest.bo.VaisseauSearchCriteria;
+import org.transgalactica.management.data.rest.bo.VaisseauSummaryTo;
+import org.transgalactica.management.data.rest.bo.VaisseauTo;
+import org.transgalactica.management.data.rest.bo.impl.BasicVaisseauSearchCriteria;
 import org.transgalactica.swing.logistics.service.VaisseauService;
 import org.transgalactica.swing.test.AbstractMockedSpringContextTest;
 

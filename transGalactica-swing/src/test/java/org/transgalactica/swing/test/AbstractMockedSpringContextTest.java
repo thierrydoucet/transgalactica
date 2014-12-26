@@ -6,8 +6,8 @@ import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.annotation.DirtiesContext.ClassMode;
 import org.springframework.test.util.ReflectionTestUtils;
 import org.springframework.web.client.RestTemplate;
-import org.transgalactica.data.rest.dao.HangarDao;
-import org.transgalactica.data.rest.dao.VaisseauDao;
+import org.transgalactica.management.data.rest.dao.HangarDao;
+import org.transgalactica.management.data.rest.dao.VaisseauDao;
 import org.transgalactica.test.AbstractContextTest;
 
 @DirtiesContext(classMode = ClassMode.AFTER_CLASS)

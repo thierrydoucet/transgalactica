@@ -75,7 +75,7 @@
 								</schema>
 							</schemas>
 							<generateDirectory>src/generated/java</generateDirectory>
-							<generatePackage>org.transgalactica.flux.rest</generatePackage>
+							<generatePackage>org.transgalactica.management.flux.rest</generatePackage>
 							<episodeFile>src/main/resources/META-INF/sun-jaxb.episode</episodeFile>
 							<args>
 								<arg>-Xsetters</arg>

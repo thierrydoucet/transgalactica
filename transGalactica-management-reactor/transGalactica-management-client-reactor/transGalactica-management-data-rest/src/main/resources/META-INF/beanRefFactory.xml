@@ -12,6 +12,6 @@
 
 	<description>Trans'Galactica Data Client Loigistics</description>
 
-	<context:component-scan base-package="org.transgalactica.data.rest" />
+	<context:component-scan base-package="org.transgalactica.management.data.rest" />
 
 </beans>

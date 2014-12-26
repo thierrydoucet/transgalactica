@@ -13,7 +13,7 @@
 
 	<description>Trans'Galactica Data MOTD - Test</description>
 
-	<import resource="classpath:org/transgalactica/data/rest/config/context/mock.spring.xml" />
+	<import resource="classpath:org/transgalactica/management/data/rest/config/context/mock.spring.xml" />
 
 	<context:property-placeholder location="classpath:transGalactica.properties"/>
 	
