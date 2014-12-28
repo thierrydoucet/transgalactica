@@ -16,7 +16,7 @@
 
 	<scm>
 		<url>https://github.com/thierrydoucet/transGalactica</url>
-		<connection>scm:git:git://github.com/thierrydoucet/transGalactica.git</connection>
+		<connection>scm:git:git:@github.com/thierrydoucet/transGalactica.git</connection>
 		<developerConnection>scm:git:git@github.com:thierrydoucet/transGalactica.git</developerConnection>
 	  <tag>HEAD</tag>
   </scm>
