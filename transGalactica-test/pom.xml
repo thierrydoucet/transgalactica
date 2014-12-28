@@ -7,18 +7,24 @@
 	<parent>
 		<groupId>org.transgalactica.core</groupId>
 		<artifactId>transGalactica-build</artifactId>
-		<version>1.0.0-SNAPSHOT</version>
+		<version>1.0.0</version>
 	</parent>
 
 	<artifactId>transGalactica-test</artifactId>
 	<packaging>jar</packaging>
+	<version>1.0.0-SNAPSHOT</version>
 
 	<name>Trans'Galactica - Configuration Tests Unitaires</name>
 	<description>
 		Module de configuration des test Unitaires de l'applciation Trans'Galactica
 	</description>
 
-
+	<scm>
+		<url>https://github.com/thierrydoucet/transGalactica</url>
+		<connection>scm:git:git@github.com/thierrydoucet/transGalactica.git</connection>
+		<developerConnection>scm:git:git@github.com:thierrydoucet/transGalactica.git</developerConnection>
+		<tag>HEAD</tag>
+	</scm>
 
 	<dependencyManagement>
 		<dependencies>
@@ -26,15 +32,15 @@
 			<dependency>
 				<groupId>org.transgalactica.core</groupId>
 				<artifactId>transGalactica-dependencies</artifactId>
-				<version>1.0.0-SNAPSHOT</version>
+				<version>1.0.0</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
-					<dependency>
-			<groupId>org.transgalactica.fwk</groupId>
-			<artifactId>transGalactica-fwk-test</artifactId>
-			<version>1.0.0-SNAPSHOT</version>
-		</dependency>
+			<dependency>
+				<groupId>org.transgalactica.fwk</groupId>
+				<artifactId>transGalactica-fwk-test</artifactId>
+				<version>1.0.0</version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 
