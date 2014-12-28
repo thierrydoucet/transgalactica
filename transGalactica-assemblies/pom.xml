@@ -18,10 +18,38 @@
 		<developerConnection>scm:git:git@github.com:thierrydoucet/transGalactica.git</developerConnection>
 	</scm>
 
+	<issueManagement>
+		<url>https://github.com/thierrydoucet/transGalactica/issues</url>
+		<system>GitHub Issues</system>
+	</issueManagement>
+
+	<distributionManagement>
+		<repository>
+			<id>freebox-release-repo</id>
+			<name>Freebox Release Repository</name>
+			<url>file:/media/freebox/Informatique/maven/repository/releases</url>
+		</repository>
+		<snapshotRepository>
+			<id>freebox-snapshots-repo</id>
+			<name>Freebox Snapshots Repository</name>
+			<url>file:/media/freebox/Informatique/maven/repository/snapshots</url>
+		</snapshotRepository>
+	</distributionManagement>
+
 	<properties>
 		<!-- files encoding -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 	</properties>
+
+	<build>
+		<extensions>
+			<extension>
+				<groupId>org.apache.maven.wagon</groupId>
+				<artifactId>wagon-file</artifactId>
+				<version>2.8</version>
+			</extension>
+		</extensions>
+	</build>
 
 </project>

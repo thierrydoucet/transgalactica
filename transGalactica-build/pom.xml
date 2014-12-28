@@ -26,11 +26,20 @@
 		<system>GitHub Issues</system>
 	</issueManagement>
 
-	<!-- A utiliser lorsqu'un nexus sera present <distributionManagement> <repository> 
-		<id>deployer-releases</id> <name>Nexus Releases Repository</name> <url>http://x.y.z:8081/nexus/content/repositories/releases/</url> 
-		</repository> <snapshotRepository> <id>deployer-snapshots</id> <name>Nexus 
-		Snapshots Repository</name> <url>http://x.y.z:8081/nexus/content/repositories/snapshots/</url> 
-		</snapshotRepository> </distributionManagement> -->
+	<distributionManagement>
+		<repository>
+			<id>freebox-release-repo</id>
+                        <name>Freebox Release Repository</name>
+			<url>file:/media/freebox/Informatique/maven/repository/releases</url>
+			<!-- L'accès en FTP pose de pb lors de la récupération des metadata -->
+			<!--<url>ftp://mafreebox.freebox.fr/Disque dur/Informatique</url>-->
+		</repository>
+		<snapshotRepository>
+                        <id>freebox-snapshots-repo</id>
+                        <name>Freebox Snapshots Repository</name>
+                        <url>file:/media/freebox/Informatique/maven/repository/snapshots</url>
+                </snapshotRepository>
+	</distributionManagement>
 
 	<developers>
 		<developer>
@@ -101,7 +110,7 @@
 						<dependency>
 							<groupId>org.transgalactica.core</groupId>
 							<artifactId>transGalactica-assemblies</artifactId>
-							<version>1.0.0-SNAPSHOT</version>
+							<version>1.0.0</version>
 						</dependency>
 					</dependencies>
 					<executions>
@@ -255,6 +264,15 @@
 			</plugin>
 
 		</plugins>
+
+		<extensions>
+			<extension>
+				<groupId>org.apache.maven.wagon</groupId>
+				<artifactId>wagon-file</artifactId>
+				<version>2.8</version>
+			</extension>
+		</extensions>
+
 	</build>
 
 	<profiles>
