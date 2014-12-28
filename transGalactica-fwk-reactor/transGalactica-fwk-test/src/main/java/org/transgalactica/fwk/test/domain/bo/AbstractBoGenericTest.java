@@ -18,14 +18,12 @@ import org.junit.runners.Parameterized;
 import org.springframework.beans.BeanUtils;
 
 /**
- * <p>
+ * 
  * Classe de test générique permettant de tester les methodes equals/hashcode et
- * la serialisation des BOs.
- * </p>
- * <p>
+ * la serialisation des BOs. <br>
  * Elle doit être sous classée puis fournir une méthode statique taggée avec
  * <code>@org.junit.Parameters</code>, retournant la liste des classes de BO a
- * tester.
+ * tester. <br>
  * 
  * <pre>
  * public static Collection&lt;Object[]&gt; getBeans() {
@@ -43,11 +41,10 @@ import org.springframework.beans.BeanUtils;
  * }
  * </pre>
  * 
- * </p>
- * <p>
- * Un exemple se trouve ici :
- * @link {@link org.transgalactica.fwk.test.domaine.bo.AbstractBoGenericTestTest}
- * </p>
+ * <br>
+ * Un exemple se trouve dans la classe de test unitaire :
+ * org.transgalactica.fwk.test.domaine.bo.AbstractBoGenericTestTest
+ * 
  */
 @RunWith(Parameterized.class)
 public abstract class AbstractBoGenericTest {

@@ -15,13 +15,10 @@ import org.junit.runners.Parameterized;
 import org.springframework.beans.BeanUtils;
 
 /**
- * <p>
- * Classe de test générique permettant de tester la serialisation des TOs.
- * </p>
- * <p>
+ * Classe de test générique permettant de tester la serialisation des TOs. <br>
  * Elle doit être sous classée puis fournir une méthode statique taggée avec
  * <code>@org.junit.Parameters</code>, retournant la liste des classes de TO a
- * tester.
+ * tester. <br>
  * 
  * <pre>
  * public static Collection&lt;Class[]&gt; getBeansClazz() {
@@ -31,11 +28,9 @@ import org.springframework.beans.BeanUtils;
  * }
  * </pre>
  * 
- * </p>
- * <p>
- * Un exemple se trouve ici :
- * @link {@link org.transgalactica.fwk.test.domaine.bo.AbstractToGenericTestTest}
- * </p>
+ * <br>
+ * Un exemple se trouve dans la classe de test unitaire :
+ * org.transgalactica.fwk.test.domaine.bo.AbstractToGenericTestTest
  */
 @RunWith(Parameterized.class)
 public abstract class AbstractSerializableGenericTest {

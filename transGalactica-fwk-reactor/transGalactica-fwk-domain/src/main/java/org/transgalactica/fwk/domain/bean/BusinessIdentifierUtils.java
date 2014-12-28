@@ -27,9 +27,10 @@ public abstract class BusinessIdentifierUtils {
 	 * :
 	 * <ul>
 	 * <li>clé : {@link BusinessIdentifier#name()} ou si vide, le nom du champ
-	 * ou de la méthode;
+	 * ou de la méthode;</li>
 	 * <li>valeur : la valeur du champs, ou retournée par l'appel de la méthode.
-	 * <ul>
+	 * </li>
+	 * </ul>
 	 */
 	public static SortedMap<String, Serializable> getBusinessIdentifiersValues(final Serializable bo) {
 		if (bo == null) {
