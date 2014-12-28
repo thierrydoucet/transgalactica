@@ -10,7 +10,7 @@
 
 	<groupId>org.transgalactica.fwk</groupId>
 	<artifactId>transGalactica-fwk-reactor</artifactId>
-	<version>1.0.0</version>
+	<version>1.1.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<name>Socle Trans'Galactica</name>
@@ -30,7 +30,7 @@
 		<url>https://github.com/thierrydoucet/transGalactica</url>
 		<connection>scm:git:git@github.com/thierrydoucet/transGalactica.git</connection>
 		<developerConnection>scm:git:git@github.com:thierrydoucet/transGalactica.git</developerConnection>
-		<tag>transGalactica-fwk-1.0.0</tag>
+		<tag>HEAD</tag>
 	</scm>
 
 	<dependencyManagement>
