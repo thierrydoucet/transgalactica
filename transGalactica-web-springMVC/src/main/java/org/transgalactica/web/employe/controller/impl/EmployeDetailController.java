@@ -24,7 +24,7 @@ public class EmployeDetailController {
 
 	@RequestMapping(method = RequestMethod.GET)
 	public String get() {
-		return "redirect:/hangars/search";
+		return "redirect:/employes/search";
 	}
 
 	@RequestMapping(value = "/{matricule}", method = RequestMethod.GET)

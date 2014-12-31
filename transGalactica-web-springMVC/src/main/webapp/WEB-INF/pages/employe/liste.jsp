@@ -12,11 +12,11 @@
 	<form:errors path="nomEmploye" cssClass="error" />
 
 	<label for="dateEmbaucheEmployeDebut"><spring:message code="transgalactica.employe.liste.criteres.dateEmbaucheDebut" /></label>
-	<form:input path="dateEmbaucheEmployeDebut" />
+	<form:input type="date" path="dateEmbaucheEmployeDebut" />
 	<form:errors path="dateEmbaucheEmployeDebut" cssClass="error" />
 
 	<label for="dateEmbaucheEmployeFin"><spring:message code="transgalactica.employe.liste.criteres.dateEmbaucheFin" /></label>
-	<form:input path="dateEmbaucheEmployeFin" />
+	<form:input type="date" path="dateEmbaucheEmployeFin" />
 	<form:errors path="dateEmbaucheEmployeFin" cssClass="error" />
 
 	<ul class="boutons">
