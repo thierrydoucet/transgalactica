@@ -7,6 +7,6 @@ public class HangarInexistantException extends BusinessException {
 	private static final long serialVersionUID = 1L;
 
 	public HangarInexistantException(Long identifiant) {
-		super(identifiant);
+		super(String.valueOf(identifiant), identifiant);
 	}
 }

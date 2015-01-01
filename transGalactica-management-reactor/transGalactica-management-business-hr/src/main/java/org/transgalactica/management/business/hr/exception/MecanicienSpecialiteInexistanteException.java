@@ -7,6 +7,6 @@ public class MecanicienSpecialiteInexistanteException extends BusinessException 
 	private static final long serialVersionUID = 1L;
 
 	public MecanicienSpecialiteInexistanteException(String nom) {
-		super(nom);
+		super(nom, nom);
 	}
 }

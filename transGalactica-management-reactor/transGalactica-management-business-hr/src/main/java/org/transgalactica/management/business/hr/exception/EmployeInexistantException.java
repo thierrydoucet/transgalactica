@@ -7,6 +7,6 @@ public class EmployeInexistantException extends BusinessException {
 	private static final long serialVersionUID = 1L;
 
 	public EmployeInexistantException(Long matricule) {
-		super(matricule);
+		super(String.valueOf(matricule), matricule);
 	}
 }

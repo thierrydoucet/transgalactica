@@ -7,6 +7,6 @@ public class VaisseauInexistantException extends BusinessException {
 	private static final long serialVersionUID = 1L;
 
 	public VaisseauInexistantException(String immatriculation) {
-		super(immatriculation);
+		super(immatriculation, immatriculation);
 	}
 }
