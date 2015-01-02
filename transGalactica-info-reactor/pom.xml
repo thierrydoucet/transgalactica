@@ -27,6 +27,13 @@
 		<module>transGalactica-info-flux-motd</module>
 	</modules>
 
+	<scm>
+		<url>https://github.com/thierrydoucet/transGalactica</url>
+		<connection>scm:git:git@github.com/thierrydoucet/transGalactica.git</connection>
+		<developerConnection>scm:git:git@github.com:thierrydoucet/transGalactica.git</developerConnection>
+		<tag>HEAD</tag>
+	</scm>
+
 	<properties>
 		<!-- versions -->
 		<socle.version>1.0.0</socle.version>
