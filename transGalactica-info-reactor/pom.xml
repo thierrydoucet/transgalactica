@@ -7,7 +7,7 @@
 	<parent>
 		<groupId>org.transgalactica.core</groupId>
 		<artifactId>transGalactica-build</artifactId>
-		<version>1.0.0-SNAPSHOT</version>
+		<version>1.0.0</version>
 	</parent>
 
 	<groupId>org.transgalactica.info</groupId>
@@ -29,9 +29,9 @@
 
 	<properties>
 		<!-- versions -->
-		<socle.version>1.0.0-SNAPSHOT</socle.version>
-		<dependencies.version>1.0.0-SNAPSHOT</dependencies.version>
-		<test.version>1.0.0-SNAPSHOT</test.version>
+		<socle.version>1.0.0</socle.version>
+		<dependencies.version>1.0.0</dependencies.version>
+		<test.version>1.0.0</test.version>
 	</properties>
 
 	<dependencyManagement>
