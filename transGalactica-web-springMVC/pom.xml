@@ -11,7 +11,7 @@
 
 	<groupId>org.transgalactica.front</groupId>
 	<artifactId>transGalactica-web-springMVC</artifactId>
-	<version>1.0.0</version>
+	<version>1.1.0-SNAPSHOT</version>
 	<packaging>war</packaging>
 
 	<name>Trans'Galactica - Web (Spring MVC)</name>
@@ -21,7 +21,7 @@
 		<url>https://github.com/thierrydoucet/transGalactica</url>
 		<connection>scm:git:git@github.com/thierrydoucet/transGalactica.git</connection>
 		<developerConnection>scm:git:git@github.com:thierrydoucet/transGalactica.git</developerConnection>
-		<tag>transGalactica-web-springMVC-1.0.0</tag>
+		<tag>HEAD</tag>
 	</scm>
 
 	<properties>
