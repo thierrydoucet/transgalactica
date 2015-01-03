@@ -44,7 +44,7 @@ pages.accueil.ConfigurationController.testConnection = function() {
 
 pages.accueil.ConfigurationController.save = function() {
 	pages.accueil.ConfigurationController.viewToModel();
-	$.mobile.navigate('/transGalactica-web-JQM/pages/accueil/WelcomePage.html');
+	$.mobile.navigate('/transGalactica-mobile-JQM/pages/accueil/WelcomePage.html');
 };
 
 pages.accueil.ConfigurationController.viewToModel = function() {

@@ -6,7 +6,7 @@ $.using('data.HangarRepository', function(ctx) {
  */
 
 data.HangarRepository.getHangars = function(callback) {
-    var url = data.PreferenceRepository.getServer().url +  '/hangars/search?localisation=%25';
+    var url = data.PreferenceRepository.getServer().url +  '/hangars?localisation=%25';
     data.RestRepository.GET(url, callback);
 };
 

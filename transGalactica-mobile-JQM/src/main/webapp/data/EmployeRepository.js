@@ -6,6 +6,6 @@ $.using('data.EmployeRepository', function(ctx) {
  */
 
 data.EmployeRepository.searchEmployeByVaisseau = function(immatriculation, callback) {
-    var url = data.PreferenceRepository.getServer().url + '/employes/search?immatriculationVaisseau=' + immatriculation;
+    var url = data.PreferenceRepository.getServer().url + '/employes?immatriculationVaisseau=' + immatriculation;
     data.RestRepository.GET(url, callback);
 };

@@ -30,13 +30,13 @@ pages.vaisseaux.DetailVaisseauController.remove = function() {
 pages.vaisseaux.DetailVaisseauController.backToHangar = function() {
 	//pas d'utilisation du 'back' : cas de lorsque l'on vient de la création
 	var hangar = data.PreferenceRepository.getHangar();
-	$.mobile.navigate('/transGalactica-web-JQM/pages/hangars/DetailHangarPage.html?numero=' + hangar.numero);
+	$.mobile.navigate('/transGalactica-mobile-JQM/pages/hangars/DetailHangarPage.html?numero=' + hangar.numero);
 };
 
 pages.vaisseaux.DetailVaisseauController.modelToview = function() {
 	var immatriculation = pages.getUrlParameterByName('immatriculation');
 	$('#pages\\.vaisseaux\\.DetailVaisseauPage\\.title').text(immatriculation);
-	$('#pages\\.vaisseaux\\.DetailVaisseauPage\\.editButton').attr('href', '/transGalactica-web-JQM/pages/vaisseaux/DetailVaisseauEditionPage.html?immatriculation=' + immatriculation);
+	$('#pages\\.vaisseaux\\.DetailVaisseauPage\\.editButton').attr('href', '/transGalactica-mobile-JQM/pages/vaisseaux/DetailVaisseauEditionPage.html?immatriculation=' + immatriculation);
 	// Tab detail
 	data.VaisseauRepository.getVaisseau(immatriculation, function(data) {
 	    $('#pages\\.vaisseaux\\.DetailVaisseauPage\\.immatriculation').text(data.immatriculation);

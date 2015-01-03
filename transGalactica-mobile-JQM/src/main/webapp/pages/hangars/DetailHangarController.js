@@ -20,7 +20,7 @@ pages.hangars.DetailHangarController.modelToview = function() {
 	    var list = $('#pages\\.hangars\\.DetailHangarPage\\.vaisseaux');
 	    list.empty();
 	    $.each(data.vaisseaux, function(index, vaisseau) {
-		list.append('<li><a href="/transGalactica-web-JQM/pages/vaisseaux/DetailVaisseauPage.html?immatriculation='
+		list.append('<li><a href="/transGalactica-mobile-JQM/pages/vaisseaux/DetailVaisseauPage.html?immatriculation='
 			+ vaisseau.immatriculation
 			+ '"><h2>'
 			+ vaisseau.immatriculation

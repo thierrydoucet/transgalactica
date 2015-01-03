@@ -31,7 +31,7 @@ pages.accueil.WelcomeController.enableHangarButton = function() {
     if (hangarSet) {
     	btn.text(hangar.localisation);
     	btn.click(function (event) {
-    	    $.mobile.navigate('/transGalactica-web-JQM/pages/hangars/DetailHangarPage.html?numero=' + hangar.numero);
+    	    $.mobile.navigate('/transGalactica-mobile-JQM/pages/hangars/DetailHangarPage.html?numero=' + hangar.numero);
     	});
     } else {
     	pages.showInfo('Aucun hangar choisi.<br />Veuillez choisir un hangar via le bouton présent dans le pied de page.');

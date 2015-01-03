@@ -23,10 +23,10 @@ pages.vaisseaux.DetailVaisseauEditionController.save = function() {
 		if (immatriculation === null) {
 			var hangar = data.PreferenceRepository.getHangar();
 			data.HangarRepository.addVaisseau(hangar.numero, vaisseau.immatriculation, function() {
-				$.mobile.navigate('/transGalactica-web-JQM/pages/vaisseaux/DetailVaisseauPage.html?immatriculation=' + vaisseau.immatriculation);
+				$.mobile.navigate('/transGalactica-mobile-JQM/pages/vaisseaux/DetailVaisseauPage.html?immatriculation=' + vaisseau.immatriculation);
 			});
 		} else {
-			$.mobile.navigate('/transGalactica-web-JQM/pages/vaisseaux/DetailVaisseauPage.html?immatriculation=' + vaisseau.immatriculation);
+			$.mobile.navigate('/transGalactica-mobile-JQM/pages/vaisseaux/DetailVaisseauPage.html?immatriculation=' + vaisseau.immatriculation);
 		}
 	});
 };
@@ -44,9 +44,11 @@ pages.vaisseaux.DetailVaisseauEditionController.modelToview = function() {
 			$('#pages\\.vaisseaux\\.DetailVaisseauEditionPage\\.capaciteDeFret').val(data.capaciteDeFret);
 			$('#pages\\.vaisseaux\\.DetailVaisseauEditionPage\\.multiplicateurHyperdrive').val(data.multiplicateurHyperdrive);
 		});
-	} else {
+	} 
+	else {
 		$('#pages\\.vaisseaux\\.DetailVaisseauEditionPage\\.title').text('Création d\'un vaisseau');
 	}
+	$('#pages\\.vaisseaux\\.DetailVaisseauEditionPage\\.immatriculation').prop('disabled', immatriculation != null);
 };
 
 pages.vaisseaux.DetailVaisseauEditionController.viewToModel = function() {
