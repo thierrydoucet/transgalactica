@@ -7,7 +7,7 @@
 	<parent>
 		<groupId>org.transgalactica.core</groupId>
 		<artifactId>transGalactica-build</artifactId>
-		<version>1.0.0-SNAPSHOT</version>
+		<version>1.0.0</version>
 	</parent>
 
 	<groupId>org.transgalactica.front</groupId>
@@ -17,6 +17,13 @@
 
 	<name>Trans'Galactica - Mobile (JQM)</name>
 	<description>Module web/mobile (technologies JQuery &amp; JQuery Mobile) de l'application Trans'Galactica</description>
+
+	<scm>
+		<url>https://github.com/thierrydoucet/transGalactica</url>
+		<connection>scm:git:git@github.com/thierrydoucet/transGalactica.git</connection>
+		<developerConnection>scm:git:git@github.com:thierrydoucet/transGalactica.git</developerConnection>
+		<tag>HEAD</tag>
+	</scm>
 
 	<properties>
 		<!-- multi language sur un module non encore dispo http://jira.codehaus.org/browse/SONAR-926 
