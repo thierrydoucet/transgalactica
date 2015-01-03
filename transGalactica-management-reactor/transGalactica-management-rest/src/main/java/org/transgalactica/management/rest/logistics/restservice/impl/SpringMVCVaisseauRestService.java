@@ -75,9 +75,6 @@ public class SpringMVCVaisseauRestService implements VaisseauRestService {
 		response.sendError(HttpStatus.BAD_REQUEST.value(), sb.toString());
 	}
 
-	/**
-	 * @see org.transgalactica.management.rest.logistics.restservice.VaisseauRestService#getAll()
-	 */
 	@Override
 	@RequestMapping(method = RequestMethod.GET, params = { "transit" })
 	@ResponseStatus(HttpStatus.OK)
@@ -87,9 +84,6 @@ public class SpringMVCVaisseauRestService implements VaisseauRestService {
 		return vaisseauMapper.mapToVaisseauDtos(projections);
 	}
 
-	/**
-	 * @see org.transgalactica.management.rest.SpringMVCVaisseauRestService.restservice.impl.IVaisseauRestService#search(org.transgalactica.management.rest.materiel.data.impl.RechercheVaisseauCommand)
-	 */
 	@Override
 	@RequestMapping(method = RequestMethod.GET, params = { "!transit" })
 	@ResponseStatus(HttpStatus.OK)
@@ -102,9 +96,6 @@ public class SpringMVCVaisseauRestService implements VaisseauRestService {
 		return vaisseauMapper.mapToVaisseauDtos(projections);
 	}
 
-	/**
-	 * @see org.transgalactica.management.rest.SpringMVCVaisseauRestService.restservice.impl.IVaisseauRestService#getByImmatriculation(java.lang.String)
-	 */
 	@Override
 	@RequestMapping(value = "/{immatriculation}", method = RequestMethod.HEAD)
 	@ResponseStatus(HttpStatus.OK)
@@ -115,9 +106,6 @@ public class SpringMVCVaisseauRestService implements VaisseauRestService {
 		vaisseauService.chargerVaisseau(immatriculation);
 	}
 
-	/**
-	 * @see org.transgalactica.management.rest.SpringMVCVaisseauRestService.restservice.impl.IVaisseauRestService#getByImmatriculation(java.lang.String)
-	 */
 	@Override
 	@RequestMapping(value = "/{immatriculation}", method = RequestMethod.GET)
 	@ResponseStatus(HttpStatus.OK)
@@ -127,9 +115,6 @@ public class SpringMVCVaisseauRestService implements VaisseauRestService {
 		return vaisseauMapper.mapToVaisseauDetailDto(entity);
 	}
 
-	/**
-	 * @see org.transgalactica.management.rest.SpringMVCVaisseauRestService.restservice.impl.IVaisseauRestService#create(org.transgalactica.management.rest.BasicVaisseauCommand.data.impl.VaisseauCommand)
-	 */
 	@Override
 	@RequestMapping(method = RequestMethod.POST)
 	@ResponseStatus(HttpStatus.CREATED)
@@ -145,10 +130,6 @@ public class SpringMVCVaisseauRestService implements VaisseauRestService {
 		vaisseauService.enregistrerVaisseau(entity);
 	}
 
-	/**
-	 * @see org.transgalactica.management.rest.SpringMVCVaisseauRestService.restservice.impl.IVaisseauRestService#save(java.lang.String,
-	 * org.transgalactica.management.rest.BasicVaisseauCommand.data.impl.VaisseauCommand)
-	 */
 	@Override
 	@RequestMapping(value = "/{immatriculation}", method = RequestMethod.PUT)
 	@ResponseStatus(HttpStatus.OK)
@@ -158,9 +139,6 @@ public class SpringMVCVaisseauRestService implements VaisseauRestService {
 		vaisseauService.enregistrerVaisseau(entity);
 	}
 
-	/**
-	 * @see org.transgalactica.management.rest.SpringMVCVaisseauRestService.restservice.impl.IVaisseauRestService#delete(java.lang.String)
-	 */
 	@Override
 	@RequestMapping(value = "/{immatriculation}", method = RequestMethod.DELETE)
 	@ResponseStatus(HttpStatus.OK)

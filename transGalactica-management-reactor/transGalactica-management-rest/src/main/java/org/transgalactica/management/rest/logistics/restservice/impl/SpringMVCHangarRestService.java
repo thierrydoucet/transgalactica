@@ -76,9 +76,6 @@ public class SpringMVCHangarRestService implements HangarRestService {
 		// NOP
 	}
 
-	/**
-	 * @see org.transgalactica.management.rest.SpringMVCHangarRestService.restservice.IHangarRestService#getById(java.lang.Long)
-	 */
 	@Override
 	@RequestMapping(method = RequestMethod.GET)
 	@ResponseStatus(HttpStatus.OK)
@@ -88,9 +85,6 @@ public class SpringMVCHangarRestService implements HangarRestService {
 		return hangarMapper.mapToHangarDtos(projections);
 	}
 
-	/**
-	 * @see org.transgalactica.management.rest.SpringMVCHangarRestService.restservice.IHangarRestService#getById(java.lang.Long)
-	 */
 	@Override
 	@RequestMapping(value = "/{numero}", method = RequestMethod.GET)
 	@ResponseStatus(HttpStatus.OK)
@@ -100,9 +94,6 @@ public class SpringMVCHangarRestService implements HangarRestService {
 		return hangarMapper.mapToHangarDetailDto(entity);
 	}
 
-	/**
-	 * @see org.transgalactica.management.rest.SpringMVCHangarRestService.restservice.IHangarRestService#create(org.transgalactica.management.rest.materiel.data.impl.HangarCommand)
-	 */
 	@Override
 	@RequestMapping(method = RequestMethod.POST)
 	@ResponseStatus(HttpStatus.CREATED)
@@ -112,10 +103,6 @@ public class SpringMVCHangarRestService implements HangarRestService {
 		hangarService.enregistrerHangar(entity);
 	}
 
-	/**
-	 * @see org.transgalactica.management.rest.SpringMVCHangarRestService.restservice.IHangarRestService#save(java.lang.Long,
-	 * org.transgalactica.management.rest.materiel.data.impl.HangarCommand)
-	 */
 	@Override
 	@RequestMapping(value = "/{numero}", method = RequestMethod.PUT)
 	@ResponseStatus(HttpStatus.OK)
@@ -125,9 +112,6 @@ public class SpringMVCHangarRestService implements HangarRestService {
 		hangarService.enregistrerHangar(entity);
 	}
 
-	/**
-	 * @see org.transgalactica.management.rest.SpringMVCHangarRestService.restservice.IHangarRestService#delete(java.lang.Long)
-	 */
 	@Override
 	@RequestMapping(value = "/{numero}", method = RequestMethod.DELETE)
 	@ResponseStatus(HttpStatus.OK)
@@ -136,9 +120,6 @@ public class SpringMVCHangarRestService implements HangarRestService {
 		hangarService.supprimerHangar(entity);
 	}
 
-	/**
-	 * @see org.transgalactica.management.rest.SpringMVCHangarRestService.restservice.IHangarRestService#search(org.transgalactica.management.rest.materiel.data.impl.RechercheHangarCommand)
-	 */
 	@Override
 	@RequestMapping(params = "localisation", method = RequestMethod.GET)
 	@ResponseStatus(HttpStatus.OK)

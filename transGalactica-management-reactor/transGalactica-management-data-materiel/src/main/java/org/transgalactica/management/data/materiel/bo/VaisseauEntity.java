@@ -9,7 +9,7 @@ import org.hibernate.validator.constraints.NotBlank;
 /**
  * Ce BO utilise une cle metier, en plus de la cle technique.
  * 
- * @BK immatriculation
+ * BK immatriculation
  * @author Thierry
  */
 public interface VaisseauEntity extends Serializable {
