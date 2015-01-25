@@ -23,11 +23,11 @@ public class EntityTest extends AbstractBoGenericTest {
 		beans.add(new Object[] { JpaMecanicienSpecialiteEntity.class,
 				new BusinessIdentifierSetterVisitor<JpaMecanicienSpecialiteEntity>() {
 					public void setBusinessIdentifierFirstValue(JpaMecanicienSpecialiteEntity bo) {
-						ReflectionTestUtils.invokeSetterMethod(bo, "nomSpecialite", "nomSpecialite 1");
+						ReflectionTestUtils.setField(bo, "nomSpecialite", "nomSpecialite 1");
 					}
 
 					public void setBusinessIdentifierSecondValue(JpaMecanicienSpecialiteEntity bo) {
-						ReflectionTestUtils.invokeSetterMethod(bo, "nomSpecialite", "nomSpecialite 2");
+						ReflectionTestUtils.setField(bo, "nomSpecialite", "nomSpecialite 2");
 					}
 				} });
 		return beans;

@@ -12,8 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.transgalactica.management.data.materiel.bo.HangarEntity;
 import org.transgalactica.management.data.materiel.bo.HangarSummary;
 import org.transgalactica.management.data.materiel.bo.VaisseauEntity;
-import org.transgalactica.management.data.materiel.dao.HangarDao;
-import org.transgalactica.management.data.materiel.dao.VaisseauDao;
 import org.transgalactica.test.AbstractTransactionalTest;
 
 public class HangarDaoTest extends AbstractTransactionalTest {
@@ -25,7 +23,7 @@ public class HangarDaoTest extends AbstractTransactionalTest {
 	private VaisseauDao vaisseauDao;
 
 	@Test
-	public void testPersist_Save() {
+	public void testInsert() {
 		HangarEntity toSave = applicationContext.getBean(HangarEntity.class);
 		toSave.setLocalisation("AAA");
 		toSave.setNombreEmplacements(5);
@@ -33,7 +31,7 @@ public class HangarDaoTest extends AbstractTransactionalTest {
 		toSave.add(vaisseau);
 		assertNull(toSave.getNumero());
 
-		hangarDao.persist(toSave);
+		hangarDao.save(toSave);
 
 		assertNotNull(toSave.getNumero());
 		HangarEntity found = hangarDao.findByNumero(toSave.getNumero());
@@ -45,7 +43,7 @@ public class HangarDaoTest extends AbstractTransactionalTest {
 	}
 
 	@Test
-	public void testPersist_Update() {
+	public void testUpdate() {
 		HangarEntity toUpdate = hangarDao.findByNumero(1L);
 		assertNotNull(toUpdate);
 		toUpdate.setNombreEmplacements(2);
@@ -53,7 +51,7 @@ public class HangarDaoTest extends AbstractTransactionalTest {
 		assertEquals(3, toUpdate.getVaisseaux().size());
 		toUpdate.remove(toUpdate.getVaisseaux().iterator().next());
 
-		hangarDao.persist(toUpdate);
+		hangarDao.save(toUpdate);
 
 		HangarEntity found = hangarDao.findByNumero(1L);
 		assertNotNull(found);
@@ -63,9 +61,9 @@ public class HangarDaoTest extends AbstractTransactionalTest {
 	}
 
 	@Test
-	public void testRemove() {
+	public void testDelete() {
 		HangarEntity toDelete = hangarDao.findByNumero(2L);
-		hangarDao.remove(toDelete);
+		hangarDao.delete(toDelete);
 		HangarEntity deleted = hangarDao.findByNumero(2L);
 		assertNull(deleted);
 	}
@@ -88,18 +86,8 @@ public class HangarDaoTest extends AbstractTransactionalTest {
 	}
 
 	@Test
-	public void testRefresh() {
-		HangarEntity found = hangarDao.findByNumero(1L);
-		assertNotNull(found);
-		found.setLocalisation("Quelque part dans l'espace");
-
-		hangarDao.refresh(found);
-		assertEquals("Alderaan", found.getLocalisation());
-	}
-
-	@Test
-	public void testFindAllHangars() {
-		List<HangarSummary> hangars = hangarDao.findAllHangars();
+	public void testFindAllOrderByNumero() {
+		List<HangarSummary> hangars = hangarDao.findAllOrderByNumero();
 
 		assertNotNull(hangars);
 		assertEquals(3, hangars.size());
@@ -111,8 +99,8 @@ public class HangarDaoTest extends AbstractTransactionalTest {
 	}
 
 	@Test
-	public void testFindHangarsByLocalisation() {
-		List<HangarSummary> hangars = hangarDao.findHangarsByLocalisation("Arakis");
+	public void testFindByLocalisationOrderByNumero() {
+		List<HangarSummary> hangars = hangarDao.findByLocalisationOrderByNumero("Arakis");
 
 		assertNotNull(hangars);
 		assertEquals(1, hangars.size());
@@ -123,8 +111,8 @@ public class HangarDaoTest extends AbstractTransactionalTest {
 	}
 
 	@Test
-	public void testFindHangarsWithVaisseauxOfModele() {
-		List<HangarSummary> hangars = hangarDao.findHangarsWithVaisseauxOfModele("cargo YT-1300");
+	public void testFindByVaisseauxModeleOrderByNumero() {
+		List<HangarSummary> hangars = hangarDao.findByVaisseauxModeleOrderByNumero("cargo YT-1300");
 
 		assertNotNull(hangars);
 		assertEquals(1, hangars.size());

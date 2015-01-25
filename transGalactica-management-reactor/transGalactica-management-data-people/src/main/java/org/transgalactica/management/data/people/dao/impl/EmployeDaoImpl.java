@@ -13,45 +13,22 @@ import javax.persistence.criteria.Root;
 import javax.persistence.criteria.SetJoin;
 
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.stereotype.Repository;
 import org.transgalactica.management.data.materiel.bo.impl.JpaVaisseauEntity;
-import org.transgalactica.management.data.materiel.bo.impl.JpaVaisseauIntergalactiqueEntity;
 import org.transgalactica.management.data.people.bo.BasicEmployeSummary;
-import org.transgalactica.management.data.people.bo.EmployeEntity;
 import org.transgalactica.management.data.people.bo.EmployeSearchCriteria;
 import org.transgalactica.management.data.people.bo.EmployeSummary;
 import org.transgalactica.management.data.people.bo.impl.AbstractJpaEmployeEntity;
-import org.transgalactica.management.data.people.dao.EmployeDao;
 
-@Repository
-public class JpaEmployeDao implements EmployeDao {
+public class EmployeDaoImpl implements EmployeDaoCustom {
 
 	@PersistenceContext
 	private EntityManager em;
 
-	protected JpaEmployeDao() {
+	protected EmployeDaoImpl() {
 	}
 
-	@Override
-	public EmployeEntity findByMatricule(Long matricule) {
-		return em.find(AbstractJpaEmployeEntity.class, matricule);
-	}
-
-	@Override
-	public void refresh(EmployeEntity employeEntity) {
-		em.refresh(employeEntity);
-	}
-
-	@Override
-	public void persist(EmployeEntity employeEntity) {
-		em.persist(employeEntity);
-	}
-
-	@Override
-	public void remove(EmployeEntity employeEntity) {
-		em.remove(employeEntity);
-	}
-
+	// TODO https://jira.spring.io/browse/DATAJPA-51
+	// TODO https://jira.spring.io/browse/DATACMNS-89
 	@Override
 	public List<EmployeSummary> findEmployesByCriteria(EmployeSearchCriteria critereRechercheEmploye) {
 
@@ -85,27 +62,5 @@ public class JpaEmployeDao implements EmployeDao {
 				from.get("dateEmbauche"), from.get("type")));
 
 		return em.createQuery(query).getResultList();
-	}
-
-	@Override
-	public List<EmployeSummary> findEmployesByModeleDeVaisseau(String modele) {
-		return em
-				.createQuery(
-						"select distinct new " + BasicEmployeSummary.class.getName()
-								+ "(e.matricule, e.nom, e.dateEmbauche, e.type) from "
-								+ AbstractJpaEmployeEntity.class.getName()
-								+ " e inner join e.vaisseaux v where v.modele = :modele order by e.matricule",
-						EmployeSummary.class).setParameter("modele", modele).getResultList();
-	}
-
-	@Override
-	public List<EmployeSummary> findEmployesOfVaisseauIntergalactique() {
-		return em.createQuery(
-				"select distinct new " + BasicEmployeSummary.class.getName()
-						+ "(e.matricule, e.nom, e.dateEmbauche, e.type) from "
-						+ AbstractJpaEmployeEntity.class.getName()
-						+ " e inner join e.vaisseaux v where v is not null and v.class="
-						+ JpaVaisseauIntergalactiqueEntity.class.getName() + " order by e.matricule",
-				EmployeSummary.class).getResultList();
 	}
 }

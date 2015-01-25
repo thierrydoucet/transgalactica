@@ -13,8 +13,6 @@ import org.transgalactica.management.data.materiel.bo.VaisseauEntity;
 import org.transgalactica.management.data.materiel.bo.VaisseauIntergalactiqueEntity;
 import org.transgalactica.management.data.materiel.bo.VaisseauSearchCriteria;
 import org.transgalactica.management.data.materiel.bo.VaisseauSummary;
-import org.transgalactica.management.data.materiel.dao.HangarDao;
-import org.transgalactica.management.data.materiel.dao.VaisseauDao;
 import org.transgalactica.test.AbstractTransactionalTest;
 
 public class VaisseauDaoTest extends AbstractTransactionalTest {
@@ -26,7 +24,7 @@ public class VaisseauDaoTest extends AbstractTransactionalTest {
 	private VaisseauDao vaisseauDao;
 
 	@Test
-	public void testPersit_Save() {
+	public void testInsert() {
 		VaisseauEntity toSave = applicationContext.getBean(VaisseauEntity.class.getName(), VaisseauEntity.class);
 		toSave.setCapaciteDeFret(1L);
 		toSave.setImmatriculation("immatriculation");
@@ -38,7 +36,7 @@ public class VaisseauDaoTest extends AbstractTransactionalTest {
 		HangarEntity hangar = hangarDao.findByNumero(1L);
 		toSave.setHangar(hangar);
 
-		vaisseauDao.persist(toSave);
+		vaisseauDao.save(toSave);
 
 		VaisseauEntity found = vaisseauDao.findByImmatriculation("immatriculation");
 
@@ -55,7 +53,7 @@ public class VaisseauDaoTest extends AbstractTransactionalTest {
 	}
 
 	@Test
-	public void testPersit_SaveVaisseauIntergalactique() {
+	public void testInsert_VaisseauIntergalactique() {
 		VaisseauIntergalactiqueEntity toSave = applicationContext.getBean(VaisseauIntergalactiqueEntity.class);
 		toSave.setCapaciteDeFret(1L);
 		toSave.setImmatriculation("immatriculation");
@@ -68,7 +66,7 @@ public class VaisseauDaoTest extends AbstractTransactionalTest {
 		HangarEntity hangar = hangarDao.findByNumero(1L);
 		toSave.setHangar(hangar);
 
-		vaisseauDao.persist(toSave);
+		vaisseauDao.save(toSave);
 
 		VaisseauIntergalactiqueEntity found = (VaisseauIntergalactiqueEntity) vaisseauDao
 				.findByImmatriculation("immatriculation");
@@ -86,7 +84,7 @@ public class VaisseauDaoTest extends AbstractTransactionalTest {
 	}
 
 	@Test
-	public void testPersit_Update() {
+	public void testUpdate() {
 		VaisseauEntity toUpdate = vaisseauDao.findByImmatriculation("Flying Bird");
 		assertNotNull(toUpdate);
 		toUpdate.setCapaciteDeFret(1L);
@@ -97,7 +95,7 @@ public class VaisseauDaoTest extends AbstractTransactionalTest {
 		toUpdate.setVitesse(4);
 		toUpdate.setHangar(null);
 
-		vaisseauDao.persist(toUpdate);
+		vaisseauDao.save(toUpdate);
 
 		VaisseauEntity found = vaisseauDao.findByImmatriculation("immatriculation");
 
@@ -114,7 +112,7 @@ public class VaisseauDaoTest extends AbstractTransactionalTest {
 	}
 
 	@Test
-	public void testPersit_UpdateVaisseauIntergalactique() {
+	public void testUpdate_VaisseauIntergalactique() {
 		VaisseauIntergalactiqueEntity toUpdate = (VaisseauIntergalactiqueEntity) vaisseauDao
 				.findByImmatriculation("Faucon Millenium");
 		assertNotNull(toUpdate);
@@ -127,7 +125,7 @@ public class VaisseauDaoTest extends AbstractTransactionalTest {
 		toUpdate.setMultiplicateurHyperdrive((short) 10);
 		toUpdate.setHangar(null);
 
-		vaisseauDao.persist(toUpdate);
+		vaisseauDao.save(toUpdate);
 
 		VaisseauIntergalactiqueEntity found = (VaisseauIntergalactiqueEntity) vaisseauDao
 				.findByImmatriculation("immatriculation");
@@ -145,45 +143,45 @@ public class VaisseauDaoTest extends AbstractTransactionalTest {
 	}
 
 	@Test
-	public void testRemove() {
+	public void testDelete() {
 		VaisseauEntity toDelete = vaisseauDao.findByImmatriculation("DS-61-2 (Mauler Mithel)");
 		assertNotNull(toDelete);
 
-		vaisseauDao.remove(toDelete);
+		vaisseauDao.delete(toDelete);
 
 		VaisseauEntity deleted = vaisseauDao.findByImmatriculation("DS-61-2 (Mauler Mithel)");
 		assertNull(deleted);
 	}
 
 	@Test
-	public void testRemoveAvecPersonnelAttache() {
+	public void testDelete_AvecPersonnelAttache() {
 		VaisseauEntity toDelete = vaisseauDao.findByImmatriculation("Dark Vador's Tie Advanced");
 
-		vaisseauDao.remove(toDelete);
+		vaisseauDao.delete(toDelete);
 
 		VaisseauEntity deleted = vaisseauDao.findByImmatriculation("Dark Vador's Tie Advanced");
 		assertNull(deleted);
 	}
 
 	@Test
-	public void testRemoveVaisseauIntergalactique() {
+	public void testDelete_VaisseauIntergalactique() {
 		VaisseauIntergalactiqueEntity toDelete = (VaisseauIntergalactiqueEntity) vaisseauDao
 				.findByImmatriculation("Leader rouge");
 		assertNotNull(toDelete);
 
-		vaisseauDao.remove(toDelete);
+		vaisseauDao.delete(toDelete);
 
 		VaisseauEntity deleted = vaisseauDao.findByImmatriculation("Leader rouge");
 		assertNull(deleted);
 	}
 
 	@Test
-	public void testRemoveVaisseauIntergalactique_AvecPersonnelAttache() {
+	public void testDelete_VaisseauIntergalactique_AvecPersonnelAttache() {
 		VaisseauIntergalactiqueEntity toDelete = (VaisseauIntergalactiqueEntity) vaisseauDao
 				.findByImmatriculation("Serenity");
 		assertNotNull(toDelete);
 
-		vaisseauDao.remove(toDelete);
+		vaisseauDao.delete(toDelete);
 
 		VaisseauEntity deleted = vaisseauDao.findByImmatriculation("Serenity");
 		assertNull(deleted);
@@ -222,35 +220,14 @@ public class VaisseauDaoTest extends AbstractTransactionalTest {
 	}
 
 	@Test
-	public void testRefresh() {
-		VaisseauEntity found = vaisseauDao.findByImmatriculation("Dark Vador's Tie Advanced");
-		assertNotNull(found);
-		found.setImmatriculation("Erreur de manipulation de l'opérateur");
-
-		vaisseauDao.refresh(found);
-		assertEquals("Dark Vador's Tie Advanced", found.getImmatriculation());
-	}
-
-	@Test
-	public void testRefresh_VaisseauIntergalactique() {
-		VaisseauIntergalactiqueEntity found = (VaisseauIntergalactiqueEntity) vaisseauDao
-				.findByImmatriculation("Faucon Millenium");
-		assertNotNull(found);
-		found.setImmatriculation("Erreur de manipulation de l'opérateur");
-
-		vaisseauDao.refresh(found);
-		assertEquals("Faucon Millenium", found.getImmatriculation());
-	}
-
-	@Test
 	public void testFindByImmatriculation_Absent() {
 		VaisseauEntity found = vaisseauDao.findByImmatriculation("inconnu");
 		assertNull(found);
 	}
 
 	@Test
-	public void testFindVaisseauOfHangarWithLocalisation() {
-		List<VaisseauSummary> vaisseaux = vaisseauDao.findVaisseauxOfHangarWithLocalisation("Aldera%");
+	public void testFindByHangarLocalisationOrderByImmatriculation() {
+		List<VaisseauSummary> vaisseaux = vaisseauDao.findByHangarLocalisationOrderByImmatriculation("Aldera%");
 
 		assertNotNull(vaisseaux);
 		assertEquals(3, vaisseaux.size());
@@ -307,29 +284,29 @@ public class VaisseauDaoTest extends AbstractTransactionalTest {
 	}
 
 	@Test
-	public void testCountVaisseauOfHangarsWithLocalisation() {
-		int nbVaisseaux = vaisseauDao.countVaisseauOfHangarsWithLocalisation("Alderaan");
+	public void testCountByHangarLocalisation() {
+		int nbVaisseaux = vaisseauDao.countByHangarLocalisation("Alderaan");
 		assertEquals(3, nbVaisseaux);
 	}
 
 	@Test
-	public void testCountVaisseauOfHangar() {
+	public void testCountByHangar() {
 		HangarEntity hangar = hangarDao.findByNumero(1L);
-		int nbVaisseaux = vaisseauDao.countVaisseauOfHangar(hangar);
+		int nbVaisseaux = vaisseauDao.countByHangar(hangar);
 		assertEquals(3, nbVaisseaux);
 	}
 
 	@Test
-	public void testFindWithoutHangar() {
-		List<VaisseauSummary> vaisseaux = vaisseauDao.findWithoutHangar();
+	public void testFindByHangarIsNullOrderByImmatriculation() {
+		List<VaisseauSummary> vaisseaux = vaisseauDao.findByHangarIsNullOrderByImmatriculation();
 
 		assertNotNull(vaisseaux);
 		assertEquals(2, vaisseaux.size());
 
-		assertEquals("Leader rouge", vaisseaux.get(0).getImmatriculationVaisseau());
-		assertEquals("T-65 X-Wings", vaisseaux.get(0).getModeleVaisseau());
+		assertEquals("DS-61-2 (Mauler Mithel)", vaisseaux.get(0).getImmatriculationVaisseau());
+		assertEquals("Tie fighter", vaisseaux.get(0).getModeleVaisseau());
 		assertNull(vaisseaux.get(0).getLocalisationHangar());
 
-		assertEquals("DS-61-2 (Mauler Mithel)", vaisseaux.get(1).getImmatriculationVaisseau());
+		assertEquals("Leader rouge", vaisseaux.get(1).getImmatriculationVaisseau());
 	}
 }

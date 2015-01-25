@@ -7,18 +7,20 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import lombok.AccessLevel;
-import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import org.transgalactica.fwk.domain.bean.BusinessIdentifier;
 import org.transgalactica.fwk.domain.stereotype.DataBean;
 import org.transgalactica.management.data.referentiel.bo.MecanicienSpecialiteEntity;
 
 @DataBean
-@Data
 @EqualsAndHashCode(of = "nomSpecialite")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Getter
+@ToString(of = "nomSpecialite")
 @Entity
 @Table(name = "MECANICIENS_SPECIALITES")
 @Cacheable

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
 
@@ -20,13 +21,9 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.transgalactica.management</groupId>
-			<artifactId>transGalactica-management-data-core</artifactId>
+			<artifactId>transGalactica-management-core</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>org.transgalactica.management</groupId>
-			<artifactId>transGalactica-management-data-orm</artifactId>
-		</dependency>
-		
+
 		<dependency>
 			<groupId>org.transgalactica.fwk</groupId>
 			<artifactId>transGalactica-fwk-validation</artifactId>
@@ -46,10 +43,13 @@
 			<artifactId>validation-api</artifactId>
 		</dependency>
 
-		<!-- A ajouter lorsque dispo dependency>
-			<groupId>org.hibernate.javax.persistence</groupId>
-			<artifactId>hibernate-jpa-2.1-api</artifactId>
-		</dependency-->
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-jpa</artifactId>
+		</dependency>
+
+		<!-- A ajouter lorsque dispo dependency> <groupId>org.hibernate.javax.persistence</groupId> 
+			<artifactId>hibernate-jpa-2.1-api</artifactId> </dependency -->
 
 		<dependency>
 			<groupId>org.apache.commons</groupId>
@@ -73,7 +73,7 @@
 		</dependency>
 		<dependency>
 			<groupId>org.transgalactica.management</groupId>
-			<artifactId>transGalactica-management-data-orm</artifactId>
+			<artifactId>transGalactica-management-core</artifactId>
 			<type>test-jar</type>
 		</dependency>
 	</dependencies>

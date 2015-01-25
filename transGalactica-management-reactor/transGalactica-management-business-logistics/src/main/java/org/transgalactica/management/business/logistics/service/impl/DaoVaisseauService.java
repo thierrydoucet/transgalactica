@@ -34,7 +34,7 @@ public class DaoVaisseauService implements VaisseauService {
 	@Override
 	@Transactional
 	public void enregistrerVaisseau(VaisseauEntity vaisseau) {
-		vaisseauDao.persist(vaisseau);
+		vaisseauDao.save(vaisseau);
 	}
 
 	@Override
@@ -44,12 +44,12 @@ public class DaoVaisseauService implements VaisseauService {
 
 	@Override
 	public List<VaisseauSummary> rechercherVaisseauxEnTransit() {
-		return vaisseauDao.findWithoutHangar();
+		return vaisseauDao.findByHangarIsNullOrderByImmatriculation();
 	}
 
 	@Override
 	@Transactional
 	public void supprimerVaisseau(VaisseauEntity vaisseau) {
-		vaisseauDao.remove(vaisseau);
+		vaisseauDao.delete(vaisseau);
 	}
 }

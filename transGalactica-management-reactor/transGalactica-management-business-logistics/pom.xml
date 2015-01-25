@@ -20,7 +20,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.transgalactica.management</groupId>
-			<artifactId>transGalactica-management-business-core</artifactId>
+			<artifactId>transGalactica-management-core</artifactId>
 		</dependency>
 
 		<dependency>
@@ -65,7 +65,7 @@
 
 		<dependency>
 			<groupId>org.transgalactica.management</groupId>
-			<artifactId>transGalactica-management-data-orm</artifactId>
+			<artifactId>transGalactica-management-core</artifactId>
 			<type>test-jar</type>
 		</dependency>
 	</dependencies>

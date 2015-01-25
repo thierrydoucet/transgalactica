@@ -40,47 +40,44 @@ public class DaoHangarService implements HangarService {
 	@Override
 	@Transactional
 	public void enregistrerHangar(HangarEntity hangar) {
-		hangarDao.persist(hangar);
+		hangarDao.save(hangar);
 	}
 
 	@Override
 	public List<HangarSummary> rechercherHangars() {
-		return hangarDao.findAllHangars();
+		return hangarDao.findAllOrderByNumero();
 	}
 
 	@Override
 	public List<HangarSummary> rechercherHangars(HangarSearchCriteria criteresRechercheHangar) {
-		return hangarDao.findHangarsByLocalisation(criteresRechercheHangar.getLocalisationHangar());
+		return hangarDao.findByLocalisationOrderByNumero(criteresRechercheHangar.getLocalisationHangar());
 	}
 
 	@Override
 	@Transactional
 	public void supprimerHangar(HangarEntity hangar) {
-		int nbVaisseaux = vaisseauDao.countVaisseauOfHangar(hangar);
+		int nbVaisseaux = vaisseauDao.countByHangar(hangar);
 		if (nbVaisseaux > 0) {
 			throw new BusinessException("HANGAR_VALIDATION_2");
 		}
-		hangarDao.remove(hangar);
+		hangarDao.delete(hangar);
 	}
 
 	@Override
 	@Transactional
 	public void affecterVaisseauAuHangar(VaisseauEntity vaisseau, HangarEntity hangar) {
 		// reste t'il des places dans le Hangar cible
-		int nbVaisseaux = vaisseauDao.countVaisseauOfHangar(hangar);
+		int nbVaisseaux = vaisseauDao.countByHangar(hangar);
 		if (nbVaisseaux >= hangar.getNombreEmplacements()) {
 			throw new BusinessException("HANGAR_VALIDATION_4");
 		}
-		// rechargement entités
-		hangarDao.refresh(hangar);
-		vaisseauDao.refresh(vaisseau);
 		// le vaisseau était'il parqué dans un hangar.
 		HangarEntity fromHangar = vaisseau.getHangar();
 		if (fromHangar != null && !fromHangar.equals(hangar)) {
 			fromHangar.remove(vaisseau);
-			hangarDao.persist(fromHangar);
+			hangarDao.save(fromHangar);
 		}
 		hangar.add(vaisseau);
-		hangarDao.persist(hangar);
+		hangarDao.save(hangar);
 	}
 }

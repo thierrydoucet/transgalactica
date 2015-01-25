@@ -41,7 +41,7 @@ public class DaoEmployeService implements EmployeService {
 	@Override
 	@Transactional
 	public void enregistrerEmploye(EmployeEntity employe) {
-		employeDao.persist(employe);
+		employeDao.save(employe);
 	}
 
 	@Override
@@ -52,15 +52,14 @@ public class DaoEmployeService implements EmployeService {
 	@Override
 	@Transactional
 	public void supprimerEmploye(EmployeEntity employe) {
-		employeDao.remove(employe);
+		employeDao.delete(employe);
 	}
 
 	@Override
 	@Transactional
 	public void affecterVaisseauAEmploye(VaisseauEntity vaisseau, EmployeEntity employe) {
-		employeDao.refresh(employe);
 		employe.addVaisseau(vaisseau);
-		employeDao.persist(employe);
+		employeDao.save(employe);
 	}
 
 	@Override

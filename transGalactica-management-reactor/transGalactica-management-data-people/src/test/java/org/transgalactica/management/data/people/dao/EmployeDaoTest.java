@@ -22,7 +22,6 @@ import org.transgalactica.management.data.people.bo.EmployeSummary;
 import org.transgalactica.management.data.people.bo.MecanicienEntity;
 import org.transgalactica.management.data.people.bo.PiloteEntity;
 import org.transgalactica.management.data.people.bo.impl.JpaPiloteEntity;
-import org.transgalactica.management.data.people.dao.EmployeDao;
 import org.transgalactica.management.data.referentiel.bo.EmployeType;
 import org.transgalactica.management.data.referentiel.bo.MecanicienSpecialiteEntity;
 import org.transgalactica.management.data.referentiel.dao.MecanicienSpecialiteDao;
@@ -62,7 +61,7 @@ public class EmployeDaoTest extends AbstractTransactionalTest {
 		toSave.addVaisseau(vaisseau);
 		assertNull(toSave.getMatricule());
 
-		employeDao.persist(toSave);
+		employeDao.save(toSave);
 
 		assertNotNull(toSave.getMatricule());
 		PiloteEntity found = (PiloteEntity) employeDao.findByMatricule(toSave.getMatricule());
@@ -86,7 +85,7 @@ public class EmployeDaoTest extends AbstractTransactionalTest {
 		toSave.addVaisseau(vaisseau);
 		assertNull(toSave.getMatricule());
 
-		employeDao.persist(toSave);
+		employeDao.save(toSave);
 
 		assertNotNull(toSave.getMatricule());
 		MecanicienEntity found = (MecanicienEntity) employeDao.findByMatricule(toSave.getMatricule());
@@ -108,7 +107,7 @@ public class EmployeDaoTest extends AbstractTransactionalTest {
 		toUpdate.setNombreHeuresVol(88);
 		toUpdate.getVaisseaux().clear();
 
-		employeDao.persist(toUpdate);
+		employeDao.save(toUpdate);
 
 		PiloteEntity found = (PiloteEntity) employeDao.findByMatricule(1L);
 
@@ -129,7 +128,7 @@ public class EmployeDaoTest extends AbstractTransactionalTest {
 		toUpdate.getSpecialites().clear();
 		toUpdate.getVaisseaux().clear();
 
-		employeDao.persist(toUpdate);
+		employeDao.save(toUpdate);
 
 		MecanicienEntity found = (MecanicienEntity) employeDao.findByMatricule(2L);
 
@@ -146,7 +145,7 @@ public class EmployeDaoTest extends AbstractTransactionalTest {
 		PiloteEntity toDelete = (PiloteEntity) employeDao.findByMatricule(3L);
 		assertNotNull(toDelete);
 
-		employeDao.remove(toDelete);
+		employeDao.delete(toDelete);
 
 		PiloteEntity deleted = (PiloteEntity) employeDao.findByMatricule(3L);
 		assertNull(deleted);
@@ -157,7 +156,7 @@ public class EmployeDaoTest extends AbstractTransactionalTest {
 		MecanicienEntity toDelete = (MecanicienEntity) employeDao.findByMatricule(7L);
 		assertNotNull(toDelete);
 
-		employeDao.remove(toDelete);
+		employeDao.delete(toDelete);
 
 		MecanicienEntity deleted = (MecanicienEntity) employeDao.findByMatricule(7L);
 		assertNull(deleted);
@@ -168,7 +167,7 @@ public class EmployeDaoTest extends AbstractTransactionalTest {
 		EmployeEntity toDelete = employeDao.findByMatricule(1L);
 		assertNotNull(toDelete);
 
-		employeDao.remove(toDelete);
+		employeDao.delete(toDelete);
 
 		EmployeEntity deleted = employeDao.findByMatricule(1L);
 		assertNull(deleted);
