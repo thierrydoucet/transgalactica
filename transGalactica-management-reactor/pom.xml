@@ -20,12 +20,11 @@
 	</description>
 
 	<modules>
-		<module>transGalactica-management-business-core</module>
+		<module>transGalactica-management-core</module>
+
 		<module>transGalactica-management-business-logistics</module>
 		<module>transGalactica-management-business-hr</module>
 
-		<module>transGalactica-management-data-core</module>
-		<module>transGalactica-management-data-orm</module>
 		<module>transGalactica-management-data-referentiel</module>
 		<module>transGalactica-management-data-materiel</module>
 		<module>transGalactica-management-data-people</module>
@@ -53,9 +52,17 @@
 		<dependencies>
 			<dependency>
 				<groupId>org.transgalactica.management</groupId>
-				<artifactId>transGalactica-management-business-core</artifactId>
+				<artifactId>transGalactica-management-core</artifactId>
 				<version>${project.version}</version>
 			</dependency>
+			<dependency>
+				<groupId>org.transgalactica.management</groupId>
+				<artifactId>transGalactica-management-core</artifactId>
+				<type>test-jar</type>
+				<version>${project.version}</version>
+			</dependency>
+
+
 			<dependency>
 				<groupId>org.transgalactica.management</groupId>
 				<artifactId>transGalactica-management-business-hr</artifactId>
@@ -67,22 +74,6 @@
 				<version>${project.version}</version>
 			</dependency>
 
-			<dependency>
-				<groupId>org.transgalactica.management</groupId>
-				<artifactId>transGalactica-management-data-core</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.transgalactica.management</groupId>
-				<artifactId>transGalactica-management-data-orm</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.transgalactica.management</groupId>
-				<artifactId>transGalactica-management-data-orm</artifactId>
-				<type>test-jar</type>
-				<version>${project.version}</version>
-			</dependency>
 			<dependency>
 				<groupId>org.transgalactica.management</groupId>
 				<artifactId>transGalactica-management-data-referentiel</artifactId>

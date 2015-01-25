@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans:beans
+	xmlns="http://www.springframework.org/schema/security"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/security
+        http://www.springframework.org/schema/security/spring-security.xsd">
+
+	<beans:description>Trans'Galactica Business Core - Security Definitions</beans:description>
+
+	<!-- Interceptor méthodes de services -->
+	<global-method-security>
+		<protect-pointcut
+			expression="execution(public * org.transgalactica.management.business..service.*.rechercher*(..))"
+			access="ROLE_ANONYMOUS,ROLE_GESTIONNAIRE,ROLE_SUPER_GESTIONNAIRE" />
+		<protect-pointcut
+			expression="execution(public * org.transgalactica.management.business..service.*.charger*(..))"
+			access="ROLE_GESTIONNAIRE,ROLE_SUPER_GESTIONNAIRE" />
+		<protect-pointcut
+			expression="execution(public * org.transgalactica.management.business..service.*.enregistrer*(..))"
+			access="ROLE_SUPER_GESTIONNAIRE" />
+		<protect-pointcut
+			expression="execution(public * org.transgalactica.management.business..service.*.supprimer*(..))"
+			access="ROLE_SUPER_GESTIONNAIRE" />
+		<protect-pointcut
+			expression="execution(public * org.transgalactica.management.business..service.*.affecter*(..))"
+			access="ROLE_GESTIONNAIRE,ROLE_SUPER_GESTIONNAIRE" />
+		<!--
+			la declaration suivante va provoquer une erreur a l'initialisation si une methode est declarée dans l'interface et
+			non retenue par les déclaration ci dessus
+		-->
+		<protect-pointcut
+			expression="execution(public * org.transgalactica.management.business..service.*.*(..))"
+			access="NOT_ALLOWED" />
+	</global-method-security>
+
+	<!-- Authentication Manager -->
+	<authentication-manager>
+		<authentication-provider>
+			<user-service properties="classpath:org/transgalactica/management/core/config/security/users.properties" />
+		</authentication-provider>
+	</authentication-manager>
+
+</beans:beans>

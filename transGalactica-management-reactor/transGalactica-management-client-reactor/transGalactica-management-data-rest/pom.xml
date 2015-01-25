@@ -19,10 +19,6 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>org.transgalactica.management</groupId>
-			<artifactId>transGalactica-management-data-core</artifactId>
-		</dependency>
-		<dependency>
 			<groupId>org.transgalactica.management.client</groupId>
 			<artifactId>transGalactica-management-flux-rest</artifactId>
 		</dependency>
