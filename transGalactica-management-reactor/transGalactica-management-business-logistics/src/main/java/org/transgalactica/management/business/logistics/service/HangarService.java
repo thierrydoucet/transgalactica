@@ -5,20 +5,18 @@ import java.util.List;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
-import org.springframework.validation.annotation.Validated;
 import org.transgalactica.management.data.materiel.bo.HangarEntity;
 import org.transgalactica.management.data.materiel.bo.HangarSearchCriteria;
 import org.transgalactica.management.data.materiel.bo.HangarSummary;
 import org.transgalactica.management.data.materiel.bo.VaisseauEntity;
 
-@Validated
 public interface HangarService {
 
 	List<HangarSummary> rechercherHangars();
 
 	List<HangarSummary> rechercherHangars(@NotNull @Valid HangarSearchCriteria criteresRechercheHangar);
 
-	HangarEntity chargerHangar(Long numero);
+	HangarEntity chargerHangar(@NotNull Long numero);
 
 	/**
 	 * Persister un HangarEntity (nouveau ou deja existant).

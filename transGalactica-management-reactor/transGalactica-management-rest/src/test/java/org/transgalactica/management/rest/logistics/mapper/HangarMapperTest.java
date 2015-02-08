@@ -16,19 +16,18 @@ import org.transgalactica.management.data.materiel.bo.HangarSummary;
 import org.transgalactica.management.data.materiel.bo.VaisseauEntity;
 import org.transgalactica.management.data.materiel.bo.impl.JpaHangarEntity;
 import org.transgalactica.management.data.materiel.bo.impl.JpaVaisseauEntity;
-import org.transgalactica.management.rest.AbstractSpringContextTest;
+import org.transgalactica.management.rest.AbstractWebTest;
 import org.transgalactica.management.rest.logistics.data.HangarCommand;
 import org.transgalactica.management.rest.logistics.data.HangarDetailDto;
 import org.transgalactica.management.rest.logistics.data.HangarDtos;
 import org.transgalactica.management.rest.logistics.data.impl.JaxbHangarCommand;
-import org.transgalactica.management.rest.logistics.mapper.HangarMapper;
 
 /**
  * Classe de tests pour le mapper relatif aux hangars.
  * 
  * @author Thierry
  */
-public class HangarMapperTest extends AbstractSpringContextTest {
+public class HangarMapperTest extends AbstractWebTest {
 
 	@Autowired
 	private HangarMapper mapper;

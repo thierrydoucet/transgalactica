@@ -10,14 +10,12 @@ import javax.validation.Validator;
 import org.junit.Test;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.transgalactica.management.rest.AbstractSpringContextTest;
+import org.transgalactica.management.rest.AbstractWebTest;
 import org.transgalactica.management.rest.logistics.data.impl.JaxbVaisseauCommand;
 
-public class VaisseauCommandValidationTest extends AbstractSpringContextTest {
+public class VaisseauCommandValidationTest extends AbstractWebTest {
 
 	@Autowired
-	@Qualifier("javax.validation.ValidatorFactory")
 	private Validator validator;
 
 	@Test

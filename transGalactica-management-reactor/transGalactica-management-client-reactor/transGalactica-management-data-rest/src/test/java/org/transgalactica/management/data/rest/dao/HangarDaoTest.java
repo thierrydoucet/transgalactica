@@ -10,22 +10,26 @@ import javax.inject.Named;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.BeanUtils;
 import org.springframework.http.client.ClientHttpRequestFactory;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.annotation.DirtiesContext.ClassMode;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.util.ReflectionTestUtils;
 import org.springframework.web.client.RestTemplate;
+import org.transgalactica.management.data.rest.TestConfig;
 import org.transgalactica.management.data.rest.bo.HangarSearchCriteria;
 import org.transgalactica.management.data.rest.bo.HangarSummaryTo;
 import org.transgalactica.management.data.rest.bo.HangarTo;
 import org.transgalactica.management.data.rest.bo.impl.BasicHangarSearchCriteria;
 import org.transgalactica.management.data.rest.bo.impl.BasicHangarTo;
-import org.transgalactica.management.data.rest.dao.HangarDao;
-import org.transgalactica.test.AbstractContextTest;
 
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(classes = TestConfig.class)
 @DirtiesContext(classMode = ClassMode.AFTER_CLASS)
-public class HangarDaoTest extends AbstractContextTest {
+public class HangarDaoTest {
 
 	@Inject
 	@Named("mockClientHttpRequestFactory")

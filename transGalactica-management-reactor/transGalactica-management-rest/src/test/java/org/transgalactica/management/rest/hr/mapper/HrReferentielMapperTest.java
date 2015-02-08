@@ -12,19 +12,18 @@ import org.springframework.test.util.ReflectionTestUtils;
 import org.transgalactica.management.data.referentiel.bo.EmployeType;
 import org.transgalactica.management.data.referentiel.bo.MecanicienSpecialiteEntity;
 import org.transgalactica.management.data.referentiel.bo.impl.JpaMecanicienSpecialiteEntity;
-import org.transgalactica.management.rest.AbstractSpringContextTest;
+import org.transgalactica.management.rest.AbstractWebTest;
 import org.transgalactica.management.rest.hr.data.EmployeTypeDtos;
 import org.transgalactica.management.rest.hr.data.MecanicienDetailDto;
 import org.transgalactica.management.rest.hr.data.MecanicienSpecialiteDtos;
 import org.transgalactica.management.rest.hr.data.impl.JaxbMecanicienDetailDto;
-import org.transgalactica.management.rest.hr.mapper.HrReferentielMapper;
 
 /**
  * Classe de tests pour le mapper relatif aux referentiel HR.
  * 
  * @author Thierry
  */
-public class HrReferentielMapperTest extends AbstractSpringContextTest {
+public class HrReferentielMapperTest extends AbstractWebTest {
 
 	@Autowired
 	private HrReferentielMapper mapper;
@@ -32,7 +31,7 @@ public class HrReferentielMapperTest extends AbstractSpringContextTest {
 	@Test
 	public void testMapToMecanicienSpecialiteDtos() {
 		MecanicienSpecialiteEntity specialiteEntity = BeanUtils.instantiateClass(JpaMecanicienSpecialiteEntity.class);
-		ReflectionTestUtils.invokeSetterMethod(specialiteEntity, "setNomSpecialite", "nomSpecialite");
+		ReflectionTestUtils.setField(specialiteEntity, "nomSpecialite", "nomSpecialite");
 
 		MecanicienSpecialiteDtos dtos = mapper.mapToMecanicienSpecialiteDtos(Collections
 				.singletonList(specialiteEntity));
@@ -56,7 +55,7 @@ public class HrReferentielMapperTest extends AbstractSpringContextTest {
 	@Test
 	public void testMapSpecialitesToMecanicienDetailDto() {
 		MecanicienSpecialiteEntity specialiteEntity = BeanUtils.instantiateClass(JpaMecanicienSpecialiteEntity.class);
-		ReflectionTestUtils.invokeSetterMethod(specialiteEntity, "setNomSpecialite", "nomSpecialite");
+		ReflectionTestUtils.setField(specialiteEntity, "nomSpecialite", "nomSpecialite");
 
 		MecanicienDetailDto dto = BeanUtils.instantiateClass(JaxbMecanicienDetailDto.class);
 		mapper.mapSpecialitesToMecanicienDetailDto(dto, Collections.singleton(specialiteEntity));

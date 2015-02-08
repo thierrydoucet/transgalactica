@@ -12,10 +12,17 @@ import java.util.TimeZone;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.transaction.TransactionConfiguration;
+import org.springframework.transaction.annotation.Transactional;
 import org.transgalactica.management.data.materiel.bo.VaisseauEntity;
 import org.transgalactica.management.data.materiel.dao.VaisseauDao;
+import org.transgalactica.management.data.people.TestConfig;
 import org.transgalactica.management.data.people.bo.EmployeEntity;
 import org.transgalactica.management.data.people.bo.EmployeSearchCriteria;
 import org.transgalactica.management.data.people.bo.EmployeSummary;
@@ -25,9 +32,15 @@ import org.transgalactica.management.data.people.bo.impl.JpaPiloteEntity;
 import org.transgalactica.management.data.referentiel.bo.EmployeType;
 import org.transgalactica.management.data.referentiel.bo.MecanicienSpecialiteEntity;
 import org.transgalactica.management.data.referentiel.dao.MecanicienSpecialiteDao;
-import org.transgalactica.test.AbstractTransactionalTest;
 
-public class EmployeDaoTest extends AbstractTransactionalTest {
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(classes = TestConfig.class)
+@TransactionConfiguration
+@Transactional
+public class EmployeDaoTest {
+
+	@Autowired
+	private BeanFactory beanFactory;
 
 	@Autowired
 	private EmployeDao employeDao;
@@ -76,7 +89,7 @@ public class EmployeDaoTest extends AbstractTransactionalTest {
 
 	@Test
 	public void testPersist_SaveMecanicien() {
-		MecanicienEntity toSave = applicationContext.getBean(MecanicienEntity.class);
+		MecanicienEntity toSave = beanFactory.getBean(MecanicienEntity.class);
 		toSave.setNom("Toto");
 		toSave.setDateEmbauche(new GregorianCalendar(2000, 0, 1).getTime());
 		MecanicienSpecialiteEntity specialite = mecanicienSpecialiteDao.findByNomSpecialite("Hyperpropulsion");
@@ -207,7 +220,7 @@ public class EmployeDaoTest extends AbstractTransactionalTest {
 
 	@Test
 	public void testFindEmployesByCriteria() {
-		EmployeSearchCriteria critereRechercheEmploye = applicationContext.getBean(EmployeSearchCriteria.class);
+		EmployeSearchCriteria critereRechercheEmploye = beanFactory.getBean(EmployeSearchCriteria.class);
 		critereRechercheEmploye.setNomEmploye("%chew%");
 		critereRechercheEmploye.setDateEmbaucheEmployeDebut(new GregorianCalendar(1977, 0, 1).getTime());
 		critereRechercheEmploye.setDateEmbaucheEmployeFin(new GregorianCalendar(1977, 11, 31).getTime());
@@ -225,7 +238,7 @@ public class EmployeDaoTest extends AbstractTransactionalTest {
 
 	@Test
 	public void testFindEmployesByCriteria_immatriculation() {
-		EmployeSearchCriteria critereRechercheEmploye = applicationContext.getBean(EmployeSearchCriteria.class);
+		EmployeSearchCriteria critereRechercheEmploye = beanFactory.getBean(EmployeSearchCriteria.class);
 		critereRechercheEmploye.setImmatriculationVaisseau("Serenity");
 
 		List<EmployeSummary> employes = employeDao.findEmployesByCriteria(critereRechercheEmploye);

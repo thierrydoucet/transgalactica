@@ -13,12 +13,16 @@ import javax.inject.Named;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.BeanUtils;
 import org.springframework.http.client.ClientHttpRequestFactory;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.annotation.DirtiesContext.ClassMode;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.util.ReflectionTestUtils;
 import org.springframework.web.client.RestTemplate;
+import org.transgalactica.management.data.rest.TestConfig;
 import org.transgalactica.management.data.rest.bo.EmployeSearchCriteria;
 import org.transgalactica.management.data.rest.bo.EmployeSummaryTo;
 import org.transgalactica.management.data.rest.bo.EmployeTo;
@@ -27,11 +31,11 @@ import org.transgalactica.management.data.rest.bo.PiloteTo;
 import org.transgalactica.management.data.rest.bo.impl.BasicEmployeSearchCriteria;
 import org.transgalactica.management.data.rest.bo.impl.BasicMecanicienTo;
 import org.transgalactica.management.data.rest.bo.impl.BasicPiloteTo;
-import org.transgalactica.management.data.rest.dao.EmployeDao;
-import org.transgalactica.test.AbstractContextTest;
 
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(classes = TestConfig.class)
 @DirtiesContext(classMode = ClassMode.AFTER_CLASS)
-public class EmployeDaoTest extends AbstractContextTest {
+public class EmployeDaoTest {
 
 	@Inject
 	@Named("mockClientHttpRequestFactory")

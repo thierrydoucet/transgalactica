@@ -6,12 +6,15 @@ import static org.junit.Assert.fail;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.aop.Advisor;
 import org.springframework.aop.framework.Advised;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.TransactionDefinition;
 import org.springframework.transaction.TransactionStatus;
@@ -20,11 +23,13 @@ import org.springframework.transaction.support.DefaultTransactionDefinition;
 import org.transgalactica.fwk.test.util.SecurityContextTestUtils;
 import org.transgalactica.management.business.logistics.exception.HangarInexistantException;
 import org.transgalactica.management.business.logistics.service.HangarService;
+import org.transgalactica.management.business.logistics.TestConfig;
 import org.transgalactica.management.data.materiel.bo.HangarEntity;
 import org.transgalactica.management.data.materiel.bo.impl.JpaHangarEntity;
-import org.transgalactica.test.AbstractContextTest;
 
-public class ServiceTransactionInterceptorTest extends AbstractContextTest {
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(classes = TestConfig.class)
+public class ServiceTransactionInterceptorTest {
 
 	@Autowired
 	private PlatformTransactionManager transactionManager;

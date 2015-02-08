@@ -7,18 +7,30 @@ import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.transaction.TransactionConfiguration;
+import org.springframework.transaction.annotation.Transactional;
 import org.transgalactica.fwk.test.util.SecurityContextTestUtils;
 import org.transgalactica.management.business.logistics.exception.VaisseauInexistantException;
-import org.transgalactica.management.business.logistics.service.VaisseauService;
+import org.transgalactica.management.business.logistics.TestConfig;
 import org.transgalactica.management.data.materiel.bo.VaisseauEntity;
 import org.transgalactica.management.data.materiel.bo.VaisseauSearchCriteria;
 import org.transgalactica.management.data.materiel.bo.VaisseauSummary;
 import org.transgalactica.management.data.materiel.bo.impl.BasicVaisseauSearchCriteria;
-import org.transgalactica.test.AbstractTransactionalTest;
 
-public class VaisseauServiceTest extends AbstractTransactionalTest {
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(classes = TestConfig.class)
+@TransactionConfiguration
+@Transactional
+public class VaisseauServiceTest {
+
+	@Autowired
+	private BeanFactory beanFactory;
 
 	@Autowired
 	@Qualifier("daoVaisseauService")
@@ -43,7 +55,7 @@ public class VaisseauServiceTest extends AbstractTransactionalTest {
 
 	@Test
 	public void testRechercherVaisseaux() {
-		VaisseauSearchCriteria criteres = applicationContext.getBean(BasicVaisseauSearchCriteria.class);
+		VaisseauSearchCriteria criteres = beanFactory.getBean(BasicVaisseauSearchCriteria.class);
 		criteres.setModele("cargo YT-1300");
 		List<VaisseauSummary> vaisseaux = vaisseauService.rechercherVaisseaux(criteres);
 		assertEquals(2, vaisseaux.size());
@@ -59,7 +71,7 @@ public class VaisseauServiceTest extends AbstractTransactionalTest {
 
 	@Test
 	public void testEnregistrerVaisseau() {
-		VaisseauEntity vaisseau = applicationContext.getBean(VaisseauEntity.class.getName(), VaisseauEntity.class);
+		VaisseauEntity vaisseau = beanFactory.getBean(VaisseauEntity.class.getName(), VaisseauEntity.class);
 		vaisseau.setImmatriculation("immatriculation");
 		vaisseau.setModele("modele");
 		vaisseauService.enregistrerVaisseau(vaisseau);

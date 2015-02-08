@@ -14,9 +14,9 @@ import org.junit.Before;
 import org.junit.Test;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.transgalactica.fwk.test.util.SecurityContextTestUtils;
-import org.transgalactica.management.rest.AbstractMvcTest;
+import org.transgalactica.management.rest.AbstractWebTest;
 
-public class VaisseauRestServiceMvcTest extends AbstractMvcTest {
+public class VaisseauRestServiceMvcTest extends AbstractWebTest {
 
 	@Before
 	public void setAuthentification() {
@@ -96,7 +96,7 @@ public class VaisseauRestServiceMvcTest extends AbstractMvcTest {
 				.andExpect(content().contentType("application/xml")) //
 				.andExpect(xpath("count(/vaisseaux/*)").number(2D)) //
 				// Contenu complet testé dans "search"
-				.andExpect(xpath("/vaisseaux/*[1]/immatriculation").string("Leader rouge"));
+				.andExpect(xpath("/vaisseaux/*[1]/immatriculation").string("DS-61-2 (Mauler Mithel)"));
 	}
 
 	@Test

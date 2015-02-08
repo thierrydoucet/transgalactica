@@ -15,6 +15,7 @@ import lombok.AccessLevel;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import org.transgalactica.fwk.domain.bean.BusinessIdentifier;
 import org.transgalactica.fwk.domain.stereotype.DataBean;
@@ -24,6 +25,7 @@ import org.transgalactica.management.data.materiel.bo.VaisseauEntity;
 @DataBean("org.transgalactica.management.data.materiel.bo.VaisseauEntity")
 @Data
 @EqualsAndHashCode(of = "immatriculation")
+@ToString(of = "immatriculation")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 @Table(name = "VAISSEAUX")

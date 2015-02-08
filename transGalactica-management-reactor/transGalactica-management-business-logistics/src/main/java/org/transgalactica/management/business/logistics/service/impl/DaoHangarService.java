@@ -3,9 +3,13 @@ package org.transgalactica.management.business.logistics.service.impl;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.validation.annotation.Validated;
 import org.transgalactica.fwk.validation.exception.BusinessException;
 import org.transgalactica.management.business.logistics.exception.HangarInexistantException;
 import org.transgalactica.management.business.logistics.service.HangarService;
@@ -17,6 +21,7 @@ import org.transgalactica.management.data.materiel.dao.HangarDao;
 import org.transgalactica.management.data.materiel.dao.VaisseauDao;
 
 @Service
+@Validated
 public class DaoHangarService implements HangarService {
 
 	@Inject
@@ -29,7 +34,8 @@ public class DaoHangarService implements HangarService {
 	}
 
 	@Override
-	public HangarEntity chargerHangar(Long numero) {
+	@Secured({ "ROLE_GESTIONNAIRE", "ROLE_SUPER_GESTIONNAIRE" })
+	public HangarEntity chargerHangar(@NotNull Long numero) {
 		HangarEntity hangar = hangarDao.findByNumero(numero);
 		if (hangar == null) {
 			throw new HangarInexistantException(numero);
@@ -38,24 +44,28 @@ public class DaoHangarService implements HangarService {
 	}
 
 	@Override
+	@Secured("ROLE_SUPER_GESTIONNAIRE")
 	@Transactional
-	public void enregistrerHangar(HangarEntity hangar) {
+	public void enregistrerHangar(@NotNull @Valid HangarEntity hangar) {
 		hangarDao.save(hangar);
 	}
 
 	@Override
+	@Secured({ "ROLE_ANONYMOUS", "ROLE_GESTIONNAIRE", "ROLE_SUPER_GESTIONNAIRE" })
 	public List<HangarSummary> rechercherHangars() {
 		return hangarDao.findAllOrderByNumero();
 	}
 
 	@Override
-	public List<HangarSummary> rechercherHangars(HangarSearchCriteria criteresRechercheHangar) {
+	@Secured({ "ROLE_ANONYMOUS", "ROLE_GESTIONNAIRE", "ROLE_SUPER_GESTIONNAIRE" })
+	public List<HangarSummary> rechercherHangars(@NotNull @Valid HangarSearchCriteria criteresRechercheHangar) {
 		return hangarDao.findByLocalisationOrderByNumero(criteresRechercheHangar.getLocalisationHangar());
 	}
 
 	@Override
+	@Secured("ROLE_SUPER_GESTIONNAIRE")
 	@Transactional
-	public void supprimerHangar(HangarEntity hangar) {
+	public void supprimerHangar(@NotNull HangarEntity hangar) {
 		int nbVaisseaux = vaisseauDao.countByHangar(hangar);
 		if (nbVaisseaux > 0) {
 			throw new BusinessException("HANGAR_VALIDATION_2");
@@ -64,8 +74,9 @@ public class DaoHangarService implements HangarService {
 	}
 
 	@Override
+	@Secured({ "ROLE_GESTIONNAIRE", "ROLE_SUPER_GESTIONNAIRE" })
 	@Transactional
-	public void affecterVaisseauAuHangar(VaisseauEntity vaisseau, HangarEntity hangar) {
+	public void affecterVaisseauAuHangar(@NotNull VaisseauEntity vaisseau, @NotNull HangarEntity hangar) {
 		// reste t'il des places dans le Hangar cible
 		int nbVaisseaux = vaisseauDao.countByHangar(hangar);
 		if (nbVaisseaux >= hangar.getNombreEmplacements()) {

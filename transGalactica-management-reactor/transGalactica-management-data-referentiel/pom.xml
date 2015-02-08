@@ -20,11 +20,6 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>org.transgalactica.management</groupId>
-			<artifactId>transGalactica-management-core</artifactId>
-		</dependency>
-
-		<dependency>
 			<groupId>org.transgalactica.fwk</groupId>
 			<artifactId>transGalactica-fwk-validation</artifactId>
 		</dependency>
@@ -34,23 +29,28 @@
 		</dependency>
 
 		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-tx</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>javax.validation</groupId>
-			<artifactId>validation-api</artifactId>
-		</dependency>
-
-		<dependency>
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-jpa</artifactId>
 		</dependency>
 
-		<!-- A ajouter lorsque dispo dependency> <groupId>org.hibernate.javax.persistence</groupId> 
+		<!-- A ajouter lorsque dispo ds spring data dependency> <groupId>org.hibernate.javax.persistence</groupId> 
 			<artifactId>hibernate-jpa-2.1-api</artifactId> </dependency -->
-
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<!-- A retirer lorsque api dispo spring data dependencyscope>runtime</scope -->
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-ehcache</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>net.sf.ehcache</groupId>
+			<artifactId>ehcache-core</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
@@ -70,12 +70,15 @@
 		<dependency>
 			<groupId>org.transgalactica.core</groupId>
 			<artifactId>transGalactica-test</artifactId>
+			<type>pom</type>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.transgalactica.management</groupId>
-			<artifactId>transGalactica-management-core</artifactId>
-			<type>test-jar</type>
+			<groupId>org.hsqldb</groupId>
+			<artifactId>hsqldb</artifactId>
+			<scope>test</scope>
 		</dependency>
+
 	</dependencies>
 
 </project>

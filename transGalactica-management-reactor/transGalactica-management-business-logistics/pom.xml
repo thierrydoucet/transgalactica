@@ -20,11 +20,6 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.transgalactica.management</groupId>
-			<artifactId>transGalactica-management-core</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.transgalactica.management</groupId>
 			<artifactId>transGalactica-management-data-materiel</artifactId>
 		</dependency>
 
@@ -38,13 +33,18 @@
 		</dependency>
 
 		<dependency>
+			<groupId>javax.validation</groupId>
+			<artifactId>validation-api</artifactId>
+		</dependency>
+
+		<dependency>
 			<groupId>javax.inject</groupId>
 			<artifactId>javax.inject</artifactId>
 		</dependency>
 
 		<dependency>
-			<groupId>javax.validation</groupId>
-			<artifactId>validation-api</artifactId>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-core</artifactId>
 		</dependency>
 
 		<dependency>
@@ -61,12 +61,18 @@
 		<dependency>
 			<groupId>org.transgalactica.core</groupId>
 			<artifactId>transGalactica-test</artifactId>
+			<type>pom</type>
+			<scope>test</scope>
 		</dependency>
-
 		<dependency>
-			<groupId>org.transgalactica.management</groupId>
-			<artifactId>transGalactica-management-core</artifactId>
-			<type>test-jar</type>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.hsqldb</groupId>
+			<artifactId>hsqldb</artifactId>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 

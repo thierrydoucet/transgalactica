@@ -5,12 +5,10 @@ import java.util.List;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
-import org.springframework.validation.annotation.Validated;
 import org.transgalactica.management.data.materiel.bo.VaisseauEntity;
 import org.transgalactica.management.data.materiel.bo.VaisseauSearchCriteria;
 import org.transgalactica.management.data.materiel.bo.VaisseauSummary;
 
-@Validated
 public interface VaisseauService {
 
 	List<VaisseauSummary> rechercherVaisseaux(@NotNull @Valid VaisseauSearchCriteria criteresRechercheVaisseau);

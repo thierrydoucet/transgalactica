@@ -22,9 +22,9 @@ import org.junit.Before;
 import org.junit.Test;
 import org.springframework.test.annotation.DirtiesContext;
 import org.transgalactica.fwk.test.util.SecurityContextTestUtils;
-import org.transgalactica.management.rest.AbstractMvcTest;
+import org.transgalactica.management.rest.AbstractWebTest;
 
-public class EmployeRestServiceMvcTest extends AbstractMvcTest {
+public class EmployeRestServiceMvcTest extends AbstractWebTest {
 
 	private TimeZone defaultTimeZone;
 

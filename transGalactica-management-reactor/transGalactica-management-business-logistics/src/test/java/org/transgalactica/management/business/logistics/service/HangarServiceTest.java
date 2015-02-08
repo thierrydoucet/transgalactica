@@ -10,22 +10,33 @@ import javax.validation.ValidationException;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.transaction.TransactionConfiguration;
+import org.springframework.transaction.annotation.Transactional;
 import org.transgalactica.fwk.test.util.SecurityContextTestUtils;
 import org.transgalactica.fwk.validation.exception.BusinessException;
 import org.transgalactica.management.business.logistics.exception.HangarInexistantException;
-import org.transgalactica.management.business.logistics.service.HangarService;
-import org.transgalactica.management.business.logistics.service.VaisseauService;
+import org.transgalactica.management.business.logistics.TestConfig;
 import org.transgalactica.management.data.materiel.bo.HangarEntity;
 import org.transgalactica.management.data.materiel.bo.HangarSearchCriteria;
 import org.transgalactica.management.data.materiel.bo.HangarSummary;
 import org.transgalactica.management.data.materiel.bo.VaisseauEntity;
 import org.transgalactica.management.data.materiel.bo.impl.BasicHangarSearchCriteria;
-import org.transgalactica.test.AbstractTransactionalTest;
 
-public class HangarServiceTest extends AbstractTransactionalTest {
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(classes = TestConfig.class)
+@TransactionConfiguration
+@Transactional
+public class HangarServiceTest {
+
+	@Autowired
+	private BeanFactory beanFactory;
 
 	@Autowired
 	@Qualifier("daoHangarService")
@@ -104,7 +115,7 @@ public class HangarServiceTest extends AbstractTransactionalTest {
 
 	@Test
 	public void testEnregistrerHangar() {
-		HangarEntity hangar = applicationContext.getBean(HangarEntity.class);
+		HangarEntity hangar = beanFactory.getBean(HangarEntity.class);
 		hangar.setLocalisation("localisationTest");
 		hangar.setNombreEmplacements(1);
 		hangarService.enregistrerHangar(hangar);

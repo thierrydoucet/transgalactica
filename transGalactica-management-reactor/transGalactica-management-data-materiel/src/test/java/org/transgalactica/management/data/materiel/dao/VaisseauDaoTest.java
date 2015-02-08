@@ -7,15 +7,28 @@ import static org.junit.Assert.assertNull;
 import java.util.List;
 
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.transaction.TransactionConfiguration;
+import org.springframework.transaction.annotation.Transactional;
+import org.transgalactica.management.data.materiel.TestConfig;
 import org.transgalactica.management.data.materiel.bo.HangarEntity;
 import org.transgalactica.management.data.materiel.bo.VaisseauEntity;
 import org.transgalactica.management.data.materiel.bo.VaisseauIntergalactiqueEntity;
 import org.transgalactica.management.data.materiel.bo.VaisseauSearchCriteria;
 import org.transgalactica.management.data.materiel.bo.VaisseauSummary;
-import org.transgalactica.test.AbstractTransactionalTest;
 
-public class VaisseauDaoTest extends AbstractTransactionalTest {
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(classes = TestConfig.class)
+@TransactionConfiguration
+@Transactional
+public class VaisseauDaoTest {
+
+	@Autowired
+	private BeanFactory beanFactory;
 
 	@Autowired
 	private HangarDao hangarDao;
@@ -25,7 +38,7 @@ public class VaisseauDaoTest extends AbstractTransactionalTest {
 
 	@Test
 	public void testInsert() {
-		VaisseauEntity toSave = applicationContext.getBean(VaisseauEntity.class.getName(), VaisseauEntity.class);
+		VaisseauEntity toSave = beanFactory.getBean(VaisseauEntity.class.getName(), VaisseauEntity.class);
 		toSave.setCapaciteDeFret(1L);
 		toSave.setImmatriculation("immatriculation");
 		toSave.setModele("modele");
@@ -54,7 +67,7 @@ public class VaisseauDaoTest extends AbstractTransactionalTest {
 
 	@Test
 	public void testInsert_VaisseauIntergalactique() {
-		VaisseauIntergalactiqueEntity toSave = applicationContext.getBean(VaisseauIntergalactiqueEntity.class);
+		VaisseauIntergalactiqueEntity toSave = beanFactory.getBean(VaisseauIntergalactiqueEntity.class);
 		toSave.setCapaciteDeFret(1L);
 		toSave.setImmatriculation("immatriculation");
 		toSave.setModele("modele");
@@ -257,7 +270,7 @@ public class VaisseauDaoTest extends AbstractTransactionalTest {
 
 	@Test
 	public void testFindByCriteria() {
-		VaisseauSearchCriteria criteres = applicationContext.getBean(VaisseauSearchCriteria.class);
+		VaisseauSearchCriteria criteres = beanFactory.getBean(VaisseauSearchCriteria.class);
 		criteres.setImmatriculation("Faucon Millenium");
 		criteres.setIntergalactique(true);
 		criteres.setModele("cargo YT-1300");
@@ -274,7 +287,7 @@ public class VaisseauDaoTest extends AbstractTransactionalTest {
 
 	@Test
 	public void testFindByCriteria_SansHangars() {
-		VaisseauSearchCriteria criteres = applicationContext.getBean(VaisseauSearchCriteria.class);
+		VaisseauSearchCriteria criteres = beanFactory.getBean(VaisseauSearchCriteria.class);
 		criteres.setImmatriculation("%");
 
 		List<VaisseauSummary> vaisseaux = vaisseauDao.findByCriteria(criteres);

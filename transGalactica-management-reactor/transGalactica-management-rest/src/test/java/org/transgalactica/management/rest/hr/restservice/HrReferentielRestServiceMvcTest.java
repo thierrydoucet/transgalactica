@@ -12,9 +12,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import org.junit.Before;
 import org.junit.Test;
 import org.transgalactica.fwk.test.util.SecurityContextTestUtils;
-import org.transgalactica.management.rest.AbstractMvcTest;
+import org.transgalactica.management.rest.AbstractWebTest;
 
-public class HrReferentielRestServiceMvcTest extends AbstractMvcTest {
+public class HrReferentielRestServiceMvcTest extends AbstractWebTest {
 
 	@Before
 	public void setAuthentification() {

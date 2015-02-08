@@ -9,15 +9,18 @@ import java.util.List;
 import javax.xml.datatype.DatatypeConfigurationException;
 
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.transgalactica.management.data.rest.TestConfig;
 import org.transgalactica.management.data.rest.bo.HangarSummaryTo;
 import org.transgalactica.management.data.rest.bo.HangarTo;
 import org.transgalactica.management.data.rest.bo.VaisseauSummaryTo;
 import org.transgalactica.management.data.rest.bo.VaisseauTo;
 import org.transgalactica.management.data.rest.bo.impl.BasicHangarTo;
 import org.transgalactica.management.data.rest.bo.impl.BasicVaisseauTo;
-import org.transgalactica.management.data.rest.mapper.LogisticsMapper;
 import org.transgalactica.management.flux.rest.HangarCommand;
 import org.transgalactica.management.flux.rest.HangarDetailDto;
 import org.transgalactica.management.flux.rest.HangarDto;
@@ -26,9 +29,10 @@ import org.transgalactica.management.flux.rest.ObjectFactory;
 import org.transgalactica.management.flux.rest.VaisseauCommand;
 import org.transgalactica.management.flux.rest.VaisseauDetailDto;
 import org.transgalactica.management.flux.rest.VaisseauDto;
-import org.transgalactica.test.AbstractContextTest;
 
-public class LogisticsMapperTest extends AbstractContextTest {
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(classes = TestConfig.class)
+public class LogisticsMapperTest {
 
 	@Autowired
 	private LogisticsMapper mapper;

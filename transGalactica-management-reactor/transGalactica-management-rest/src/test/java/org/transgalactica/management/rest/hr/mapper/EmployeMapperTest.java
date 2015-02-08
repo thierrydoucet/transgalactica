@@ -28,7 +28,7 @@ import org.transgalactica.management.data.people.bo.impl.JpaPiloteEntity;
 import org.transgalactica.management.data.referentiel.bo.EmployeType;
 import org.transgalactica.management.data.referentiel.bo.MecanicienSpecialiteEntity;
 import org.transgalactica.management.data.referentiel.bo.impl.JpaMecanicienSpecialiteEntity;
-import org.transgalactica.management.rest.AbstractSpringContextTest;
+import org.transgalactica.management.rest.AbstractWebTest;
 import org.transgalactica.management.rest.hr.data.EmployeCommand;
 import org.transgalactica.management.rest.hr.data.EmployeDetailDto;
 import org.transgalactica.management.rest.hr.data.EmployeDtos;
@@ -38,14 +38,13 @@ import org.transgalactica.management.rest.hr.data.PiloteDetailDto;
 import org.transgalactica.management.rest.hr.data.VaisseauDto;
 import org.transgalactica.management.rest.hr.data.impl.JaxbEmployeCommand;
 import org.transgalactica.management.rest.hr.data.impl.JaxbPiloteCommand;
-import org.transgalactica.management.rest.hr.mapper.EmployeMapper;
 
 /**
  * Classe de tests pour le mapper relatif aux employes.
  * 
  * @author Thierry
  */
-public class EmployeMapperTest extends AbstractSpringContextTest {
+public class EmployeMapperTest extends AbstractWebTest {
 
 	@Autowired
 	private EmployeMapper mapper;
@@ -163,7 +162,7 @@ public class EmployeMapperTest extends AbstractSpringContextTest {
 		entity.setDateEmbauche(dateEmbauche);
 
 		MecanicienSpecialiteEntity specialiteEntity = BeanUtils.instantiateClass(JpaMecanicienSpecialiteEntity.class);
-		ReflectionTestUtils.invokeSetterMethod(specialiteEntity, "setNomSpecialite", "nomSpecialite");
+		ReflectionTestUtils.setField(specialiteEntity, "nomSpecialite", "nomSpecialite");
 		entity.addSpecialite(specialiteEntity);
 
 		VaisseauEntity vaisseau = BeanUtils.instantiateClass(JpaVaisseauEntity.class);

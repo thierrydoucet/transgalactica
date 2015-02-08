@@ -6,14 +6,15 @@ import static org.junit.Assert.assertNotNull;
 import java.net.URISyntaxException;
 
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.web.client.RestTemplate;
-import org.transgalactica.management.flux.rest.HangarDetailDto;
-import org.transgalactica.management.flux.rest.HangarDtos;
-import org.transgalactica.management.flux.rest.VaisseauDetailDto;
-import org.transgalactica.test.AbstractContextTest;
 
-public class FluxLogisticsTest extends AbstractContextTest {
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = "flux.spring.xml")
+public class FluxLogisticsTest {
 
 	@Autowired
 	private RestTemplate restTemplate;

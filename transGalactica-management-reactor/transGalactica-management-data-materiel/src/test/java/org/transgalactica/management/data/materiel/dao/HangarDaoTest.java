@@ -8,13 +8,26 @@ import static org.junit.Assert.assertTrue;
 import java.util.List;
 
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.transaction.TransactionConfiguration;
+import org.springframework.transaction.annotation.Transactional;
+import org.transgalactica.management.data.materiel.TestConfig;
 import org.transgalactica.management.data.materiel.bo.HangarEntity;
 import org.transgalactica.management.data.materiel.bo.HangarSummary;
 import org.transgalactica.management.data.materiel.bo.VaisseauEntity;
-import org.transgalactica.test.AbstractTransactionalTest;
 
-public class HangarDaoTest extends AbstractTransactionalTest {
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(classes = TestConfig.class)
+@TransactionConfiguration
+@Transactional
+public class HangarDaoTest {
+
+	@Autowired
+	private BeanFactory beanFactory;
 
 	@Autowired
 	private HangarDao hangarDao;
@@ -24,7 +37,7 @@ public class HangarDaoTest extends AbstractTransactionalTest {
 
 	@Test
 	public void testInsert() {
-		HangarEntity toSave = applicationContext.getBean(HangarEntity.class);
+		HangarEntity toSave = beanFactory.getBean(HangarEntity.class);
 		toSave.setLocalisation("AAA");
 		toSave.setNombreEmplacements(5);
 		VaisseauEntity vaisseau = vaisseauDao.findByImmatriculation("Faucon Millenium");

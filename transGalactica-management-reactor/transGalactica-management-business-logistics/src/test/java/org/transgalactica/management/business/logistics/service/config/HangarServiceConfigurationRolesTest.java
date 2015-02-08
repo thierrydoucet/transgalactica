@@ -5,14 +5,19 @@ import static org.transgalactica.management.business.logistics.service.mock.Mock
 import static org.transgalactica.management.business.logistics.service.mock.MockFactory.mockVaisseauEntity;
 
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.access.AccessDeniedException;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.transgalactica.fwk.test.util.SecurityContextTestUtils;
+import org.transgalactica.management.business.logistics.TestConfig;
 import org.transgalactica.management.business.logistics.service.HangarService;
-import org.transgalactica.test.AbstractContextTest;
 
-public class HangarServiceConfigurationRolesTest extends AbstractContextTest {
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(classes = TestConfig.class)
+public class HangarServiceConfigurationRolesTest {
 
 	@Autowired
 	@Qualifier("noOperationHangarService")
@@ -29,90 +34,90 @@ public class HangarServiceConfigurationRolesTest extends AbstractContextTest {
 	}
 
 	@Test
-	public void testRechercherHangarsRoleAnomyme() {
+	public void testRechercherHangars_RoleAnomyme() {
 		SecurityContextTestUtils.setAnomymeInContext();
 		this.serviceHangar.rechercherHangars(mockHangarSearchCriteria());
 	}
 
 	@Test
-	public void testRechercherHangarsRoleSuperGestionnaire() {
+	public void testRechercherHangars_RoleSuperGestionnaire() {
 		setSuperGestionnaireInContext();
 		this.serviceHangar.rechercherHangars(mockHangarSearchCriteria());
 	}
 
 	@Test
-	public void testRechercherHangarsRoleGestionnaire() {
+	public void testRechercherHangars_RoleGestionnaire() {
 		setGestionnaireInContext();
 		this.serviceHangar.rechercherHangars(mockHangarSearchCriteria());
 	}
 
 	@Test(expected = AccessDeniedException.class)
-	public void testChargerHangarRoleAnomyme() {
+	public void testChargerHangar_RoleAnomyme() {
 		SecurityContextTestUtils.setAnomymeInContext();
 		this.serviceHangar.chargerHangar(null);
 	}
 
 	@Test
-	public void testChargerHangarRoleSuperGestionnaire() {
+	public void testChargerHangar_RoleSuperGestionnaire() {
 		setSuperGestionnaireInContext();
-		this.serviceHangar.chargerHangar(null);
+		this.serviceHangar.chargerHangar(1L);
 	}
 
 	@Test
-	public void testChargerHangarRoleGestionnaire() {
+	public void testChargerHangar_RoleGestionnaire() {
 		setGestionnaireInContext();
-		this.serviceHangar.chargerHangar(null);
+		this.serviceHangar.chargerHangar(1L);
 	}
 
 	@Test(expected = AccessDeniedException.class)
-	public void testEnregistrerHangarRoleAnomyme() {
+	public void testEnregistrerHangar_RoleAnomyme() {
 		SecurityContextTestUtils.setAnomymeInContext();
 		this.serviceHangar.enregistrerHangar(mockHangarEntity());
 	}
 
 	@Test
-	public void testEnregistrerHangarRoleSuperGestionnaire() {
+	public void testEnregistrerHangar_RoleSuperGestionnaire() {
 		setSuperGestionnaireInContext();
 		this.serviceHangar.enregistrerHangar(mockHangarEntity());
 	}
 
 	@Test(expected = AccessDeniedException.class)
-	public void testEnregistrerHangarRoleGestionnaire() {
+	public void testEnregistrerHangar_RoleGestionnaire() {
 		setGestionnaireInContext();
 		this.serviceHangar.enregistrerHangar(mockHangarEntity());
 	}
 
 	@Test(expected = AccessDeniedException.class)
-	public void testSupprimerHangarRoleAnomyme() {
+	public void testSupprimerHangar_RoleAnomyme() {
 		SecurityContextTestUtils.setAnomymeInContext();
 		this.serviceHangar.supprimerHangar(mockHangarEntity());
 	}
 
 	@Test
-	public void testSupprimerHangarRoleSuperGestionnaire() {
+	public void testSupprimerHangar_RoleSuperGestionnaire() {
 		setSuperGestionnaireInContext();
 		this.serviceHangar.supprimerHangar(mockHangarEntity());
 	}
 
 	@Test(expected = AccessDeniedException.class)
-	public void testSupprimerHangarRoleGestionnaire() {
+	public void testSupprimerHangar_RoleGestionnaire() {
 		setGestionnaireInContext();
 		this.serviceHangar.supprimerHangar(mockHangarEntity());
 	}
 
 	@Test(expected = AccessDeniedException.class)
-	public void testAffecterVaisseauAuHangarRoleAnomyme() {
+	public void testAffecterVaisseauAuHangar_RoleAnomyme() {
 		SecurityContextTestUtils.setAnomymeInContext();
 		this.serviceHangar.affecterVaisseauAuHangar(mockVaisseauEntity(), mockHangarEntity());
 	}
 
 	@Test
-	public void testAffecterVaisseauAuHangarRoleSuperGestionnaire() {
+	public void testAffecterVaisseauAuHangar_RoleSuperGestionnaire() {
 		setSuperGestionnaireInContext();
 		this.serviceHangar.affecterVaisseauAuHangar(mockVaisseauEntity(), mockHangarEntity());
 	}
 
-	public void testAffecterVaisseauAuHangarRoleGestionnaire() {
+	public void testAffecterVaisseauAuHangar_RoleGestionnaire() {
 		setGestionnaireInContext();
 		this.serviceHangar.affecterVaisseauAuHangar(mockVaisseauEntity(), mockHangarEntity());
 	}

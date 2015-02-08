@@ -12,11 +12,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.transgalactica.management.data.materiel.bo.BasicHangarSummary;
 import org.transgalactica.management.data.materiel.bo.HangarSearchCriteria;
 import org.transgalactica.management.data.materiel.bo.HangarSummary;
-import org.transgalactica.management.ws.AbstractSpringContextTest;
+import org.transgalactica.management.ws.AbstractWebTest;
 import org.transgalactica.management.ws.logistics.data.BasicHangarDto;
-import org.transgalactica.management.ws.logistics.mapper.HangarMapper;
 
-public class HangarMapperTest extends AbstractSpringContextTest {
+public class HangarMapperTest extends AbstractWebTest {
 
 	@Autowired
 	private HangarMapper mapper;
@@ -32,8 +31,8 @@ public class HangarMapperTest extends AbstractSpringContextTest {
 	@Test
 	public void testMapHangars() throws BeanInstantiationException, NoSuchMethodException, SecurityException {
 		HangarSummary hangar = BeanUtils.instantiateClass(
-				BasicHangarSummary.class.getConstructor(Long.class, String.class, int.class), 1L,
-				"localisationHangar", 2);
+				BasicHangarSummary.class.getConstructor(Long.class, String.class, int.class), 1L, "localisationHangar",
+				2);
 
 		BasicHangarDto[] hangars = mapper.mapToHangars(Collections.singletonList(hangar));
 

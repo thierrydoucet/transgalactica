@@ -18,19 +18,18 @@ import org.transgalactica.management.data.materiel.bo.VaisseauSummary;
 import org.transgalactica.management.data.materiel.bo.impl.JpaHangarEntity;
 import org.transgalactica.management.data.materiel.bo.impl.JpaVaisseauEntity;
 import org.transgalactica.management.data.materiel.bo.impl.JpaVaisseauIntergalactiqueEntity;
-import org.transgalactica.management.rest.AbstractSpringContextTest;
+import org.transgalactica.management.rest.AbstractWebTest;
 import org.transgalactica.management.rest.logistics.data.VaisseauCommand;
 import org.transgalactica.management.rest.logistics.data.VaisseauDetailDto;
 import org.transgalactica.management.rest.logistics.data.VaisseauDtos;
 import org.transgalactica.management.rest.logistics.data.impl.JaxbVaisseauCommand;
-import org.transgalactica.management.rest.logistics.mapper.VaisseauMapper;
 
 /**
  * Classe de tests pour le mapper relatif aux Vaisseaus.
  * 
  * @author Thierry
  */
-public class VaisseauMapperTest extends AbstractSpringContextTest {
+public class VaisseauMapperTest extends AbstractWebTest {
 
 	@Autowired
 	private VaisseauMapper mapper;

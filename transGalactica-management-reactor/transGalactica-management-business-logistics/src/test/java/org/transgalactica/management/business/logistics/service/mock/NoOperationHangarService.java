@@ -2,7 +2,7 @@ package org.transgalactica.management.business.logistics.service.mock;
 
 import java.util.List;
 
-import org.transgalactica.management.business.logistics.service.HangarService;
+import org.transgalactica.management.business.logistics.service.impl.DaoHangarService;
 import org.transgalactica.management.data.materiel.bo.HangarEntity;
 import org.transgalactica.management.data.materiel.bo.HangarSearchCriteria;
 import org.transgalactica.management.data.materiel.bo.HangarSummary;
@@ -11,7 +11,7 @@ import org.transgalactica.management.data.materiel.bo.VaisseauEntity;
 /**
  * Mock de HangarService ne réalisant aucune opération.
  */
-public class NoOperationHangarService implements HangarService {
+public class NoOperationHangarService extends DaoHangarService {
 
 	@Override
 	public HangarEntity chargerHangar(Long identifiant) {

@@ -12,14 +12,12 @@ import javax.validation.Validator;
 import org.junit.Test;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.transgalactica.management.rest.AbstractSpringContextTest;
+import org.transgalactica.management.rest.AbstractWebTest;
 import org.transgalactica.management.rest.hr.data.impl.JaxbEmployeCommand;
 
-public class EmployeCommandValidationTest extends AbstractSpringContextTest {
+public class EmployeCommandValidationTest extends AbstractWebTest {
 
 	@Autowired
-	@Qualifier("javax.validation.ValidatorFactory")
 	private Validator validator;
 
 	@Test

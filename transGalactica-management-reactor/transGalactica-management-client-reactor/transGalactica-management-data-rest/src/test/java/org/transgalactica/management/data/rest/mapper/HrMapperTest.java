@@ -14,15 +14,18 @@ import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
 
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.transgalactica.management.data.rest.TestConfig;
 import org.transgalactica.management.data.rest.bo.EmployeSummaryTo;
 import org.transgalactica.management.data.rest.bo.EmployeTo;
 import org.transgalactica.management.data.rest.bo.MecanicienTo;
 import org.transgalactica.management.data.rest.bo.PiloteTo;
 import org.transgalactica.management.data.rest.bo.impl.BasicMecanicienTo;
 import org.transgalactica.management.data.rest.bo.impl.BasicPiloteTo;
-import org.transgalactica.management.data.rest.mapper.HrMapper;
 import org.transgalactica.management.flux.rest.EmployeCommand;
 import org.transgalactica.management.flux.rest.EmployeDto;
 import org.transgalactica.management.flux.rest.EmployeType;
@@ -31,9 +34,10 @@ import org.transgalactica.management.flux.rest.MecanicienDetailDto;
 import org.transgalactica.management.flux.rest.ObjectFactory;
 import org.transgalactica.management.flux.rest.PiloteCommand;
 import org.transgalactica.management.flux.rest.PiloteDetailDto;
-import org.transgalactica.test.AbstractContextTest;
 
-public class HrMapperTest extends AbstractContextTest {
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(classes = TestConfig.class)
+public class HrMapperTest {
 
 	@Autowired
 	private HrMapper mapper;

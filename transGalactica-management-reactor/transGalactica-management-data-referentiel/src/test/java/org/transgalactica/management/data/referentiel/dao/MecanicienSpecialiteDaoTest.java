@@ -7,12 +7,21 @@ import static org.junit.Assert.assertNull;
 import java.util.List;
 
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.transaction.TransactionConfiguration;
+import org.springframework.transaction.annotation.Transactional;
+import org.transgalactica.management.data.referentiel.TestConfig;
 import org.transgalactica.management.data.referentiel.bo.MecanicienSpecialiteEntity;
-import org.transgalactica.management.data.referentiel.dao.MecanicienSpecialiteDao;
-import org.transgalactica.test.AbstractTransactionalTest;
 
-public class MecanicienSpecialiteDaoTest extends AbstractTransactionalTest {
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(classes = TestConfig.class)
+@TransactionConfiguration
+@Transactional(readOnly = true)
+public class MecanicienSpecialiteDaoTest {
 
 	@Autowired
 	private MecanicienSpecialiteDao mecanicienSpecialiteDao;
@@ -32,8 +41,9 @@ public class MecanicienSpecialiteDaoTest extends AbstractTransactionalTest {
 
 	@Test
 	public void testFindAll() {
-		List<MecanicienSpecialiteEntity> founds = mecanicienSpecialiteDao.findAll();
+		List<MecanicienSpecialiteEntity> founds = mecanicienSpecialiteDao.findAll(new Sort("nomSpecialite"));
 		assertNotNull(founds);
 		assertEquals(5, founds.size());
+		assertEquals("Armement", founds.get(0).getNomSpecialite());
 	}
 }

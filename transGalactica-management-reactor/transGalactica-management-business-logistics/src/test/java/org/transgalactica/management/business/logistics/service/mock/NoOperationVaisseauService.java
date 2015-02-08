@@ -2,7 +2,7 @@ package org.transgalactica.management.business.logistics.service.mock;
 
 import java.util.List;
 
-import org.transgalactica.management.business.logistics.service.VaisseauService;
+import org.transgalactica.management.business.logistics.service.impl.DaoVaisseauService;
 import org.transgalactica.management.data.materiel.bo.VaisseauEntity;
 import org.transgalactica.management.data.materiel.bo.VaisseauSearchCriteria;
 import org.transgalactica.management.data.materiel.bo.VaisseauSummary;
@@ -10,7 +10,7 @@ import org.transgalactica.management.data.materiel.bo.VaisseauSummary;
 /**
  * Mock de VaisseauService ne réalisant aucune opération.
  */
-public class NoOperationVaisseauService implements VaisseauService {
+public class NoOperationVaisseauService extends DaoVaisseauService {
 
 	@Override
 	public VaisseauEntity chargerVaisseau(String immatriculation) {

@@ -4,14 +4,19 @@ import static org.transgalactica.management.business.logistics.service.mock.Mock
 import static org.transgalactica.management.business.logistics.service.mock.MockFactory.mockVaisseauSearchCriteria;
 
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.access.AccessDeniedException;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.transgalactica.fwk.test.util.SecurityContextTestUtils;
+import org.transgalactica.management.business.logistics.TestConfig;
 import org.transgalactica.management.business.logistics.service.VaisseauService;
-import org.transgalactica.test.AbstractContextTest;
 
-public class VaisseauServiceConfigurationRolesTest extends AbstractContextTest {
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(classes = TestConfig.class)
+public class VaisseauServiceConfigurationRolesTest {
 
 	@Autowired
 	@Qualifier("noOperationVaisseauService")
@@ -28,73 +33,67 @@ public class VaisseauServiceConfigurationRolesTest extends AbstractContextTest {
 	}
 
 	@Test
-	public void testRechercherVaisseauxRoleAnomyme() {
-		SecurityContextTestUtils.setAnomymeInContext();
-		serviceVaisseau.rechercherVaisseaux(mockVaisseauSearchCriteria());
-	}
-
-	@Test
-	public void testRechercherVaisseauxRoleSuperGestionnaire() {
+	public void testRechercherVaisseaux_RoleSuperGestionnaire() {
 		setSuperGestionnaireInContext();
 		serviceVaisseau.rechercherVaisseaux(mockVaisseauSearchCriteria());
 	}
 
 	@Test
-	public void testRechercherVaisseauxRoleGestionnaire() {
+	public void testRechercherVaisseaux_RoleGestionnaire() {
 		setGestionnaireInContext();
 		serviceVaisseau.rechercherVaisseaux(mockVaisseauSearchCriteria());
 	}
 
 	@Test(expected = AccessDeniedException.class)
-	public void testChargerVaisseauRoleAnomyme() {
+	public void testChargerVaisseau_RoleAnomyme() {
 		SecurityContextTestUtils.setAnomymeInContext();
 		serviceVaisseau.chargerVaisseau("mock");
 	}
 
 	@Test
-	public void testChargerVaisseauRoleSuperGestionnaire() {
+	public void testChargerVaisseau_RoleSuperGestionnaire() {
 		setSuperGestionnaireInContext();
 		serviceVaisseau.chargerVaisseau("mock");
 	}
 
 	@Test
-	public void testChargerVaisseauRoleGestionnaire() {
+	public void testChargerVaisseau_RoleGestionnaire() {
 		setGestionnaireInContext();
 		serviceVaisseau.chargerVaisseau("mock");
 	}
 
 	@Test(expected = AccessDeniedException.class)
-	public void testEnregistrerVaisseauRoleAnomyme() {
+	public void testEnregistrerVaisseau_RoleAnomyme() {
 		SecurityContextTestUtils.setAnomymeInContext();
 		serviceVaisseau.enregistrerVaisseau(mockVaisseauEntity());
 	}
 
 	@Test
-	public void testEnregistrerVaisseauRoleSuperGestionnaire() {
+	public void testEnregistrerVaisseau_RoleSuperGestionnaire() {
 		setSuperGestionnaireInContext();
 		serviceVaisseau.enregistrerVaisseau(mockVaisseauEntity());
 	}
 
 	@Test(expected = AccessDeniedException.class)
-	public void testEnregistrerVaisseauRoleGestionnaire() {
+	public void testEnregistrerVaisseau_RoleGestionnaire() {
 		setGestionnaireInContext();
 		serviceVaisseau.enregistrerVaisseau(mockVaisseauEntity());
 	}
 
 	@Test(expected = AccessDeniedException.class)
-	public void testSupprimerVaisseauRoleAnomyme() {
+	public void testSupprimerVaisseau_RoleAnomyme() {
 		SecurityContextTestUtils.setAnomymeInContext();
 		serviceVaisseau.supprimerVaisseau(mockVaisseauEntity());
 	}
 
 	@Test
-	public void testSupprimerVaisseauRoleSuperGestionnaire() {
+	public void testSupprimerVaisseau_RoleSuperGestionnaire() {
 		setSuperGestionnaireInContext();
 		serviceVaisseau.supprimerVaisseau(mockVaisseauEntity());
 	}
 
 	@Test(expected = AccessDeniedException.class)
-	public void testSupprimerVaisseauRoleGestionnaire() {
+	public void testSupprimerVaisseau_RoleGestionnaire() {
 		setGestionnaireInContext();
 		serviceVaisseau.supprimerVaisseau(mockVaisseauEntity());
 	}

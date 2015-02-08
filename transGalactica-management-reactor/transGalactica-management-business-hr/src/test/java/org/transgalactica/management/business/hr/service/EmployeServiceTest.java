@@ -10,11 +10,17 @@ import javax.validation.ValidationException;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.transaction.TransactionConfiguration;
+import org.springframework.transaction.annotation.Transactional;
 import org.transgalactica.fwk.test.util.SecurityContextTestUtils;
+import org.transgalactica.management.business.hr.TestConfig;
 import org.transgalactica.management.business.hr.exception.EmployeInexistantException;
-import org.transgalactica.management.business.hr.service.EmployeService;
 import org.transgalactica.management.data.materiel.bo.VaisseauEntity;
 import org.transgalactica.management.data.materiel.dao.VaisseauDao;
 import org.transgalactica.management.data.people.bo.EmployeEntity;
@@ -22,9 +28,15 @@ import org.transgalactica.management.data.people.bo.EmployeSearchCriteria;
 import org.transgalactica.management.data.people.bo.EmployeSummary;
 import org.transgalactica.management.data.people.bo.MecanicienEntity;
 import org.transgalactica.management.data.people.bo.impl.BasicEmployeSearchCriteria;
-import org.transgalactica.test.AbstractTransactionalTest;
 
-public class EmployeServiceTest extends AbstractTransactionalTest {
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(classes = TestConfig.class)
+@TransactionConfiguration
+@Transactional
+public class EmployeServiceTest {
+
+	@Autowired
+	private BeanFactory beanFactory;
 
 	@Autowired
 	private EmployeService employeService;
@@ -51,7 +63,7 @@ public class EmployeServiceTest extends AbstractTransactionalTest {
 
 	@Test
 	public void testEnregistrerEmploye() {
-		MecanicienEntity employe = applicationContext.getBean(MecanicienEntity.class);
+		MecanicienEntity employe = beanFactory.getBean(MecanicienEntity.class);
 		employe.setNom("Bob l'Eponge");
 		employe.setDateEmbauche(new Date());
 		employeService.enregistrerEmploye(employe);
@@ -66,7 +78,7 @@ public class EmployeServiceTest extends AbstractTransactionalTest {
 
 	@Test(expected = ValidationException.class)
 	public void testEnregistrerHangar_Invalide() {
-		MecanicienEntity employe = applicationContext.getBean(MecanicienEntity.class);
+		MecanicienEntity employe = beanFactory.getBean(MecanicienEntity.class);
 		employe.setDateEmbauche(new Date());
 		employeService.enregistrerEmploye(employe);
 	}

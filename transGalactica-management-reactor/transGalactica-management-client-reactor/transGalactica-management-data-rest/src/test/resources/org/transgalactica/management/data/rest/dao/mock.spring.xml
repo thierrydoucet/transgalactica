@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<description>Flux RestFull - mock définitions</description>
+
+	<bean
+		id="mockClientHttpRequestFactory"
+		class="org.transgalactica.fwk.test.clienthttp.ResourceBoundClientHttpRequestFactory">
+		<property name="resources">
+			<set>
+				<!-- Hangars -->
+				<bean
+					class="org.transgalactica.fwk.test.clienthttp.ResourceBoundHolder"
+					p:uri="http://localhost:8080/transGalactica-rest/hangars/search?localisation=A%25"
+					p:contentType="application/xml"
+					p:method="GET"
+					p:resource="classpath:org/transgalactica/management/data/rest/dao/mock/searchHangar.xml" />
+				<bean
+					class="org.transgalactica.fwk.test.clienthttp.ResourceBoundHolder"
+					p:uri="http://localhost:8080/transGalactica-rest/hangars/1"
+					p:methods="PUT, DELETE" />
+				<bean
+					class="org.transgalactica.fwk.test.clienthttp.ResourceBoundHolder"
+					p:uri="http://localhost:8080/transGalactica-rest/hangars"
+					p:method="POST" />
+				<bean
+					class="org.transgalactica.fwk.test.clienthttp.ResourceBoundHolder"
+					p:uri="http://localhost:8080/transGalactica-rest/hangars/1"
+					p:method="GET"
+					p:contentType="application/xml"
+					p:resource="classpath:org/transgalactica/management/data/rest/dao/mock/Alderaan.xml" />
+				<bean
+					class="org.transgalactica.fwk.test.clienthttp.ResourceBoundHolder"
+					p:uri="http://localhost:8080/transGalactica-rest/hangars/1/vaisseaux/Serenity"
+					p:methods="POST, DELETE" />
+
+				<!-- Vaisseaux -->
+				<bean
+					class="org.transgalactica.fwk.test.clienthttp.ResourceBoundHolder"
+					p:uri="http://localhost:8080/transGalactica-rest/vaisseaux/search?immatriculation=%25&amp;modele=%25&amp;intergalactique=true"
+					p:contentType="application/xml"
+					p:method="GET"
+					p:resource="classpath:org/transgalactica/management/data/rest/dao/mock/searchVaisseaux.xml" />
+				<bean
+					class="org.transgalactica.fwk.test.clienthttp.ResourceBoundHolder"
+					p:uri="http://localhost:8080/transGalactica-rest/vaisseaux/Serenity"
+					p:methods="PUT, DELETE" />
+				<bean
+					class="org.transgalactica.fwk.test.clienthttp.ResourceBoundHolder"
+					p:uri="http://localhost:8080/transGalactica-rest/vaisseaux"
+					p:method="POST" />
+				<bean
+					class="org.transgalactica.fwk.test.clienthttp.ResourceBoundHolder"
+					p:uri="http://localhost:8080/transGalactica-rest/vaisseaux/Serenity"
+					p:methods="HEAD, GET"
+					p:contentType="application/xml"
+					p:resource="classpath:org/transgalactica/management/data/rest/dao/mock/Serenity.xml" />
+				<bean
+					class="org.transgalactica.fwk.test.clienthttp.ResourceBoundHolder"
+					p:uri="http://localhost:8080/transGalactica-rest/vaisseaux/immatriculation%20test"
+					p:method="HEAD"
+					p:status="NOT_FOUND" />
+
+				<!-- employes -->
+				<bean
+					class="org.transgalactica.fwk.test.clienthttp.ResourceBoundHolder"
+					p:uri="http://localhost:8080/transGalactica-rest/employes/search?nomEmploye=%25&amp;dateEmbaucheEmployeDebut=&amp;dateEmbaucheEmployeFin="
+					p:contentType="application/xml"
+					p:method="GET"
+					p:resource="classpath:org/transgalactica/management/data/rest/dao/mock/searchEmploye.xml" />
+				<bean
+					class="org.transgalactica.fwk.test.clienthttp.ResourceBoundHolder"
+					p:uri="http://localhost:8080/transGalactica-rest/employes/1"
+					p:method="GET"
+					p:contentType="application/xml"
+					p:resource="classpath:org/transgalactica/management/data/rest/dao/mock/Han Solo.xml">
+					<property name="headers">
+						<map>
+							<entry
+								key="TransGalactica-Content-Type"
+								value="PiloteDetail" />
+						</map>
+					</property>
+				</bean>
+				<bean
+					class="org.transgalactica.fwk.test.clienthttp.ResourceBoundHolder"
+					p:uri="http://localhost:8080/transGalactica-rest/employes/1"
+					p:methods="PUT" />
+				<bean
+					class="org.transgalactica.fwk.test.clienthttp.ResourceBoundHolder"
+					p:uri="http://localhost:8080/transGalactica-rest/employes/2"
+					p:method="GET"
+					p:contentType="application/xml"
+					p:resource="classpath:org/transgalactica/management/data/rest/dao/mock/Chewbacca.xml">
+					<property name="headers">
+						<map>
+							<entry
+								key="TransGalactica-Content-Type"
+								value="MecanicienDetail" />
+						</map>
+					</property>
+				</bean>
+				<bean
+					class="org.transgalactica.fwk.test.clienthttp.ResourceBoundHolder"
+					p:uri="http://localhost:8080/transGalactica-rest/employes/2"
+					p:methods="PUT, DELETE" />
+				<bean
+					class="org.transgalactica.fwk.test.clienthttp.ResourceBoundHolder"
+					p:uri="http://localhost:8080/transGalactica-rest/employes"
+					p:method="POST" />
+
+				<bean
+					class="org.transgalactica.fwk.test.clienthttp.ResourceBoundHolder"
+					p:uri="http://localhost:8080/transGalactica-rest/employes/2/vaisseaux/Serenity"
+					p:methods="POST, DELETE" />
+				<bean
+					class="org.transgalactica.fwk.test.clienthttp.ResourceBoundHolder"
+					p:uri="http://localhost:8080/transGalactica-rest/employes/1/specialites/Blindage"
+					p:methods="POST, DELETE" />
+
+				<!-- referentiel hr -->
+				<bean
+					class="org.transgalactica.fwk.test.clienthttp.ResourceBoundHolder"
+					p:uri="http://localhost:8080/transGalactica-rest/hrreferentiel/employetypes"
+					p:contentType="application/xml"
+					p:method="GET"
+					p:resource="classpath:org/transgalactica/management/data/rest/dao/mock/employeTypes.xml" />
+				<bean
+					class="org.transgalactica.fwk.test.clienthttp.ResourceBoundHolder"
+					p:uri="http://localhost:8080/transGalactica-rest/hrreferentiel/mecanicienspecialites"
+					p:contentType="application/xml"
+					p:method="GET"
+					p:resource="classpath:org/transgalactica/management/data/rest/dao/mock/mecanicienSpecialites.xml" />
+
+			</set>
+		</property>
+	</bean>
+
+</beans>

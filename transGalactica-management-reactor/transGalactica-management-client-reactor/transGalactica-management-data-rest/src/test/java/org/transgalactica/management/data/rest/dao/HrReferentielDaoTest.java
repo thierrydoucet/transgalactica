@@ -9,16 +9,20 @@ import javax.inject.Named;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.http.client.ClientHttpRequestFactory;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.annotation.DirtiesContext.ClassMode;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.util.ReflectionTestUtils;
 import org.springframework.web.client.RestTemplate;
-import org.transgalactica.management.data.rest.dao.HrReferentielDao;
-import org.transgalactica.test.AbstractContextTest;
+import org.transgalactica.management.data.rest.TestConfig;
 
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(classes = TestConfig.class)
 @DirtiesContext(classMode = ClassMode.AFTER_CLASS)
-public class HrReferentielDaoTest extends AbstractContextTest {
+public class HrReferentielDaoTest {
 
 	@Inject
 	@Named("mockClientHttpRequestFactory")

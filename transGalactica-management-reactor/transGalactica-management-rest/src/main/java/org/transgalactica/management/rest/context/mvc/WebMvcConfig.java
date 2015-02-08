@@ -10,10 +10,10 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
-import org.springframework.validation.Validator;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.transgalactica.management.rest.context.MapperConfig;
 import org.transgalactica.management.rest.converter.HeaderTypeHttpMessageConverter;
 import org.transgalactica.management.rest.converter.Jaxb2AbstractTypeHttpMessageConverter;
 import org.transgalactica.management.rest.hr.data.EmployeCommand;
@@ -32,7 +32,7 @@ import com.fasterxml.jackson.databind.module.SimpleModule;
 
 @Configuration
 @EnableWebMvc
-@Import(DozerConfig.class)
+@Import(MapperConfig.class)
 @ComponentScan({ "org.transgalactica.management.rest.hr", "org.transgalactica.management.rest.logistics" })
 public class WebMvcConfig extends WebMvcConfigurerAdapter {
 
@@ -75,13 +75,14 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
 		converters.add(headerJaxbConverter);
 	}
 
-	@Override
-	public Validator getValidator() {
-		// TODO: voir si on peut utiliser la notion d ioc pour injecter a la
-		// couche business les dependance tel que la validation / les
-		// transactions / la datasource ?
-		return context.getBean("javax.validation.ValidatorFactory", Validator.class);
-	}
+	// @Override
+	// public Validator getValidator() {
+	// // TODO: voir si on peut utiliser la notion d ioc pour injecter a la
+	// // couche business les dependance tel que la validation / les
+	// // transactions / la datasource ?
+	// return context.getBean("javax.validation.ValidatorFactory",
+	// Validator.class);
+	// }
 
 	@Bean
 	public ObjectMapper jacksonObjectMapper() {

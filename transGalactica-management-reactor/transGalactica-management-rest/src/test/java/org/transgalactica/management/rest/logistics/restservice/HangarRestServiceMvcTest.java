@@ -15,9 +15,9 @@ import org.junit.Before;
 import org.junit.Test;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.transgalactica.fwk.test.util.SecurityContextTestUtils;
-import org.transgalactica.management.rest.AbstractMvcTest;
+import org.transgalactica.management.rest.AbstractWebTest;
 
-public class HangarRestServiceMvcTest extends AbstractMvcTest {
+public class HangarRestServiceMvcTest extends AbstractWebTest {
 
 	@Before
 	public void setAuthentification() {
