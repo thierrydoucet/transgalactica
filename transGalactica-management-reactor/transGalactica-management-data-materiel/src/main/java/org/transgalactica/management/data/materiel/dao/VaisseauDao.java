@@ -3,6 +3,7 @@ package org.transgalactica.management.data.materiel.dao;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.querydsl.QueryDslPredicateExecutor;
 import org.springframework.data.repository.Repository;
 import org.springframework.data.repository.query.Param;
 import org.transgalactica.management.data.materiel.bo.HangarEntity;
@@ -11,7 +12,8 @@ import org.transgalactica.management.data.materiel.bo.VaisseauSummary;
 import org.transgalactica.management.data.materiel.bo.impl.JpaVaisseauEntity;
 import org.transgalactica.management.data.materiel.dao.impl.VaisseauDaoCustom;
 
-public interface VaisseauDao extends Repository<JpaVaisseauEntity, Long>, VaisseauDaoCustom {
+public interface VaisseauDao extends Repository<JpaVaisseauEntity, Long>, VaisseauDaoCustom,
+		QueryDslPredicateExecutor<VaisseauEntity> {
 
 	VaisseauEntity findByImmatriculation(String immatriculation);
 

@@ -18,6 +18,12 @@
 		Module données "Matériel" de l'application Trans'Galactica
 	</description>
 
+	<properties>
+		<!-- idem transGalactica-dependencies boot - TODO voir comment importer 
+			les properties d'un autre pom -->
+		<querydsl.version>3.6.1</querydsl.version>
+	</properties>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.transgalactica.fwk</groupId>
@@ -37,6 +43,10 @@
 			<groupId>javax.validation</groupId>
 			<artifactId>validation-api</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+		</dependency>
 
 		<!-- A ajouter lorsque dispo ds spring data dependency> <groupId>org.hibernate.javax.persistence</groupId> 
 			<artifactId>hibernate-jpa-2.1-api</artifactId> </dependency -->
@@ -44,6 +54,10 @@
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-entitymanager</artifactId>
 			<!-- A retirer lorsque api dispo spring data dependencyscope>runtime</scope -->
+		</dependency>
+		<dependency>
+			<groupId>com.mysema.querydsl</groupId>
+			<artifactId>querydsl-jpa</artifactId>
 		</dependency>
 
 		<dependency>
@@ -73,7 +87,67 @@
 			<artifactId>hsqldb</artifactId>
 			<scope>test</scope>
 		</dependency>
-
 	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>add-source</goal>
+						</goals>
+						<configuration>
+							<sources>
+								<source>src/generated/java</source>
+							</sources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+	<profiles>
+		<profile>
+			<id>generate</id>
+			<activation>
+				<property>
+					<name>generate</name>
+					<value>true</value>
+				</property>
+			</activation>
+			<build>
+				<plugins>
+					<!-- QueryDSL Meta -->
+					<plugin>
+						<groupId>com.mysema.maven</groupId>
+						<artifactId>apt-maven-plugin</artifactId>
+						<executions>
+							<execution>
+								<goals>
+									<goal>process</goal>
+								</goals>
+							</execution>
+						</executions>
+						<configuration>
+							<outputDirectory>src/generated/java</outputDirectory>
+							<processor>com.mysema.query.apt.jpa.JPAAnnotationProcessor</processor>
+						</configuration>
+						<dependencies>
+							<dependency>
+								<groupId>com.mysema.querydsl</groupId>
+								<artifactId>querydsl-apt</artifactId>
+								<version>${querydsl.version}</version>
+							</dependency>
+						</dependencies>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 
 </project>

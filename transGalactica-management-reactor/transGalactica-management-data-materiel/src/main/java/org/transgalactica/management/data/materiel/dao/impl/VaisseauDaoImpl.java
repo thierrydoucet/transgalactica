@@ -1,11 +1,12 @@
 package org.transgalactica.management.data.materiel.dao.impl;
 
+import static org.apache.commons.lang3.StringUtils.defaultIfBlank;
+
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import org.apache.commons.lang3.StringUtils;
 import org.transgalactica.management.data.materiel.bo.BasicVaisseauSummary;
 import org.transgalactica.management.data.materiel.bo.VaisseauSearchCriteria;
 import org.transgalactica.management.data.materiel.bo.VaisseauSummary;
@@ -31,16 +32,9 @@ public class VaisseauDaoImpl implements VaisseauDaoCustom {
 										: JpaVaisseauEntity.class).getName()
 								+ " v left join v.hangar h where v.immatriculation like :immatriculation and v.modele like :modele order by v.immatriculation",
 						VaisseauSummary.class)//
-				.setParameter("immatriculation", normalizeParameter(criteres.getImmatriculation(), "%")) //
-				.setParameter("modele", normalizeParameter(criteres.getModele(), "%")) //
+				.setParameter("immatriculation", defaultIfBlank(criteres.getImmatriculation(), "%")) //
+				.setParameter("modele", defaultIfBlank(criteres.getModele(), "%")) //
 				.getResultList();
-	}
-
-	private String normalizeParameter(String value, String defaultValue) {
-		if (StringUtils.isNotBlank(value)) {
-			return value;
-		}
-		return defaultValue;
 	}
 
 }
