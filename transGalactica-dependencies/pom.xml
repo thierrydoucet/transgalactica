@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
 		<groupId>org.transgalactica.core</groupId>
 		<artifactId>transGalactica-build</artifactId>
-		<version>1.0.0</version>
+		<version>1.1.0</version>
 	</parent>
 
 	<artifactId>transGalactica-dependencies</artifactId>
@@ -35,10 +36,12 @@
 		<itext-asian.version>5.2.0</itext-asian.version>
 		<tiles.version>2.2.2</tiles.version>
 		<xmlunit.version>1.5</xmlunit.version>
+		<querydsl.version>3.6.1</querydsl.version>
 
-		<!-- idem spring boot -->
+		<!-- idem spring boot - TODO voir comment importer les properties d'un autre pom -->
 		<json-path.version>0.9.1</json-path.version>
 		<hibernate.version>4.3.7.Final</hibernate.version>
+		<hibernate-validator.version>5.0.3.Final</hibernate-validator.version>
 	</properties>
 
 	<dependencyManagement>
@@ -137,6 +140,13 @@
 				<groupId>net.sf.dozer</groupId>
 				<artifactId>dozer-spring</artifactId>
 				<version>${dozer.version}</version>
+			</dependency>
+
+			<!-- Persistence -->
+			<dependency>
+				<groupId>com.mysema.querydsl</groupId>
+				<artifactId>querydsl-jpa</artifactId>
+				<version>${querydsl.version}</version>
 			</dependency>
 
 			<!-- WIKI TEXT -->
