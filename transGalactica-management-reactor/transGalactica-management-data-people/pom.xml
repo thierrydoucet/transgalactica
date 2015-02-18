@@ -18,6 +18,13 @@
 		Module données "Personnes" de l'application Trans'Galactica
 	</description>
 
+	<properties>
+	<!-- idem transGalactica-dependencies boot - TODO voir comment importer 
+		les properties d'un autre pom -->
+		<hibernate.version>4.3.7.Final</hibernate.version>
+		<hibernate-validator.version>5.0.3.Final</hibernate-validator.version>
+	</properties>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.transgalactica.management</groupId>
@@ -46,6 +53,10 @@
 			<groupId>javax.validation</groupId>
 			<artifactId>validation-api</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+		</dependency>
 
 		<!-- A ajouter lorsque dispo ds spring data dependency> <groupId>org.hibernate.javax.persistence</groupId> 
 			<artifactId>hibernate-jpa-2.1-api</artifactId> </dependency -->
@@ -54,7 +65,7 @@
 			<artifactId>hibernate-entitymanager</artifactId>
 			<!-- A retirer lorsque api dispo spring data dependencyscope>runtime</scope -->
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
@@ -82,7 +93,75 @@
 			<artifactId>hsqldb</artifactId>
 			<scope>test</scope>
 		</dependency>
-
 	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>add-source</goal>
+						</goals>
+						<configuration>
+							<sources>
+								<source>src/generated/java</source>
+							</sources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+	<profiles>
+		<profile>
+			<id>generate</id>
+			<activation>
+				<property>
+					<name>generate</name>
+					<value>true</value>
+				</property>
+			</activation>
+			<build>
+				<plugins>
+					<!-- JPA Meta -->
+					<plugin>
+						<groupId>org.bsc.maven</groupId>
+						<artifactId>maven-processor-plugin</artifactId>
+						<executions>
+							<execution>
+								<goals>
+									<goal>process</goal>
+								</goals>
+								<phase>generate-sources</phase>
+							</execution>
+						</executions>
+						<configuration>
+							<processors>
+								<processor>org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor</processor>
+							</processors>
+							<outputDirectory>src/generated/java</outputDirectory>
+						</configuration>
+						<dependencies>
+							<dependency>
+								<groupId>org.hibernate</groupId>
+								<artifactId>hibernate-jpamodelgen</artifactId>
+								<version>${hibernate.version}</version>
+							</dependency>
+							<dependency>
+								<groupId>org.hibernate</groupId>
+								<artifactId>hibernate-validator</artifactId>
+								<version>${hibernate-validator.version}</version>
+							</dependency>
+						</dependencies>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 
 </project>

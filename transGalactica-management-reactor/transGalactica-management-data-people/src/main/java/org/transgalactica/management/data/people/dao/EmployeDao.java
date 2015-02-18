@@ -2,6 +2,7 @@ package org.transgalactica.management.data.people.dao;
 
 import java.util.List;
 
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.Repository;
 import org.springframework.data.repository.query.Param;
@@ -30,4 +31,6 @@ public interface EmployeDao extends Repository<AbstractJpaEmployeEntity, Long>, 
 			+ " where v is not null and v.class=JpaVaisseauIntergalactiqueEntity" //
 			+ " order by e.matricule")
 	List<EmployeSummary> findEmployesOfVaisseauIntergalactique();
+
+	List<EmployeEntity> findAll(Specification<AbstractJpaEmployeEntity> spec);
 }
