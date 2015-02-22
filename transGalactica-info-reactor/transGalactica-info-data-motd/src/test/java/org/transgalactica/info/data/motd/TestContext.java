@@ -1,4 +1,4 @@
-package org.transgalactica.info.data.motd.config;
+package org.transgalactica.info.data.motd;
 
 import java.io.IOException;
 import java.util.List;

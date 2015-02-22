@@ -10,7 +10,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.transgalactica.info.data.motd.bo.ImageTo;
 import org.transgalactica.info.data.motd.bo.MessageTo;
-import org.transgalactica.info.data.motd.config.TestContext;
 import org.transgalactica.info.data.motd.mapper.MotdMapper;
 import org.transgalactica.info.data.motd.repository.MotdRepository;
 

@@ -4,7 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
-import java.util.GregorianCalendar;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.junit.Test;
@@ -15,9 +15,8 @@ import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.util.ReflectionTestUtils;
+import org.transgalactica.info.data.motd.TestContext;
 import org.transgalactica.info.data.motd.bo.MessageTo;
-import org.transgalactica.info.data.motd.config.TestContext;
-import org.transgalactica.info.data.motd.repository.MotdRepository;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = TestContext.class)
@@ -70,7 +69,7 @@ public class MotdRepositoryTest {
 		assertEquals("2", message.getId());
 		assertEquals("Message 2 TU", message.getTitre());
 		assertEquals("Contenu test unitaires", message.getContenu());
-		assertEquals(new GregorianCalendar(2012, 2, 29, 11, 9, 34).getTime(), message.getDatePublication());
+		assertEquals(LocalDateTime.of(2012, 3, 29, 11, 9, 34), message.getDatePublication());
 		assertNotNull(message.getImage());
 	}
 }

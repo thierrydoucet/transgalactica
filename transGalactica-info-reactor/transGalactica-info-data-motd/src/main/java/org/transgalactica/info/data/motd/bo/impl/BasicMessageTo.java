@@ -1,7 +1,7 @@
 package org.transgalactica.info.data.motd.bo.impl;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 import lombok.AccessLevel;
 import lombok.Data;
@@ -26,7 +26,7 @@ public class BasicMessageTo implements MessageTo, Serializable {
 
 	private String contenu;
 
-	private Date datePublication;
+	private LocalDateTime datePublication;
 
 	private ImageTo image;
 }

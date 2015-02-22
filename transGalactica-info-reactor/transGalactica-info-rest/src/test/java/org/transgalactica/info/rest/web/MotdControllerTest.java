@@ -47,7 +47,7 @@ public class MotdControllerTest {
 				.andExpect(jsonPath("$.id").value("test"))//
 				.andExpect(jsonPath("$.titre").value("Titre test"))//
 				.andExpect(jsonPath("$.contenu").value("Contenu test"))//
-				.andExpect(jsonPath("$.datePublication").value(1416694500000L))//
+				.andExpect(jsonPath("$.datePublication").value("2014-11-22T23:15"))//
 				.andExpect(jsonPath("$.image.url").value("http://xx/test.png"))//
 				.andExpect(jsonPath("$.image.texteAlternatif").value("Image test"));
 	}

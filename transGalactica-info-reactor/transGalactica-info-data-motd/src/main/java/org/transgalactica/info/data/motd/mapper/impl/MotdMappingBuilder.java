@@ -1,5 +1,6 @@
 package org.transgalactica.info.data.motd.mapper.impl;
 
+import static org.dozer.loader.api.FieldsMappingOptions.customConverter;
 import static org.dozer.loader.api.TypeMappingOptions.oneWay;
 
 import org.dozer.loader.api.BeanMappingBuilder;
@@ -22,7 +23,8 @@ public class MotdMappingBuilder extends BeanMappingBuilder {
 				.fields("id", "id") //
 				.fields("titre", "titre") //
 				.fields("contenu", "contenu") //
-				.fields("datePublication", "datePublication") //
+				.fields("datePublication", "datePublication" //
+						, customConverter(XMLGregorianCalendarToLocalDateTimeConverter.class)) //
 				.fields("image", "image");
 
 		mapping(Image.class, new TypeDefinition(ImageTo.class).beanFactory("springContextDozerFactory"), oneWay()) //

@@ -1,6 +1,6 @@
 package org.transgalactica.info.data.motd.bo;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public interface MessageTo {
 
@@ -8,7 +8,7 @@ public interface MessageTo {
 
 	ImageTo getImage();
 
-	Date getDatePublication();
+	LocalDateTime getDatePublication();
 
 	String getContenu();
 
