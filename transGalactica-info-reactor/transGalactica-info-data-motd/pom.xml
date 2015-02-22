@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>org.transgalactica.info</groupId>
 		<artifactId>transGalactica-info-reactor</artifactId>
-		<version>1.1.0</version>
+		<version>1.1.1-SNAPSHOT</version>
 	</parent>
 
 	<artifactId>transGalactica-info-data-motd</artifactId>
