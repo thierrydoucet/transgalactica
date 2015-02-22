@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>org.transgalactica.core</groupId>
 		<artifactId>transGalactica-build</artifactId>
-		<version>1.0.0</version>
+		<version>1.1.0</version>
 	</parent>
 
 	<groupId>org.transgalactica.info</groupId>
@@ -36,8 +36,8 @@
 	<properties>
 		<!-- versions -->
 		<socle.version>1.0.0</socle.version>
-		<dependencies.version>1.0.0</dependencies.version>
-		<test.version>1.0.0</test.version>
+		<dependencies.version>1.2.0</dependencies.version>
+		<test.version>1.1.0</test.version>
 	</properties>
 
 	<dependencyManagement>
@@ -72,6 +72,7 @@
 				<groupId>org.transgalactica.core</groupId>
 				<artifactId>transGalactica-test</artifactId>
 				<version>${test.version}</version>
+				<type>pom</type>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
