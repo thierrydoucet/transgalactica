@@ -1,7 +1,7 @@
 package org.transgalactica.management.data.people.bo;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
 
 import org.transgalactica.management.data.referentiel.bo.EmployeType;
 
@@ -11,7 +11,7 @@ public interface EmployeSummary extends Serializable {
 
 	String getNomEmploye();
 
-	Date getDateEmbaucheEmploye();
+	LocalDate getDateEmbaucheEmploye();
 
 	EmployeType getTypeEmploye();
 }

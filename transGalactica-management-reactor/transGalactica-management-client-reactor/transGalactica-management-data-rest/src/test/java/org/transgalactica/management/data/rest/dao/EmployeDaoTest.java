@@ -5,7 +5,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -60,7 +60,7 @@ public class EmployeDaoTest {
 		assertEquals(7, employes.size());
 		assertEquals(new Long(2), employes.get(0).getMatricule());
 		assertEquals("Chewbacca", employes.get(0).getNom());
-		assertEquals(234655200000L, employes.get(0).getDateEmbauche().getTime());
+		assertEquals(LocalDate.of(1977, 6, 9), employes.get(0).getDateEmbauche());
 		assertEquals("MECANICIEN", employes.get(0).getTypeEmploye());
 	}
 
@@ -71,7 +71,7 @@ public class EmployeDaoTest {
 		assertNotNull(employe);
 		assertThat(employe, instanceOf(MecanicienTo.class));
 		assertEquals(new Long(2), employe.getMatricule());
-		assertEquals(234655200000L, employe.getDateEmbauche().getTime());
+		assertEquals(LocalDate.of(1977, 6, 9), employe.getDateEmbauche());
 		assertEquals("Chewbacca", employe.getNom());
 		assertEquals("MECANICIEN", employe.getTypeEmploye());
 
@@ -98,7 +98,7 @@ public class EmployeDaoTest {
 		assertNotNull(employe);
 		assertThat(employe, instanceOf(PiloteTo.class));
 		assertEquals(new Long(1), employe.getMatricule());
-		assertEquals(234655200000L, employe.getDateEmbauche().getTime());
+		assertEquals(LocalDate.of(1977, 6, 9), employe.getDateEmbauche());
 		assertEquals("Han Solo", employe.getNom());
 		assertEquals("PILOTE", employe.getTypeEmploye());
 		assertEquals(542, ((PiloteTo) employe).getNombreHeuresVol());
@@ -119,7 +119,7 @@ public class EmployeDaoTest {
 	public void testPersist_newMecanicien() {
 		EmployeTo employe = BeanUtils.instantiateClass(BasicMecanicienTo.class);
 		employe.setNom("Luke");
-		employe.setDateEmbauche(new Date());
+		employe.setDateEmbauche(LocalDate.now());
 
 		dao.persist(employe);
 	}
@@ -128,7 +128,7 @@ public class EmployeDaoTest {
 	public void testPersist_newPilote() {
 		EmployeTo employe = BeanUtils.instantiateClass(BasicPiloteTo.class);
 		employe.setNom("Luke");
-		employe.setDateEmbauche(new Date());
+		employe.setDateEmbauche(LocalDate.now());
 
 		dao.persist(employe);
 	}

@@ -1,6 +1,6 @@
 package org.transgalactica.management.rest.hr.restservice;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import org.transgalactica.management.rest.hr.data.EmployeCommand;
 import org.transgalactica.management.rest.hr.data.EmployeDetailDto;
@@ -16,7 +16,7 @@ public interface EmployeRestService {
 
 	void delete(long matricule);
 
-	EmployeDtos search(String nomEmploye, Date dateEmbaucheEmployeDebut, Date dateEmbaucheEmployeFin,
+	EmployeDtos search(String nomEmploye, LocalDate dateEmbaucheEmployeDebut, LocalDate dateEmbaucheEmployeFin,
 			String immatriculationVaisseau);
 
 	void addVaisseau(long matricule, String immatriculation);

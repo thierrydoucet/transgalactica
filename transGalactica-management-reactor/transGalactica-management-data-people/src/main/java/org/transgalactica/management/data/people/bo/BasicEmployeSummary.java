@@ -1,6 +1,6 @@
 package org.transgalactica.management.data.people.bo;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import lombok.Data;
 
@@ -16,7 +16,7 @@ public class BasicEmployeSummary implements EmployeSummary {
 
 	private final String nomEmploye;
 
-	private final Date dateEmbaucheEmploye;
+	private final LocalDate dateEmbaucheEmploye;
 
 	private final EmployeType typeEmploye;
 
@@ -24,7 +24,7 @@ public class BasicEmployeSummary implements EmployeSummary {
 		this(null, null, null, null);
 	}
 
-	public BasicEmployeSummary(Long matriculeEmploye, String nomEmploye, Date dateEmbaucheEmploye,
+	public BasicEmployeSummary(Long matriculeEmploye, String nomEmploye, LocalDate dateEmbaucheEmploye,
 			EmployeType typeEmploye) {
 		this.matriculeEmploye = matriculeEmploye;
 		this.nomEmploye = nomEmploye;

@@ -1,6 +1,6 @@
 package org.transgalactica.management.data.people.bo.impl;
 
-import java.util.Date;
+import java.time.LocalDate;
 import javax.annotation.Generated;
 import javax.persistence.metamodel.SetAttribute;
 import javax.persistence.metamodel.SingularAttribute;
@@ -14,7 +14,7 @@ public abstract class AbstractJpaEmployeEntity_ {
 
 	public static volatile SetAttribute<AbstractJpaEmployeEntity, JpaVaisseauEntity> vaisseaux;
 	public static volatile SingularAttribute<AbstractJpaEmployeEntity, Long> matricule;
-	public static volatile SingularAttribute<AbstractJpaEmployeEntity, Date> dateEmbauche;
+	public static volatile SingularAttribute<AbstractJpaEmployeEntity, LocalDate> dateEmbauche;
 	public static volatile SingularAttribute<AbstractJpaEmployeEntity, EmployeType> type;
 	public static volatile SingularAttribute<AbstractJpaEmployeEntity, String> nom;
 

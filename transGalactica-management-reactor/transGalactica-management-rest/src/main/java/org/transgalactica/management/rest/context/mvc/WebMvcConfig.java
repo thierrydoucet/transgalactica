@@ -1,5 +1,7 @@
 package org.transgalactica.management.rest.context.mvc;
 
+import static com.fasterxml.jackson.databind.SerializationFeature.WRITE_DATES_AS_TIMESTAMPS;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +31,7 @@ import org.transgalactica.management.rest.logistics.data.impl.JaxbVaisseauComman
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
+import com.fasterxml.jackson.datatype.jsr310.JSR310Module;
 
 @Configuration
 @EnableWebMvc
@@ -75,24 +78,15 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
 		converters.add(headerJaxbConverter);
 	}
 
-	// @Override
-	// public Validator getValidator() {
-	// // TODO: voir si on peut utiliser la notion d ioc pour injecter a la
-	// // couche business les dependance tel que la validation / les
-	// // transactions / la datasource ?
-	// return context.getBean("javax.validation.ValidatorFactory",
-	// Validator.class);
-	// }
-
 	@Bean
 	public ObjectMapper jacksonObjectMapper() {
-		ObjectMapper mapper = new ObjectMapper();
-		SimpleModule module = new SimpleModule();
-		module.addAbstractTypeMapping(HangarCommand.class, JaxbHangarCommand.class);
-		module.addAbstractTypeMapping(VaisseauCommand.class, JaxbVaisseauCommand.class);
-		module.addAbstractTypeMapping(EmployeCommand.class, JaxbEmployeCommand.class);
-		module.addAbstractTypeMapping(PiloteCommand.class, JaxbPiloteCommand.class);
-		mapper.registerModule(module);
-		return mapper;
+		SimpleModule typeModule = new SimpleModule() //
+				.addAbstractTypeMapping(HangarCommand.class, JaxbHangarCommand.class) //
+				.addAbstractTypeMapping(VaisseauCommand.class, JaxbVaisseauCommand.class) //
+				.addAbstractTypeMapping(EmployeCommand.class, JaxbEmployeCommand.class) //
+				.addAbstractTypeMapping(PiloteCommand.class, JaxbPiloteCommand.class);
+		return new ObjectMapper() //
+				.disable(WRITE_DATES_AS_TIMESTAMPS) //
+				.registerModules(typeModule, new JSR310Module());
 	}
 }

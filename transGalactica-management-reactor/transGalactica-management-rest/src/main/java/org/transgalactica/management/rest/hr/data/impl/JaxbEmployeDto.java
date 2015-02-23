@@ -4,12 +4,13 @@ import static javax.xml.bind.annotation.XmlAccessType.FIELD;
 import static lombok.AccessLevel.PROTECTED;
 import static org.transgalactica.management.rest.Namespaces.HR_NAMESPACE;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -37,7 +38,8 @@ public class JaxbEmployeDto implements EmployeDto {
 	private String nom;
 
 	@XmlElement(required = true)
-	private Date dateEmbauche;
+	@XmlJavaTypeAdapter(type = LocalDate.class, value = XSDLocalDateMarshaller.class)
+	private LocalDate dateEmbauche;
 
 	@XmlElement(required = true)
 	private EmployeType typeEmploye;

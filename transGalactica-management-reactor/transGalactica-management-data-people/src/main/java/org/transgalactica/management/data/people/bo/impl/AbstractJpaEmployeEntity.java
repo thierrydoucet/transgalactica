@@ -1,6 +1,6 @@
 package org.transgalactica.management.data.people.bo.impl;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -19,9 +19,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.validation.constraints.Past;
 
 import lombok.AccessLevel;
 import lombok.Data;
@@ -32,6 +29,7 @@ import org.transgalactica.fwk.domain.bean.BusinessIdentifier;
 import org.transgalactica.management.data.materiel.bo.VaisseauEntity;
 import org.transgalactica.management.data.materiel.bo.impl.JpaVaisseauEntity;
 import org.transgalactica.management.data.people.bo.EmployeEntity;
+import org.transgalactica.management.data.people.bo.validation.Past;
 import org.transgalactica.management.data.referentiel.bo.EmployeType;
 
 @Data
@@ -54,10 +52,10 @@ public abstract class AbstractJpaEmployeEntity implements EmployeEntity {
 	@Column(name = "nom")
 	private String nom;
 
+	// TODO A remplacer lorsque java.time sera compris dans JSR303.
 	@Past
 	@Column(name = "date_embauche")
-	@Temporal(TemporalType.DATE)
-	private Date dateEmbauche;
+	private LocalDate dateEmbauche;
 
 	@Enumerated(EnumType.STRING)
 	@Column(name = "type_employe", nullable = false, insertable = false, updatable = false)

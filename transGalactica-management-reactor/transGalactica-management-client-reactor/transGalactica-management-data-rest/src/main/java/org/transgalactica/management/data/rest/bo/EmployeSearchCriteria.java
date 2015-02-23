@@ -1,7 +1,7 @@
 package org.transgalactica.management.data.rest.bo;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
 
 public interface EmployeSearchCriteria extends Serializable {
 
@@ -9,11 +9,11 @@ public interface EmployeSearchCriteria extends Serializable {
 
 	void setNomEmploye(String nomEmploye);
 
-	Date getDateEmbaucheEmployeDebut();
+	LocalDate getDateEmbaucheEmployeDebut();
 
-	void setDateEmbaucheEmployeDebut(Date dateEmbaucheEmployeDebut);
+	void setDateEmbaucheEmployeDebut(LocalDate dateEmbaucheEmployeDebut);
 
-	Date getDateEmbaucheEmployeFin();
+	LocalDate getDateEmbaucheEmployeFin();
 
-	void setDateEmbaucheEmployeFin(Date dateEmbaucheEmployeFin);
+	void setDateEmbaucheEmployeFin(LocalDate dateEmbaucheEmployeFin);
 }

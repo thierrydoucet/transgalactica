@@ -2,7 +2,7 @@ package org.transgalactica.management.data.people.dao;
 
 import static org.springframework.util.Assert.notNull;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import org.springframework.data.jpa.domain.Specification;
 import org.transgalactica.management.data.materiel.bo.VaisseauEntity;
@@ -24,7 +24,7 @@ public abstract class EmployeSpecification {
 		};
 	}
 
-	public static Specification<AbstractJpaEmployeEntity> estEmbaucheApresLe(final Date debut) {
+	public static Specification<AbstractJpaEmployeEntity> estEmbaucheApresLe(final LocalDate debut) {
 		return (root, query, cb) -> {
 			return cb.greaterThanOrEqualTo(root.get(AbstractJpaEmployeEntity_.dateEmbauche), debut);
 		};

@@ -5,10 +5,9 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
 
+import java.time.LocalDate;
 import java.util.Arrays;
-import java.util.Date;
 
-import org.apache.commons.lang3.time.DateUtils;
 import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.BeanInstantiationException;
@@ -54,7 +53,7 @@ public class EmployeMapperTest extends AbstractWebTest {
 		EmployeCommand command = BeanUtils.instantiateClass(JaxbEmployeCommand.class);
 
 		command.setNom("Nom");
-		Date dateEmbauche = new Date();
+		LocalDate dateEmbauche = LocalDate.now();
 		command.setDateEmbauche(dateEmbauche);
 
 		EmployeEntity entity = mapper.mapEmployeCommandToEntity(command);
@@ -70,7 +69,7 @@ public class EmployeMapperTest extends AbstractWebTest {
 		PiloteCommand command = BeanUtils.instantiateClass(JaxbPiloteCommand.class);
 
 		command.setNom("Nom");
-		Date dateEmbauche = new Date();
+		LocalDate dateEmbauche = LocalDate.now();
 		command.setDateEmbauche(dateEmbauche);
 		command.setNombreHeuresVol(50);
 
@@ -86,8 +85,8 @@ public class EmployeMapperTest extends AbstractWebTest {
 
 	@Test
 	public void testMapToRechercheEmployeCriteres() {
-		Date dateEmbaucheDebut = new Date();
-		Date dateEmbaucheFin = DateUtils.addDays(new Date(), 1);
+		LocalDate dateEmbaucheDebut = LocalDate.now();
+		LocalDate dateEmbaucheFin = LocalDate.now().plusDays(1);
 
 		EmployeSearchCriteria criteres = mapper.mapToRechercheEmployeCriteres("Nom%", dateEmbaucheDebut,
 				dateEmbaucheFin, "immatriculation");
@@ -101,10 +100,10 @@ public class EmployeMapperTest extends AbstractWebTest {
 
 	@Test
 	public void testMapToEmployeDtos() throws BeanInstantiationException, NoSuchMethodException, SecurityException {
-		Date dateEmbauche = new Date();
+		LocalDate dateEmbauche = LocalDate.now();
 		EmployeSummary projection = BeanUtils.instantiateClass(
-				BasicEmployeSummary.class.getConstructor(Long.class, String.class, Date.class, EmployeType.class), 10L,
-				"Nom", dateEmbauche, EmployeType.PILOTE);
+				BasicEmployeSummary.class.getConstructor(Long.class, String.class, LocalDate.class, EmployeType.class),
+				10L, "Nom", dateEmbauche, EmployeType.PILOTE);
 
 		EmployeDtos dtos = mapper.mapToEmployeDtos(Arrays.asList(projection));
 
@@ -118,7 +117,7 @@ public class EmployeMapperTest extends AbstractWebTest {
 
 	@Test
 	public void testMapToEmployeDetailDto_Pilote() {
-		Date dateEmbauche = new Date();
+		LocalDate dateEmbauche = LocalDate.now();
 		PiloteEntity entity = BeanUtils.instantiateClass(JpaPiloteEntity.class);
 		((JpaPiloteEntity) entity).setMatricule(new Long(10));
 		entity.setNom("Nom");
@@ -155,7 +154,7 @@ public class EmployeMapperTest extends AbstractWebTest {
 
 	@Test
 	public void testMapToEmployeDetailDto_Mecanicien() {
-		Date dateEmbauche = new Date();
+		LocalDate dateEmbauche = LocalDate.now();
 		MecanicienEntity entity = BeanUtils.instantiateClass(JpaMecanicienEntity.class);
 		((JpaMecanicienEntity) entity).setMatricule(new Long(10));
 		entity.setNom("Nom");

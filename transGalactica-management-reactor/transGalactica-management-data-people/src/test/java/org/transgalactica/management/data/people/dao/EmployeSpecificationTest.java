@@ -6,7 +6,7 @@ import static org.transgalactica.management.data.people.dao.EmployeSpecification
 import static org.transgalactica.management.data.people.dao.EmployeSpecification.estMecanicien;
 import static org.transgalactica.management.data.people.dao.EmployeSpecification.nomContient;
 
-import java.util.GregorianCalendar;
+import java.time.LocalDate;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -43,7 +43,7 @@ public class EmployeSpecificationTest {
 
 	@Test
 	public void testEstEmbaucheApresLe() {
-		assertEquals(2, employeDao.findAll(estEmbaucheApresLe(new GregorianCalendar(2000, 1, 1).getTime())).size());
+		assertEquals(2, employeDao.findAll(estEmbaucheApresLe(LocalDate.of(2000, 2, 1))).size());
 	}
 
 	@Test

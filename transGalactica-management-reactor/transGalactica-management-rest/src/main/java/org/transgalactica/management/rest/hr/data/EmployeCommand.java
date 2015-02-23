@@ -1,7 +1,7 @@
 package org.transgalactica.management.rest.hr.data;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
 
 import javax.validation.constraints.NotNull;
 
@@ -15,7 +15,7 @@ public interface EmployeCommand extends Serializable {
 
 	void setNom(String nom);
 
-	Date getDateEmbauche();
+	LocalDate getDateEmbauche();
 
-	void setDateEmbauche(Date dateEmbauche);
+	void setDateEmbauche(LocalDate dateEmbauche);
 }

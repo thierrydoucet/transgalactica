@@ -14,7 +14,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import java.util.GregorianCalendar;
 import java.util.TimeZone;
 
 import org.junit.After;
@@ -73,7 +72,7 @@ public class EmployeRestServiceMvcTest extends AbstractWebTest {
 	@DirtiesContext
 	// reinit database ...
 	public void create_pilote_xml() throws Exception {
-		String xmlCommand = "<employeCommand><nom>nom test xml</nom><dateEmbauche>2013-01-23T00:00:00+01:00</dateEmbauche><nombreHeuresVol>12</nombreHeuresVol></employeCommand>";
+		String xmlCommand = "<employeCommand><nom>nom test xml</nom><dateEmbauche>2013-01-23T00:00:00Z</dateEmbauche><nombreHeuresVol>12</nombreHeuresVol></employeCommand>";
 		mockMvc.perform(post("/employes") //
 				.header("TransGalactica-Content-Type", "PiloteCommand") //
 				.contentType(APPLICATION_XML) //
@@ -82,7 +81,7 @@ public class EmployeRestServiceMvcTest extends AbstractWebTest {
 
 		mockMvc.perform(get("/employes/8").accept(APPLICATION_JSON)).andExpect(status().isOk())
 				.andExpect(jsonPath("$.nom").value("nom test xml")) //
-				.andExpect(jsonPath("$.dateEmbauche").value(1358895600000L)) //
+				.andExpect(jsonPath("$.dateEmbauche").value("2013-01-23")) //
 				.andExpect(jsonPath("$.typeEmploye").value("PILOTE")) //
 				.andExpect(jsonPath("$.nombreHeuresVol").value(12));
 	}
@@ -91,7 +90,7 @@ public class EmployeRestServiceMvcTest extends AbstractWebTest {
 	@DirtiesContext
 	// reinit database ...
 	public void create_mecanicien_json() throws Exception {
-		String jsonCommand = "{\"nom\":\"nom test\",\"dateEmbauche\":\"2013-01-23T00:00:00+01:00\"}";
+		String jsonCommand = "{\"nom\":\"nom test\",\"dateEmbauche\":\"2013-01-23\"}";
 		mockMvc.perform(post("/employes")//
 				.header("TransGalactica-Content-Type", "EmployeCommand")//
 				.contentType(APPLICATION_JSON)//
@@ -100,13 +99,13 @@ public class EmployeRestServiceMvcTest extends AbstractWebTest {
 
 		mockMvc.perform(get("/employes/8").accept(APPLICATION_JSON)).andExpect(status().isOk())
 				.andExpect(jsonPath("$.nom").value("nom test"))
-				.andExpect(jsonPath("$.dateEmbauche").value(1358895600000L)) //
+				.andExpect(jsonPath("$.dateEmbauche").value("2013-01-23")) //
 				.andExpect(jsonPath("$.typeEmploye").value("MECANICIEN"));
 	}
 
 	@Test
 	public void save_pilote_json() throws Exception {
-		String jsonCommand = "{\"nom\":\"nvx nom\",\"dateEmbauche\":\"1977-06-09T00:00:00+02:00\",\"nombreHeuresVol\":1234}";
+		String jsonCommand = "{\"nom\":\"nvx nom\",\"dateEmbauche\":\"1977-06-09\",\"nombreHeuresVol\":1234}";
 		mockMvc.perform(put("/employes/1")//
 				.header("TransGalactica-Content-Type", "PiloteCommand")//
 				.contentType(APPLICATION_JSON) //
@@ -115,7 +114,7 @@ public class EmployeRestServiceMvcTest extends AbstractWebTest {
 
 		mockMvc.perform(get("/employes/1").accept(APPLICATION_JSON)).andExpect(status().isOk())
 				.andExpect(jsonPath("$.nom").value("nvx nom"))
-				.andExpect(jsonPath("$.dateEmbauche").value(234655200000L))
+				.andExpect(jsonPath("$.dateEmbauche").value("1977-06-09"))
 				.andExpect(jsonPath("$.typeEmploye").value("PILOTE"))
 				.andExpect(jsonPath("$.nombreHeuresVol").value(1234))//
 				.andExpect(jsonPath("$.vaisseaux", hasSize(1)));
@@ -123,7 +122,7 @@ public class EmployeRestServiceMvcTest extends AbstractWebTest {
 
 	@Test
 	public void save_mecanicien_xml() throws Exception {
-		String xmlCommand = "<employeCommand><nom>nvx nom</nom><dateEmbauche>1977-06-09T00:00:00+02:00</dateEmbauche></employeCommand>";
+		String xmlCommand = "<employeCommand><nom>nvx nom</nom><dateEmbauche>1977-06-09</dateEmbauche></employeCommand>";
 		mockMvc.perform(put("/employes/2")//
 				.header("TransGalactica-Content-Type", "EmployeCommand") //
 				.contentType(APPLICATION_XML) //
@@ -132,7 +131,7 @@ public class EmployeRestServiceMvcTest extends AbstractWebTest {
 
 		mockMvc.perform(get("/employes/2").accept(APPLICATION_JSON)).andExpect(status().isOk())
 				.andExpect(jsonPath("$.nom").value("nvx nom"))
-				.andExpect(jsonPath("$.dateEmbauche").value(234655200000L))
+				.andExpect(jsonPath("$.dateEmbauche").value("1977-06-09"))
 				.andExpect(jsonPath("$.typeEmploye").value("MECANICIEN"))
 				.andExpect(jsonPath("$.specialites", hasSize(1))) //
 				.andExpect(jsonPath("$.vaisseaux", hasSize(1)));
@@ -149,14 +148,11 @@ public class EmployeRestServiceMvcTest extends AbstractWebTest {
 
 	@Test
 	public void search() throws Exception {
-		mockMvc.perform(get("/employes?nomEmploye=Chew%").accept(APPLICATION_JSON))
-				.andExpect(status().isOk())
+		mockMvc.perform(get("/employes?nomEmploye=Chew%").accept(APPLICATION_JSON)).andExpect(status().isOk())
 				.andExpect(jsonPath("$.employes").value(hasSize(1)))
 				.andExpect(jsonPath("$.employes[0].nom").value("Chewbacca"))
 				.andExpect(jsonPath("$.employes[0].matricule").value(2))
-				.andExpect(
-						jsonPath("$.employes[0].dateEmbauche").value(
-								new GregorianCalendar(1977, 5, 9).getTime().getTime()))
+				.andExpect(jsonPath("$.employes[0].dateEmbauche").value("1977-06-09"))
 				.andExpect(jsonPath("$.employes[0].typeEmploye").value("MECANICIEN"));
 	}
 

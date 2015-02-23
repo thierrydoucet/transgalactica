@@ -1,7 +1,7 @@
 package org.transgalactica.management.data.people.dao.impl;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -43,12 +43,12 @@ public class EmployeDaoImpl implements EmployeDaoCustom {
 					.toUpperCase()));
 		}
 		if (critereRechercheEmploye.getDateEmbaucheEmployeDebut() != null) {
-			conditions.add(cb.greaterThanOrEqualTo(from.<Date> get("dateEmbauche"),
+			conditions.add(cb.greaterThanOrEqualTo(from.<LocalDate> get("dateEmbauche"),
 					critereRechercheEmploye.getDateEmbaucheEmployeDebut()));
 
 		}
 		if (critereRechercheEmploye.getDateEmbaucheEmployeFin() != null) {
-			conditions.add(cb.lessThanOrEqualTo(from.<Date> get("dateEmbauche"),
+			conditions.add(cb.lessThanOrEqualTo(from.<LocalDate> get("dateEmbauche"),
 					critereRechercheEmploye.getDateEmbaucheEmployeFin()));
 		}
 		if (StringUtils.isNotBlank(critereRechercheEmploye.getImmatriculationVaisseau())) {

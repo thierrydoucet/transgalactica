@@ -1,6 +1,6 @@
 package org.transgalactica.management.data.people.bo.impl;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -19,9 +19,9 @@ public class BasicEmployeSearchCriteria implements EmployeSearchCriteria {
 
 	private String nomEmploye;
 
-	private Date dateEmbaucheEmployeDebut;
+	private LocalDate dateEmbaucheEmployeDebut;
 
-	private Date dateEmbaucheEmployeFin;
+	private LocalDate dateEmbaucheEmployeFin;
 
 	private String immatriculationVaisseau;
 }

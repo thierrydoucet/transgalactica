@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>org.transgalactica.management</groupId>
 		<artifactId>transGalactica-management-reactor</artifactId>
-		<version>1.2.0-SNAPSHOT</version>
+		<version>1.1.1-SNAPSHOT</version>
 	</parent>
 
 	<artifactId>transGalactica-management-business-hr</artifactId>

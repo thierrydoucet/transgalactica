@@ -3,7 +3,7 @@ package org.transgalactica.management.business.hr.service;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.validation.ValidationException;
@@ -65,21 +65,21 @@ public class EmployeServiceTest {
 	public void testEnregistrerEmploye() {
 		MecanicienEntity employe = beanFactory.getBean(MecanicienEntity.class);
 		employe.setNom("Bob l'Eponge");
-		employe.setDateEmbauche(new Date());
+		employe.setDateEmbauche(LocalDate.now());
 		employeService.enregistrerEmploye(employe);
 		EmployeEntity employe2 = employeService.chargerEmploye(employe.getMatricule());
 		assertEquals("Bob l'Eponge", employe2.getNom());
 	}
 
 	@Test(expected = ValidationException.class)
-	public void testEnregistrerHangar_null() {
+	public void testEnregistrerEmploye_null() {
 		employeService.enregistrerEmploye(null);
 	}
 
 	@Test(expected = ValidationException.class)
-	public void testEnregistrerHangar_Invalide() {
+	public void testEnregistrerEmploye_Invalide() {
 		MecanicienEntity employe = beanFactory.getBean(MecanicienEntity.class);
-		employe.setDateEmbauche(new Date());
+		employe.setDateEmbauche(LocalDate.now());
 		employeService.enregistrerEmploye(employe);
 	}
 

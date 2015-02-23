@@ -1,6 +1,6 @@
 package org.transgalactica.management.rest.hr.mapper;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 import org.transgalactica.management.data.people.bo.EmployeEntity;
@@ -20,6 +20,6 @@ public interface EmployeMapper {
 
 	EmployeDetailDto mapToEmployeDetailDto(EmployeEntity entity);
 
-	EmployeSearchCriteria mapToRechercheEmployeCriteres(String nomEmploye, Date dateEmbaucheEmployeDebut,
-			Date dateEmbaucheEmployeFin, String immatriculationVaisseau);
+	EmployeSearchCriteria mapToRechercheEmployeCriteres(String nomEmploye, LocalDate dateEmbaucheEmployeDebut,
+			LocalDate dateEmbaucheEmployeFin, String immatriculationVaisseau);
 }

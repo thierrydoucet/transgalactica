@@ -1,6 +1,6 @@
 package org.transgalactica.management.rest.hr.restservice.impl;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -107,8 +107,8 @@ public class SpringMVCEmployeRestService implements EmployeRestService {
 	@ResponseStatus(HttpStatus.OK)
 	@ResponseBody
 	public EmployeDtos search(@RequestParam(required = false) String nomEmploye,
-			@RequestParam(required = false) Date dateEmbaucheEmployeDebut,
-			@RequestParam(required = false) Date dateEmbaucheEmployeFin,
+			@RequestParam(required = false) LocalDate dateEmbaucheEmployeDebut,
+			@RequestParam(required = false) LocalDate dateEmbaucheEmployeFin,
 			@RequestParam(required = false) String immatriculationVaisseau) {
 		EmployeSearchCriteria criteres = employeMapper.mapToRechercheEmployeCriteres(nomEmploye,
 				dateEmbaucheEmployeDebut, dateEmbaucheEmployeFin, immatriculationVaisseau);

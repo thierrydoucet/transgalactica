@@ -1,7 +1,7 @@
 package org.transgalactica.management.data.rest.bo;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 public interface EmployeTo extends EmployeSummaryTo {
@@ -25,5 +25,5 @@ public interface EmployeTo extends EmployeSummaryTo {
 
 	void setNom(String value);
 
-	void setDateEmbauche(Date value);
+	void setDateEmbauche(LocalDate value);
 }

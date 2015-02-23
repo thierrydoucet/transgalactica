@@ -5,7 +5,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
-import java.util.GregorianCalendar;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.TimeZone;
 
@@ -68,7 +68,7 @@ public class EmployeDaoTest {
 	public void testPersist_SavePilote() {
 		PiloteEntity toSave = BeanUtils.instantiateClass(JpaPiloteEntity.class);
 		toSave.setNom("Chewbaca");
-		toSave.setDateEmbauche(new GregorianCalendar(2000, 0, 1).getTime());
+		toSave.setDateEmbauche(LocalDate.of(2000, 1, 1));
 		toSave.setNombreHeuresVol(78);
 		VaisseauEntity vaisseau = vaisseauDao.findByImmatriculation("Faucon Millenium");
 		toSave.addVaisseau(vaisseau);
@@ -80,7 +80,7 @@ public class EmployeDaoTest {
 		PiloteEntity found = (PiloteEntity) employeDao.findByMatricule(toSave.getMatricule());
 		assertNotNull(found);
 		assertEquals(EmployeType.PILOTE, found.getType());
-		assertEquals(new GregorianCalendar(2000, 0, 1).getTime(), found.getDateEmbauche());
+		assertEquals(LocalDate.of(2000, 1, 1), found.getDateEmbauche());
 		assertEquals("Chewbaca", found.getNom());
 		assertEquals(78, found.getNombreHeuresVol());
 		assertNotNull(found.getVaisseaux());
@@ -91,7 +91,7 @@ public class EmployeDaoTest {
 	public void testPersist_SaveMecanicien() {
 		MecanicienEntity toSave = beanFactory.getBean(MecanicienEntity.class);
 		toSave.setNom("Toto");
-		toSave.setDateEmbauche(new GregorianCalendar(2000, 0, 1).getTime());
+		toSave.setDateEmbauche(LocalDate.of(2000, 1, 1));
 		MecanicienSpecialiteEntity specialite = mecanicienSpecialiteDao.findByNomSpecialite("Hyperpropulsion");
 		toSave.getSpecialites().add(specialite);
 		VaisseauEntity vaisseau = vaisseauDao.findByImmatriculation("Faucon Millenium");
@@ -104,7 +104,7 @@ public class EmployeDaoTest {
 		MecanicienEntity found = (MecanicienEntity) employeDao.findByMatricule(toSave.getMatricule());
 		assertNotNull(found);
 		assertEquals(EmployeType.MECANICIEN, found.getType());
-		assertEquals(new GregorianCalendar(2000, 0, 1).getTime(), found.getDateEmbauche());
+		assertEquals(LocalDate.of(2000, 1, 1), found.getDateEmbauche());
 		assertEquals("Toto", found.getNom());
 		assertEquals("Hyperpropulsion", found.getSpecialites().iterator().next().getNomSpecialite());
 		assertNotNull(found.getVaisseaux());
@@ -115,7 +115,7 @@ public class EmployeDaoTest {
 	public void testPersist_UpdatePilote() {
 		PiloteEntity toUpdate = (PiloteEntity) employeDao.findByMatricule(1L);
 		assertNotNull(toUpdate);
-		toUpdate.setDateEmbauche(new GregorianCalendar(1999, 11, 31).getTime());
+		toUpdate.setDateEmbauche(LocalDate.of(1999, 12, 31));
 		toUpdate.setNom("Yan");
 		toUpdate.setNombreHeuresVol(88);
 		toUpdate.getVaisseaux().clear();
@@ -126,7 +126,7 @@ public class EmployeDaoTest {
 
 		assertNotNull(found);
 		assertEquals(EmployeType.PILOTE, found.getType());
-		assertEquals(new GregorianCalendar(1999, 11, 31).getTime(), found.getDateEmbauche());
+		assertEquals(LocalDate.of(1999, 12, 31), found.getDateEmbauche());
 		assertEquals("Yan", found.getNom());
 		assertEquals(88, found.getNombreHeuresVol());
 		assertEquals(0, found.getVaisseaux().size());
@@ -136,7 +136,7 @@ public class EmployeDaoTest {
 	public void testPersist_UpdateMecanicien() {
 		MecanicienEntity toUpdate = (MecanicienEntity) employeDao.findByMatricule(2L);
 		assertNotNull(toUpdate);
-		toUpdate.setDateEmbauche(new GregorianCalendar(1999, 11, 31).getTime());
+		toUpdate.setDateEmbauche(LocalDate.of(1999, 12, 31));
 		toUpdate.setNom("Yan Solo");
 		toUpdate.getSpecialites().clear();
 		toUpdate.getVaisseaux().clear();
@@ -147,7 +147,7 @@ public class EmployeDaoTest {
 
 		assertNotNull(found);
 		assertEquals(EmployeType.MECANICIEN, found.getType());
-		assertEquals(new GregorianCalendar(1999, 11, 31).getTime(), found.getDateEmbauche());
+		assertEquals(LocalDate.of(1999, 12, 31), found.getDateEmbauche());
 		assertEquals("Yan Solo", found.getNom());
 		assertTrue(found.getSpecialites().isEmpty());
 		assertEquals(0, found.getVaisseaux().size());
@@ -193,7 +193,7 @@ public class EmployeDaoTest {
 		assertEquals(EmployeType.PILOTE, found.getType());
 		assertEquals("Han Solo", found.getNom());
 		assertEquals(542, found.getNombreHeuresVol());
-		assertEquals(new GregorianCalendar(1977, 5, 9).getTime(), found.getDateEmbauche());
+		assertEquals(LocalDate.of(1977, 6, 9), found.getDateEmbauche());
 		assertNotNull(found.getVaisseaux());
 		assertEquals(1, found.getVaisseaux().size());
 		assertEquals("Faucon Millenium", found.getVaisseaux().iterator().next().getImmatriculation());
@@ -205,7 +205,7 @@ public class EmployeDaoTest {
 		assertNotNull(found);
 		assertEquals(EmployeType.MECANICIEN, found.getType());
 		assertEquals("Chewbacca", found.getNom());
-		assertEquals(new GregorianCalendar(1977, 5, 9).getTime(), found.getDateEmbauche());
+		assertEquals(LocalDate.of(1977, 6, 9), found.getDateEmbauche());
 		assertEquals("Armement", found.getSpecialites().iterator().next().getNomSpecialite());
 		assertNotNull(found.getVaisseaux());
 		assertEquals(1, found.getVaisseaux().size());
@@ -222,8 +222,8 @@ public class EmployeDaoTest {
 	public void testFindEmployesByCriteria() {
 		EmployeSearchCriteria critereRechercheEmploye = beanFactory.getBean(EmployeSearchCriteria.class);
 		critereRechercheEmploye.setNomEmploye("%chew%");
-		critereRechercheEmploye.setDateEmbaucheEmployeDebut(new GregorianCalendar(1977, 0, 1).getTime());
-		critereRechercheEmploye.setDateEmbaucheEmployeFin(new GregorianCalendar(1977, 11, 31).getTime());
+		critereRechercheEmploye.setDateEmbaucheEmployeDebut(LocalDate.of(1977, 1, 1));
+		critereRechercheEmploye.setDateEmbaucheEmployeFin(LocalDate.of(1977, 12, 31));
 		critereRechercheEmploye.setImmatriculationVaisseau("Faucon Millenium");
 
 		List<EmployeSummary> pilotes = employeDao.findEmployesByCriteria(critereRechercheEmploye);
@@ -232,7 +232,7 @@ public class EmployeDaoTest {
 		assertEquals(1, pilotes.size());
 		assertEquals(2, pilotes.get(0).getMatriculeEmploye().intValue());
 		assertEquals("Chewbacca", pilotes.get(0).getNomEmploye());
-		assertEquals(new GregorianCalendar(1977, 5, 9).getTime(), pilotes.get(0).getDateEmbaucheEmploye());
+		assertEquals(LocalDate.of(1977, 6, 9), pilotes.get(0).getDateEmbaucheEmploye());
 		assertEquals(EmployeType.MECANICIEN, pilotes.get(0).getTypeEmploye());
 	}
 
@@ -249,7 +249,7 @@ public class EmployeDaoTest {
 		EmployeSummary wash = employes.get(0);
 		assertEquals(4, wash.getMatriculeEmploye().intValue());
 		assertEquals("Hoban Washburne (Wash)", wash.getNomEmploye());
-		assertEquals(1032472800000L, wash.getDateEmbaucheEmploye().getTime());
+		assertEquals(LocalDate.of(2002, 9, 20), wash.getDateEmbaucheEmploye());
 		assertEquals(EmployeType.PILOTE, wash.getTypeEmploye());
 
 		assertEquals(5, employes.get(1).getMatriculeEmploye().longValue());
@@ -265,7 +265,7 @@ public class EmployeDaoTest {
 		EmployeSummary wash = employes.get(0);
 		assertEquals(4, wash.getMatriculeEmploye().intValue());
 		assertEquals("Hoban Washburne (Wash)", wash.getNomEmploye());
-		assertEquals(1032472800000L, wash.getDateEmbaucheEmploye().getTime());
+		assertEquals(LocalDate.of(2002, 9, 20), wash.getDateEmbaucheEmploye());
 		assertEquals(EmployeType.PILOTE, wash.getTypeEmploye());
 
 		assertEquals(5, employes.get(1).getMatriculeEmploye().longValue());
@@ -281,7 +281,7 @@ public class EmployeDaoTest {
 		EmployeSummary hanSolo = employes.get(0);
 		assertEquals(1, hanSolo.getMatriculeEmploye().intValue());
 		assertEquals("Han Solo", hanSolo.getNomEmploye());
-		assertEquals(234655200000L, hanSolo.getDateEmbaucheEmploye().getTime());
+		assertEquals(LocalDate.of(1977, 6, 9), hanSolo.getDateEmbaucheEmploye());
 		assertEquals(EmployeType.PILOTE, hanSolo.getTypeEmploye());
 
 		assertEquals(2, employes.get(1).getMatriculeEmploye().intValue());

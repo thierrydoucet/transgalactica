@@ -1,7 +1,7 @@
 package org.transgalactica.management.data.people.bo;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.Set;
 
 import javax.validation.constraints.Size;
@@ -20,9 +20,9 @@ public interface EmployeEntity extends Serializable {
 
 	void setNom(String nom);
 
-	Date getDateEmbauche();
+	LocalDate getDateEmbauche();
 
-	void setDateEmbauche(Date dateEmbauche);
+	void setDateEmbauche(LocalDate dateEmbauche);
 
 	EmployeType getType();
 

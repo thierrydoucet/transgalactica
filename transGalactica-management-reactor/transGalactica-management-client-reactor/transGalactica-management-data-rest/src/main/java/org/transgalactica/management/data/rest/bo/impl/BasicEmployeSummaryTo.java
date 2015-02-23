@@ -2,7 +2,7 @@ package org.transgalactica.management.data.rest.bo.impl;
 
 import static lombok.AccessLevel.PROTECTED;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -25,5 +25,5 @@ public class BasicEmployeSummaryTo implements EmployeSummaryTo {
 
 	private String typeEmploye;
 
-	private Date dateEmbauche;
+	private LocalDate dateEmbauche;
 }

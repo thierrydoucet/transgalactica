@@ -6,8 +6,8 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
 
+import java.time.LocalDate;
 import java.util.Collections;
-import java.util.GregorianCalendar;
 import java.util.List;
 
 import javax.xml.datatype.DatatypeConfigurationException;
@@ -45,9 +45,8 @@ public class HrMapperTest {
 	@Test
 	public void testMapToEmployeCommand_pilote() throws DatatypeConfigurationException {
 		PiloteTo employeTo = BeanUtils.instantiateClass(BasicPiloteTo.class);
-		GregorianCalendar dateEmbauche = new GregorianCalendar(2012, 3, 4);
 		employeTo.setNom("Nom");
-		employeTo.setDateEmbauche(dateEmbauche.getTime());
+		employeTo.setDateEmbauche(LocalDate.of(2012, 4, 4));
 		employeTo.setNombreHeuresVol(23);
 
 		EmployeCommand command = mapper.mapToEmployeCommand(employeTo);
@@ -55,23 +54,22 @@ public class HrMapperTest {
 		assertNotNull(command);
 		assertThat(command, instanceOf(PiloteCommand.class));
 		assertEquals("Nom", command.getNom());
-		assertEquals(DatatypeFactory.newInstance().newXMLGregorianCalendar(dateEmbauche), command.getDateEmbauche());
+		assertEquals(DatatypeFactory.newInstance().newXMLGregorianCalendar("2012-04-04"), command.getDateEmbauche());
 		assertEquals(23, ((PiloteCommand) command).getNombreHeuresVol());
 	}
 
 	@Test
 	public void testMapToEmployeCommand_mecanicien() throws DatatypeConfigurationException {
 		MecanicienTo employeTo = BeanUtils.instantiateClass(BasicMecanicienTo.class);
-		GregorianCalendar dateEmbauche = new GregorianCalendar(2012, 3, 4);
 		employeTo.setNom("Nom");
-		employeTo.setDateEmbauche(dateEmbauche.getTime());
+		employeTo.setDateEmbauche(LocalDate.of(2012, 4, 4));
 
 		EmployeCommand command = mapper.mapToEmployeCommand(employeTo);
 
 		assertNotNull(command);
 		assertThat(command, not(instanceOf(PiloteCommand.class)));
 		assertEquals("Nom", command.getNom());
-		assertEquals(DatatypeFactory.newInstance().newXMLGregorianCalendar(dateEmbauche), command.getDateEmbauche());
+		assertEquals(DatatypeFactory.newInstance().newXMLGregorianCalendar("2012-04-04"), command.getDateEmbauche());
 	}
 
 	@Test
@@ -80,8 +78,8 @@ public class HrMapperTest {
 		EmployeDto employeDto = objectFactory.createEmployeDto();
 		employeDto.setMatricule(1L);
 		employeDto.setNom("Nom");
-		GregorianCalendar dateEmbauche = new GregorianCalendar(2012, 3, 4);
-		employeDto.setDateEmbauche(DatatypeFactory.newInstance().newXMLGregorianCalendar(dateEmbauche));
+		LocalDate dateEmbauche = LocalDate.of(2012, 4, 4);
+		employeDto.setDateEmbauche(DatatypeFactory.newInstance().newXMLGregorianCalendar(dateEmbauche.toString()));
 		employeDto.setTypeEmploye(EmployeType.PILOTE);
 
 		List<EmployeSummaryTo> employeSummaryTos = mapper.mapToEmployeSummaryTo(Collections.singletonList(employeDto));
@@ -90,7 +88,7 @@ public class HrMapperTest {
 		assertEquals(1, employeSummaryTos.size());
 		assertEquals(new Long(1), employeSummaryTos.get(0).getMatricule());
 		assertEquals("Nom", employeSummaryTos.get(0).getNom());
-		assertEquals(dateEmbauche.getTime(), employeSummaryTos.get(0).getDateEmbauche());
+		assertEquals(dateEmbauche, employeSummaryTos.get(0).getDateEmbauche());
 		assertEquals("PILOTE", employeSummaryTos.get(0).getTypeEmploye());
 	}
 
@@ -101,8 +99,8 @@ public class HrMapperTest {
 		employe.setMatricule(1L);
 		employe.setNom("Nom");
 		employe.setTypeEmploye(EmployeType.MECANICIEN);
-		GregorianCalendar dateEmbauche = new GregorianCalendar(2012, 3, 4);
-		employe.setDateEmbauche(DatatypeFactory.newInstance().newXMLGregorianCalendar(dateEmbauche));
+		LocalDate dateEmbauche = LocalDate.of(2012, 4, 4);
+		employe.setDateEmbauche(DatatypeFactory.newInstance().newXMLGregorianCalendar(dateEmbauche.toString()));
 
 		employe.setSpecialites(objectFactory.createMecanicienDetailDtoSpecialites());
 		employe.getSpecialites().getSpecialite().add("Specialite");
@@ -124,7 +122,7 @@ public class HrMapperTest {
 		assertEquals(new Long(1), employeTo.getMatricule());
 		assertEquals("Nom", employeTo.getNom());
 		assertEquals("MECANICIEN", employeTo.getTypeEmploye());
-		assertEquals(dateEmbauche.getTime(), employeTo.getDateEmbauche());
+		assertEquals(dateEmbauche, employeTo.getDateEmbauche());
 
 		assertNotNull(((MecanicienTo) employeTo).getSpecialites());
 		assertEquals(1, ((MecanicienTo) employeTo).getSpecialites().size());
@@ -147,8 +145,8 @@ public class HrMapperTest {
 		employe.setMatricule(1L);
 		employe.setNom("Nom");
 		employe.setTypeEmploye(EmployeType.PILOTE);
-		GregorianCalendar dateEmbauche = new GregorianCalendar(2012, 3, 4);
-		employe.setDateEmbauche(DatatypeFactory.newInstance().newXMLGregorianCalendar(dateEmbauche));
+		LocalDate dateEmbauche = LocalDate.of(2012, 4, 4);
+		employe.setDateEmbauche(DatatypeFactory.newInstance().newXMLGregorianCalendar(dateEmbauche.toString()));
 		employe.setNombreHeuresVol(12);
 
 		EmployeVaisseau vaisseau = objectFactory.createEmployeVaisseau();
@@ -168,7 +166,7 @@ public class HrMapperTest {
 		assertEquals(new Long(1), employeTo.getMatricule());
 		assertEquals("Nom", employeTo.getNom());
 		assertEquals("PILOTE", employeTo.getTypeEmploye());
-		assertEquals(dateEmbauche.getTime(), employeTo.getDateEmbauche());
+		assertEquals(dateEmbauche, employeTo.getDateEmbauche());
 		assertEquals(12, ((PiloteTo) employeTo).getNombreHeuresVol());
 
 		assertNotNull(employeTo.getVaisseaux());

@@ -1,6 +1,6 @@
 package org.transgalactica.management.rest.hr.mapper.impl;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -79,8 +79,8 @@ public class DozerEmployeMapper implements EmployeMapper {
 	}
 
 	@Override
-	public EmployeSearchCriteria mapToRechercheEmployeCriteres(String nomEmploye, Date dateEmbaucheEmployeDebut,
-			Date dateEmbaucheEmployeFin, String immatriculationVaisseau) {
+	public EmployeSearchCriteria mapToRechercheEmployeCriteres(String nomEmploye, LocalDate dateEmbaucheEmployeDebut,
+			LocalDate dateEmbaucheEmployeFin, String immatriculationVaisseau) {
 		EmployeSearchCriteria criteria = beanFactory.getBean(EmployeSearchCriteria.class);
 		criteria.setNomEmploye(nomEmploye);
 		criteria.setDateEmbaucheEmployeDebut(dateEmbaucheEmployeDebut);

@@ -1,5 +1,6 @@
 package org.transgalactica.management.data.rest.mapper.impl;
 
+import static org.dozer.loader.api.FieldsMappingOptions.customConverter;
 import static org.dozer.loader.api.TypeMappingOptions.oneWay;
 
 import org.dozer.loader.api.BeanMappingBuilder;
@@ -23,15 +24,17 @@ public class DozerHrMappingBuilder extends BeanMappingBuilder {
 
 	@Override
 	protected void configure() {
-		mapping(PiloteTo.class, type(PiloteCommand.class).beanFactory("org.dozer.factory.JAXBBeanFactory"), oneWay());
+		mapping(PiloteTo.class, type(PiloteCommand.class).beanFactory("org.dozer.factory.JAXBBeanFactory"), oneWay())
+				.fields("dateEmbauche", "dateEmbauche", customConverter(XMLGregorianCalendarToLocalDateConverter.class));
 
 		mapping(MecanicienTo.class, type(EmployeCommand.class).beanFactory("org.dozer.factory.JAXBBeanFactory"),
-				oneWay());
+				oneWay()) //
+				.fields("dateEmbauche", "dateEmbauche", customConverter(XMLGregorianCalendarToLocalDateConverter.class));
 
-		mapping(EmployeDto.class, type(EmployeSummaryTo.class).beanFactory("springContextDozerFactory"), oneWay()) //
-				.fields("matricule", "matricule") //
-				.fields("nom", "nom") //
-				.fields("dateEmbauche", "dateEmbauche") //
+		mapping(EmployeDto.class, type(EmployeSummaryTo.class).beanFactory("springContextDozerFactory"), oneWay())
+				.fields("matricule", "matricule")
+				.fields("nom", "nom")
+				.fields("dateEmbauche", "dateEmbauche", customConverter(XMLGregorianCalendarToLocalDateConverter.class)) //
 				.fields("typeEmploye", "typeEmploye");
 
 		mapping(PiloteDetailDto.class, type(PiloteTo.class).beanFactory("springContextDozerFactory"), oneWay()) //

@@ -2,7 +2,7 @@ package org.transgalactica.management.data.rest.bo.impl;
 
 import static lombok.AccessLevel.PROTECTED;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,7 +21,7 @@ public class BasicEmployeSearchCriteria implements EmployeSearchCriteria {
 
 	private String nomEmploye;
 
-	private Date dateEmbaucheEmployeDebut;
+	private LocalDate dateEmbaucheEmployeDebut;
 
-	private Date dateEmbaucheEmployeFin;
+	private LocalDate dateEmbaucheEmployeFin;
 }
