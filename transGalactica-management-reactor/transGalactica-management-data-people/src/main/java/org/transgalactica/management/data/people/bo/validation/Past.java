@@ -16,13 +16,12 @@ import javax.validation.Payload;
 
 /**
  * The annotated element must be a date in the past or now. Now is defined as
- * the current time according to the virtual machine.
- * <p/>
+ * the current time according to the virtual machine. <br>
  * Supported types are:
  * <ul>
  * <li>{@code java.time.LocalDate}</li>
  * </ul>
- * <p/>
+ * <br>
  * {@code null} elements are considered valid.
  *
  * @author Thierry
