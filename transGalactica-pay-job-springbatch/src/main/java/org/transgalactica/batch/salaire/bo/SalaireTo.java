@@ -2,7 +2,7 @@ package org.transgalactica.batch.salaire.bo;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.Date;
+import java.time.LocalDate;
 
 import org.transgalactica.management.data.referentiel.bo.EmployeType;
 
@@ -28,9 +28,9 @@ public interface SalaireTo extends Serializable {
 
 	EmployeType getTypeEmploye();
 
-	void setDateEmbaucheEmploye(Date dateEmbaucheEmploye);
+	void setDateEmbaucheEmploye(LocalDate dateEmbaucheEmploye);
 
-	Date getDateEmbaucheEmploye();
+	LocalDate getDateEmbaucheEmploye();
 
 	void setNomEmploye(String nomEmploye);
 

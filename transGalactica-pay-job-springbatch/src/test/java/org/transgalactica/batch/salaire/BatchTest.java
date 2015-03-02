@@ -1,36 +1,38 @@
 package org.transgalactica.batch.salaire;
 
 import static org.junit.Assert.assertEquals;
+import static org.springframework.batch.core.ExitStatus.COMPLETED;
 import static org.springframework.batch.test.AssertFile.assertFileEquals;
 
-import java.util.GregorianCalendar;
-
 import org.junit.Test;
-import org.springframework.batch.core.ExitStatus;
 import org.springframework.batch.core.JobExecution;
 import org.springframework.batch.core.JobParametersBuilder;
 import org.springframework.batch.test.JobLauncherTestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
 
-public class BatchTest extends AbstractBatchContextTest {
+public class BatchTest extends AbstractBatchTest {
+
+	@Autowired
+	private ApplicationContext applicationContext;
 
 	@Autowired
 	private JobLauncherTestUtils jobLauncherTestUtils;
 
+	private static final String TARGET_DIR = "target/BatchTest/" + System.currentTimeMillis() + "/";
+
 	@Test
 	public void testLaunch() throws Exception {
-		JobParametersBuilder parametersBuilder = new JobParametersBuilder();
-		parametersBuilder.addDate("salaire.compute.date", new GregorianCalendar(2007, 11, 3).getTime());
-		parametersBuilder.addString("salaire.compute.output.filename",
-				"file:./target/BatchTest/salaireComputeOuput.txt");
-		parametersBuilder.addString("salaire.edit.output.directory", "file:./target/BatchTest/");
+		JobExecution jobExecution = jobLauncherTestUtils.launchJob(new JobParametersBuilder()
+				.addString("salaire.compute.date", "2007-12-03")
+				.addString("salaire.edit.output.directory", "file:./" + TARGET_DIR)
+				.addString("salaire.compute.output.filename", "file:./" + TARGET_DIR + "salaireComputeOuput.txt")
+				.toJobParameters());
 
-		JobExecution jobExecution = jobLauncherTestUtils.launchJob(parametersBuilder.toJobParameters());
-
-		assertEquals(ExitStatus.COMPLETED, jobExecution.getExitStatus());
+		assertEquals(COMPLETED, jobExecution.getExitStatus());
 
 		checkComputeStep();
 		checkEditStep();
@@ -38,11 +40,11 @@ public class BatchTest extends AbstractBatchContextTest {
 
 	private void checkComputeStep() throws Exception {
 		assertFileEquals(new ClassPathResource("org/transgalactica/batch/salaire/compute/SalaireToOuput.txt"),
-				new FileSystemResource("target/BatchTest/salaireComputeOuput.txt"));
+				new FileSystemResource(TARGET_DIR + "salaireComputeOuput.txt"));
 	}
 
 	private void checkEditStep() throws Exception {
-		Resource[] fiches = applicationContext.getResources("file:./target/BatchTest/*_2007-12.pdf");
+		Resource[] fiches = applicationContext.getResources("file:./" + TARGET_DIR + "*_2007-12.pdf");
 		assertEquals(7, fiches.length);
 	}
 }

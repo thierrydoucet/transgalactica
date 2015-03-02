@@ -5,8 +5,8 @@ argumentCount=$#
 scriptName="`basename $0`"
 if [ $argumentCount -ne  2 ];
 then
-  echo "Usage: $scriptName <Date de calcul au format MM/AAAA> <Repertoire de generation des fiches de salaire>"
-  echo "Exemple : $scriptName 11-2012 /var/transGalactica/fichesSalaire"
+  echo "Usage: $scriptName <Date de calcul au format AAAA-MM> <Repertoire de generation des fiches de salaire>"
+  echo "Exemple : $scriptName 2012-11 /var/transGalactica/fichesSalaire"
   exit 1
 fi
 
@@ -43,13 +43,14 @@ echo "[bash] Running job..."
 
 $JAVA_CMD \
     -Dlogback.configurationFile="conf/transGalactica.logback.xml" \
-    -DtransGalactica.configuration="file:conf/transGalactica.properties" \
     -Dspring.profiles.active="embedded" \
+    -Duser.country=FR \
+    -Duser.language=fr \
     -cp "boot/*:lib/*" \
     org.springframework.batch.core.launch.support.CommandLineJobRunner \
-    "classpath:META-INF/applicationContext.xml" \
-    org.transgalactica.batch.salaire.FicheSalaireBatch \
-    salaire.compute.date="01/$DATE_CALCUL" \
+    "org.transgalactica.batch.salaire.context.AppConfig" \
+    ficheSalaireJob \
+    salaire.compute.date="$DATE_CALCUL-01" \
     salaire.compute.output.filename="file:$TMP_COMPUTE_FILE" \
     salaire.edit.output.directory="file:$GENERATION_DIR/"
 

@@ -1,7 +1,9 @@
-package org.transgalactica.batch.salaire.item.impl;
+package org.transgalactica.batch.salaire.item;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -46,9 +48,11 @@ import com.itextpdf.text.pdf.PdfWriter;
 public class ITextFicheSalairePdfItemWriter implements ItemWriter<SalaireTo> {
 
 	private static final int HEADER_SPACING = 20;
+
 	private static final int CONTENT_SPACING = 10;
 
 	private static final int HEADER_FONT_SIZE = 18;
+
 	private static final int CONTENT_FONT_SIZE = 12;
 
 	@Inject
@@ -214,8 +218,12 @@ public class ITextFicheSalairePdfItemWriter implements ItemWriter<SalaireTo> {
 		this.outputDirectory = outputDirectory;
 	}
 
+	/**
+	 * @param dateCalcul
+	 */
 	@Required
-	public void setDateCalcul(Date dateCalcul) {
-		this.dateCalcul = new Date(dateCalcul.getTime());
+	public void setDateCalcul(LocalDate dateCalcul) {
+		// convert to localized date (format)
+		this.dateCalcul = Date.from(dateCalcul.atStartOfDay(ZoneId.systemDefault()).toInstant());
 	}
 }

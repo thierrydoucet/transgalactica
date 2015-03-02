@@ -3,7 +3,7 @@ package org.transgalactica.batch.salaire.bo.impl;
 import static lombok.AccessLevel.PROTECTED;
 
 import java.math.BigDecimal;
-import java.util.Date;
+import java.time.LocalDate;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,7 +22,7 @@ public class BasicSalaireTo implements SalaireTo {
 
 	private String nomEmploye;
 
-	private Date dateEmbaucheEmploye;
+	private LocalDate dateEmbaucheEmploye;
 
 	private EmployeType typeEmploye;
 

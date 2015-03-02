@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>org.transgalactica.core</groupId>
 		<artifactId>transGalactica-build</artifactId>
-		<version>1.0.0</version>
+		<version>1.1.0</version>
 	</parent>
 
 	<groupId>org.transgalactica.front</groupId>
@@ -25,9 +25,9 @@
 	</scm>
 
 	<properties>
-		<dependencies.version>1.0.0</dependencies.version>
-		<management.version>1.0.0</management.version>
-		<test.version>1.0.0</test.version>
+		<dependencies.version>1.2.0</dependencies.version>
+		<management.version>1.1.1</management.version>
+		<test.version>1.1.0</test.version>
 	</properties>
 
 	<dependencyManagement>
@@ -80,17 +80,20 @@
 			<artifactId>validation-api</artifactId>
 			<scope>compile</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.glassfish.web</groupId>
+			<artifactId>javax.el</artifactId>
+			<scope>runtime</scope>
+		</dependency>
 
 		<!-- mapping -->
 		<dependency>
 			<groupId>net.sf.dozer</groupId>
 			<artifactId>dozer</artifactId>
 		</dependency>
-
-		<!-- Date -->
 		<dependency>
-			<groupId>joda-time</groupId>
-			<artifactId>joda-time</artifactId>
+			<groupId>net.sf.dozer</groupId>
+			<artifactId>dozer-spring</artifactId>
 		</dependency>
 
 		<!-- PDF -->
@@ -116,19 +119,21 @@
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-classic</artifactId>
 		</dependency>
-
+		
+		<!-- DB -->
+		<!-- DB -->
+		<dependency>
+			<groupId>org.hsqldb</groupId>
+			<artifactId>hsqldb</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		
 		<!-- Tests -->
 		<dependency>
 			<groupId>org.transgalactica.core</groupId>
 			<artifactId>transGalactica-test</artifactId>
 			<version>${test.version}</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.transgalactica.management</groupId>
-			<artifactId>transGalactica-management-data-orm</artifactId>
-			<version>${management.version}</version>
-			<type>test-jar</type>
+			<type>pom</type>
 			<scope>test</scope>
 		</dependency>
 

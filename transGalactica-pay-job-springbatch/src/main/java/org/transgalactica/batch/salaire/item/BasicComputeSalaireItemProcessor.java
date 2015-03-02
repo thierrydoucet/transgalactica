@@ -1,7 +1,7 @@
-package org.transgalactica.batch.salaire.item.impl;
+package org.transgalactica.batch.salaire.item;
 
 import java.math.BigDecimal;
-import java.util.Date;
+import java.time.LocalDate;
 
 import javax.inject.Inject;
 
@@ -12,7 +12,7 @@ import org.transgalactica.batch.salaire.mapper.SalaireMapper;
 import org.transgalactica.batch.salaire.rule.FicheSalaireRule;
 import org.transgalactica.management.data.people.bo.EmployeEntity;
 
-public class BasicSalaireMapperItemProcessor implements ItemProcessor<EmployeEntity, SalaireTo> {
+public class BasicComputeSalaireItemProcessor implements ItemProcessor<EmployeEntity, SalaireTo> {
 
 	@Inject
 	private SalaireMapper salaireMapper;
@@ -20,9 +20,9 @@ public class BasicSalaireMapperItemProcessor implements ItemProcessor<EmployeEnt
 	@Inject
 	private FicheSalaireRule ficheSalaireRule;
 
-	private Date dateCalcul;
+	private LocalDate dateCalcul;
 
-	protected BasicSalaireMapperItemProcessor() {
+	protected BasicComputeSalaireItemProcessor() {
 	}
 
 	@Override
@@ -32,6 +32,7 @@ public class BasicSalaireMapperItemProcessor implements ItemProcessor<EmployeEnt
 		BigDecimal base = ficheSalaireRule.calculerSalaireBase(item);
 		BigDecimal anciennete = ficheSalaireRule.calculerPrimeAnciennete(item, dateCalcul);
 		BigDecimal experience = ficheSalaireRule.calculerPrimeExperience(item);
+
 		salaireTo.setSalaireBase(base);
 		salaireTo.setPrimeAnciennete(anciennete);
 		salaireTo.setPrimeExperience(experience);
@@ -41,7 +42,7 @@ public class BasicSalaireMapperItemProcessor implements ItemProcessor<EmployeEnt
 	}
 
 	@Required
-	public void setDateCalcul(Date dateCalcul) {
+	public void setDateCalcul(LocalDate dateCalcul) {
 		this.dateCalcul = dateCalcul;
 	}
 }

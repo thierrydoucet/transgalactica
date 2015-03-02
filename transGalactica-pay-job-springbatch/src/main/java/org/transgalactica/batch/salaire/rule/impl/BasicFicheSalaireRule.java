@@ -1,10 +1,9 @@
 package org.transgalactica.batch.salaire.rule.impl;
 
 import java.math.BigDecimal;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.Period;
 
-import org.joda.time.Interval;
-import org.joda.time.ReadableInterval;
 import org.springframework.util.Assert;
 import org.transgalactica.batch.salaire.rule.FicheSalaireRule;
 import org.transgalactica.fwk.domain.stereotype.Rule;
@@ -41,11 +40,11 @@ public class BasicFicheSalaireRule implements FicheSalaireRule {
 	}
 
 	@Override
-	public BigDecimal calculerPrimeAnciennete(EmployeEntity employe, Date dateCalcul) {
-		Date dateEmbauche = employe.getDateEmbauche();
-		Assert.isTrue(dateCalcul.after(dateEmbauche));
-		ReadableInterval interval = new Interval(dateEmbauche.getTime(), dateCalcul.getTime());
-		BigDecimal nbAnneesAnciennete = new BigDecimal(interval.toPeriod().getYears());
+	public BigDecimal calculerPrimeAnciennete(EmployeEntity employe, LocalDate dateCalcul) {
+		LocalDate dateEmbauche = employe.getDateEmbauche();
+		Assert.isTrue(dateCalcul.isAfter(dateEmbauche), "'dateCalcul' should be after 'dateEmbauche'.");
+		Period interval = Period.between(dateEmbauche, dateCalcul);
+		BigDecimal nbAnneesAnciennete = new BigDecimal(interval.getYears());
 		return nbAnneesAnciennete.multiply(FACTEUR_ANCIENNETE);
 	}
 

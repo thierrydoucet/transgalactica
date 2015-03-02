@@ -4,14 +4,13 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 import java.math.BigDecimal;
-import java.util.GregorianCalendar;
+import java.time.LocalDate;
 
 import org.junit.Test;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.util.ReflectionTestUtils;
-import org.transgalactica.batch.salaire.AbstractContextTest;
-import org.transgalactica.batch.salaire.rule.FicheSalaireRule;
+import org.transgalactica.batch.salaire.rule.impl.BasicFicheSalaireRule;
 import org.transgalactica.management.data.people.bo.EmployeEntity;
 import org.transgalactica.management.data.people.bo.MecanicienEntity;
 import org.transgalactica.management.data.people.bo.PiloteEntity;
@@ -19,10 +18,10 @@ import org.transgalactica.management.data.people.bo.impl.JpaMecanicienEntity;
 import org.transgalactica.management.data.people.bo.impl.JpaPiloteEntity;
 import org.transgalactica.management.data.referentiel.bo.impl.JpaMecanicienSpecialiteEntity;
 
-public class FicheSalaireRuleTest extends AbstractContextTest {
+public class FicheSalaireRuleTest {
 
 	@Autowired
-	private FicheSalaireRule ficheSalaireRule;
+	private FicheSalaireRule ficheSalaireRule = BeanUtils.instantiateClass(BasicFicheSalaireRule.class);
 
 	@Test
 	public void testCalculerSalaireBasePilote() {
@@ -43,9 +42,8 @@ public class FicheSalaireRuleTest extends AbstractContextTest {
 	@Test
 	public void testCalculerPrimeAnciennete() {
 		EmployeEntity employe = BeanUtils.instantiateClass(JpaPiloteEntity.class);
-		employe.setDateEmbauche(new GregorianCalendar(2000, 11, 23).getTime());
-		BigDecimal salaire = ficheSalaireRule.calculerPrimeAnciennete(employe,
-				new GregorianCalendar(2007, 11, 3).getTime());
+		employe.setDateEmbauche(LocalDate.of(2000, 12, 23));
+		BigDecimal salaire = ficheSalaireRule.calculerPrimeAnciennete(employe, LocalDate.of(2007, 12, 3));
 		assertNotNull(salaire);
 		assertEquals(600, salaire.intValue());
 	}
@@ -63,10 +61,10 @@ public class FicheSalaireRuleTest extends AbstractContextTest {
 	public void testCalculerPrimeExperienceMecanicien() {
 		MecanicienEntity employe = BeanUtils.instantiateClass(JpaMecanicienEntity.class);
 		JpaMecanicienSpecialiteEntity s1 = BeanUtils.instantiateClass(JpaMecanicienSpecialiteEntity.class);
-		ReflectionTestUtils.invokeSetterMethod(s1, "nomSpecialite", "nomSpecialite");
+		ReflectionTestUtils.setField(s1, "nomSpecialite", "nomSpecialite");
 		employe.getSpecialites().add(s1);
 		JpaMecanicienSpecialiteEntity s2 = BeanUtils.instantiateClass(JpaMecanicienSpecialiteEntity.class);
-		ReflectionTestUtils.invokeSetterMethod(s2, "nomSpecialite", "nomSpecialite2");
+		ReflectionTestUtils.setField(s2, "nomSpecialite", "nomSpecialite2");
 		employe.getSpecialites().add(s2);
 		BigDecimal salaire = ficheSalaireRule.calculerPrimeExperience(employe);
 		assertNotNull(salaire);

@@ -3,43 +3,36 @@ package org.transgalactica.batch.salaire.item;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-import java.util.GregorianCalendar;
-
-import javax.inject.Named;
+import java.time.LocalDate;
 
 import org.junit.Test;
-import org.springframework.batch.core.JobParameters;
 import org.springframework.batch.core.JobParametersBuilder;
 import org.springframework.batch.core.StepExecution;
-import org.springframework.batch.item.ItemReader;
-import org.springframework.batch.item.ItemStream;
+import org.springframework.batch.item.file.FlatFileItemReader;
 import org.springframework.batch.test.MetaDataInstanceFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.transgalactica.batch.salaire.AbstractBatchContextTest;
+import org.transgalactica.batch.salaire.AbstractBatchTest;
 import org.transgalactica.batch.salaire.bo.SalaireTo;
 import org.transgalactica.management.data.referentiel.bo.EmployeType;
 
-public class SalaireToItemReaderTest extends AbstractBatchContextTest {
+public class SalaireToItemReaderTest extends AbstractBatchTest {
 
 	@Autowired
-	@Named("org.transgalactica.batch.salaire.item.SalaireToItemReader")
-	private ItemReader<SalaireTo> reader;
+	private FlatFileItemReader<SalaireTo> reader;
 
 	public StepExecution getStepExection() {
-		JobParameters parameters = new JobParametersBuilder().addString("salaire.compute.output.filename",
-				"classpath:org/transgalactica/batch/salaire/compute/SalaireToOuput.txt").toJobParameters();
-		StepExecution execution = MetaDataInstanceFactory.createStepExecution(parameters);
-		return execution;
+		return MetaDataInstanceFactory.createStepExecution( //
+				new JobParametersBuilder().addString("salaire.compute.output.filename",
+						"classpath:org/transgalactica/batch/salaire/compute/SalaireToOuput.txt").toJobParameters());
 	}
 
 	@Test
-	public void testRead() throws Exception {
-
-		((ItemStream) reader).open(MetaDataInstanceFactory.createJobExecution().getExecutionContext());
+	public void testRead() throws Throwable {
+		reader.open(MetaDataInstanceFactory.createJobExecution().getExecutionContext());
 		SalaireTo salaire = reader.read();
 
 		assertNotNull(salaire);
-		assertEquals(new GregorianCalendar(1977, 5, 9).getTime(), salaire.getDateEmbaucheEmploye());
+		assertEquals(LocalDate.of(1977, 6, 9), salaire.getDateEmbaucheEmploye());
 		assertEquals("Han Solo", salaire.getNomEmploye());
 		assertEquals(3000, salaire.getPrimeAnciennete().intValue());
 		assertEquals(542, salaire.getPrimeExperience().intValue());

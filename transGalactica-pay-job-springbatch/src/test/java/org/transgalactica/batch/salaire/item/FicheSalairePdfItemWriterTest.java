@@ -4,8 +4,8 @@ import static org.junit.Assert.assertTrue;
 
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.Collections;
-import java.util.GregorianCalendar;
 import java.util.Locale;
 
 import javax.inject.Named;
@@ -18,24 +18,28 @@ import org.springframework.batch.item.ItemWriter;
 import org.springframework.batch.test.MetaDataInstanceFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
-import org.transgalactica.batch.salaire.AbstractBatchContextTest;
+import org.transgalactica.batch.salaire.AbstractBatchTest;
 import org.transgalactica.batch.salaire.bo.SalaireTo;
 import org.transgalactica.batch.salaire.bo.impl.BasicSalaireTo;
 import org.transgalactica.management.data.referentiel.bo.EmployeType;
 
-public class FicheSalairePdfItemWriterTest extends AbstractBatchContextTest {
+public class FicheSalairePdfItemWriterTest extends AbstractBatchTest {
 
-	private static final String TARGET_PATH = "file:./target/BatchTest/";
+	private static final String TARGET_PATH = "target/BatchTest/" + System.currentTimeMillis() + "/";
 
 	@Autowired
-	@Named("org.transgalactica.batch.salaire.item.SalairePdfItemWriter")
+	private ApplicationContext applicationContext;
+
+	@Autowired
+	@Named("salairePdfItemWriter")
 	private ItemWriter<SalaireTo> writer;
 
 	@Before
-	public void checkAndCreateTargetDirectory() throws IOException {
-		Resource targetDirectory = applicationContext.getResource(TARGET_PATH);
+	public void createTargetDirectoryIfNotExist() throws IOException {
+		Resource targetDirectory = applicationContext.getResource("file:./" + TARGET_PATH);
 		if (!targetDirectory.exists()) {
 			targetDirectory.getFile().mkdir();
 		}
@@ -43,8 +47,8 @@ public class FicheSalairePdfItemWriterTest extends AbstractBatchContextTest {
 
 	public StepExecution getStepExection() {
 		JobParametersBuilder parametersBuilder = new JobParametersBuilder();
-		parametersBuilder.addDate("salaire.compute.date", new GregorianCalendar(2011, 11, 3).getTime());
-		parametersBuilder.addString("salaire.edit.output.directory", TARGET_PATH);
+		parametersBuilder.addString("salaire.compute.date", "2011-12-03");
+		parametersBuilder.addString("salaire.edit.output.directory", "file:./" + TARGET_PATH);
 
 		StepExecution execution = MetaDataInstanceFactory.createStepExecution(parametersBuilder.toJobParameters());
 		return execution;
@@ -55,7 +59,7 @@ public class FicheSalairePdfItemWriterTest extends AbstractBatchContextTest {
 		SalaireTo salaire = BeanUtils.instantiateClass(BasicSalaireTo.class);
 		salaire.setNomEmploye("Wedge Antilles");
 		salaire.setTypeEmploye(EmployeType.PILOTE);
-		salaire.setDateEmbaucheEmploye(new GregorianCalendar(2000, 1, 23).getTime());
+		salaire.setDateEmbaucheEmploye(LocalDate.of(2000, 2, 23));
 		salaire.setSalaireBase(new BigDecimal("8000"));
 		salaire.setPrimeExperience(new BigDecimal("7"));
 		salaire.setPrimeAnciennete(new BigDecimal("700"));
@@ -63,7 +67,7 @@ public class FicheSalairePdfItemWriterTest extends AbstractBatchContextTest {
 
 		writer.write(Collections.singletonList(salaire));
 
-		assertTrue(new FileSystemResource("target/BatchTest/Wedge Antilles_2011-12.pdf").exists());
+		assertTrue(new FileSystemResource(TARGET_PATH + "Wedge Antilles_2011-12.pdf").exists());
 		// TODO : voir pour controler le contenu du fichier (hors metadata)
 	}
 
@@ -76,7 +80,7 @@ public class FicheSalairePdfItemWriterTest extends AbstractBatchContextTest {
 			SalaireTo salaire = BeanUtils.instantiateClass(BasicSalaireTo.class);
 			salaire.setNomEmploye("C3PO");
 			salaire.setTypeEmploye(EmployeType.PILOTE);
-			salaire.setDateEmbaucheEmploye(new GregorianCalendar(2000, 1, 23).getTime());
+			salaire.setDateEmbaucheEmploye(LocalDate.of(2000, 2, 23));
 			salaire.setSalaireBase(new BigDecimal("8000"));
 			salaire.setPrimeExperience(new BigDecimal("337"));
 			salaire.setPrimeAnciennete(new BigDecimal("100"));
@@ -99,7 +103,7 @@ public class FicheSalairePdfItemWriterTest extends AbstractBatchContextTest {
 			SalaireTo salaire = BeanUtils.instantiateClass(BasicSalaireTo.class);
 			salaire.setNomEmploye("Dathcha");
 			salaire.setTypeEmploye(EmployeType.PILOTE);
-			salaire.setDateEmbaucheEmploye(new GregorianCalendar(2000, 1, 23).getTime());
+			salaire.setDateEmbaucheEmploye(LocalDate.of(2000, 2, 23));
 			salaire.setSalaireBase(new BigDecimal("5000"));
 			salaire.setPrimeExperience(new BigDecimal("1000"));
 			salaire.setPrimeAnciennete(new BigDecimal("0"));

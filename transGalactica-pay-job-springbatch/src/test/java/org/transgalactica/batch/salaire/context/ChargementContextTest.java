@@ -1,13 +1,19 @@
-package org.transgalactica.batch.salaire;
+package org.transgalactica.batch.salaire.context;
 
 import static org.junit.Assert.assertNotNull;
 
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.transgalactica.batch.salaire.AbstractBatchTest;
 import org.transgalactica.batch.salaire.bo.SalaireTo;
 import org.transgalactica.batch.salaire.mapper.SalaireMapper;
 import org.transgalactica.batch.salaire.rule.FicheSalaireRule;
 
-public class ChargementContextTest extends AbstractBatchContextTest {
+public class ChargementContextTest extends AbstractBatchTest {
+
+	@Autowired
+	private ApplicationContext applicationContext;
 
 	@Test
 	public void testInitialisationContext() {
@@ -22,14 +28,16 @@ public class ChargementContextTest extends AbstractBatchContextTest {
 
 	@Test
 	public void testInitialisationJobsAndFolks() {
-		assertNotNull(applicationContext.getBean("org.transgalactica.batch.salaire.FicheSalaireBatch"));
+		assertNotNull(applicationContext.getBean("ficheSalaireJob"));
 	}
 
 	@Test
 	public void testInitialisationItems() {
-		assertNotNull(applicationContext.getBean("org.transgalactica.batch.salaire.item.EmployeEntityItemReader"));
-		assertNotNull(applicationContext.getBean("org.transgalactica.batch.salaire.item.SalaireMapperItemProcessor"));
-		assertNotNull(applicationContext.getBean("org.transgalactica.batch.salaire.item.SalaireToItemWriter"));
+		assertNotNull(applicationContext.getBean("employeEntityItemReader"));
+		assertNotNull(applicationContext.getBean("computeSalaireItemProcessor"));
+		assertNotNull(applicationContext.getBean("salaireToItemWriter"));
+		assertNotNull(applicationContext.getBean("salaireToItemReader"));
+		assertNotNull(applicationContext.getBean("salairePdfItemWriter"));
 	}
 
 	@Test
