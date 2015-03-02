@@ -11,7 +11,7 @@
 
 	<groupId>org.transgalactica.front</groupId>
 	<artifactId>transGalactica-pay-job-springbatch</artifactId>
-	<version>1.1.0-SNAPSHOT</version>
+	<version>1.1.0</version>
 	<packaging>jar</packaging>
 
 	<name>Trans'Galactica Pay - Job (Spring Batch)</name>
@@ -21,7 +21,7 @@
 		<url>https://github.com/thierrydoucet/transGalactica</url>
 		<connection>scm:git:git@github.com/thierrydoucet/transGalactica.git</connection>
 		<developerConnection>scm:git:git@github.com:thierrydoucet/transGalactica.git</developerConnection>
-		<tag>HEAD</tag>
+		<tag>transGalactica-pay-job-springbatch-1.1.0</tag>
 	</scm>
 
 	<properties>
