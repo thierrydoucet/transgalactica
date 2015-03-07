@@ -1,4 +1,4 @@
-package org.transgalactica.web.employe.controller.impl;
+package org.transgalactica.web.employe.controller;
 
 import javax.inject.Inject;
 

@@ -1,7 +1,7 @@
 package org.transgalactica.web.vaisseau.mapper;
 
 import org.transgalactica.management.data.materiel.bo.VaisseauEntity;
-import org.transgalactica.web.vaisseau.model.impl.VaisseauCommand;
+import org.transgalactica.web.vaisseau.model.VaisseauCommand;
 
 public interface VaisseauMapper {
 

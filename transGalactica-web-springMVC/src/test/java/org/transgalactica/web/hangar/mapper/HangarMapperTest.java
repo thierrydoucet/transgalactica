@@ -8,16 +8,15 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.transgalactica.management.data.materiel.bo.HangarEntity;
 import org.transgalactica.management.data.materiel.bo.impl.JpaHangarEntity;
-import org.transgalactica.web.AbstractWebContextTest;
-import org.transgalactica.web.hangar.mapper.HangarMapper;
-import org.transgalactica.web.hangar.model.impl.HangarCommand;
+import org.transgalactica.web.AbstractWebTest;
+import org.transgalactica.web.hangar.model.HangarCommand;
 
 /**
  * Classe de tests pour le mapper relatif aux hangars.
  * 
  * @author Thierry
  */
-public class HangarMapperTest extends AbstractWebContextTest {
+public class HangarMapperTest extends AbstractWebTest {
 
 	@Autowired
 	private HangarMapper mapper;

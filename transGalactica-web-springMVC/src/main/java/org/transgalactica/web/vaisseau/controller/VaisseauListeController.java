@@ -1,4 +1,4 @@
-package org.transgalactica.web.vaisseau.controller.impl;
+package org.transgalactica.web.vaisseau.controller;
 
 import java.util.List;
 

@@ -12,10 +12,9 @@ import javax.validation.Validator;
 import org.junit.Test;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.transgalactica.web.AbstractWebContextTest;
-import org.transgalactica.web.hangar.model.impl.HangarCommand;
+import org.transgalactica.web.AbstractWebTest;
 
-public class HangarCommandValidationTest extends AbstractWebContextTest {
+public class HangarCommandValidationTest extends AbstractWebTest {
 
 	@Autowired
 	private Validator validator;

@@ -10,16 +10,15 @@ import org.transgalactica.management.data.materiel.bo.VaisseauEntity;
 import org.transgalactica.management.data.materiel.bo.VaisseauIntergalactiqueEntity;
 import org.transgalactica.management.data.materiel.bo.impl.JpaVaisseauEntity;
 import org.transgalactica.management.data.materiel.bo.impl.JpaVaisseauIntergalactiqueEntity;
-import org.transgalactica.web.AbstractWebContextTest;
-import org.transgalactica.web.vaisseau.mapper.VaisseauMapper;
-import org.transgalactica.web.vaisseau.model.impl.VaisseauCommand;
+import org.transgalactica.web.AbstractWebTest;
+import org.transgalactica.web.vaisseau.model.VaisseauCommand;
 
 /**
  * Classe de tests pour le mapper relatif aux Vaisseaus.
  * 
  * @author Thierry
  */
-public class VaisseauMapperTest extends AbstractWebContextTest {
+public class VaisseauMapperTest extends AbstractWebTest {
 
 	@Autowired
 	private VaisseauMapper mapper;

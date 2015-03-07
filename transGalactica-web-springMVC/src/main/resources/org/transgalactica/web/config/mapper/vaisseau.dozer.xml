@@ -7,7 +7,7 @@
 
 	<mapping>
 		<class-a
-			bean-factory="contextFactory">org.transgalactica.web.vaisseau.model.impl.VaisseauCommand</class-a>
+			bean-factory="contextFactory">org.transgalactica.web.vaisseau.model.VaisseauCommand</class-a>
 		<class-b
 			bean-factory="contextFactory">org.transgalactica.management.data.materiel.bo.impl.JpaVaisseauEntity</class-b>
 	</mapping>

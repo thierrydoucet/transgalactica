@@ -1,4 +1,4 @@
-package org.transgalactica.web.hangar.controller.impl;
+package org.transgalactica.web.hangar.controller;
 
 import javax.inject.Inject;
 import javax.validation.Valid;
@@ -16,7 +16,7 @@ import org.transgalactica.fwk.web.message.BusinessMessageUtils;
 import org.transgalactica.management.business.logistics.service.HangarService;
 import org.transgalactica.management.data.materiel.bo.HangarEntity;
 import org.transgalactica.web.hangar.mapper.HangarMapper;
-import org.transgalactica.web.hangar.model.impl.HangarCommand;
+import org.transgalactica.web.hangar.model.HangarCommand;
 
 @Controller
 @RequestMapping(value = "/hangars")

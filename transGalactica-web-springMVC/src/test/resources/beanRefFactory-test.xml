@@ -10,11 +10,6 @@
 	<description>Trans'Galactica Web Spring MVC - Tests</description>
 
 	<import
-		resource="classpath:org/transgalactica/test/config/context/beanRefFactory.xml" />
-	
-	<import
-		resource="classpath:org/transgalactica/web/config/context/beanRefFactory.xml" />
-	<import
-		resource="classpath:org/transgalactica/web/config/context/mvc/beanRefFactory.xml" />
+		resource="classpath:org/transgalactica/web/config/context/persistence-test.spring.xml" />
 	
 </beans>

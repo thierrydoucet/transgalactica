@@ -8,8 +8,8 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 import org.transgalactica.fwk.test.bean.AbstractSerializableGenericTest;
-import org.transgalactica.web.hangar.model.impl.HangarCommand;
-import org.transgalactica.web.vaisseau.model.impl.VaisseauCommand;
+import org.transgalactica.web.hangar.model.HangarCommand;
+import org.transgalactica.web.vaisseau.model.VaisseauCommand;
 
 @RunWith(Parameterized.class)
 public class ModelSerializableTest extends AbstractSerializableGenericTest {

@@ -5,7 +5,7 @@ import javax.inject.Inject;
 import org.transgalactica.fwk.domain.stereotype.Mapper;
 import org.transgalactica.management.data.materiel.bo.HangarEntity;
 import org.transgalactica.web.hangar.mapper.HangarMapper;
-import org.transgalactica.web.hangar.model.impl.HangarCommand;
+import org.transgalactica.web.hangar.model.HangarCommand;
 
 @Mapper
 public class DozerHangarMapper implements HangarMapper {
@@ -25,7 +25,7 @@ public class DozerHangarMapper implements HangarMapper {
 	}
 
 	/**
-	 * @see org.transgalactica.web.hangar.mapper.impl.DozerHangarMapper#mapHangarCommandToEntity(org.transgalactica.web.hangar.model.impl.HangarCommand,
+	 * @see org.transgalactica.web.hangar.mapper.impl.DozerHangarMapper#mapHangarCommandToEntity(org.transgalactica.web.hangar.model.HangarCommand,
 	 * org.transgalactica.management.data.materiel.bo.HangarEntity)
 	 */
 	@Override

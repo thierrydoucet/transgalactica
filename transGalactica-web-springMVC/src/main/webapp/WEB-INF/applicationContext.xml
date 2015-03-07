@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<beans
-	xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:p="http://www.springframework.org/schema/p"
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:util="http://www.springframework.org/schema/util"
 	xsi:schemaLocation="
@@ -18,14 +16,24 @@
 
 	<context:annotation-config />
 
-	<util:properties id="appProperties" location="#{systemProperties['transGalactica.configuration']?:'classpath:transGalactica.properties'}" />
+	<util:properties id="appProperties"
+		location="#{systemProperties['transGalactica.configuration']?:'classpath:transGalactica.properties'}" />
 
-	<bean
-		id="messageSource"
+	<bean id="messageSource"
 		class="org.springframework.context.support.ResourceBundleMessageSource"
 		p:basenames="org/transgalactica/web/i18n/messages, org/transgalactica/web/i18n/exceptions, org/transgalactica/web/i18n/validation, org/springframework/security/messages" />
 
-	<import resource="classpath*:META-INF/beanRefFactory.xml" />
-	<import resource="classpath:org/transgalactica/web/config/context/security.spring.xml" />
+	<context:component-scan
+		base-package="org.transgalactica.management.business.hr, 
+		org.transgalactica.management.business.logistics, 
+		org.transgalactica.management.data.materiel, 
+		org.transgalactica.management.data.referentiel, 
+		org.transgalactica.management.data.people" />
 
+	<import
+		resource="classpath:org/transgalactica/web/config/context/validation.spring.xml" />
+	<import
+		resource="classpath:org/transgalactica/web/config/context/security.spring.xml" />
+	<import
+		resource="classpath:org/transgalactica/web/config/context/persistence.spring.xml" />
 </beans>

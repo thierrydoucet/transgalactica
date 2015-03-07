@@ -1,5 +1,7 @@
-package org.transgalactica.web.accueil.controller.impl;
+package org.transgalactica.web.accueil.controller;
 
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Value;
@@ -19,7 +21,8 @@ public class WelcomeController {
 
 	@RequestMapping
 	public String welcome(Model model) {
-		model.addAttribute(new Date());
+		LocalDateTime now = LocalDateTime.now();
+		model.addAttribute("date", Date.from(now.atZone(ZoneId.systemDefault()).toInstant()));
 		model.addAttribute("infoMotdUrl", infoMotdUrl);
 		return "accueil/welcome";
 	}

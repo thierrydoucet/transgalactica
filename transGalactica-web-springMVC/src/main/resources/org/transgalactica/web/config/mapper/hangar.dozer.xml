@@ -7,7 +7,7 @@
 
 	<mapping>
 		<class-a
-			bean-factory="contextFactory">org.transgalactica.web.hangar.model.impl.HangarCommand</class-a>
+			bean-factory="contextFactory">org.transgalactica.web.hangar.model.HangarCommand</class-a>
 		<class-b
 			bean-factory="contextFactory">org.transgalactica.management.data.materiel.bo.impl.JpaHangarEntity</class-b>
 	</mapping>

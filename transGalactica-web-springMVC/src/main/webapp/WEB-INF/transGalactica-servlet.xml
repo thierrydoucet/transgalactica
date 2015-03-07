@@ -24,8 +24,7 @@
 	<!-- handler mapping -->
 	<mvc:default-servlet-handler
 		default-servlet-name="default" />
-	<mvc:annotation-driven
-		validator="javax.validation.ValidatorFactory" />
+	<mvc:annotation-driven />
 
 	<!-- View Resolver -->
 	<bean
@@ -65,10 +64,10 @@
 	<!-- Components configuration -->
 	<context:component-scan base-package="org.transgalactica.web" />
 	<import
+		resource="classpath:org/transgalactica/web/config/context/mvc/mapper.spring.xml" />
+	<import
 		resource="classpath:org/transgalactica/web/config/context/mvc/viewbean.spring.xml" />
 	<import
 		resource="classpath:org/transgalactica/web/config/context/mvc/controller.spring.xml" />
-	<import
-		resource="classpath:org/transgalactica/web/config/context/mvc/mapper.spring.xml" />
 
 </beans>

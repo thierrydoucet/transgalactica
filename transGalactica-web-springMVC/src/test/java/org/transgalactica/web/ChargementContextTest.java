@@ -3,15 +3,20 @@ package org.transgalactica.web;
 import static org.junit.Assert.assertNotNull;
 
 import org.junit.Test;
-import org.transgalactica.web.accueil.controller.impl.WelcomeController;
-import org.transgalactica.web.hangar.controller.impl.HangarDetailController;
-import org.transgalactica.web.hangar.controller.impl.HangarListeController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.transgalactica.web.accueil.controller.WelcomeController;
+import org.transgalactica.web.hangar.controller.HangarDetailController;
+import org.transgalactica.web.hangar.controller.HangarListeController;
 import org.transgalactica.web.hangar.mapper.HangarMapper;
-import org.transgalactica.web.hangar.model.impl.HangarCommand;
+import org.transgalactica.web.hangar.model.HangarCommand;
 import org.transgalactica.web.vaisseau.mapper.VaisseauMapper;
-import org.transgalactica.web.vaisseau.model.impl.VaisseauCommand;
+import org.transgalactica.web.vaisseau.model.VaisseauCommand;
 
-public class ChargementContextTest extends AbstractWebContextTest {
+public class ChargementContextTest extends AbstractWebTest {
+
+	@Autowired
+	private ApplicationContext applicationContext;
 
 	@Test
 	public void testInitialisationControllers() {
@@ -21,9 +26,9 @@ public class ChargementContextTest extends AbstractWebContextTest {
 		assertNotNull(applicationContext.getBean(HangarListeController.class));
 
 		assertNotNull(applicationContext
-				.getBean(org.transgalactica.web.vaisseau.controller.impl.VaisseauListeController.class));
+				.getBean(org.transgalactica.web.vaisseau.controller.VaisseauListeController.class));
 		assertNotNull(applicationContext
-				.getBean(org.transgalactica.web.vaisseau.controller.impl.VaisseauDetailController.class));
+				.getBean(org.transgalactica.web.vaisseau.controller.VaisseauDetailController.class));
 	}
 
 	@Test

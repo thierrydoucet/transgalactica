@@ -1,4 +1,4 @@
-package org.transgalactica.web.hangar.model.impl;
+package org.transgalactica.web.vaisseau.model;
 
 import static lombok.AccessLevel.PROTECTED;
 
@@ -19,15 +19,34 @@ import org.transgalactica.fwk.domain.stereotype.DataBean;
 @Getter
 @Setter
 @NoArgsConstructor(access = PROTECTED)
-public class HangarCommand implements Serializable {
+public class VaisseauCommand implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@NotBlank
 	@Size(max = 30)
-	private String localisation;
+	private String immatriculation;
+
+	@NotBlank
+	@Size(max = 30)
+	private String modele;
 
 	@NotNull
-	@Min(1)
-	private Integer nombreEmplacements;
+	@Min(0)
+	private short nombreDePassagers;
+
+	@NotNull
+	@Min(0)
+	private long capaciteDeFret;
+
+	@NotNull
+	@Min(0)
+	private int vitesse;
+
+	@NotNull
+	@Min(0)
+	private int autonomie;
+
+	@Min(0)
+	private Short multiplicateurHyperdrive;
 }

@@ -1,7 +1,7 @@
 package org.transgalactica.web.hangar.mapper;
 
 import org.transgalactica.management.data.materiel.bo.HangarEntity;
-import org.transgalactica.web.hangar.model.impl.HangarCommand;
+import org.transgalactica.web.hangar.model.HangarCommand;
 
 public interface HangarMapper {
 

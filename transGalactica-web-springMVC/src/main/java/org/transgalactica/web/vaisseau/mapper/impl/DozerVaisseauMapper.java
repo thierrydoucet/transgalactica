@@ -5,7 +5,7 @@ import javax.inject.Inject;
 import org.transgalactica.fwk.domain.stereotype.Mapper;
 import org.transgalactica.management.data.materiel.bo.VaisseauEntity;
 import org.transgalactica.web.vaisseau.mapper.VaisseauMapper;
-import org.transgalactica.web.vaisseau.model.impl.VaisseauCommand;
+import org.transgalactica.web.vaisseau.model.VaisseauCommand;
 
 @Mapper
 public class DozerVaisseauMapper implements VaisseauMapper {
@@ -25,7 +25,7 @@ public class DozerVaisseauMapper implements VaisseauMapper {
 	}
 
 	/**
-	 * @see org.transgalactica.web.vaisseau.mapper.impl.DozerVaisseauMapper#mapVaisseauCommandToEntity(org.transgalactica.web.vaisseau.model.impl.VaisseauCommand,
+	 * @see org.transgalactica.web.vaisseau.mapper.impl.DozerVaisseauMapper#mapVaisseauCommandToEntity(org.transgalactica.web.vaisseau.model.VaisseauCommand,
 	 * org.transgalactica.management.data.materiel.bo.VaisseauEntity)
 	 */
 	@Override

@@ -1,4 +1,4 @@
-package org.transgalactica.web.hangar.controller.impl;
+package org.transgalactica.web.hangar.controller;
 
 import java.util.List;
 

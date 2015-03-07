@@ -10,10 +10,9 @@ import javax.validation.Validator;
 import org.junit.Test;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.transgalactica.web.AbstractWebContextTest;
-import org.transgalactica.web.vaisseau.model.impl.VaisseauCommand;
+import org.transgalactica.web.AbstractWebTest;
 
-public class VaisseauCommandValidationTest extends AbstractWebContextTest {
+public class VaisseauCommandValidationTest extends AbstractWebTest {
 
 	@Autowired
 	private Validator validator;

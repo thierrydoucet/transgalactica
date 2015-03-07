@@ -1,4 +1,4 @@
-package org.transgalactica.web.vaisseau.controller.impl;
+package org.transgalactica.web.vaisseau.controller;
 
 import javax.inject.Inject;
 import javax.validation.Valid;
@@ -17,7 +17,7 @@ import org.transgalactica.management.business.logistics.service.VaisseauService;
 import org.transgalactica.management.data.materiel.bo.VaisseauEntity;
 import org.transgalactica.management.data.materiel.bo.VaisseauIntergalactiqueEntity;
 import org.transgalactica.web.vaisseau.mapper.VaisseauMapper;
-import org.transgalactica.web.vaisseau.model.impl.VaisseauCommand;
+import org.transgalactica.web.vaisseau.model.VaisseauCommand;
 
 @Controller
 @RequestMapping("/vaisseaux")

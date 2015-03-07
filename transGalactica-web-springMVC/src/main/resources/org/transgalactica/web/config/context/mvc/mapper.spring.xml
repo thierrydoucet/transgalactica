@@ -9,7 +9,6 @@
 
 	<description>Trans'Galactica Web Spring MVC - Mappers Definitions</description>
 
-	<!-- surcharge du mapper de data-core -->
 	<bean
 		id="org.dozer.Mapper"
 		class="org.dozer.spring.DozerBeanMapperFactoryBean"
