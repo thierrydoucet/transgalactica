@@ -18,21 +18,16 @@
 	<td></td>
 </tr>
 <!--En temps qu'utilisateur identifié comme "Super Gestionnaire", -->
-<!-- je veux pouvoir accéder au détail de l'employé "D2-R2"-->
+<!--Je veux pouvoir supprimer le hangar "Coruscant"-->
 <tr>
 	<td>open</td>
-	<td>/transGalactica-web-springMVC/employes/5</td>
+	<td>/transGalactica-web-springMVC/hangars/4/update</td>
 	<td></td>
 </tr>
 <tr>
 	<td>waitForText</td>
 	<td>id=title</td>
 	<td>Connexion</td>
-</tr>
-<tr>
-	<td>selectWindow</td>
-	<td>null</td>
-	<td></td>
 </tr>
 <tr>
 	<td>type</td>
@@ -52,74 +47,60 @@
 <tr>
 	<td>waitForText</td>
 	<td>id=title</td>
-	<td>Detail de l'employé</td>
-</tr>
-<!--D2-R2 est un mécanicien, embauché le 09/06/1977, avec 3 spécialirés et affecté a 2 vaisseaux : "Red Leader" et "Faucon Millenium"-->
-<tr>
-	<td>assertText</td>
-	<td>//span[@id='nom']</td>
-	<td>D2-R2</td>
+	<td>Detail du Hangar</td>
 </tr>
 <tr>
-	<td>assertText</td>
-	<td>//span[@id='matricule']</td>
-	<td>5</td>
+	<td>clickAndWait</td>
+	<td>//input[@value='Supprimer']</td>
+	<td></td>
 </tr>
-<tr>
-	<td>assertText</td>
-	<td>//span[@id='dateEmbauche']</td>
-	<td>1977-06-09</td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>//span[@id='type']</td>
-	<td>MECANICIEN</td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>//span[@id='specialites']</td>
-	<td>Electronique, Hyperpropulsion, Moteur</td>
-</tr>
-<tr>
-	<td>assertXpathCount</td>
-	<td>//table[@id='vaisseaux']/tbody/tr</td>
-	<td>2</td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>//table[@id='vaisseaux']/tbody/tr[1]/td[1]</td>
-	<td>Red Leader</td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>//table[@id='vaisseaux']/tbody/tr[2]/td[1]</td>
-	<td>Faucon Millenium</td>
-</tr>
-<!--Wedge Antilles est un pilote, avec 549 heures de vol -->
+<!-- je veux pouvoir editer le hangar "Arrakis"-->
 <tr>
 	<td>open</td>
-	<td>/transGalactica-web-springMVC/employes/7</td>
+	<td>/transGalactica-web-springMVC/hangars/2/update</td>
 	<td></td>
 </tr>
 <tr>
 	<td>waitForText</td>
 	<td>id=title</td>
-	<td>Detail de l'employé</td>
+	<td>Connexion</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=j_password</td>
+	<td>2001_odyssee</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=j_username</td>
+	<td>HAL</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input[type=&quot;submit&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>id=title</td>
+	<td>Detail du Hangar</td>
+</tr>
+<!--J'apporte des modifications-->
+<tr>
+	<td>storeEval</td>
+	<td>new Date().getTime()</td>
+	<td>hangarSelId</td>
+</tr>
+<!--Après suppresion, le hangar n'est plus accessible-->
+<tr>
+	<td>open</td>
+	<td>/transGalactica-web-springMVC/hangars/4</td>
+	<td></td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//span[@id='nom']</td>
-	<td>Wedge Antilles</td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>//span[@id='type']</td>
-	<td>PILOTE</td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>//span[@id='nombreHeuresVol']</td>
-	<td>549</td>
+	<td>css=li.errormark</td>
+	<td>Le Hangar '4' est inexistant</td>
 </tr>
 </tbody></table>
 </body>

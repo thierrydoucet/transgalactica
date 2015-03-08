@@ -18,9 +18,9 @@ public class RecentHangarHandlerInterceptor extends HandlerInterceptorAdapter {
 	@Override
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) {
-		if (request.getMethod().equals("GET")) {
-			HangarEntity hangar = (HangarEntity) modelAndView.getModel().get("hangar");
-			recentHangars.offer(new RecentHangarLabel(hangar));
+		Object candidat = modelAndView.getModel().get("hangar");
+		if (candidat != null && request.getMethod().equals("GET") && candidat instanceof HangarEntity) {
+			recentHangars.offer(new RecentHangarLabel((HangarEntity) candidat));
 		}
 	}
 }

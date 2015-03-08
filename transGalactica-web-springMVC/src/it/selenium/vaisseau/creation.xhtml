@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://localhost:8081/" />
+<title>connexion</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">connexion</td></tr>
+</thead><tbody>
+<!--setUp : on s'assure qu'il n'y a pas d'utilisateur connecté -->
+<tr>
+	<td>open</td>
+	<td>/transGalactica-web-springMVC/j_spring_security_logout</td>
+	<td></td>
+</tr>
+<!--En temps qu'utilisateur identifié comme "Super Gestionnaire", -->
+<!--Je veux pouvoir accéder à la création de nouveau vaisseau-->
+<tr>
+	<td>open</td>
+	<td>/transGalactica-web-springMVC/vaisseaux/new</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>id=title</td>
+	<td>Connexion</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=j_password</td>
+	<td>2001_odyssee</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=j_username</td>
+	<td>HAL</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input[type=&quot;submit&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>id=title</td>
+	<td>Detail du Vaisseau</td>
+</tr>
+<!--Et créer un vaisseau-->
+<tr>
+	<td>storeEval</td>
+	<td>new Date().getTime()</td>
+	<td>vaisseauSelId</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=immatriculation</td>
+	<td>${vaisseauSelId}</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=modele</td>
+	<td>Selenium</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=vitesse</td>
+	<td>1</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=autonomie</td>
+	<td>2</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=nombreDePassagers</td>
+	<td>3</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=capaciteDeFret</td>
+	<td>4</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=multiplicateurHyperdrive</td>
+	<td>5</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input[type=&quot;button&quot;]</td>
+	<td></td>
+</tr>
+<!--Le vaisseau nouvellement créer s'affiche-->
+<tr>
+	<td>assertLocation</td>
+	<td>regexp:^http://.*/transGalactica-web-springMVC/vaisseaux/${vaisseauSelId}$</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//span[@id='immatriculation']</td>
+	<td>${vaisseauSelId}</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//span[@id='modele']</td>
+	<td>Selenium</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//span[@id='vitesse']</td>
+	<td>1</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//span[@id='autonomie']</td>
+	<td>2</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//span[@id='nombreDePassagers']</td>
+	<td>3</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//span[@id='capaciteDeFret']</td>
+	<td>4</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//span[@id='multiplicateurHyperdrive']</td>
+	<td>5</td>
+</tr>
+</tbody></table>
+</body>
+</html>

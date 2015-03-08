@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://localhost:8081/" />
+<title>connexion</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">connexion</td></tr>
+</thead><tbody>
+<!--setUp : on s'assure qu'il n'y a pas d'utilisateur connecté -->
+<tr>
+	<td>open</td>
+	<td>/transGalactica-web-springMVC/j_spring_security_logout</td>
+	<td></td>
+</tr>
+<!--En temps qu'utilisateur identifié comme "Super Gestionnaire", -->
+<!-- je veux pouvoir accéder au détail de l'employé "D2-R2"-->
+<tr>
+	<td>open</td>
+	<td>/transGalactica-web-springMVC/employes/5</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>id=title</td>
+	<td>Connexion</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=j_password</td>
+	<td>2001_odyssee</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=j_username</td>
+	<td>HAL</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input[type=&quot;submit&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>id=title</td>
+	<td>Detail de l'employé</td>
+</tr>
+<!--D2-R2 est un mécanicien, embauché le 09/06/1977, avec 3 spécialirés et affecté a 2 vaisseaux : "Red Leader" et "Faucon Millenium"-->
+<tr>
+	<td>assertText</td>
+	<td>//span[@id='nom']</td>
+	<td>D2-R2</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//span[@id='matricule']</td>
+	<td>5</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//span[@id='dateEmbauche']</td>
+	<td>1977-06-09</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//span[@id='type']</td>
+	<td>MECANICIEN</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//span[@id='specialites']</td>
+	<td>Electronique, Hyperpropulsion, Moteur</td>
+</tr>
+<tr>
+	<td>assertXpathCount</td>
+	<td>//table[@id='vaisseaux']/tbody/tr</td>
+	<td>2</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//table[@id='vaisseaux']/tbody/tr[1]/td[1]</td>
+	<td>Red Leader</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//table[@id='vaisseaux']/tbody/tr[2]/td[1]</td>
+	<td>Faucon Millenium</td>
+</tr>
+<!--Wedge Antilles est un pilote, avec 549 heures de vol -->
+<tr>
+	<td>open</td>
+	<td>/transGalactica-web-springMVC/employes/7</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>id=title</td>
+	<td>Detail de l'employé</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//span[@id='nom']</td>
+	<td>Wedge Antilles</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//span[@id='type']</td>
+	<td>PILOTE</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//span[@id='nombreHeuresVol']</td>
+	<td>549</td>
+</tr>
+</tbody></table>
+</body>
+</html>

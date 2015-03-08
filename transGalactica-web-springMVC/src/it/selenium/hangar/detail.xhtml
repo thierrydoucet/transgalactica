@@ -18,21 +18,16 @@
 	<td></td>
 </tr>
 <!--En temps qu'utilisateur identifié comme "Super Gestionnaire", -->
-<!-- je veux pouvoir accéder au vaisseau "Serenity"-->
+<!-- je veux pouvoir accéder du hangar "Arrakis"-->
 <tr>
 	<td>open</td>
-	<td>/transGalactica-web-springMVC/vaisseaux/Serenity</td>
+	<td>/transGalactica-web-springMVC/hangars/2</td>
 	<td></td>
 </tr>
 <tr>
 	<td>waitForText</td>
 	<td>id=title</td>
 	<td>Connexion</td>
-</tr>
-<tr>
-	<td>selectWindow</td>
-	<td>null</td>
-	<td></td>
 </tr>
 <tr>
 	<td>type</td>
@@ -52,48 +47,28 @@
 <tr>
 	<td>waitForText</td>
 	<td>id=title</td>
-	<td>Detail du Vaisseau</td>
+	<td>Detail du Hangar</td>
 </tr>
 <!--Arrakis possède 12256 emplacements et un vaisseau parqué (Flying Bird)-->
 <tr>
 	<td>assertText</td>
-	<td>//span[@id='immatriculation']</td>
-	<td>Serenity</td>
+	<td>//span[@id='localisation']</td>
+	<td>Arrakis</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//span[@id='modele']</td>
-	<td>Firefly</td>
+	<td>//span[@id='nombreEmplacements']</td>
+	<td>12256</td>
+</tr>
+<tr>
+	<td>assertXpathCount</td>
+	<td>//table[@id='vaisseaux']/tbody/tr</td>
+	<td>1</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//span[@id='vitesse']</td>
-	<td>950</td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>//span[@id='autonomie']</td>
-	<td>365</td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>//span[@id='nombreDePassagers']</td>
-	<td>8</td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>//span[@id='capaciteDeFret']</td>
-	<td>20000</td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>//span[@id='multiplicateurHyperdrive']</td>
-	<td>2</td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>//span[@id='hangar']</td>
-	<td>10 - Tatooine</td>
+	<td>//table[@id='vaisseaux']/tbody/tr[1]/td[1]</td>
+	<td>Flying Bird</td>
 </tr>
 </tbody></table>
 </body>

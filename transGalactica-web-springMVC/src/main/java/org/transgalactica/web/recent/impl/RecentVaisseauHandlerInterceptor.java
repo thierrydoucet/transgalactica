@@ -18,9 +18,9 @@ public class RecentVaisseauHandlerInterceptor extends HandlerInterceptorAdapter 
 	@Override
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) {
-		if (request.getMethod().equals("GET")) {
-			VaisseauEntity vaisseau = (VaisseauEntity) modelAndView.getModel().get("vaisseau");
-			recentVaisseaux.offer(new RecentVaisseauLabel(vaisseau));
+		Object candidat = modelAndView.getModel().get("vaisseau");
+		if (candidat != null && request.getMethod().equals("GET") && candidat instanceof VaisseauEntity) {
+			recentVaisseaux.offer(new RecentVaisseauLabel((VaisseauEntity) candidat));
 		}
 	}
 }

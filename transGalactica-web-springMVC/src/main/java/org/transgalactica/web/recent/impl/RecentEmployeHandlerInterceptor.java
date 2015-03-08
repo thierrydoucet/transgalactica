@@ -18,9 +18,9 @@ public class RecentEmployeHandlerInterceptor extends HandlerInterceptorAdapter {
 	@Override
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) {
-		if (request.getMethod().equals("GET")) {
-			EmployeEntity employe = (EmployeEntity) modelAndView.getModel().get("employe");
-			recentEmployes.offer(new RecentEmployeLabel(employe));
+		Object candidat = modelAndView.getModel().get("employe");
+		if (candidat != null && request.getMethod().equals("GET") && candidat instanceof EmployeEntity) {
+			recentEmployes.offer(new RecentEmployeLabel((EmployeEntity) candidat));
 		}
 	}
 }

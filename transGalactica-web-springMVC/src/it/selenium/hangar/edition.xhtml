@@ -18,21 +18,16 @@
 	<td></td>
 </tr>
 <!--En temps qu'utilisateur identifié comme "Super Gestionnaire", -->
-<!-- je veux pouvoir accéder du hangar "Arrakis"-->
+<!-- je veux pouvoir editer le hangar "Arrakis"-->
 <tr>
 	<td>open</td>
-	<td>/transGalactica-web-springMVC/hangars/2</td>
+	<td>/transGalactica-web-springMVC/hangars/2/update</td>
 	<td></td>
 </tr>
 <tr>
 	<td>waitForText</td>
 	<td>id=title</td>
 	<td>Connexion</td>
-</tr>
-<tr>
-	<td>selectWindow</td>
-	<td>null</td>
-	<td></td>
 </tr>
 <tr>
 	<td>type</td>
@@ -54,26 +49,42 @@
 	<td>id=title</td>
 	<td>Detail du Hangar</td>
 </tr>
-<!--Arrakis possède 12256 emplacements et un vaisseau parqué (Flying Bird)-->
+<!--J'apporte des modifications-->
+<tr>
+	<td>storeEval</td>
+	<td>new Date().getTime()</td>
+	<td>hangarSelId</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=localisation</td>
+	<td>Arrakis_${hangarSelId}</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=nombreEmplacements</td>
+	<td>123</td>
+</tr>
+<!--Après sauvegarde, le hangar modifié s'affiche-->
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input[type=&quot;button&quot;]</td>
+	<td></td>
+</tr>
 <tr>
 	<td>assertText</td>
 	<td>//span[@id='localisation']</td>
-	<td>Arrakis</td>
+	<td>Arrakis_${hangarSelId}</td>
 </tr>
 <tr>
 	<td>assertText</td>
 	<td>//span[@id='nombreEmplacements']</td>
-	<td>12256</td>
+	<td>123</td>
 </tr>
 <tr>
 	<td>assertXpathCount</td>
 	<td>//table[@id='vaisseaux']/tbody/tr</td>
 	<td>1</td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>//table[@id='vaisseaux']/tbody/tr[1]/td[1]</td>
-	<td>Flying Bird</td>
 </tr>
 </tbody></table>
 </body>

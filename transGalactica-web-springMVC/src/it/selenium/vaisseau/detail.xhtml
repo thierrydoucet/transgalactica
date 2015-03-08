@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://localhost:8081/" />
+<title>connexion</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">connexion</td></tr>
+</thead><tbody>
+<!--setUp : on s'assure qu'il n'y a pas d'utilisateur connecté -->
+<tr>
+	<td>open</td>
+	<td>/transGalactica-web-springMVC/j_spring_security_logout</td>
+	<td></td>
+</tr>
+<!--En temps qu'utilisateur identifié comme "Super Gestionnaire", -->
+<!-- je veux pouvoir accéder au vaisseau "Serenity"-->
+<tr>
+	<td>open</td>
+	<td>/transGalactica-web-springMVC/vaisseaux/Serenity</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>id=title</td>
+	<td>Connexion</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=j_password</td>
+	<td>2001_odyssee</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=j_username</td>
+	<td>HAL</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input[type=&quot;submit&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>id=title</td>
+	<td>Detail du Vaisseau</td>
+</tr>
+<!--Arrakis possède 12256 emplacements et un vaisseau parqué (Flying Bird)-->
+<tr>
+	<td>assertText</td>
+	<td>//span[@id='immatriculation']</td>
+	<td>Serenity</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//span[@id='modele']</td>
+	<td>Firefly</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//span[@id='vitesse']</td>
+	<td>950</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//span[@id='autonomie']</td>
+	<td>365</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//span[@id='nombreDePassagers']</td>
+	<td>8</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//span[@id='capaciteDeFret']</td>
+	<td>20000</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//span[@id='multiplicateurHyperdrive']</td>
+	<td>2</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//span[@id='hangar']</td>
+	<td>10 - Tatooine</td>
+</tr>
+</tbody></table>
+</body>
+</html>

@@ -18,10 +18,10 @@
 	<td></td>
 </tr>
 <!--En temps qu'utilisateur identifié comme "Super Gestionnaire", -->
-<!-- je veux pouvoir accéder à la page de recherche des hangars -->
+<!--Je veux pouvoir supprimer le hangar "Coruscant"-->
 <tr>
 	<td>open</td>
-	<td>/transGalactica-web-springMVC/hangars/search</td>
+	<td>/transGalactica-web-springMVC/hangars/4/update</td>
 	<td></td>
 </tr>
 <tr>
@@ -30,19 +30,14 @@
 	<td>Connexion</td>
 </tr>
 <tr>
-	<td>selectWindow</td>
-	<td>null</td>
-	<td></td>
+	<td>type</td>
+	<td>name=j_password</td>
+	<td>2001_odyssee</td>
 </tr>
 <tr>
 	<td>type</td>
 	<td>name=j_username</td>
 	<td>HAL</td>
-</tr>
-<tr>
-	<td>type</td>
-	<td>name=j_password</td>
-	<td>2001_odyssee</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
@@ -52,54 +47,60 @@
 <tr>
 	<td>waitForText</td>
 	<td>id=title</td>
-	<td>Liste des Hangars</td>
+	<td>Detail du Hangar</td>
 </tr>
-<!-- Lorsque je recherche les hangar dont la localisation commence par "C"-->
+<tr>
+	<td>clickAndWait</td>
+	<td>//input[@value='Supprimer']</td>
+	<td></td>
+</tr>
+<!-- je veux pouvoir editer le hangar "Arrakis"-->
+<tr>
+	<td>open</td>
+	<td>/transGalactica-web-springMVC/hangars/2/update</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>id=title</td>
+	<td>Connexion</td>
+</tr>
 <tr>
 	<td>type</td>
-	<td>id=localisationHangar</td>
-	<td>C%</td>
+	<td>name=j_password</td>
+	<td>2001_odyssee</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=j_username</td>
+	<td>HAL</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
 	<td>css=input[type=&quot;submit&quot;]</td>
 	<td></td>
 </tr>
-<!-- J'obtiens 2 resultats : "Corellia" et "Coruscant" -->
 <tr>
-	<td>assertXpathCount</td>
-	<td>//table[@id='resultatsRechercheHangar']/tbody/tr</td>
-	<td>2</td>
+	<td>waitForText</td>
+	<td>id=title</td>
+	<td>Detail du Hangar</td>
+</tr>
+<!--J'apporte des modifications-->
+<tr>
+	<td>storeEval</td>
+	<td>new Date().getTime()</td>
+	<td>hangarSelId</td>
+</tr>
+<!--Après suppresion, le hangar n'est plus accessible-->
+<tr>
+	<td>open</td>
+	<td>/transGalactica-web-springMVC/hangars/4</td>
+	<td></td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//table[@id='resultatsRechercheHangar']/tbody/tr[1]/td[1]</td>
-	<td>3</td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>//table[@id='resultatsRechercheHangar']/tbody/tr[1]/td[2]</td>
-	<td>Corellia</td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>//table[@id='resultatsRechercheHangar']/tbody/tr[1]/td[3]</td>
-	<td>11000</td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>//table[@id='resultatsRechercheHangar']/tbody/tr[2]/td[1]</td>
-	<td>4</td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>//table[@id='resultatsRechercheHangar']/tbody/tr[2]/td[2]</td>
-	<td>Coruscant</td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>//table[@id='resultatsRechercheHangar']/tbody/tr[2]/td[3]</td>
-	<td>12240</td>
+	<td>css=li.errormark</td>
+	<td>Le Hangar '4' est inexistant</td>
 </tr>
 </tbody></table>
 </body>

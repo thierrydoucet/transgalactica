@@ -18,10 +18,10 @@
 	<td></td>
 </tr>
 <!--En temps qu'utilisateur identifié comme "Super Gestionnaire", -->
-<!-- je veux pouvoir accéder à la page de recherche des employés -->
+<!-- je veux pouvoir accéder à la page de recherche des hangars -->
 <tr>
 	<td>open</td>
-	<td>/transGalactica-web-springMVC/employes/search</td>
+	<td>/transGalactica-web-springMVC/hangars/search</td>
 	<td></td>
 </tr>
 <tr>
@@ -30,19 +30,14 @@
 	<td>Connexion</td>
 </tr>
 <tr>
-	<td>selectWindow</td>
-	<td>null</td>
-	<td></td>
+	<td>type</td>
+	<td>name=j_username</td>
+	<td>HAL</td>
 </tr>
 <tr>
 	<td>type</td>
 	<td>name=j_password</td>
 	<td>2001_odyssee</td>
-</tr>
-<tr>
-	<td>type</td>
-	<td>name=j_username</td>
-	<td>HAL</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
@@ -52,74 +47,54 @@
 <tr>
 	<td>waitForText</td>
 	<td>id=title</td>
-	<td>Liste des Employés</td>
+	<td>Liste des Hangars</td>
 </tr>
-<!-- Lorsque je recherche les employés dont le nom commence par B et embauchés entre le 01/01/1980 et le 31/12/2005 -->
+<!-- Lorsque je recherche les hangar dont la localisation commence par "C"-->
 <tr>
 	<td>type</td>
-	<td>id=nomEmploye</td>
-	<td>L%</td>
-</tr>
-<tr>
-	<td>type</td>
-	<td>id=dateEmbaucheEmployeDebut</td>
-	<td>1980-01-01</td>
-</tr>
-<tr>
-	<td>type</td>
-	<td>id=dateEmbaucheEmployeFin</td>
-	<td>1999-12-31</td>
+	<td>id=localisationHangar</td>
+	<td>C%</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
 	<td>css=input[type=&quot;submit&quot;]</td>
 	<td></td>
 </tr>
-<!-- J'obtiens 2 resultats : "Lando Calrissian" et "Le Gritche" -->
+<!-- J'obtiens 2 resultats : "Corellia" et "Coruscant" -->
 <tr>
 	<td>assertXpathCount</td>
-	<td>//table[@id='resultatsRechercheEmploye']/tbody/tr</td>
+	<td>//table[@id='resultatsRechercheHangar']/tbody/tr</td>
 	<td>2</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//table[@id='resultatsRechercheEmploye']/tbody/tr[1]/td[1]</td>
-	<td>Lando Calrissian</td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>//table[@id='resultatsRechercheEmploye']/tbody/tr[1]/td[2]</td>
+	<td>//table[@id='resultatsRechercheHangar']/tbody/tr[1]/td[1]</td>
 	<td>3</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//table[@id='resultatsRechercheEmploye']/tbody/tr[1]/td[3]</td>
-	<td>1980-08-20</td>
+	<td>//table[@id='resultatsRechercheHangar']/tbody/tr[1]/td[2]</td>
+	<td>Corellia</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//table[@id='resultatsRechercheEmploye']/tbody/tr[1]/td[4]</td>
-	<td>PILOTE</td>
+	<td>//table[@id='resultatsRechercheHangar']/tbody/tr[1]/td[3]</td>
+	<td>11000</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//table[@id='resultatsRechercheEmploye']/tbody/tr[2]/td[1]</td>
-	<td>Le Gritche</td>
+	<td>//table[@id='resultatsRechercheHangar']/tbody/tr[2]/td[1]</td>
+	<td>4</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//table[@id='resultatsRechercheEmploye']/tbody/tr[2]/td[2]</td>
-	<td>37</td>
+	<td>//table[@id='resultatsRechercheHangar']/tbody/tr[2]/td[2]</td>
+	<td>Coruscant</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//table[@id='resultatsRechercheEmploye']/tbody/tr[2]/td[3]</td>
-	<td>1989-01-01</td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>//table[@id='resultatsRechercheEmploye']/tbody/tr[2]/td[4]</td>
-	<td>MECANICIEN</td>
+	<td>//table[@id='resultatsRechercheHangar']/tbody/tr[2]/td[3]</td>
+	<td>12240</td>
 </tr>
 </tbody></table>
 </body>

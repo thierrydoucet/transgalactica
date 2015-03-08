@@ -24,12 +24,15 @@ import org.transgalactica.web.vaisseau.model.VaisseauCommand;
 public class VaisseauDetailController {
 
 	private static final String IMMATRICULATION_MODEL = "immatriculation";
+
 	private static final String VAISSEAU_MODEL = "vaisseau";
 
 	private static final String VAISSEAUX_VIEW = "vaisseau/detail";
+
 	private static final String VAISSEAU_EDIT_VIEW = "vaisseau/edit";
 
 	private static final String VAISSEAU_REDIRECT = "redirect:/vaisseaux/";
+
 	private static final String VAISSEAUX_REDIRECT = "redirect:/vaisseaux/search";
 
 	@Inject
@@ -92,7 +95,8 @@ public class VaisseauDetailController {
 
 	private VaisseauEntity createEntity(VaisseauCommand command) {
 		if (command.getMultiplicateurHyperdrive() != null) {
-			beanFactory.getBean(VaisseauIntergalactiqueEntity.class.getName(), VaisseauIntergalactiqueEntity.class);
+			return beanFactory.getBean(VaisseauIntergalactiqueEntity.class.getName(),
+					VaisseauIntergalactiqueEntity.class);
 		}
 		return beanFactory.getBean(VaisseauEntity.class.getName(), VaisseauEntity.class);
 	}
