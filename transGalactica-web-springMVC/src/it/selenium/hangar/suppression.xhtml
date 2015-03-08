@@ -11,17 +11,15 @@
 <thead>
 <tr><td rowspan="1" colspan="3">connexion</td></tr>
 </thead><tbody>
-<!--setUp : on s'assure qu'il n'y a pas d'utilisateur connecté -->
+<!--setUp : on s'assure qu'il n'y a pas d'utilisateur connecté et on crée le hangar que l'on va supprimer-->
 <tr>
 	<td>open</td>
 	<td>/transGalactica-web-springMVC/j_spring_security_logout</td>
 	<td></td>
 </tr>
-<!--En temps qu'utilisateur identifié comme "Super Gestionnaire", -->
-<!--Je veux pouvoir supprimer le hangar "Coruscant"-->
 <tr>
 	<td>open</td>
-	<td>/transGalactica-web-springMVC/hangars/4/update</td>
+	<td>/transGalactica-web-springMVC/hangars/new</td>
 	<td></td>
 </tr>
 <tr>
@@ -48,59 +46,59 @@
 	<td>waitForText</td>
 	<td>id=title</td>
 	<td>Detail du Hangar</td>
+</tr>
+<tr>
+	<td>storeEval</td>
+	<td>new Date().getTime()</td>
+	<td>hangarSelId</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=localisation</td>
+	<td>Selenium_${hangarSelId}</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=nombreEmplacements</td>
+	<td>123</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input[type=&quot;button&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>storeEval</td>
+	<td>window.location.pathname.substr(window.location.pathname.lastIndexOf(&quot;/&quot;)+1)</td>
+	<td>hangarId</td>
+</tr>
+<!--En temps qu'utilisateur identifié comme "Super Gestionnaire", -->
+<!--Je dois pouvoir supprimer un hangar-->
+<tr>
+	<td>open</td>
+	<td>/transGalactica-web-springMVC/hangars/${hangarId}/update</td>
+	<td></td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
 	<td>//input[@value='Supprimer']</td>
 	<td></td>
 </tr>
-<!-- je veux pouvoir editer le hangar "Arrakis"-->
 <tr>
-	<td>open</td>
-	<td>/transGalactica-web-springMVC/hangars/2/update</td>
+	<td>assertConfirmation</td>
+	<td>Confirmez vous la suppression de ce hangar?</td>
 	<td></td>
-</tr>
-<tr>
-	<td>waitForText</td>
-	<td>id=title</td>
-	<td>Connexion</td>
-</tr>
-<tr>
-	<td>type</td>
-	<td>name=j_password</td>
-	<td>2001_odyssee</td>
-</tr>
-<tr>
-	<td>type</td>
-	<td>name=j_username</td>
-	<td>HAL</td>
-</tr>
-<tr>
-	<td>clickAndWait</td>
-	<td>css=input[type=&quot;submit&quot;]</td>
-	<td></td>
-</tr>
-<tr>
-	<td>waitForText</td>
-	<td>id=title</td>
-	<td>Detail du Hangar</td>
-</tr>
-<!--J'apporte des modifications-->
-<tr>
-	<td>storeEval</td>
-	<td>new Date().getTime()</td>
-	<td>hangarSelId</td>
 </tr>
 <!--Après suppresion, le hangar n'est plus accessible-->
 <tr>
 	<td>open</td>
-	<td>/transGalactica-web-springMVC/hangars/4</td>
+	<td>/transGalactica-web-springMVC/hangars/${hangarId}</td>
 	<td></td>
 </tr>
 <tr>
 	<td>assertText</td>
 	<td>css=li.errormark</td>
-	<td>Le Hangar '4' est inexistant</td>
+	<td>Le Hangar '${hangarId}' est inexistant</td>
 </tr>
 </tbody></table>
 </body>
