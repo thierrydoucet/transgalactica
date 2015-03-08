@@ -13,9 +13,9 @@
 	pageContext.setAttribute("recentEmployes", context.getBean("recentEmployes", Queue.class));
 %>
 <ul>
-	<li><a href="<c:url value="/accueil"/>"><spring:message code="transgalactica.menu.accueil" /></a></li>
+	<li id="menuAccueil"><a href="<c:url value="/accueil"/>"><spring:message code="transgalactica.menu.accueil" /></a></li>
 	<sec:authorize access="isAuthenticated()">
-		<li>
+		<li id="menuEmploye">
 			<ul>
 				<spring:message code="transgalactica.menu.employe" />
 				<li><a href="<c:url value="/employes/search"/>"><spring:message code="transgalactica.menu.employe.rechercher" /></a></li>
@@ -28,7 +28,7 @@
 				</c:if>
 			</ul>
 		</li>
-		<li>
+		<li id="menuHangar">
 			<ul>
 				<spring:message code="transgalactica.menu.hangar" />
 				<sec:authorize access="hasRole('ROLE_SUPER_GESTIONNAIRE')">
@@ -44,7 +44,7 @@
 				</c:if>
 			</ul>
 		</li>
-		<li>
+		<li id="menuVaisseau">
 			<ul>
 				<spring:message code="transgalactica.menu.vaisseau" />
 				<sec:authorize access="hasRole('ROLE_SUPER_GESTIONNAIRE')">

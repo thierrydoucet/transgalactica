@@ -11,7 +11,13 @@
 <thead>
 <tr><td rowspan="1" colspan="3">connexion</td></tr>
 </thead><tbody>
-<!-- En temps qu'utilisateur non identifié, je veux acceder a l'application, -->
+<!--setUp : on s'assure qu'il n'y a pas d'utilisateur connecté -->
+<tr>
+	<td>open</td>
+	<td>/transGalactica-web-springMVC/j_spring_security_logout</td>
+	<td></td>
+</tr>
+<!--En temps qu'utilisateur non identifié, je veux acceder a l'application, -->
 <tr>
 	<td>open</td>
 	<td>/transGalactica-web-springMVC/</td>
@@ -38,7 +44,7 @@
 	<td>//div[@id='menu']/ul/li[2]</td>
 	<td>Connexion</td>
 </tr>
-<!-- Une fois authentifié, -->
+<!--Une fois authentifié, -->
 <tr>
 	<td>type</td>
 	<td>name=j_username</td>
