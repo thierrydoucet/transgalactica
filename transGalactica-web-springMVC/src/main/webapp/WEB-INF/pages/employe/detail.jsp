@@ -42,7 +42,7 @@
 
 <c:if test="${ not empty employe.vaisseaux }">
 	<h2><spring:message code="transgalactica.employe.detail.titrevaisseaux" /></h2>
-	<table>
+	<table id="vaisseaux">
 		<thead>
 			<tr>
 				<th><spring:message code="transgalactica.employe.detail.vaisseaux.immatriculation" /></th>
