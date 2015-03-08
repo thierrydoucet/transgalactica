@@ -11,17 +11,15 @@
 <thead>
 <tr><td rowspan="1" colspan="3">connexion</td></tr>
 </thead><tbody>
-<!--setUp : on s'assure qu'il n'y a pas d'utilisateur connecté -->
+<!--setUp : on s'assure qu'il n'y a pas d'utilisateur connecté et on crée le vaisseau à supprimer-->
 <tr>
 	<td>open</td>
 	<td>/transGalactica-web-springMVC/j_spring_security_logout</td>
 	<td></td>
 </tr>
-<!--En temps qu'utilisateur identifié comme "Super Gestionnaire", -->
-<!--Je veux pouvoir supprimer le hangar "Coruscant"-->
 <tr>
 	<td>open</td>
-	<td>/transGalactica-web-springMVC/hangars/4/update</td>
+	<td>/transGalactica-web-springMVC/vaisseaux/new</td>
 	<td></td>
 </tr>
 <tr>
@@ -47,60 +45,90 @@
 <tr>
 	<td>waitForText</td>
 	<td>id=title</td>
-	<td>Detail du Hangar</td>
+	<td>Detail du Vaisseau</td>
+</tr>
+<tr>
+	<td>storeEval</td>
+	<td>new Date().getTime()</td>
+	<td>vaisseauSelId</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=immatriculation</td>
+	<td>${vaisseauSelId}</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=modele</td>
+	<td>Selenium</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=vitesse</td>
+	<td>1</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=autonomie</td>
+	<td>2</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=nombreDePassagers</td>
+	<td>3</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=capaciteDeFret</td>
+	<td>4</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=multiplicateurHyperdrive</td>
+	<td>5</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input[type=&quot;button&quot;]</td>
+	<td></td>
+</tr>
+<!--En temps qu'utilisateur identifié comme "Super Gestionnaire", -->
+<!--Je dois pouvoir supprimer un vaisseau-->
+<tr>
+	<td>open</td>
+	<td>/transGalactica-web-springMVC/vaisseaux/${vaisseauSelId}/update</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>id=title</td>
+	<td>Detail du Vaisseau</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
 	<td>//input[@value='Supprimer']</td>
 	<td></td>
 </tr>
-<!-- je veux pouvoir editer le hangar "Arrakis"-->
+<tr>
+	<td>assertConfirmation</td>
+	<td>Confirmez vous la suppression de ce vaisseau?</td>
+	<td></td>
+</tr>
+<!--Après suppresion, le vaisseau n'est plus accessible-->
 <tr>
 	<td>open</td>
-	<td>/transGalactica-web-springMVC/hangars/2/update</td>
+	<td>/transGalactica-web-springMVC/vaisseaux/${vaisseauSelId}</td>
 	<td></td>
 </tr>
 <tr>
 	<td>waitForText</td>
 	<td>id=title</td>
-	<td>Connexion</td>
-</tr>
-<tr>
-	<td>type</td>
-	<td>name=j_password</td>
-	<td>2001_odyssee</td>
-</tr>
-<tr>
-	<td>type</td>
-	<td>name=j_username</td>
-	<td>HAL</td>
-</tr>
-<tr>
-	<td>clickAndWait</td>
-	<td>css=input[type=&quot;submit&quot;]</td>
-	<td></td>
-</tr>
-<tr>
-	<td>waitForText</td>
-	<td>id=title</td>
-	<td>Detail du Hangar</td>
-</tr>
-<!--J'apporte des modifications-->
-<tr>
-	<td>storeEval</td>
-	<td>new Date().getTime()</td>
-	<td>hangarSelId</td>
-</tr>
-<!--Après suppresion, le hangar n'est plus accessible-->
-<tr>
-	<td>open</td>
-	<td>/transGalactica-web-springMVC/hangars/4</td>
-	<td></td>
+	<td>Erreur inattendue</td>
 </tr>
 <tr>
 	<td>assertText</td>
 	<td>css=li.errormark</td>
-	<td>Le Hangar '4' est inexistant</td>
+	<td>Le vaisseau '${vaisseauSelId}' est inexistant</td>
 </tr>
 </tbody></table>
 </body>

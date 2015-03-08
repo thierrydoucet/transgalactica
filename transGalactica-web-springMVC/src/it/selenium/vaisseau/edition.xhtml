@@ -11,17 +11,15 @@
 <thead>
 <tr><td rowspan="1" colspan="3">connexion</td></tr>
 </thead><tbody>
-<!--setUp : on s'assure qu'il n'y a pas d'utilisateur connecté -->
+<!--setUp : on s'assure qu'il n'y a pas d'utilisateur connecté et on crée le vaisseau à modifier-->
 <tr>
 	<td>open</td>
 	<td>/transGalactica-web-springMVC/j_spring_security_logout</td>
 	<td></td>
 </tr>
-<!--En temps qu'utilisateur identifié comme "Super Gestionnaire", -->
-<!-- je veux pouvoir editer le hangar "Arrakis"-->
 <tr>
 	<td>open</td>
-	<td>/transGalactica-web-springMVC/hangars/2/update</td>
+	<td>/transGalactica-web-springMVC/vaisseaux/new</td>
 	<td></td>
 </tr>
 <tr>
@@ -47,44 +45,141 @@
 <tr>
 	<td>waitForText</td>
 	<td>id=title</td>
-	<td>Detail du Hangar</td>
+	<td>Detail du Vaisseau</td>
 </tr>
-<!--J'apporte des modifications-->
 <tr>
 	<td>storeEval</td>
 	<td>new Date().getTime()</td>
-	<td>hangarSelId</td>
+	<td>vaisseauSelId</td>
 </tr>
 <tr>
 	<td>type</td>
-	<td>id=localisation</td>
-	<td>Arrakis_${hangarSelId}</td>
+	<td>id=immatriculation</td>
+	<td>${vaisseauSelId}</td>
 </tr>
 <tr>
 	<td>type</td>
-	<td>id=nombreEmplacements</td>
-	<td>123</td>
+	<td>id=modele</td>
+	<td>Selenium</td>
 </tr>
-<!--Après sauvegarde, le hangar modifié s'affiche-->
+<tr>
+	<td>type</td>
+	<td>id=vitesse</td>
+	<td>1</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=autonomie</td>
+	<td>2</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=nombreDePassagers</td>
+	<td>3</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=capaciteDeFret</td>
+	<td>4</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=multiplicateurHyperdrive</td>
+	<td>5</td>
+</tr>
 <tr>
 	<td>clickAndWait</td>
 	<td>css=input[type=&quot;button&quot;]</td>
 	<td></td>
 </tr>
+<!--En temps qu'utilisateur identifié comme "Super Gestionnaire", -->
+<!-- je dois pouvoir editer un vaisseau-->
+<tr>
+	<td>open</td>
+	<td>/transGalactica-web-springMVC/vaisseaux/${vaisseauSelId}/update</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>id=title</td>
+	<td>Detail du Vaisseau</td>
+</tr>
+<!--J'apporte des modifications-->
+<tr>
+	<td>type</td>
+	<td>id=immatriculation</td>
+	<td>${vaisseauSelId}_2</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=modele</td>
+	<td>Selenium #2</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=vitesse</td>
+	<td>21</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=autonomie</td>
+	<td>22</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=nombreDePassagers</td>
+	<td>23</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=capaciteDeFret</td>
+	<td>24</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=multiplicateurHyperdrive</td>
+	<td>25</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input[type=&quot;button&quot;]</td>
+	<td></td>
+</tr>
+<!--Après sauvegarde, le hangar modifié s'affiche-->
 <tr>
 	<td>assertText</td>
-	<td>//span[@id='localisation']</td>
-	<td>Arrakis_${hangarSelId}</td>
+	<td>//span[@id='immatriculation']</td>
+	<td>${vaisseauSelId}_2</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//span[@id='nombreEmplacements']</td>
-	<td>123</td>
+	<td>//span[@id='modele']</td>
+	<td>Selenium #2</td>
 </tr>
 <tr>
-	<td>assertXpathCount</td>
-	<td>//table[@id='vaisseaux']/tbody/tr</td>
-	<td>1</td>
+	<td>assertText</td>
+	<td>//span[@id='vitesse']</td>
+	<td>21</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//span[@id='autonomie']</td>
+	<td>22</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//span[@id='nombreDePassagers']</td>
+	<td>23</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//span[@id='capaciteDeFret']</td>
+	<td>24</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//span[@id='multiplicateurHyperdrive']</td>
+	<td>25</td>
 </tr>
 </tbody></table>
 </body>
