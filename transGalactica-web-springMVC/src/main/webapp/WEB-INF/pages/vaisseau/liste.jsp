@@ -25,7 +25,7 @@
 
 <c:if test="${ not empty vaisseaux }">
 	<h2><spring:message code="transgalactica.vaisseau.liste.resultat.titre" /></h2>
-	<table>
+	<table id="resultatsRechercheVaisseau">
 		<thead>
 			<tr>
 				<th><spring:message code="transgalactica.vaisseau.liste.resultat.immatriculation" /></th>

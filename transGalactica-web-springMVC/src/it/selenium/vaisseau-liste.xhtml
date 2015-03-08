@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://localhost:8081/" />
+<title>connexion</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">connexion</td></tr>
+</thead><tbody>
+<!--setUp : on s'assure qu'il n'y a pas d'utilisateur connecté -->
+<tr>
+	<td>open</td>
+	<td>/transGalactica-web-springMVC/j_spring_security_logout</td>
+	<td></td>
+</tr>
+<!--En temps qu'utilisateur identifié comme "Super Gestionnaire", -->
+<!-- je veux pouvoir accéder à la page de recherche des vaisseaux -->
+<tr>
+	<td>open</td>
+	<td>/transGalactica-web-springMVC/vaisseaux/search</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>id=title</td>
+	<td>Connexion</td>
+</tr>
+<tr>
+	<td>selectWindow</td>
+	<td>null</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=j_username</td>
+	<td>HAL</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=j_password</td>
+	<td>2001_odyssee</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input[type=&quot;submit&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>id=title</td>
+	<td>Liste des Vaisseaux</td>
+</tr>
+<!--Lorsque je recherche les vaisseaux dont l'immatriculation commence par "R", le modèle par "T" et qui sont intergalactique-->
+<tr>
+	<td>type</td>
+	<td>id=immatriculation</td>
+	<td>R%</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=modele</td>
+	<td>T%</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=intergalactique1</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input[type=&quot;submit&quot;]</td>
+	<td></td>
+</tr>
+<!-- J'obtiens 4 resultats : "Red Four", "Red Leader", "Red Three" et "Red Two" -->
+<tr>
+	<td>assertXpathCount</td>
+	<td>//table[@id='resultatsRechercheVaisseau']/tbody/tr</td>
+	<td>4</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=intergalactique1</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input[type=&quot;submit&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//table[@id='resultatsRechercheVaisseau']/tbody/tr[1]/td[1]</td>
+	<td>Red Four</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//table[@id='resultatsRechercheVaisseau']/tbody/tr[1]/td[2]</td>
+	<td>T-65 X-Wings</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//table[@id='resultatsRechercheVaisseau']/tbody/tr[1]/td[3]</td>
+	<td>Alderaan</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//table[@id='resultatsRechercheVaisseau']/tbody/tr[2]/td[1]</td>
+	<td>Red Leader</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//table[@id='resultatsRechercheVaisseau']/tbody/tr[2]/td[2]</td>
+	<td>T-65 X-Wings</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//table[@id='resultatsRechercheVaisseau']/tbody/tr[2]/td[3]</td>
+	<td>Alderaan</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//table[@id='resultatsRechercheVaisseau']/tbody/tr[3]/td[1]</td>
+	<td>Red Three</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//table[@id='resultatsRechercheVaisseau']/tbody/tr[3]/td[2]</td>
+	<td>T-65 X-Wings</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//table[@id='resultatsRechercheVaisseau']/tbody/tr[3]/td[3]</td>
+	<td>Alderaan</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//table[@id='resultatsRechercheVaisseau']/tbody/tr[4]/td[1]</td>
+	<td>Red Two</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//table[@id='resultatsRechercheVaisseau']/tbody/tr[4]/td[2]</td>
+	<td>T-65 X-Wings</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//table[@id='resultatsRechercheVaisseau']/tbody/tr[4]/td[3]</td>
+	<td>Alderaan</td>
+</tr>
+</tbody></table>
+</body>
+</html>
