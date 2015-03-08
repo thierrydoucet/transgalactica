@@ -18,7 +18,7 @@
 
 <c:if test="${ not empty hangar.vaisseaux }">
 	<h2><spring:message code="transgalactica.hangar.detail.titrevaisseaux" /></h2>
-	<table>
+	<table id="vaisseaux">
 		<thead>
 			<tr>
 				<th><spring:message code="transgalactica.hangar.detail.vaisseaux.immatriculation" /></th>
