@@ -30,9 +30,9 @@
 	<authentication-manager>
 		<authentication-provider>
 			<user-service>
-				<user name="HAL" password="2001_odyssee" authorities="SUPER_GESTIONNAIRE, ADMINISTRATEUR" />
-				<user name="6PO" password="StarWars" authorities="GESTIONNAIRE" />
-				<user name="Sonny" password="1Robot" authorities="GESTIONNAIRE"
+				<user name="HAL" password="2001_odyssee" authorities="ROLE_SUPER_GESTIONNAIRE,ROLE_ADMINISTRATEUR" />
+				<user name="6PO" password="StarWars" authorities="ROLE_GESTIONNAIRE" />
+				<user name="Sonny" password="1Robot" authorities="ROLE_GESTIONNAIRE"
 					disabled="true" />
 			</user-service>
 		</authentication-provider>
