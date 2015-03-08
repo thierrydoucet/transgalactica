@@ -28,7 +28,7 @@
 	<h2>
 		<spring:message code="transgalactica.employe.liste.resultat.titre" />
 	</h2>
-	<table>
+	<table id="resultatsRechercheEmploye">
 		<thead>
 			<tr>
 				<th><spring:message code="transgalactica.employe.liste.resultat.nom" /></th>

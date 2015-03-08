@@ -11,16 +11,115 @@
 <thead>
 <tr><td rowspan="1" colspan="3">connexion</td></tr>
 </thead><tbody>
-<!-- En temps qu'utilisateur identifié, je veux  -->
+<!--setUp : on s'assure qu'il n'y a pas d'utilisateur connecté -->
 <tr>
 	<td>open</td>
-	<td>/transGalactica-web-springMVC/</td>
+	<td>/transGalactica-web-springMVC/j_spring_security_logout</td>
+	<td></td>
+</tr>
+<!--En temps qu'utilisateur identifié comme "Super Gestionnaire", -->
+<!-- je veux pouvoir accéder à la page de recherche des employés -->
+<tr>
+	<td>open</td>
+	<td>/transGalactica-web-springMVC/employes/search</td>
 	<td></td>
 </tr>
 <tr>
 	<td>waitForText</td>
 	<td>id=title</td>
-	<td>Accueil</td>
+	<td>Connexion</td>
+</tr>
+<tr>
+	<td>selectWindow</td>
+	<td>null</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=j_password</td>
+	<td>2001_odyssee</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=j_username</td>
+	<td>HAL</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input[type=&quot;submit&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>id=title</td>
+	<td>Liste des Employés</td>
+</tr>
+<!-- Lorsque je recherche les employés dont le nom commence par B et embauchés entre le 01/01/1980 et le 31/12/2005 -->
+<tr>
+	<td>type</td>
+	<td>id=nomEmploye</td>
+	<td>L%</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=dateEmbaucheEmployeDebut</td>
+	<td>1980-01-01</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=dateEmbaucheEmployeFin</td>
+	<td>1999-12-31</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input[type=&quot;submit&quot;]</td>
+	<td></td>
+</tr>
+<!-- J'obtiens 2 resultats : "Lando Calrissian" et "Le Gritche" -->
+<tr>
+	<td>assertXpathCount</td>
+	<td>//table[@id='resultatsRechercheEmploye']/tbody/tr</td>
+	<td>2</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//table[@id='resultatsRechercheEmploye']/tbody/tr[1]/td[1]</td>
+	<td>Lando Calrissian</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//table[@id='resultatsRechercheEmploye']/tbody/tr[1]/td[2]</td>
+	<td>3</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//table[@id='resultatsRechercheEmploye']/tbody/tr[1]/td[3]</td>
+	<td>1980-08-20</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//table[@id='resultatsRechercheEmploye']/tbody/tr[1]/td[4]</td>
+	<td>PILOTE</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//table[@id='resultatsRechercheEmploye']/tbody/tr[2]/td[1]</td>
+	<td>Le Gritche</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//table[@id='resultatsRechercheEmploye']/tbody/tr[2]/td[2]</td>
+	<td>37</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//table[@id='resultatsRechercheEmploye']/tbody/tr[2]/td[3]</td>
+	<td>1989-01-01</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//table[@id='resultatsRechercheEmploye']/tbody/tr[2]/td[4]</td>
+	<td>MECANICIEN</td>
 </tr>
 </tbody></table>
 </body>
