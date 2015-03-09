@@ -1,0 +1,92 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html" 
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:g="http://www.gmf.fr/jsf/gmfaces"
+                xmlns:p="http://primefaces.org/ui"
+                id="home"
+                template="/layout/root.xhtml">
+    
+
+    <ui:remove>
+    <!--*****************************************************************
+    ** CONTENT
+    ******************************************************************-->
+    </ui:remove>
+    <ui:define name="body">
+        <div class="showcase">
+          
+                <div class="gmfaces-root">
+                    <div class="gmfaces-row showcase-head">
+                         
+                    </div>
+                    
+                    <div class="bandeau"> 
+	                    <p:ajaxStatus id="status">
+						  <f:facet name="start">
+						      working....
+						  </f:facet>
+						  <f:facet name="complete"></f:facet>
+						</p:ajaxStatus>
+						<div class="header-version">
+							<ul class="versions">
+		                        <li><label>Gmfaces version :</label><span>#{messages['gmf.version']}</span></li>
+		                        <li><label>Showcase version :</label><span>#{messages['project.version']}</span></li>
+		                        <li><label>Build time : </label>#{messages['build.time']}</li>
+	                    	</ul>
+						</div>
+                    </div>
+                    <p:growl id="growl" showDetail="true" globalOnly="false" autoUpdate="true" life="2000"/> 
+                      
+                    <!--=====================================================-->
+                    <div class="gmfaces-col gmfaces-row">
+                      <div class="gmfaces-col menu">
+                                <h:form id="tree">
+	                                <p:tree id="treeSingle"
+	                                        value="#{menu.tree}"
+	                                        var="node"
+	                                        cache="false" >
+	                                
+	                                    <p:treeNode >
+	                                        <a href="#{request.contextPath}/#{node.path}">#{node.label}</a>
+	                                    </p:treeNode>
+	                                </p:tree>
+                                </h:form>
+                      </div>
+                        
+                      <div class="gmfaces-col content">
+                          <f:subview id="content_title">
+                            <div class="content-title"><h1><ui:insert name="content_title" /></h1></div>
+                            
+                          </f:subview>
+	                      <f:subview id="content">
+	                            <ui:insert name="content" />
+	                      </f:subview>
+                      </div>
+                    </div>
+                    <!--=====================================================-->
+                </div>
+                
+                
+                <div class="gmfaces-row showcase-foot">
+                    <ul class="versions">
+                        <li><label>Gmfaces version :</label><span>#{messages['gmf.version']}</span></li>
+                        <li><label>Showcase version :</label><span>#{messages['project.version']}</span></li>
+                        <li><label>Build time : </label>#{messages['build.time']}</li>
+                    </ul>
+                </div>
+            </div>
+    </ui:define>
+
+</ui:composition>
+
+
+
+
+
+
+         
+            
+
+          

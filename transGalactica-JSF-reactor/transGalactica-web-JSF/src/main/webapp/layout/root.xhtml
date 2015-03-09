@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<f:view xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:f="http://java.sun.com/jsf/core" 
+	xmlns:h="http://java.sun.com/jsf/html" 
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" 
+	contentType="text/html;charset=UTF-8" 
+	encoding="UTF-8" 
+	id="transGalactica-JSF">
+	<html lang="fr">
+		<h:head>
+			<meta charset="UTF-8" />
+			<title>Trans'Galctica : <ui:insert name="title" /></title>
+			<meta http-equiv="Content-Type" content="application/xhtml+xml" />
+			<meta http-equiv="imagetoolbar" content="no" />
+			<ui:insert name="header" />
+			<link rel="icon" type="image/png" href="#{resource['imgs/logo_gmf_small.jpg']}" />
+			<link href="#{resource['css/application.css']}" type="text/css" rel="stylesheet" />
+		</h:head>
+		
+		<h:body id="body">
+			<f:subview id="gmf">
+				<ui:insert name="body" />
+			</f:subview>
+		</h:body>
+	</html>
+</f:view>
