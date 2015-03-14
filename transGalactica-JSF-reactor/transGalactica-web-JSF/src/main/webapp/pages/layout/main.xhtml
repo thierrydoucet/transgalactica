@@ -6,10 +6,11 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui" 
 	id="main" 
-	template="/layout/root.xhtml">
+	template="/pages/layout/root.xhtml">
 
 	<ui:define name="body">
 		<h1><ui:insert name="title" /></h1>
+		<p><ui:insert name="breadcrumbs" /></p>
 		<f:subview id="content">
 			<ui:insert name="content" />
 		</f:subview>

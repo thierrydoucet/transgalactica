@@ -28,4 +28,8 @@ public class TimeManagedBean implements Serializable {
 	public LocalDateTime getNow() {
 		return now;
 	}
+
+	public void paf() {
+		throw new IllegalArgumentException("La vilaine petite minette");
+	}
 }

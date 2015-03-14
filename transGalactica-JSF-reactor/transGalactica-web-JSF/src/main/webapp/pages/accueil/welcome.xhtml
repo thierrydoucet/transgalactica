@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:f="http://java.sun.com/jsf/core" 
+	xmlns:ui="http://java.sun.com/jsf/facelets" 
+	xmlns:h="http://java.sun.com/jsf/html" 
+	xmlns:p="http://primefaces.org/ui" 
+	id="home" 
+	template="/pages/layout/main.xhtml">
+
+	<ui:define name="title">#{messages['transgalactica.accueil.welcome.titre']}</ui:define>
+	<ui:define name="breadcrumbs">#{messages['transgalactica.accueil.welcome.breadcrumbs']}</ui:define>
+
+	<ui:define name="content">
+			<p>#{messages['transgalactica.accueil.welcome.bienvenue']}</p>
+			<p>#{messages['transgalactica.accueil.welcome.heure']} #{timeManagedBean.now}</p>
+			<h:form><p:commandButton actionListener="#{timeManagedBean.paf()}" ajax="false" value="Paf!" /></h:form>
+	</ui:define>
+</ui:composition>

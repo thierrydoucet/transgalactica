@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui" id="exception" template="/pages/layout/main.xhtml">
+
+	<ui:define name="title">#{messages['transgalactica.erreur.titre']}</ui:define>
+	<ui:define name="breadcrumbs">#{messages['transgalactica.erreur.breadcrumbs']}</ui:define>
+
+	<ui:define name="content">
+		<h:form>
+			<div class="entry">
+				<p>#{messages['transgalactica.erreur.message']}</p>
+				<ul class="error">
+					<li class="errormark">#{pfExceptionHandler.message}</li>
+				</ul>
+				<p><h:outputText value="#{pfExceptionHandler.formattedStackTrace}" escape="false" /></p>
+				<p>#{messages['transgalactica.erreur.support']}</p>
+			</div>
+		</h:form>
+	</ui:define>
+</ui:composition>
