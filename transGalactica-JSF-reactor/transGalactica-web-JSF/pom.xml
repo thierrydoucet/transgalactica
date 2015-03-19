@@ -18,6 +18,11 @@
 	<description>Module Web du projet JSF2 de l'application Trans'Galactica</description>
 
 	<dependencies>
+		<dependency>
+			<groupId>org.transgalactica.front.jsf</groupId>
+			<artifactId>transGalactica-theme</artifactId>
+		</dependency>
+	
 		<!-- Spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>

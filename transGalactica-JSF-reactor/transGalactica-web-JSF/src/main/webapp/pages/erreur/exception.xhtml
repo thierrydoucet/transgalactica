@@ -6,15 +6,16 @@
 	<ui:define name="breadcrumbs">#{messages['transgalactica.erreur.breadcrumbs']}</ui:define>
 
 	<ui:define name="content">
-		<h:form>
-			<div class="entry">
-				<p>#{messages['transgalactica.erreur.message']}</p>
-				<ul class="error">
-					<li class="errormark">#{pfExceptionHandler.message}</li>
-				</ul>
-				<p><h:outputText value="#{pfExceptionHandler.formattedStackTrace}" escape="false" /></p>
+		<div class="ui-widget">
+			<div class="ui-state-error ui-corner-all" style="padding: 0 .7em;">
+				<p>
+					<span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"/>
+					<span>#{messages['transgalactica.erreur.message']}</span>
+					<span id="exceptionMessage">#{pfExceptionHandler.message}</span>
+				</p>
 				<p>#{messages['transgalactica.erreur.support']}</p>
 			</div>
-		</h:form>
+			<p><h:outputText value="#{pfExceptionHandler.formattedStackTrace}" escape="false" /></p>
+		</div>
 	</ui:define>
 </ui:composition>

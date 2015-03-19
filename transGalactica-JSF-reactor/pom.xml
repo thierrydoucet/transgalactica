@@ -22,6 +22,7 @@
 		<module>transGalactica-web-JSF</module>
 		<module>transGalactica-ui-hr</module>
 		<module>transGalactica-ui-logistics</module>
+		<module>transGalactica-theme</module>
 	</modules>
 
 	<properties>
@@ -48,6 +49,12 @@
 			</dependency>
 
 			<!-- Trans'Galactica -->
+			<dependency>
+				<groupId>org.transgalactica.front.jsf</groupId>
+				<artifactId>transGalactica-theme</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
 			<dependency>
 				<groupId>org.transgalactica.management</groupId>
 				<artifactId>transGalactica-management-business-logistics</artifactId>
