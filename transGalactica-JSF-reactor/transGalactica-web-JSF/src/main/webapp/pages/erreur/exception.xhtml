@@ -1,21 +1,30 @@
 <?xml version='1.0' encoding='UTF-8' ?>
-<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:p="http://primefaces.org/ui" id="exception" template="/pages/layout/main.xhtml">
+<ui:composition 
+	xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:f="http://java.sun.com/jsf/core" 
+	xmlns:ui="http://java.sun.com/jsf/facelets" 
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui" 
+	id="exception" 
+	template="/pages/layout/root.xhtml">
 
-	<ui:define name="title">#{messages['transgalactica.erreur.titre']}</ui:define>
-	<ui:define name="breadcrumbs">#{messages['transgalactica.erreur.breadcrumbs']}</ui:define>
-
-	<ui:define name="content">
-		<div class="ui-widget">
-			<div class="ui-state-error ui-corner-all" style="padding: 0 .7em;">
-				<p>
-					<span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"/>
-					<span>#{messages['transgalactica.erreur.message']}</span>
-					<span id="exceptionMessage">#{pfExceptionHandler.message}</span>
-				</p>
-				<p>#{messages['transgalactica.erreur.support']}</p>
-			</div>
-			<p><h:outputText value="#{pfExceptionHandler.formattedStackTrace}" escape="false" /></p>
-		</div>
+	<ui:define name="body">
+		<h1>#{messages['transgalactica.erreur.titre']}</h1>
+		<p>#{messages['transgalactica.erreur.breadcrumbs']}</p>
+		
+		<p:outputPanel styleClass="ui-state-error ui-corner-all" style="padding: .5em;">
+			<p>
+				<span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"/>
+				<span>#{messages['transgalactica.erreur.message']}</span>
+				<span id="exceptionMessage"></span>
+			</p>
+			<p:accordionPanel rendered="#{pfExceptionHandler != null}" activeIndex="-1" styleClass="ui-state-error">
+	        	<p:tab title="#{messages['transgalactica.erreur.detail']} #{pfExceptionHandler.message} (#{pfExceptionHandler.formattedTimestamp})" titleStyleClass="ui-state-error">
+					<h:outputText value="#{pfExceptionHandler.formattedStackTrace}" escape="false" />
+	        	</p:tab>
+	        </p:accordionPanel>
+	        <p>#{messages['transgalactica.erreur.support']}</p>
+	        <p><h:outputLink  value="#{request.contextPath}">#{messages['transgalactica.erreur.action.accueil']}</h:outputLink></p>
+		</p:outputPanel>
 	</ui:define>
 </ui:composition>

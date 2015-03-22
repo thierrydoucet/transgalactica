@@ -51,6 +51,16 @@
 			<!-- Trans'Galactica -->
 			<dependency>
 				<groupId>org.transgalactica.front.jsf</groupId>
+				<artifactId>transGalactica-ui-logistics</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.transgalactica.front.jsf</groupId>
+				<artifactId>transGalactica-ui-hr</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.transgalactica.front.jsf</groupId>
 				<artifactId>transGalactica-theme</artifactId>
 				<version>${project.version}</version>
 			</dependency>

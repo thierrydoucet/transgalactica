@@ -20,9 +20,17 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.transgalactica.front.jsf</groupId>
+			<artifactId>transGalactica-ui-logistics</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.transgalactica.front.jsf</groupId>
+			<artifactId>transGalactica-ui-hr</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.transgalactica.front.jsf</groupId>
 			<artifactId>transGalactica-theme</artifactId>
 		</dependency>
-	
+		
 		<!-- Spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>

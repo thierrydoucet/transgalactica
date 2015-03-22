@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<ui:composition 
+	xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:f="http://java.sun.com/jsf/core" 
+	xmlns:h="http://java.sun.com/jsf/html" 
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" 
+	id="header">
+<h:outputLink value="#{request.contextPath}">
+	<h:graphicImage id="logoTitre" url="#{resource['images/transGalactica-logo-titre.png']}" alt="Trans'Galactica Logo" />
+</h:outputLink>
+<p:ajaxStatus id="ajaxStatusPanel">
+	<f:facet name="start">
+		<h:graphicImage id="loading" value="#{resource['images/loading.png']}" />
+	</f:facet>
+	<f:facet name="complete">
+		<h:outputText value=""/>
+	</f:facet>
+</p:ajaxStatus>
+</ui:composition>

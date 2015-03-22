@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<ui:composition 
+	xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:f="http://java.sun.com/jsf/core" 
+	xmlns:h="http://java.sun.com/jsf/html" 
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" 
+	id="layout" 
+	template="/pages/layout/root.xhtml">
+
+	<ui:define name="body">
+		<p:layout>
+		    <p:layoutUnit position="north">
+		        <ui:include src="header.xhtml" />
+		    </p:layoutUnit>
+		    <p:layoutUnit position="west" collapsible="true">
+		        <ui:include src="menu.xhtml" />
+		    </p:layoutUnit>
+		    <p:layoutUnit position="center">
+		    	<h1><ui:insert name="title" /></h1>
+				<p><ui:insert name="breadcrumbs" /></p>
+		    	<f:subview id="content">
+		       		<ui:insert name="content" />
+		        </f:subview>
+		    </p:layoutUnit>
+		</p:layout>
+	</ui:define>
+</ui:composition>
